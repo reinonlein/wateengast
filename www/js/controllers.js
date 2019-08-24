@@ -22,6 +22,12 @@ angular.module('starter')
         console.log(data);
         $scope.recent_posts =data.data.posts;
 
+        $scope.recent_posts.forEach(function(element, index, array){
+            element.excerpt = element.excerpt.substr(0,100);
+            element.excerpt = element.excerpt + "...Lees meer".bold();
+            element.excertp = $sce.trustAsHtml(element.excerpt);
+        })
+
     }, function(err){
 
     })

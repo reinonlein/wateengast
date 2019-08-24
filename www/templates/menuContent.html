@@ -14,7 +14,7 @@
     </ion-nav-bar>
 
     <ion-header-bar class="bar bar-balanced">
-        <div class="title"><center>Latest posts</center></div>"
+        <div class="title"><center>Latest posts</center></div>
     </ion-header-bar>
 
     <div class="bar bar-subheader item-input-inset">
@@ -29,7 +29,7 @@
             <ion-item class="item item-thumbnail-left item-text-wrap item-icon-right" ng-repeat="post in recent_posts">
                 <img src="{{ post.thumbnail }}"/>
                 <h2>{{ post.title }}</h2>
-                <p>{{ post.excerpt }}</p>
+                <p ng-bind-html="post.excerpt"></p>
                     
                 <ion-option-button class="button-dark">
                     <i class="icon ion-heart"></i>
