@@ -42,7 +42,7 @@ Deze lijst wordt natuurlijk steeds verder uitgebreid maar via mijn app wil ik da
 
 ### Wat is nu de status?
 
-# 24-8-2019 
+#### 24-8-2019 
 Tot nu toe is de json verbinding gelegd en komt een lijst met posts binnen op een homepagina. Als je naar links en rechts veegt verschijnt het menu met alle categoriën en kan je posts als favoriet markeren.
 
 Wordt vervolgd!
