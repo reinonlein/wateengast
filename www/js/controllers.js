@@ -1,5 +1,5 @@
 angular.module('starter')
-.controller('MenuCtrl', function($http, $scope, $sce){
+.controller('MenuCtrl', function($http, $scope, $sce, $ionicScrollDelegate){
     
     $scope.categories = [];
 
@@ -17,6 +17,25 @@ angular.module('starter')
             console.log(err);
         })
 
+    $scope.doRefresh = function(){
+        $scope.recent_posts = [];
+        $http.get("https://www.wateengast.nl/api/get_posts/").then(function(data){
+            console.log(data);
+            $scope.recent_posts =data.data.posts;
+
+            $scope.recent_posts.forEach(function(element, index, array){
+                element.excerpt = element.excerpt.substr(0,100);
+                element.excerpt = element.excerpt + "...Lees meer".bold();
+                element.excertp = $sce.trustAsHtml(element.excerpt);
+            })
+
+            $scope.$broadcast('scroll.refreshComplete');
+
+        }, function(err){
+
+        })
+    }
+
     $scope.recent_posts = [];
     $http.get("https://www.wateengast.nl/api/get_posts/").then(function(data){
         console.log(data);
@@ -31,6 +50,10 @@ angular.module('starter')
     }, function(err){
 
     })
+
+    $scope.searchTextChanged = function(){
+        $ionicScrollDelegate.$getByHandle('mainScroll').scrollTop(true);
+    }
 
 })
 .controller('PostCtrl', function(){
