@@ -1,0 +1,40 @@
+<ion-view>
+    <ion-nav-bar class="bar-balanced">
+        
+        <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+            </button>
+        </ion-nav-buttons>
+
+        <ion-nav-buttons side="right">
+            <button class="button button-icon button-clear ion-heart">
+            </button>
+        </ion-nav-buttons>
+
+    </ion-nav-bar>
+
+    <ion-header-bar class="bar bar-balanced">
+        <div class="title"><center>Latest posts</center></div>"
+    </ion-header-bar>
+
+    <div class="bar bar-subheader item-input-inset">
+        <label class="item-input-inset">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="Zoeken..." ng-model="searchText"/>
+        </label>
+    </div>
+
+    <ion-content class="has-subheader">
+        <ion-list can-swipe="true">
+            <ion-item class="item item-thumbnail-left item-text-wrap item-icon-right" ng-repeat="post in recent_posts">
+                <img src="{{ post.thumbnail }}"/>
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.excerpt }}</p>
+                    
+                <ion-option-button class="button-dark">
+                    <i class="icon ion-heart"></i>
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
