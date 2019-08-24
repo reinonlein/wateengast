@@ -4,7 +4,7 @@ Stay tuned voor meer awesomeheid dan je ooit hebt meegemaakt.
 
 Uiteraard met alle fantastische onzin van https://www.wateengast.nl
 
-Geef deze pagina een sterretje als je als eerste op de hoogte wilt blijven van alle ontwikkelingen rond deze briljante app. Mijlpalen worden uiteraard onder luid gejuich op alle sociale media gepubliceerd.
+Geef deze pagina een star/watch/fork als je als eerste op de hoogte wilt blijven van alle ontwikkelingen rond deze briljante app. Mijlpalen worden uiteraard onder luid gejuich op alle sociale media gepubliceerd.
 
 ## Contents
 
