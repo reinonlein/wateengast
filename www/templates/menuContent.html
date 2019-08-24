@@ -20,13 +20,18 @@
     <div class="bar bar-subheader item-input-inset">
         <label class="item-input-inset">
             <i class="icon ion-ios-search placeholder-icon"></i>
-            <input type="search" placeholder="Zoeken..." ng-model="searchText"/>
+            <input type="search" placeholder="Zoeken..." ng-model="searchText" ng-change="searchTextChanged()"/>
         </label>
     </div>
 
-    <ion-content class="has-subheader">
+    <ion-content class="has-subheader" delegate-handle="mainScroll">
+        <ion-refresher
+            pulling-text="Sleep om te verversen"
+            on-refresh="doRefresh()">
+        </ion-refresher>
         <ion-list can-swipe="true">
-            <ion-item class="item item-thumbnail-left item-text-wrap item-icon-right" ng-repeat="post in recent_posts">
+            <ion-item class="item item-thumbnail-left item-text-wrap item-icon-right" 
+            ng-repeat="post in recent_posts | filter: {title: searchText}">
                 <img src="{{ post.thumbnail }}"/>
                 <h2>{{ post.title }}</h2>
                 <p ng-bind-html="post.excerpt"></p>
@@ -36,5 +41,8 @@
                 </ion-option-button>
             </ion-item>
         </ion-list>
+        <ion-infinite-scroll ng-if="canLoadMore()"
+            on-infinite="loadMore()">
+        </ion-infinite-scroll>
     </ion-content>
 </ion-view>
