@@ -6,12 +6,13 @@ Uiteraard met alle fantastische onzin van https://www.wateengast.nl
 
 Geef deze pagina een star/watch/fork als je als eerste op de hoogte wilt blijven van alle ontwikkelingen rond deze briljante app. Mijlpalen worden uiteraard onder luid gejuich op alle sociale media gepubliceerd.
 
-## Contents
-
-1 - Changelog: waar staan we?
-2 - Hoe zit het in elkaar
-3 - Hoe gaat dit in productie?
-4 - Android en iOS
-5 - Toekomstige features en wensen
+### Contents
+<ol>
+  <li>Changelog: waar staan we?</li>
+  <li>Hoe zit het in elkaar</li>
+  <li>Hoe gaat dit in productie?</li>
+  <li>Android en iOS</li>
+  <li>Toekomstige features en wensen</li>
+</ol>
 
 Wordt vervolgd!
