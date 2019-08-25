@@ -2,6 +2,8 @@ angular.module('starter')
 .controller('MenuCtrl', function($http, $scope, $sce, $ionicScrollDelegate){
     
     $scope.categories = [];
+    $scope.offset = 0;
+    $scope.count_total = 1;
 
     $http.get("https://www.wateengast.nl/api/get_category_index/").then(
         function(returnedData){
@@ -22,7 +24,7 @@ angular.module('starter')
         $http.get("https://www.wateengast.nl/api/get_posts/").then(function(data){
             console.log(data);
             $scope.recent_posts =data.data.posts;
-
+            $scope.count_total = data.data.count_total;
             $scope.recent_posts.forEach(function(element, index, array){
                 element.excerpt = element.excerpt.substr(0,100);
                 element.excerpt = element.excerpt + "...Lees meer".bold();
@@ -40,7 +42,7 @@ angular.module('starter')
     $http.get("https://www.wateengast.nl/api/get_posts/").then(function(data){
         console.log(data);
         $scope.recent_posts =data.data.posts;
-
+        $scope.count_total = data.data.count_total;
         $scope.recent_posts.forEach(function(element, index, array){
             element.excerpt = element.excerpt.substr(0,100);
             element.excerpt = element.excerpt + "...Lees meer".bold();
