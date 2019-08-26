@@ -2,8 +2,7 @@ angular.module('starter')
 .controller('MenuCtrl', function($http, $scope, $sce, $ionicScrollDelegate){
     
     $scope.categories = [];
-    $scope.offset = 0;
-    $scope.count_total = 1;
+
 
     $http.get("https://www.wateengast.nl/api/get_category_index/").then(
         function(returnedData){
@@ -17,7 +16,14 @@ angular.module('starter')
 
         }, function(err){
             console.log(err);
-        })
+    })
+
+})
+
+.controller('MainCtrl', function($http, $scope, $sce, $ionicScrollDelegate){
+
+    $scope.offset = 0;
+    $scope.count_total = 1;
 
     $scope.doRefresh = function(){
         $scope.recent_posts = [];
@@ -80,7 +86,6 @@ angular.module('starter')
     $scope.searchTextChanged = function(){
         $ionicScrollDelegate.$getByHandle('mainScroll').scrollTop(true);
     }
-
 })
 .controller('PostCtrl', function(){
     //alert('Hallo gast!');
