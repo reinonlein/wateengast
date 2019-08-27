@@ -46,6 +46,9 @@ Deze lijst wordt natuurlijk steeds verder uitgebreid maar via mijn app wil ik da
 
 ### Wat is nu de status?
 
+#### 27-8-2019
+begin gemaakt met de post-pagina met Get-post request en nodige variabelen aangemaakt in de controller.
+
 #### 26-8-2019
 Vandaag een hoop gekloot omdat ik geen data zag in mijn tussenversie, maar dat kwam omdat ik tijdelijk een browserplugin uitgezet had. Lame. Daarbij krijg ik in GitHub een vulnerability melding die ik probeer te fixen met hulp van de instructeur, maar vooralsnog zonder succes. Extra functionaliteit van vandaag zit hem vooral in een extra controller zodat data niet onnodig vaak wordt geladen. Dit scheelt straks weer bandbreedte.
 
