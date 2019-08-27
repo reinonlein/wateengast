@@ -88,5 +88,24 @@ angular.module('starter')
     }
 })
 .controller('PostCtrl', function(){
-    //alert('Hallo gast!');
+    
+    $http.get("https://www.wateengast.nl/api/get_post/?id="+ $stateParams.postId).then(
+        function(data){
+            $scope.post_title = data.data.post.title;
+            $scope.post_category = data.data.post.categories[0].title ? data.data.post.categories[0]
+                .title : 'no category';
+            $scope.post_content = $sce.trustAsHtml(data.data.post.content);
+            $scope.post_date = data.data.post.date;
+            $scope.post_authorName = data.data.post.author.first_name + " " + data.data.post.author.last_name;
+              if($scope.post_authorName.trim() == '')
+                $scope.post_authorName = "No Name";
+              $scope.post_authorimage = 'http://ionicframework.com/img/docs/mcfly.jpg';
+              $scope.post_image = data.data.post.thumbnail_images.full.url;
+              $scope.post_commentCount = data.data.post.comment_count;
+              $scope.post_views = data.data.post.custom_fields.post_views_count[0];
+              $scope.post_url = data.data.post.url;
+        }, function(err){
+
+        })
+
 })
