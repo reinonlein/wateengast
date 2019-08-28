@@ -46,13 +46,19 @@ Deze lijst wordt natuurlijk steeds verder uitgebreid maar via mijn app wil ik da
 
 ### Wat is nu de status?
 
-#### 27-8-2019
-begin gemaakt met de post-pagina met Get-post request en nodige variabelen aangemaakt in de controller.
+
+
+#### 24-8-2019 
+Tot nu toe is de json verbinding gelegd en komt een lijst met posts binnen op een homepagina. Als je naar links en rechts veegt verschijnt het menu met alle categoriën en kan je posts als favoriet markeren.
 
 #### 26-8-2019
 Vandaag een hoop gekloot omdat ik geen data zag in mijn tussenversie, maar dat kwam omdat ik tijdelijk een browserplugin uitgezet had. Lame. Daarbij krijg ik in GitHub een vulnerability melding die ik probeer te fixen met hulp van de instructeur, maar vooralsnog zonder succes. Extra functionaliteit van vandaag zit hem vooral in een extra controller zodat data niet onnodig vaak wordt geladen. Dit scheelt straks weer bandbreedte.
 
-#### 24-8-2019 
-Tot nu toe is de json verbinding gelegd en komt een lijst met posts binnen op een homepagina. Als je naar links en rechts veegt verschijnt het menu met alle categoriën en kan je posts als favoriet markeren.
+#### 27-8-2019
+begin gemaakt met de post-pagina met Get-post request en nodige variabelen aangemaakt in de controller.
+
+#### 28-8-2019
+Na weer een hoop gekloot uiteindelijk de eerste versie van de postpagina in actie kunnen krijgen! Ik bleek de variabelen in de controller mee te moeten geven. Maar het begint langzaam ergens op te lijken hoor!
+Tevens een developeraccount bij Google aangemaakt voor 25 dollar zodat ik straks mijn app kan publiceren. Ik ben benieuwd hoe dat feestje gaat worden.
 
 Wordt vervolgd!

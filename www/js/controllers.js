@@ -87,9 +87,9 @@ angular.module('starter')
         $ionicScrollDelegate.$getByHandle('mainScroll').scrollTop(true);
     }
 })
-.controller('PostCtrl', function(){
+.controller('PostCtrl', function($http, $scope, $sce, $stateParams){
     
-    $http.get("https://www.wateengast.nl/api/get_post/?id="+ $stateParams.postId).then(
+    $http.get('https://www.wateengast.nl/api/get_post/?id='+$stateParams.postId).then(
         function(data){
             $scope.post_title = data.data.post.title;
             $scope.post_category = data.data.post.categories[0].title ? data.data.post.categories[0]
@@ -99,10 +99,10 @@ angular.module('starter')
             $scope.post_authorName = data.data.post.author.first_name + " " + data.data.post.author.last_name;
               if($scope.post_authorName.trim() == '')
                 $scope.post_authorName = "No Name";
-              $scope.post_authorimage = 'http://ionicframework.com/img/docs/mcfly.jpg';
+              $scope.post_authorImage = 'http://ionicframework.com/img/docs/mcfly.jpg';
               $scope.post_image = data.data.post.thumbnail_images.full.url;
               $scope.post_commentCount = data.data.post.comment_count;
-              $scope.post_views = data.data.post.custom_fields.post_views_count[0];
+              //$scope.post_views = data.data.post.custom_fields.post_views_count[0];
               $scope.post_url = data.data.post.url;
         }, function(err){
 
