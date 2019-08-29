@@ -61,4 +61,7 @@ begin gemaakt met de post-pagina met Get-post request en nodige variabelen aange
 Na weer een hoop gekloot uiteindelijk de eerste versie van de postpagina in actie kunnen krijgen! Ik bleek de variabelen in de controller mee te moeten geven. Maar het begint langzaam ergens op te lijken hoor!
 Tevens een developeraccount bij Google aangemaakt voor 25 dollar zodat ik straks mijn app kan publiceren. Ik ben benieuwd hoe dat feestje gaat worden.
 
+#### 29-8-2019
+Tussen het gepiep van mijn baby door heb ik een begin kunnen maken met de categorie-functionaliteit. Ook is de post pagina weer een tandje mooier geworden. En nu weer te laat naar bed... verslavend hoor dit!
+
 Wordt vervolgd!
