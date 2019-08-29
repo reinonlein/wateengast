@@ -33,7 +33,7 @@ angular.module('starter')
             $scope.count_total = data.data.count_total;
             $scope.recent_posts.forEach(function(element, index, array){
                 element.excerpt = element.excerpt.substr(0,100);
-                element.excerpt = element.excerpt + "...Lees meer".bold();
+                element.excerpt = element.excerpt + "...meer".bold();
                 element.excertp = $sce.trustAsHtml(element.excerpt);
             })
 
@@ -51,7 +51,7 @@ angular.module('starter')
         $scope.count_total = data.data.count_total;
         $scope.recent_posts.forEach(function(element, index, array){
             element.excerpt = element.excerpt.substr(0,100);
-            element.excerpt = element.excerpt + "...Lees meer".bold();
+            element.excerpt = element.excerpt + "...meer".bold();
             element.excertp = $sce.trustAsHtml(element.excerpt);
         })
 
@@ -72,7 +72,7 @@ angular.module('starter')
 
             newPosts.forEach(function(element, index, array){
                 element.excerpt = element.excerpt.substr(0,100);
-                element.excerpt = element.excerpt + "...Lees meer".bold();
+                element.excerpt = element.excerpt + "...meer".bold();
                 element.excertp = $sce.trustAsHtml(element.excerpt);
             })
 
