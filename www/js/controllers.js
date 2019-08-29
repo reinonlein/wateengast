@@ -109,3 +109,18 @@ angular.module('starter')
         })
 
 })
+
+.controller('CatCtrl', function($http, $scope, $sce, $stateParams){
+    $http.get('https://www.wateengast.nl/api/get_category_posts/?id=' + $stateParams.catId).then(
+        function(data){
+            $scope.category_posts = data.data.posts;
+            $scope.category_posts.forEach(function(element, index, array){
+              element.excerpt = element.excerpt.substr(0,100);
+              element.excerpt = element.excerpt + "...meer".bold();
+              element.excertp = $sce.trustAsHtml(element.excerpt);
+            })
+            $scope.category_title = data.data.category.title;
+        }, function(err){
+
+        })
+})
