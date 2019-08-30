@@ -64,4 +64,7 @@ Tevens een developeraccount bij Google aangemaakt voor 25 dollar zodat ik straks
 #### 29-8-2019
 Tussen het gepiep van mijn baby door heb ik een begin kunnen maken met de categorie-functionaliteit. Ook is de post pagina weer een tandje mooier geworden. En nu weer te laat naar bed... verslavend hoor dit!
 
+#### 30-8-2019
+Gelukkig weer een uurtje in de app kunnen steken. Nu zorgt het categoriefilter er ook voor dat er alleen maar posts van die categorie worden vertoond. Het enige probleempje: dit zijn er maar max 10 (infinite scroll werkt hier niet lekker). Ik zet dit in GitHub op de issuelijst om later een keertje op te pakken. Verbeterpuntje!
+
 Wordt vervolgd!
