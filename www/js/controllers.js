@@ -111,7 +111,9 @@ angular.module('starter')
 })
 
 .controller('CatCtrl', function($http, $scope, $sce, $stateParams){
-    $http.get('https://www.wateengast.nl/api/get_category_posts/?id=' + $stateParams.catId).then(
+    
+    $scope.doRefresh = function(){
+        $http.get('https://www.wateengast.nl/api/get_category_posts/?id=' + $stateParams.catId).then(
         function(data){
             $scope.category_posts = data.data.posts;
             $scope.category_posts.forEach(function(element, index, array){
@@ -120,7 +122,13 @@ angular.module('starter')
               element.excertp = $sce.trustAsHtml(element.excerpt);
             })
             $scope.category_title = data.data.category.title;
+            $scope.$broadcast('scroll.refreshComplete');
+            
         }, function(err){
 
         })
+    }
+
+    $scope.doRefresh();
+
 })
