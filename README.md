@@ -67,4 +67,7 @@ Tussen het gepiep van mijn baby door heb ik een begin kunnen maken met de catego
 #### 30-8-2019
 Gelukkig weer een uurtje in de app kunnen steken. Nu zorgt het categoriefilter er ook voor dat er alleen maar posts van die categorie worden vertoond. Het enige probleempje: dit zijn er maar max 10 (infinite scroll werkt hier niet lekker). Ik zet dit in GitHub op de issuelijst om later een keertje op te pakken. Verbeterpuntje!
 
+#### 1-9-2019
+Het grootste impediment waar ik steeds maar weer tegenaan loop is mijn baby. Doordat ie zo belabberd slaapt heb ik helemaal geen tijd om aan deze briljante app te werken. Komt dit zo ooit nog af? Bas?
+
 Wordt vervolgd!
