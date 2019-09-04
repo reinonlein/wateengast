@@ -70,4 +70,7 @@ Gelukkig weer een uurtje in de app kunnen steken. Nu zorgt het categoriefilter e
 #### 1-9-2019
 Het grootste impediment waar ik steeds maar weer tegenaan loop is mijn baby. Doordat ie zo belabberd slaapt heb ik helemaal geen tijd om aan deze briljante app te werken. Komt dit zo ooit nog af? Bas?
 
+#### 4-9-2019
+Door een zieke baby heeft de ontwikkeling helaas even stilgelegen. Maar niet lang! Vandaag heb ik wat kunnen werken aan de favorieten-stand. Of deze fuctionaliteit het uiteindelijk gaat redden in de eindfunctie weet ik nog niet, maar je kunt hem maar beter vast implementeren. Zodoende! 
+
 Wordt vervolgd!
