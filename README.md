@@ -74,6 +74,8 @@ Het grootste impediment waar ik steeds maar weer tegenaan loop is mijn baby. Doo
 Door een zieke baby heeft de ontwikkeling helaas even stilgelegen. Maar niet lang! Vandaag heb ik wat kunnen werken aan de favorieten-stand. Of deze fuctionaliteit het uiteindelijk gaat redden in de eindfunctie weet ik nog niet, maar je kunt hem maar beter vast implementeren. Zodoende! 
 
 #### 5-9-2019
-Toch weer een uurtje in de app kunnen steken! Het resultaat? Een werkende pagina waar je je favoriete onzin op kunt slaan. Fantastisch hoor. Dit wordt nog eens wat zo!
+Toch weer een uurtje in de app kunnen steken! Het resultaat? Een werkende pagina waar je je favoriete onzin op kunt slaan. Fantastisch hoor. Dit wordt nog eens wat zo! En omdat ik begrijp dat de spanning inmiddels niet te houden is, hier een kleine screenshot als zoethoudertje:
+
+![](screenshot-app.jpg)
 
 Wordt vervolgd!
