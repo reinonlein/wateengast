@@ -76,6 +76,6 @@ Door een zieke baby heeft de ontwikkeling helaas even stilgelegen. Maar niet lan
 #### 5-9-2019
 Toch weer een uurtje in de app kunnen steken! Het resultaat? Een werkende pagina waar je je favoriete onzin op kunt slaan. Fantastisch hoor. Dit wordt nog eens wat zo! En omdat ik begrijp dat de spanning inmiddels niet te houden is, hier een kleine screenshot als zoethoudertje:
 
-![](screenshot-app.jpg)
+![](screenshot-app.JPG)
 
 Wordt vervolgd!
