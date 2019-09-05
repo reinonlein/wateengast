@@ -20,7 +20,7 @@ angular.module('starter')
 
 })
 
-.controller('MainCtrl', function($http, $scope, $sce, $ionicScrollDelegate){
+.controller('MainCtrl', function($http, $scope, $sce, $ionicScrollDelegate, $localStorage){
 
     $scope.offset = 0;
     $scope.count_total = 1;
@@ -35,6 +35,10 @@ angular.module('starter')
                 element.excerpt = element.excerpt.substr(0,100);
                 element.excerpt = element.excerpt + "...meer".bold();
                 element.excertp = $sce.trustAsHtml(element.excerpt);
+                if($scope.Favorites.indexOf(element.id) != -1)
+                    element.isFavorite = true;
+                else
+                    element.isFavorite = false;
             })
 
             $scope.$broadcast('scroll.refreshComplete');
@@ -44,6 +48,7 @@ angular.module('starter')
         })
     }
 
+    $scope.Favorites = $localStorage.Favorites;
     if(!$scope.Favorites)
         $scope.Favorites = [];
 
@@ -107,6 +112,8 @@ angular.module('starter')
                 }
             })
         }
+
+        $localStorage.Favorites = $scope.Favorites;
 
     }
 })
