@@ -44,7 +44,7 @@ Deze lijst wordt natuurlijk steeds verder uitgebreid maar via mijn app wil ik da
 - posts opslaan als favorieten
 - via de app heel eenvoudig zelf vragen indienen
 
-### TIP Onder <a href="https://github.com/reinonlein/wateengast/issues" target="_new">ISSUES</a> hierboven kan je alle openstaande features terugzien en kan je zelf functionaliteit voorstellen. Vooral doen!
+#### TIP Onder <a href="https://github.com/reinonlein/wateengast/issues" target="_new">ISSUES</a> hierboven kan je alle openstaande features terugzien en kan je zelf functionaliteit voorstellen. Vooral doen!
 
 ### Wat is nu de status?
 
