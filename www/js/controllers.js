@@ -162,3 +162,60 @@ angular.module('starter')
     $scope.doRefresh();
 
 })
+
+.controller('FavCtrl', function($http, $scope, $localStorage, $sce){
+    
+    $scope.doRefresh = function(){
+
+        $scope.Favorites = $localStorage.Favorites;
+        $scope.favorite_posts = [];
+        $scope.Favorites.forEach(function(element, index, array){
+          $http.get('https://www.wateengast.nl/api/get_post/?id='+element)
+          .success(function(data){
+            $scope.favorite_posts.push(data.post);
+    
+            if($scope.favorite_posts.length == $scope.Favorites.length)
+            {
+              $scope.favorite_posts.forEach(function(post, position, list){
+                post.excerpt = post.excerpt.substr(0,100);
+                post.excerpt = post.excerpt + "...meer".bold();
+                post.excerpt = $sce.trustAsHtml(post.excerpt);
+                
+                if($scope.Favorites.indexOf(post.id) != -1)
+                  post.isFavorite = true;
+                else
+                  post.isFavorite = false;
+              })
+            }
+          })
+    
+          .finally(function(){
+            $scope.$broadcast('scroll.refreshComplete');
+          })
+        })
+    
+      }
+    
+      $scope.doRefresh();
+    
+      $scope.toggleFavorite = function(post){
+        post.isFavorite = !post.isFavorite;
+    
+        if(post.isFavorite)
+        {
+          $scope.Favorites.push(post.id)
+        }
+        else
+        {
+          $scope.Favorites.forEach(function(element, index, array){
+            if(element == post.id)
+            {
+              $scope.Favorites.splice(index, 1);
+              console.log("Spliced Item from index " + index);
+            }
+          })
+        }
+    
+        $localStorage.Favorites = $scope.Favorites;
+      }
+})
