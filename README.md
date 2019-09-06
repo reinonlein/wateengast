@@ -76,4 +76,7 @@ Door een zieke baby heeft de ontwikkeling helaas even stilgelegen. Maar niet lan
 #### 5-9-2019
 Toch weer een uurtje in de app kunnen steken! Het resultaat? Een werkende pagina waar je je favoriete onzin op kunt slaan. Fantastisch hoor. Dit wordt nog eens wat zo!
 
+#### 6-9-2019
+Weer een heel klein stapje vooruit: begonnen met de sharing-functies. Alleen liep ik tegen een error aan, dus ik heb de docent om hulp gevraagd. Daarna weer stampend voorwaarts richting die eindstreep voor deze MVP!
+
 Wordt vervolgd!
