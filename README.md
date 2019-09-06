@@ -44,6 +44,8 @@ Deze lijst wordt natuurlijk steeds verder uitgebreid maar via mijn app wil ik da
 - posts opslaan als favorieten
 - via de app heel eenvoudig zelf vragen indienen
 
+#### TIP Onder <a href="https://github.com/reinonlein/wateengast/issues" target="_new">ISSUES</a> hierboven kan je alle openstaande features terugzien en kan je zelf functionaliteit voorstellen. Vooral doen!
+
 ### Wat is nu de status?
 
 
@@ -74,7 +76,9 @@ Het grootste impediment waar ik steeds maar weer tegenaan loop is mijn baby. Doo
 Door een zieke baby heeft de ontwikkeling helaas even stilgelegen. Maar niet lang! Vandaag heb ik wat kunnen werken aan de favorieten-stand. Of deze fuctionaliteit het uiteindelijk gaat redden in de eindfunctie weet ik nog niet, maar je kunt hem maar beter vast implementeren. Zodoende! 
 
 #### 5-9-2019
-Toch weer een uurtje in de app kunnen steken! Het resultaat? Een werkende pagina waar je je favoriete onzin op kunt slaan. Fantastisch hoor. Dit wordt nog eens wat zo!
+Toch weer een uurtje in de app kunnen steken! Het resultaat? Een werkende pagina waar je je favoriete onzin op kunt slaan. Fantastisch hoor. Dit wordt nog eens wat zo! En omdat ik begrijp dat de spanning inmiddels niet te houden is, hier een kleine screenshot als zoethoudertje (links voor Apple, rechts voor Android):
+
+![](screenshot-app.JPG)
 
 #### 6-9-2019
 Weer een heel klein stapje vooruit: begonnen met de sharing-functies. Alleen liep ik tegen een error aan, dus ik heb de docent om hulp gevraagd. Daarna weer stampend voorwaarts richting die eindstreep voor deze MVP!
