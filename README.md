@@ -83,4 +83,7 @@ Toch weer een uurtje in de app kunnen steken! Het resultaat? Een werkende pagina
 #### 6-9-2019
 Weer een heel klein stapje vooruit: begonnen met de sharing-functies. Alleen liep ik tegen een error aan, dus ik heb de docent om hulp gevraagd. Daarna weer stampend voorwaarts richting die eindstreep voor deze MVP!
 
+#### 7-9-2019
+Vandaag weer een plugin nodig gehad maar het lijkt erop dat die al zo verouderd zijn dat het niet werkt. In afwachting van de instructeur. Mocht dit niet werken, dan ga ik voorlopig gewoon zonder pushnotificaties mijn app publishen. Als ie maar snel live gaat!
+
 Wordt vervolgd!
