@@ -3,9 +3,10 @@ angular.module('starter')
     
     $scope.categories = [];
     
-    $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification){
-        alert("result: " + JSON.stringify(notification));
-    })
+    //TOEVOEGEN VOOR PUSHNOTIFICATIONS
+    //$rootScope.$on('$cordovaPush:notificationReceived', function(event, notification){
+    //     alert("result: " + JSON.stringify(notification));
+    //})
 
     $http.get("https://www.wateengast.nl/api/get_category_index/").then(
         function(returnedData){
@@ -140,6 +141,10 @@ angular.module('starter')
         }, function(err){
 
         })
+
+    $scope.Share = function(){
+        window.plugins.socialsharing.share($scope.post_title, $scope.post_title, $scope.post_image, $scope.post_url);
+    }
 
 })
 

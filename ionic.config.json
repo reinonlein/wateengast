@@ -1,7 +1,8 @@
 {
   "name": "WateengastIonic",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "ionic1",
   "watchPatterns": [
