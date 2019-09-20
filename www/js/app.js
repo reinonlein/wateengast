@@ -23,14 +23,15 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova'])
       StatusBar.styleDefault();
     }
 
-    var androidConfig = {"senderID":"871353715908"}
+    // VOOR PUSHNOTIFICATIONS: var androidConfig = {"senderID":"871353715908"}
   });
 
-  $cordovaPush.register(androidConfig).then(function(result){
-    alert(result);
-  }, function(err){
-    alert(err);
-  })
+  //DIT IS DE EXTRA MODULE VOOR PUSHNOTIFICaTIONS
+  //$cordovaPush.register(androidConfig).then(function(result){
+  //  alert(result);
+  //}, function(err){
+  //  alert(err);
+  //})
 
 })
 

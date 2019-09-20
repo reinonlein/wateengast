@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "An Ionic project",
   "devDependencies": {
+    "@capacitor/cli": "1.2.1",
     "@ionic/lab": "2.0.8",
     "@ionic/v1-toolkit": "^1.0.0",
     "cordova-plugin-device": "^2.0.2",
@@ -17,8 +18,12 @@
     "gulp-sass": "^3.1.0"
   },
   "dependencies": {
+    "@capacitor/android": "^1.2.1",
+    "@capacitor/core": "1.2.1",
     "cordova-android": "^8.1.0",
+    "cordova-plugin-x-socialsharing": "^5.6.0",
     "cordova-support-google-services": "^1.3.1",
+    "es6-promise-plugin": "^4.2.2",
     "phonegap-plugin-multidex": "^1.0.0",
     "phonegap-plugin-push": "git+https://github.com/phonegap/phonegap-plugin-push.git"
   },
@@ -32,7 +37,10 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-ionic-keyboard": {},
-      "phonegap-plugin-push": {}
+      "phonegap-plugin-push": {},
+      "cordova-plugin-x-socialsharing": {
+        "ANDROID_SUPPORT_V4_VERSION": "24.1.1+"
+      }
     },
     "platforms": [
       "android"
