@@ -2,7 +2,10 @@ angular.module('starter')
 .controller('MenuCtrl', function($http, $scope, $sce, $ionicScrollDelegate){
     
     $scope.categories = [];
-
+    
+    $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification){
+        alert("result: " + JSON.stringify(notification));
+    })
 
     $http.get("https://www.wateengast.nl/api/get_category_index/").then(
         function(returnedData){
