@@ -86,4 +86,7 @@ Weer een heel klein stapje vooruit: begonnen met de sharing-functies. Alleen lie
 #### 7-9-2019
 Vandaag weer een plugin nodig gehad maar het lijkt erop dat die al zo verouderd zijn dat het niet werkt. In afwachting van de instructeur. Mocht dit niet werken, dan ga ik voorlopig gewoon zonder pushnotificaties mijn app publishen. Als ie maar snel live gaat!
 
+#### 19-9-2019
+Ik heb een tijdje moeten wachten op de instructeur maar het lijkt erop dat ik nu eindelijk een werkbare oplossing heb. Ik heb de Cordova-plugin kunnen installeren (wel een nieuwe versie, maar hopelijk maakt dat niet uit). Nu ga ik zodra ik tijd heb kijken of ik volgens instructies de share functionaliteit kan implementeren. En dan snel die laatste loodjes rammen zodat mijn app live kan! Voorwaartsch!
+
 Wordt vervolgd!
