@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic', 'ngStorage', 'ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $cordovaPush, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs).
@@ -22,7 +22,16 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova'])
       // remove the status bar on iOS or change it to use white instead of dark colors.
       StatusBar.styleDefault();
     }
+
+    var androidConfig = {"senderID":"871353715908"}
   });
+
+  $cordovaPush.register(androidConfig).then(function(result){
+    alert(result);
+  }, function(err){
+    alert(err);
+  })
+
 })
 
 .config(function($stateProvider, $urlRouterProvider){
