@@ -89,4 +89,7 @@ Vandaag weer een plugin nodig gehad maar het lijkt erop dat die al zo verouderd 
 #### 19-9-2019
 Ik heb een tijdje moeten wachten op de instructeur maar het lijkt erop dat ik nu eindelijk een werkbare oplossing heb. Ik heb de Cordova-plugin kunnen installeren (wel een nieuwe versie, maar hopelijk maakt dat niet uit). Nu ga ik zodra ik tijd heb kijken of ik volgens instructies de share functionaliteit kan implementeren. En dan snel die laatste loodjes rammen zodat mijn app live kan! Voorwaartsch!
 
+#### 30-9-2019
+Inmiddels heb ik alweer twee weken vertraging opgelopen, maar dat komt voornamelijk doordat ik wat moeite heb met het deployen en testen van de app via Cordova en mijn device. Op mijn telefoon worden geen posts geladen, dus dat moet gefixt worden voordat ik met de Google Play Store om tafel kan voor productie. Ik ben nu met mijn instructor in India aan het schakelen maar via het Udemy-platform zit er telkens een dag vertraging tussen elk bericht. Zolang ik maar niet vergeet om dit project af te maken moet het toch een keer gaan lukken zou je denken! 
+
 Wordt vervolgd!
