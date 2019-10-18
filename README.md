@@ -89,4 +89,10 @@ Ik heb een tijdje moeten wachten op de instructeur maar het lijkt erop dat ik nu
 #### 30-9-2019
 Inmiddels heb ik alweer twee weken vertraging opgelopen, maar dat komt voornamelijk doordat ik wat moeite heb met het deployen en testen van de app via Cordova en mijn device. Op mijn telefoon worden geen posts geladen, dus dat moet gefixt worden voordat ik met de Google Play Store om tafel kan voor productie. Ik ben nu met mijn instructor in India aan het schakelen maar via het Udemy-platform zit er telkens een dag vertraging tussen elk bericht. Zolang ik maar niet vergeet om dit project af te maken moet het toch een keer gaan lukken zou je denken! 
 
+#### 10-10-2019
+Het is zover! Ik heb eindelijk de app aan de praat te krijgen door van alles en nog wat te proberen zonder te weten wat het is. Never mind, versie 0.0.1 is klaar! Het laat nog veel te wensen aan de verbeelding over, maar het is product is minimaal viable genoeg om live te gaan. Doorpakken nu!
+
+#### 18-10-2019
+Vandaag heb ik de eerste stappen gezet in de Android Play Store. Ik heb in Android Studio een app bundle (APK) kunnen uploaden naar de Google Play Console. Nu moet ik opeens van alles en nog wat opgeven over deze app, dus daar gaat ook nog een weekendje in zitten. Beschrijvingen hier, rating daar, screenshots galore. Dat soort werk. Maar leuk om eens mee te maken! Ik wou alleen dat ik meer tijd had, de eindstreep is nu zo dichtbij maar doordat ik er steeds maar een half uurtje aan kan werken is ie tegelijkertijd toch ook weer kneiterver weg.
+
 Wordt vervolgd!
