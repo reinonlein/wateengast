@@ -95,4 +95,7 @@ Het is zover! Ik heb eindelijk de app aan de praat te krijgen door van alles en 
 #### 18-10-2019
 Vandaag heb ik de eerste stappen gezet in de Android Play Store. Ik heb in Android Studio een app bundle (APK) kunnen uploaden naar de Google Play Console. Nu moet ik opeens van alles en nog wat opgeven over deze app, dus daar gaat ook nog een weekendje in zitten. Beschrijvingen hier, rating daar, screenshots galore. Dat soort werk. Maar leuk om eens mee te maken! Ik wou alleen dat ik meer tijd had, de eindstreep is nu zo dichtbij maar doordat ik er steeds maar een half uurtje aan kan werken is ie tegelijkertijd toch ook weer kneiterver weg.
 
+#### 20-10-2019
+Vette mijnlpaal! Vandaag heb ik officieel de eerste versie van de app aangeboden in de Play Store! Spannend hoor, we gaan nu zien wat er gaat gebeuren. Al zal het me niet verbazen als er nog een paar errors naar boven komen na al dat gekloot met builds, releases, id's, cordova ionic nonsens...
+
 Wordt vervolgd!
