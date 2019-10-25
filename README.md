@@ -98,4 +98,7 @@ Vandaag heb ik de eerste stappen gezet in de Android Play Store. Ik heb in Andro
 #### 20-10-2019
 Vette mijnlpaal! Vandaag heb ik officieel de eerste versie van de app aangeboden in de Play Store! Spannend hoor, we gaan nu zien wat er gaat gebeuren. Al zal het me niet verbazen als er nog een paar errors naar boven komen na al dat gekloot met builds, releases, id's, cordova ionic nonsens...
 
+#### 25-10-2019
+Verschikkelijke tegenvaller!! Zojuist zie ik dat mijn app live is in de play store, maar hij crasht meteen zodra ik hem wil opstarten. Om het nog erger te maken laat ie niet eens het juiste logo en de titel zien. Dat werkt voor geen enkele meter. Wat gènant! En ik heb ook nog eens geen idee hoe ik dit moet fixen. Laat staan dat ik er tijd voor heb om dit uit te pluizen... Is dit het einde van deze awesomeheid? Pff, ik moet dit even laten bezinken hoor. Wat een domper!
+
 Wordt vervolgd!
