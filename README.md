@@ -101,4 +101,9 @@ Vette mijnlpaal! Vandaag heb ik officieel de eerste versie van de app aangeboden
 #### 25-10-2019
 Verschikkelijke tegenvaller!! Zojuist zie ik dat mijn app live is in de play store, maar hij crasht meteen zodra ik hem wil opstarten. Om het nog erger te maken laat ie niet eens het juiste logo en de titel zien. Dat werkt voor geen enkele meter. Wat gènant! En ik heb ook nog eens geen idee hoe ik dit moet fixen. Laat staan dat ik er tijd voor heb om dit uit te pluizen... Is dit het einde van deze awesomeheid? Pff, ik moet dit even laten bezinken hoor. Wat een domper!
 
+
+#### 27-10-2019
+Fantastisch briljant!! Ik heb het gewoon voor elkaar gekregen om een fix te vinden voor mijn probleem. Met wederom een onwijze hulde voor StackOverflow! Serieus, wat zouden we tegenwoordig toch moeten zonder deze site? Ik ga nu de komende week nog wat kleine finetuning doorvoeren aan de app en de store, om dan volgend weekend een heuglijke lancering te gaan doen. Kicken zeg, ik heb gewoon een app gemaakt!! Haha, wat vet:-)
+
+
 Wordt vervolgd!
