@@ -24,7 +24,7 @@
 
 			<ion-item class="item item-thumbnail-left item-text-wrap item-icon-right" href="#/main/postDetail/{{post.id}}" ng-repeat="post in favorite_posts | filter: {title:searchText}">
 		      <img ng-src="{{post.thumbnail}}">
-		      <h2>{{post.title}}</h2>
+		      <h2 ng-bind-html="post.title"></h2>
 		      <p ng-bind-html="post.excerpt | limitTo: 100"></p>
 		      <button class="button icon ion-heart button-clear" ng-class="{'button-assertive':post.isFavorite}"></button>
 		      <ion-option-button class="button-dark" ng-click="toggleFavorite(post)">

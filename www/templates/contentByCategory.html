@@ -34,7 +34,7 @@
             <a class="item item-thumbnail-left item-text-wrap" href="#/main/postDetail/{{post.id}}"
             ng-repeat="post in category_posts | filter: {title: searchText}" >
               <img ng-src="{{ post.thumbnail }}"/>
-              <h2>{{ post.title }}</h2>
+              <h2 ng-bind-html="post.title"></h2>
               <p ng-bind-html="post.excerpt"></p>
             </a>
         </div>

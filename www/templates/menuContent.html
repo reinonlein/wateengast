@@ -33,7 +33,7 @@
             <ion-item class="item item-thumbnail-left item-text-wrap item-icon-right" 
             ng-repeat="post in recent_posts | filter: {title: searchText}" href="#/main/postDetail/{{post.id}}">
                 <img ng-src="{{ post.thumbnail }}"/>
-                <h2>{{ post.title }}</h2>
+                <h2 ng-bind-html="post.title"></h2>
                 <p ng-bind-html="post.excerpt"></p>
                 <button class="button icon ion-heart button-clear" 
                 ng-class="{'button-assertive':post.isFavorite}"></button>    
