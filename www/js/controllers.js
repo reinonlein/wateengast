@@ -125,7 +125,7 @@ angular.module('starter')
     
     $http.get('https://www.wateengast.nl/api/get_post/?id='+$stateParams.postId).then(
         function(data){
-            $scope.post_title = data.data.post.title;
+            $scope.post_title = $sce.trustAsHtml(data.data.post.title);
             $scope.post_category = data.data.post.categories[0].title ? data.data.post.categories[0]
                 .title : 'no category';
             $scope.post_content = $sce.trustAsHtml(data.data.post.content);

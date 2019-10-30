@@ -105,5 +105,8 @@ Verschikkelijke tegenvaller!! Zojuist zie ik dat mijn app live is in de play sto
 #### 27-10-2019
 Fantastisch briljant!! Ik heb het gewoon voor elkaar gekregen om een fix te vinden voor mijn probleem. Met wederom een onwijze hulde voor StackOverflow! Serieus, wat zouden we tegenwoordig toch moeten zonder deze site? Ik ga nu de komende week nog wat kleine finetuning doorvoeren aan de app en de store, om dan volgend weekend een heuglijke lancering te gaan doen. Kicken zeg, ik heb gewoon een app gemaakt!! Haha, wat vet:-)
 
+#### 30-10-2019
+Voordat ik kan publiceren wil ik eerst nog even een paar kleine dingetjes finetunen. De titels zien er nu niet uit als er vreemde tekens in staan en de plaatjes moet ik hier en daar nog even vervangen. Zodra die update eruit is begin ik aan de promotie! Mocht je nou toch nog niet kunnen wachten: hier kan je de app alvast downloaden en installeren op je Android telefoon: https://play.google.com/store/apps/details?id=nl.wateengast.app 
+
 
 Wordt vervolgd!
