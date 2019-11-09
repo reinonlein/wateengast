@@ -109,4 +109,10 @@ Fantastisch briljant!! Ik heb het gewoon voor elkaar gekregen om een fix te vind
 Voordat ik kan publiceren wil ik eerst nog even een paar kleine dingetjes finetunen. De titels zien er nu niet uit als er vreemde tekens in staan en de plaatjes moet ik hier en daar nog even vervangen. Zodra die update eruit is begin ik aan de promotie! Mocht je nou toch nog niet kunnen wachten: hier kan je de app alvast downloaden en installeren op je Android telefoon: https://play.google.com/store/apps/details?id=nl.wateengast.app 
 
 
+#### 9-11-2019
+Wat een feest! Vandaag is de gigantische lancering via de officiële site: https://www.wateengast.nl/feest-de-officiele-wateengast-app-is-een-feit 
+Een emotioneel momentje waar ik even van moet bijkomen zeg. Wat vet dat het gewoon gelukt is!
+
+Serieus, die weg hiernaartoe kan ik iedere nerd aanradan. Daar word je toch gewoon blij van? Hier gaan we meer van horen hoor!
+
 Wordt vervolgd!
