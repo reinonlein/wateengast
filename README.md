@@ -113,6 +113,10 @@ Voordat ik kan publiceren wil ik eerst nog even een paar kleine dingetjes finetu
 Wat een feest! Vandaag is de gigantische lancering via de officiële site: https://www.wateengast.nl/feest-de-officiele-wateengast-app-is-een-feit 
 Een emotioneel momentje waar ik even van moet bijkomen zeg. Wat vet dat het gewoon gelukt is!
 
-Serieus, die weg hiernaartoe kan ik iedere nerd aanradan. Daar word je toch gewoon blij van? Hier gaan we meer van horen hoor!
+<a href="https://www.wateengast.nl/feest-de-officiele-wateengast-app-is-een-feit" target="_new">![](vraagtekentje-wateengast.jpg)
+</a>
+![](vraagtekentje-wateengast.jpg)
+
+Serieus, die weg hiernaartoe kan ik iedere nerd aanraden. Daar word je toch gewoon blij van? Hier gaan we meer van horen hoor!
 
 Wordt vervolgd!
