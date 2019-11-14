@@ -1,0 +1,24 @@
+{% extends "base.html"%}
+{% block content %}
+<div class="jumbotron">
+<p>Welkom op de site van Rein</p>
+<p>Hier komen straks allemaal dingen, zoals:</p>
+<ul>
+  <li>werkervaring</li>
+  <li>mijn websites</li>
+  <li>hobby's en interesses</li>
+  <li>waar kan je me voor inhuren</li>
+  <li>boekverkoop</li>
+  <li>contact</li>
+</ul>
+
+<p>Meer weten? Vul dan hier je naam in:</p>
+
+<form action="{{url_for('contact')}}">
+   <label for="username">Naam</label>
+    <input type="text" name="username">
+    <input type="submit" value="Submit Form">
+</form>
+
+</div>
+{% endblock %}
