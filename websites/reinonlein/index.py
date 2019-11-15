@@ -10,6 +10,7 @@ app.config['SECRET_KEY'] = 'mysecretkey'
 
 class InfoForm(FlaskForm):
     gast = StringField('Wat is je naam gast?')
+    boekjes = StringField('En hoeveel boekjes wil je kopen?')
     submit = SubmitField('Submit')
 
 
@@ -47,7 +48,9 @@ def naamgast():
     if form.validate_on_submit():
 
         session['gast'] = form.gast.data
+        session['boekjes'] = form.boekjes.data
         flash(f"Ah, je naam is: {session['gast']} gast")
+        flash(f"Toe maar, en je wilt maar liefst {session['boekjes']} boekjes kopen zeg! Wauw...")
         return redirect(url_for('naamgast'))
 
     return render_template('naamgast.html', form=form)
