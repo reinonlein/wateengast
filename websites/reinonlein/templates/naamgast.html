@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+
+    {# get_flashed_messages() is auto sent to the template with the flash() call #}
+        {% for mess in get_flashed_messages()  %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {{mess}}
+          </div>
+        {% endfor %}
+  
+  
+  <form method="POST">
+      {# This hidden_tag is a CSRF security feature. #}
+      {{ form.hidden_tag() }}
+      {{ form.gast.label }} {{ form.gast() }}
+      {{ form.submit() }}
+  </form>
+  </div>
+  
+
+
+{% endblock %}
