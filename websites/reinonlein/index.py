@@ -18,5 +18,13 @@ def werk():
 def over_mij():
     return render_template('over_mij.html')
 
+@app.route('/database')
+def database():
+    return render_template('database.html')
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('oeps.html'), 404
+
 if __name__ == '__main__':
     app.run(debug=True)
