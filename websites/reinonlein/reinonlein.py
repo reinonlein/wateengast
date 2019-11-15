@@ -10,15 +10,13 @@ def index():
 def contact():
     return render_template('contact.html')
 
-@app.route("/naam/<name>")
-def naam(name):
-    naam = name
-    if naam[-1] == "y":
-        naam = naam[:-1] + 'iful'
-    else:
-        naam = naam + 'y'
-        
-    return '<H1>Jouw verknipte naam is {}</H1>'.format(naam)
+@app.route('/werk')
+def werk():
+    return render_template('werk.html')
+
+@app.route('/over_mij')
+def over_mij():
+    return render_template('over_mij.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
