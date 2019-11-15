@@ -1,6 +1,17 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session, redirect, url_for, flash
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = 'mysecretkey'
+
+
+class InfoForm(FlaskForm):
+    gast = StringField('Wat is je naam gast?')
+    submit = SubmitField('Submit')
+
 
 @app.route('/')
 def index():
@@ -22,9 +33,25 @@ def over_mij():
 def database():
     return render_template('database.html')
 
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('oeps.html'), 404
+
+
+@app.route('/naamgast', methods=['GET', 'POST'])
+def naamgast():
+
+    form = InfoForm()
+
+    if form.validate_on_submit():
+
+        session['gast'] = form.gast.data
+        flash(f"Ah, je naam is: {session['gast']} gast")
+        return redirect(url_for('naamgast'))
+
+    return render_template('naamgast.html', form=form)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
