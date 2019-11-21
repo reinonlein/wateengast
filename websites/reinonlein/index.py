@@ -1,18 +1,32 @@
+import os
 from flask import Flask, render_template, session, redirect, url_for, flash
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
+from forms import InfoForm, AddDatabaseForm, DeleteDatabaseForm
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'mysecretkey'
 
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'gastbase.sqlite')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-class InfoForm(FlaskForm):
-    gast = StringField('Wat is je naam gast?')
-    boekjes = StringField('En hoeveel boekjes wil je kopen?')
-    submit = SubmitField('Submit')
+db = SQLAlchemy(app)
+Migrate(app, db)
 
+class Woorden(db.Model):
+
+    __tablename__ = 'woorden'
+
+    id = db.Column(db.Integer, primary_key = True)
+    woord = db.Column(db.Text)
+
+    def __init__(self, woord):
+        self.woord = woord
+
+    def __repr__(self):
+        return f"Er zit een {self.woord} in mijn database"
 
 @app.route('/')
 def index():
@@ -30,9 +44,27 @@ def werk():
 def over_mij():
     return render_template('over_mij.html')
 
-@app.route('/database')
+@app.route('/database', methods=['GET', 'POST'])
 def database():
-    return render_template('database.html')
+
+
+    form = AddDatabaseForm()
+
+    if form.validate_on_submit():
+
+        woord = form.woord.data
+        
+        session['woord'] = form.woord.data
+        flash(f"Wat vet, je hebt zojuist een {session['woord']} in mijn database gestopt!")
+        
+        nieuw_woord = Woorden(woord)
+        db.session.add(nieuw_woord)
+        db.session.commit()
+        
+        return redirect(url_for('database'))
+
+    woorden = Woorden.query.all()
+    return render_template('database.html', form=form, woorden=woorden)
 
 
 @app.errorhandler(404)

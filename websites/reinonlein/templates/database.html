@@ -1,23 +1,37 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="card" style="width: 18rem;">
-    <img src="/static/rein.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Stay tuned!</h5>
-      <p class="card-text">Hier kan je straks allemaal dingen in een database stoppen</p>
-      <a href="#" class="btn btn-primary">Echt supervet</a>
-    </div>
+
+  <div class="container">
+        <br>
+
+        {% for mess in get_flashed_messages()  %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {{mess}}
+          </div>
+        {% endfor %}
+
+  <form method="POST">
+      {# This hidden_tag is a CSRF security feature. #}
+      {{ form.hidden_tag() }}
+      {{ form.woord.label }} {{ form.woord() }}
+      {{ form.submit() }}
+  </form>
+  <br>
   </div>
 
   <div class="jumbotron">
     <h3>Dit is wat er momenteel allemaal in zit:</h3>
-    <ul>
-      <p>(nou ja niks dus)</p>
-      {% for woord in database  %}
-      <li>{{woord}}</li>
-      {% endfor %}
-    </ul>
-  
+      <br>
+      <ul>
+        {% for woord in woorden %}
+        <li>{{woord}}</li>
+        {% endfor %}
+      </ul>
+    <br>
+    <h4>Vet man...</h4>
   </div>
 
 
