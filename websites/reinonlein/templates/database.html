@@ -9,5 +9,16 @@
     </div>
   </div>
 
+  <div class="jumbotron">
+    <h3>Dit is wat er momenteel allemaal in zit:</h3>
+    <ul>
+      <p>(nou ja niks dus)</p>
+      {% for woord in database  %}
+      <li>{{woord}}</li>
+      {% endfor %}
+    </ul>
+  
+  </div>
+
 
 {% endblock %}
