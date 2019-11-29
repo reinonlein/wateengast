@@ -5,6 +5,9 @@ from reinonlein.models import User, Woorden
 from reinonlein.forms import LoginForm, RegistrationForm, AddDatabaseForm, DeleteDatabaseForm, InfoForm
 from werkzeug.security import generate_password_hash, check_password_hash
 
+
+
+
 ###### ROUTES ######
 
 @app.route('/')
@@ -30,6 +33,10 @@ def boeken():
 @app.route('/sensoren')
 def sensoren():
     return render_template('sensoren.html')
+
+@app.route('/bedankt')
+def bedankt():
+    return render_template('bedankt.html')
 
 @app.route('/database', methods=['GET', 'POST'])
 def database():
@@ -147,6 +154,7 @@ def register():
         flash('Thanks for registering! Now you can login!')
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
