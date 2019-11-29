@@ -9,6 +9,10 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'mysecretkey'
 
+
+###### SQLITE DATABASE #####
+
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'gastbase.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -28,6 +32,11 @@ class Woorden(db.Model):
 
     def __repr__(self):
         return f"Er zit een {self.woord} in mijn database"
+
+
+
+
+###### ROUTES ######
 
 @app.route('/')
 def index():
