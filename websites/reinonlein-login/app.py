@@ -1,8 +1,8 @@
 from reinonlein import app,db
-from flask import render_template, redirect, request, url_for, flash,abort
+from flask import render_template, redirect, session, request, url_for, flash,abort
 from flask_login import login_user,login_required,logout_user
 from reinonlein.models import User, Woorden
-from reinonlein.forms import LoginForm, RegistrationForm
+from reinonlein.forms import LoginForm, RegistrationForm, AddDatabaseForm, DeleteDatabaseForm, InfoForm
 from werkzeug.security import generate_password_hash, check_password_hash
 
 ###### ROUTES ######
@@ -101,7 +101,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         # Grab the user from our User Models table
-        user = User.query.filter_by(email=form.email.data).first()
+        user = User.query.filter_by(username=form.username.data).first()
         
         # Check that the user was supplied and the password is right
         # The verify_password method comes from the User object

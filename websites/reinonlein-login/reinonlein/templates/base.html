@@ -42,16 +42,19 @@
               </div>
             </li>
             {% if current_user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sensoren</a>
+            </li>
+            {% endif %}
+          </ul>
+          
+          <form class="form-inline my-2 my-lg-0">
+            {% if current_user.is_authenticated %}
             <li class="nav-link"><a href="{{ url_for('logout') }}">Log Out</a></li>
             {% else %}
             <li class="nav-link"><a href="{{ url_for('login') }}">Log In</a></li>
             <li class="nav-link"><a href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
-          </ul>
-          
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Zoek</button>
           </form>
         </div>
       </nav>
