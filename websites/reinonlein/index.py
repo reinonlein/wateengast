@@ -4,6 +4,7 @@ from forms import InfoForm, AddDatabaseForm, DeleteDatabaseForm
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
+
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'mysecretkey'
@@ -48,13 +49,14 @@ def over_mij():
 def database():
 
 
-    form = AddDatabaseForm()
+    addform = AddDatabaseForm()
+    delform = DeleteDatabaseForm()
 
-    if form.validate_on_submit():
+    if addform.woord.data and addform.validate():
 
-        woord = form.woord.data
+        woord = addform.woord.data
         
-        session['woord'] = form.woord.data
+        session['woord'] = addform.woord.data
         flash(f"Wat vet, je hebt zojuist een {session['woord']} in mijn database gestopt!")
         
         nieuw_woord = Woorden(woord)
@@ -63,8 +65,21 @@ def database():
         
         return redirect(url_for('database'))
 
+    if delform.deletewoord.data and delform.validate():
+
+        deletewoord = delform.deletewoord.data
+        
+        session['deletewoord'] = delform.deletewoord.data
+        flash(f"Hoppa, je hebt net een {session['deletewoord']} uit mijn database gehaald...")
+        
+        delete_woord = Woorden.query.filter_by(woord=deletewoord).first()
+        db.session.delete(delete_woord)
+        db.session.commit()
+        
+        return redirect(url_for('database'))
+
     woorden = Woorden.query.all()
-    return render_template('database.html', form=form, woorden=woorden)
+    return render_template('database.html', addform=addform, delform=delform, woorden=woorden)
 
 
 @app.errorhandler(404)
