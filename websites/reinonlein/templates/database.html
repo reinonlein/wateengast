@@ -15,9 +15,16 @@
 
   <form method="POST">
       {# This hidden_tag is a CSRF security feature. #}
-      {{ form.hidden_tag() }}
-      {{ form.woord.label }} {{ form.woord() }}
-      {{ form.submit() }}
+      {{ addform.hidden_tag() }}
+      {{ addform.woord.label }} {{ addform.woord() }}
+      {{ addform.submit() }}
+  </form>
+  <br>
+  <form method="POST">
+    {# This hidden_tag is a CSRF security feature. #}
+    {{ delform.hidden_tag() }}
+    {{ delform.deletewoord.label }} {{ delform.deletewoord() }}
+    {{ delform.submit() }}
   </form>
   <br>
   </div>
@@ -36,5 +43,3 @@
 
 
 {% endblock %}
-
-croissants = 1

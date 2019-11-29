@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 
 class InfoForm(FlaskForm):
     gast = StringField('Wat is je naam gast?')
@@ -7,9 +8,9 @@ class InfoForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class AddDatabaseForm(FlaskForm):
-    woord = StringField('Welk woord wil je in mijn database stoppen?')
+    woord = StringField('Welk woord wil je in mijn database stoppen?', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 class DeleteDatabaseForm(FlaskForm):
-    woord = StringField('Welk woord wil je uit mijn database verwijderen?')
-    submit = SubmitField('Submit')
+    deletewoord = StringField('Of haal je er liever weer een woord uit?', validators=[DataRequired()])
+    deletesubmit = SubmitField('Delete')
