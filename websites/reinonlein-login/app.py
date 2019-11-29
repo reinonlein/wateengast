@@ -23,6 +23,10 @@ def werk():
 def over_mij():
     return render_template('over_mij.html')
 
+@app.route('/boeken')
+def boeken():
+    return render_template('boeken.html')
+
 @app.route('/database', methods=['GET', 'POST'])
 def database():
 
