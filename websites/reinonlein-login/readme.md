@@ -1,4 +1,5 @@
-Stappen om een database op te zetten:
+
+Hier even een kleine notitie aan mezelf. Dit zijn de stappen in de command line om een SQLITE-database op te zetten:
 
 <ol>
     <li>set FLASK_APP=index.py</li>

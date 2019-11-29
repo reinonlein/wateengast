@@ -8,32 +8,36 @@
 <p>Ik heb zowaar ook twee boekjes in elkaar geflanst. Wil je ze kopen? Dat kan hier!</p>
 
 </div>
+<div class="container">
 
-<div class="card-deck">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
+  <div class="row">
+    <div class="col-sm-6">
+    <div class="card" style="width: 20rem;">
+      <img src="{{ url_for('static', filename='boek1.jpg') }}" class="card-img-top" alt="Boek 1">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <h5 class="card-title">The Boek</h5>
+        <p class="card-text">Dit is mijn debuut, de eerste lading literaire onzin in de wereld.</p>
+        <p class="card-text"><small class="text-muted">Release in november 2018, nog 3 beschikbaar</small></p>
+        <a href="#" class="btn btn-primary">Koop nu</a>
+      </div>
       </div>
     </div>
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
+
+    <div class="col-sm-6">
+    <div class="card" style="width: 20rem;">
+      <img src="{{ url_for('static', filename='boek2.jpg') }}" class="card-img-top" alt="Boek 2" >
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <h5 class="card-title">Twee Stuks</h5>
+        <p class="card-text">Na het onderweldigende succes van The Boek was daar ineens de sequel: Twee Stuks. Hoe vet is dat?!</p>
+        <p class="card-text"><small class="text-muted">Release in november 2019, nog 12 beschikbaar</small></p>
+        <a href="#" class="btn btn-primary">Pre-order</a>
       </div>
     </div>
   </div>
+  </div>
+
+
+</div>
+
 
 {% endblock %}
