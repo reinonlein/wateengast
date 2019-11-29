@@ -13,4 +13,4 @@ class AddDatabaseForm(FlaskForm):
 
 class DeleteDatabaseForm(FlaskForm):
     deletewoord = StringField('Of haal je er liever weer een woord uit?', validators=[DataRequired()])
-    deletesubmit = SubmitField('Delete')
+    submit = SubmitField('Delete')
