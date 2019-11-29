@@ -27,6 +27,10 @@ def over_mij():
 def boeken():
     return render_template('boeken.html')
 
+@app.route('/sensoren')
+def sensoren():
+    return render_template('sensoren.html')
+
 @app.route('/database', methods=['GET', 'POST'])
 def database():
 
