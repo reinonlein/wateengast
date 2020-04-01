@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+
+<script url="{{ url_for('static', filename='scriptfile.js') }}"></script>
+
+<div class="jumbotron" style="height: 200px">
+
+<H2>D3</H2>
+
+<p>Hieronder een eerste oefening in het vertonen van D3 tekeningen in een SVG via Flask:</p>
+
+<span class="badge badge-pill badge-success">Fantastisch!</span>
+
+</div>
+
+<h6 style="margin-left: 10px">Direct in een SVG:</h6>
+<svg width="800" height="200">
+    <rect x="400" y="50" fill="blue" width="200" height="100"></rect>
+    <circle cx='300' cy='100' r='50' fill='orange' stroke="red" stroke-width="2"></circle>
+    <line x1="50" y1="50" x2="200" y2="150" stroke="grey" stroke-width="3"></line>
+    <path d="M 650 50 L 713 150 L 776 50 Z" fill="green" />
+  </svg>
+<h6 style="margin-left: 10px">En hieronder via D3:</h6>
+<div class="d3container"></div>
+
+
+<script>
+
+const canvas = d3.select('.d3container');
+
+// append the SVG container
+const svg = canvas.append('svg')
+  .attr('width', 800)
+  .attr('height', 150);
+
+svg.append('rect')
+  .attr('width', 200)
+  .attr('height', 100)
+  .attr('fill', 'orange')
+  .attr('x', 20)
+  .attr('y', 20);
+
+svg.append('circle')
+  .attr('r', 50)
+  .attr('cx', 300)
+  .attr('cy', 70)
+  .attr('fill', 'green');
+
+svg.append('line')
+  .attr('x1', 370)
+  .attr('x2', 500)
+  .attr('y1', 20)
+  .attr('y2', 120)
+  .attr('stroke', 'purple')
+  .attr('stroke-width', 4);
+
+</script>
+
+
+{% endblock %}
