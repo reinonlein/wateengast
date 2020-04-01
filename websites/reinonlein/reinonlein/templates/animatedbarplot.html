@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="jumbotron">
+  <H3>Deze visualistie komt uit een aparte JavaScript file:</H3>
+</div>
+
+<div class="canvas"></div>
+
+
+<script src="{{url_for('static', filename='animatedbarplot.js')}}"></script>
+
+{% endblock %}
