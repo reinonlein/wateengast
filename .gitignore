@@ -5,4 +5,5 @@ Thumbs.db
 Thumbs.db
 .editorconfig
 .vscode
-websites/django/reinonlein/reinonlein/__pycache__/wsgi.cpython-37.pyc
+.cpython-37.pyc
+websites/django/reinonlein/reinonlein/__pycache__
