@@ -42,6 +42,10 @@ def d3tekenen():
 def barplot():
     return render_template('barplot.html')
 
+@app.route('/animatedbarplot')
+def animatedbarplot():
+    return render_template('animatedbarplot.html')
+
 @app.route('/bedankt')
 def bedankt():
     return render_template('bedankt.html')
