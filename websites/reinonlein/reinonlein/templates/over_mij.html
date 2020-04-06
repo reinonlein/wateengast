@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
-<H2>Hier wat geleuter over mezelf</H2>
+    <div class="jumbotron">
+        <H2>Hier wat geleuter over mezelf</H2>
+    </div>
 
-<p>Met een plaatje...</p>
+    <div class="container">
+        <p>Met een plaatje...</p>
 
-<img src="{{ url_for('static', filename='rein.jpg') }}" alt="Rein's hoofd">
-<img src="{{ url_for('static', filename='boek1.jpg') }}" alt="Rein's hoofd">
+        <img src="{{ url_for('static', filename='rein.jpg') }}" alt="Rein's hoofd">
+        <img src="{{ url_for('static', filename='boek1.jpg') }}" alt="Rein's hoofd">
 
+    </div>
 {% endblock %}

@@ -34,6 +34,18 @@ def boeken():
 def sensoren():
     return render_template('sensoren.html')
 
+@app.route('/d3tekenen')
+def d3tekenen():
+    return render_template('d3tekenen.html')
+
+@app.route('/barplot')
+def barplot():
+    return render_template('barplot.html')
+
+@app.route('/animatedbarplot')
+def animatedbarplot():
+    return render_template('animatedbarplot.html')
+
 @app.route('/bedankt')
 def bedankt():
     return render_template('bedankt.html')
@@ -157,4 +169,4 @@ def register():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True)
