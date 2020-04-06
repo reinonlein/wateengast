@@ -1,0 +1,122 @@
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header voorbeeldje</title>
+
+    
+      
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Custom CSS Styling of the blockqotes -->
+    <style>
+
+        blockquote {
+            margin: 20px 0;
+            padding-left: 1.5rem;
+            border-left: 5px solid #3f51b5;
+        }
+
+    </style>
+
+
+</head>
+<body>
+    
+<nav class="nav-wrapper indigo">
+    <div class="container">
+        <a href="#" class="brand-logo">Willem is de beste!</a>
+        <a href="#" class="sidenav-trigger" data-target="mobile-links">
+            <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#">Question</a></li>
+            <li><a href="#">Develop</a></li>
+            <li><a href="#">Enjoy</a></li>
+        </ul>
+    </div>
+</nav>
+
+<ul class="sidenav" id="mobile-links">
+    <br>
+    <li><h4 class="container indigo-text">Menu</h4></li>
+    <li><a href="#">Question</a></li>
+    <li><a href="#">Develop</a></li>
+    <li><a href="#">Enjoy</a></li>
+    <li><a href="#">Responsibly</a></li>
+</ul>
+
+<div class="container">
+    <h2>Met hieronder de subheader</h2>
+    <h3>onder de knie</h3>
+    <p class="flow-text">Hier een stukje inleidende flow-text.</p>
+    
+    <div class="row">
+        
+        <div class="col s12 l4">
+            <p>Met een hoop geouwehoer in een paragraaf. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur ut dignissimos veritatis dolorum recusandae nam quis ullam aspernatur corporis obcaecati maiores, omnis, porro delectus libero fugit, id deserunt alias necessitatibus!</p>
+            <blockquote class="hide-on-med-and-down">Met een blockquote die je alleen op een groot scherm kunt zien</blockquote>
+        </div>
+
+
+        <div class="col s12 l8">
+            <table class="z-depth-3 highlight">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Item Name</th>
+                    <th>Item Price</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr>
+                <tr>
+                    <td>Alan</td>
+                    <td>Jellybean</td>
+                    <td>$3.76</td>
+                </tr>
+                <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                </tr>
+                </tbody>
+                </table>
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    
+    <h5>Hier even een klein button feestje</h5>    
+    <a class="btn-floating btn-large blue pulse"><i class="material-icons">cloud</i></a>
+
+</div>
+
+
+
+
+
+<!-- jQuery sidebar magic -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>     
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+    })
+</script>
+
+</body>
+</html>
