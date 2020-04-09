@@ -103,6 +103,7 @@
             <li><a href="#cards">Question</a></li>
             <li><a href="#diensten">Develop</a></li>
             <li><a href="#contact">Enjoy</a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a href="" class="tooltipped btn-floating btn-small indigo darken-3" data-tooltip="Instagram nonsens">
                 <i class="fab fa-instagram"></i>
             </a></li>
@@ -128,6 +129,14 @@
     <li><a href="#">Develop</a></li>
     <li><a href="#">Enjoy</a></li>
     <li><a href="#">Responsibly</a></li>
+</ul>
+
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+    <li><a href="#!">one</a></li>
+    <li><a href="#!">two</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">three</a></li>
 </ul>
 
 <div class="container">
@@ -437,6 +446,7 @@
 <script>
     $(document).ready(function(){
         $('.sidenav').sidenav();
+        $('.dropdown-trigger').dropdown();
         $('.modal').modal();
         $('.parallax').parallax();
         $('.tabs').tabs();

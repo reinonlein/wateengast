@@ -12,6 +12,7 @@
   </head>
       <body>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
         <a class="navbar-brand" href="/">Rein Onlein</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -67,6 +68,7 @@
             <li class="nav-link"><a href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
           </form>
+        </div>
         </div>
       </nav>
       {% block content %}
