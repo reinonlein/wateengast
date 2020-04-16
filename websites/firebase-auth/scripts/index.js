@@ -1,10 +1,14 @@
 const guideList = document.querySelector('.guides');
 const loggedOutLinks = document.querySelectorAll('.logged-out');
 const loggedInLinks = document.querySelectorAll('.logged-in');
-const accountDetails = document.querySelector('.account-details')
+const accountDetails = document.querySelector('.account-details');
+const adminItems = document.querySelectorAll('.admin');
 
 const setupUI = (user) => {
   if (user) {
+    if(user.admin){
+      adminItems.forEach(item => item.style.display = 'block');
+    }
     // show account info
     db.collection('users').doc(user.uid).get().then(doc => {
 
@@ -13,16 +17,18 @@ const setupUI = (user) => {
       <div>You signed up on ${user.metadata.creationTime}</div>
       <div>And your last login was on ${user.metadata.lastSignInTime}</div>
       <div>This is your one line bio: ${doc.data().bio}</div>
+      <div class="pink-text">${user.admin ? 'Admin' : ''}</div>
       `;
       accountDetails.innerHTML = html;
 
-    })
+    });
     
 
     // toggle UI elements
     loggedInLinks.forEach(item => item.style.display = 'block');
     loggedOutLinks.forEach(item => item.style.display = 'none');
   } else {
+    adminItems.forEach(item => item.style.display = 'none');
     // hide account info
     accountDetails.innerHTML = '';
     loggedInLinks.forEach(item => item.style.display = 'none');
