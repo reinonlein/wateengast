@@ -1,0 +1,153 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realtime Civ</title>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- optional: Bootsrap -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    
+</head>
+<body>
+
+    <!-- navbar -->
+    <nav class="nav-wrapper white">
+        <div class="container">
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+                <a href="#" class="grey-text text-darken-2 modal-trigger" data-target="signup-modal">Register</a>
+          </ul>
+        </div>
+      </nav>
+       
+      <!-- homepage thingy -->
+      <div class="parallax-container" style="height: 250px;">
+        <div class="parallax"><img src="images/lucht.jpg"></div>
+      </div>
+      
+      <div class="container center-align" style="padding: 3em;">
+        <h3>Welcome to Realtime Civ</h3>
+        <h6>The most epic Javascript/Materialize/Firebase excercise in the history of time</h6>
+      </div>
+      
+      <div class="parallax-container" style="height: 250px;">
+        <div class="parallax"><img src="images/acropolis.jpg"></div>
+      </div>
+
+
+      <!-- building list -->
+      <div class="container" style="padding: 5em;">
+          <h5>List of available city improvements:</h5>
+
+          <ul id="buildings-list" style="padding-top: 2em;">
+
+          </ul>
+
+          <table id="builidings-table" class="highlight">
+            <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Cost</th>
+                  <th>Description</th>
+              </tr>
+            </thead>
+    
+            <tbody id="buildings-table-body">
+              
+            </tbody>
+          </table>
+
+
+          <h6 style="padding-top: 2em;">Add building:</h6>
+          <form id="building-form">
+            <div class="input-field">
+              <input type="text" id="building-name" required />
+              <label for="name">Building name</label>
+            </div>
+            <div class="input-field">
+                <input type="number" id="building-cost" required />
+                <label for="building-cost">Cost</label>
+              </div>
+              <div class="input-field">
+                <input type="text" id="building-description" required />
+                <label for="building-description">Short description</label>
+              </div>
+              <div class="input-field">
+                <input type="text" id="building-url" required />
+                <label for="building-url">Image url</label>
+              </div>
+            <div class="submit" style="padding-top: 1em;">
+                <button class="btn blue-grey">Add building</button>
+            </div>
+           </form>
+      </div>
+
+
+      <!-- Sign up form -->
+      <div id="signup-modal" class="modal">
+        <div class="modal-content">
+          <h4>Sign up to join the game!</h4><br />
+          <form id="signup-form">
+            <div class="input-field">
+              <input type="email" id="signup-email" required />
+              <label for="signup-email">Email address</label>
+            </div>
+            <div class="input-field">
+              <input type="password" id="signup-password" required />
+              <label for="signup-password">Choose password</label>
+            </div>
+            <button class="btn blue-grey center">Sign up</button>
+            <p class="error pink-text center-align"></p>
+          </form>
+        </div>
+      </div>
+
+      <div class="container row cardholder">
+
+      </div>
+
+
+      <!-- Footer -->
+      <footer class="page-footer grey darken-4">
+        <div class="footer-copyright grey darken-4">
+            <div class="container center-align">&copy; 2020 Rein Onlein, <a href="https://www.wateengast.nl" target="_blank">Wateengast.nl</a> en <a href="https://www.alcoholvrijheid.nl" target="_blank">Alcoholvrijheid.nl</a></div>
+        </div>
+      </footer>
+      
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyB9T6DYTRUf4v6pbj76-DRmIHssYido4qE",
+        authDomain: "realtimeciv.firebaseapp.com",
+        databaseURL: "https://realtimeciv.firebaseio.com",
+        projectId: "realtimeciv",
+        storageBucket: "realtimeciv.appspot.com",
+        messagingSenderId: "971682337583",
+        appId: "1:971682337583:web:bcf8fd779acccfe1de47da",
+        measurementId: "G-V8T1QKWG7K"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+    const db = firebase.firestore();
+    </script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>
