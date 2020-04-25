@@ -6,7 +6,6 @@ const lijstjes5 = document.querySelector('.lijstjes5');
 const lijstjes6 = document.querySelector('.lijstjes6');
 
 
-
 // Beetje stoeien met data van mijn blog ophalen
 
 let posts = fetch('https://www.wateengast.nl/wp-json/wp/v2/posts?page=2&per_page=100')
@@ -54,6 +53,8 @@ db.collection('websites').get().then((snapshot) => {
 }).catch((err) => {
   console.log(err);
 });
+
+
 
 
 

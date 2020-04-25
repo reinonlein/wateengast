@@ -46,43 +46,19 @@
     <div class="container">
         <h3 class="mt-5 mb-5 text-primary">Een klein experimentje met Chartist.js:</h3>
         <div class="row">
-            <div class="col-sm mt-4">
+            <div class="col-sm-8 mt-4">
                 <div class="ct-chart" id="chart1"></div>
             </div>
-            <div class="col-sm mt-4">
+            <div class="col-sm-4 mt-4">
                 <div class="ct-chart" id="chart2"></div>
             </div>
-            
-            <div class="col-sm mt-4">
-                <div class="ct-chart" id="chart3"></div>
-            </div>
         </div>
+        <div class="row">
+            <div class="ct-chart" id="chart3"></div>
+        </div>
+        
+
     </div>
-
-    <script>
-    // Initialize a Line chart in the container with the ID chart1
-    new Chartist.Line('#chart1', data = {
-        labels: [1, 2, 3, 4],
-        series: [[100, 120, 180, 200]]
-    }, options={height: 300});
-
-    // Initialize a Line chart in the container with the ID chart2
-    new Chartist.Bar('#chart2', {
-        labels: [1, 2, 3, 4],
-        series: [[5, 2, 8, 3]]
-    }, options={ height: 300});
-
-    // en zelf nummer 3 toegevoegd:
-    var data = { series: [5, 3, 4] };
-    var sum = function(a, b) { return a + b };
-
-    new Chartist.Pie('#chart3', data, {
-    labelInterpolationFnc: function(value) {
-        return Math.round(value / data.series.reduce(sum) * 100) + '%';
-    } 
-    });
-    </script>
-
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
@@ -110,6 +86,7 @@
     </script>
 
     <script src="wateengast.js"></script>
+    <script src="chartist.js"></script>
     
 </body>
 </html>
