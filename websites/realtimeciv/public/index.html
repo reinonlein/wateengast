@@ -4,16 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Realtime Civ</title>
 
-    <!--Import Google Icon Font-->
+    <!--Materialize CSS & icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- optional: Bootsrap -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
-    
 </head>
+
 <body>
 
     <!-- navbar -->
@@ -26,24 +21,15 @@
         </div>
       </nav>
        
-      <!-- homepage thingy -->
-      <!-- <div class="parallax-container" style="height: 250px;">
-        <div class="parallax"><img src="images/lucht.jpg"></div>
-      </div>
-       -->
+
       <div class="container center-align" style="padding: 3em;">
         <h3>Welcome to Realtime Civ</h3>
         <h6>The most epic Javascript/Materialize/Firebase excercise in the history of time</h6>
       </div>
-      
-      <div class="parallax-container" style="height: 250px;">
-        <div class="parallax"><img src="images/acropolis.jpg"></div>
-      </div>
-
 
       <!-- building list -->
       <div class="container" style="padding: 5em;">
-          <h5>List of available city improvements:</h5>
+          <h5>City improvements:</h5>
 
           <ul id="buildings-list" style="padding-top: 2em;">
 
@@ -121,13 +107,13 @@
       </footer>
       
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
 
     <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
         apiKey: "AIzaSyB9T6DYTRUf4v6pbj76-DRmIHssYido4qE",
         authDomain: "realtimeciv.firebaseapp.com",
         databaseURL: "https://realtimeciv.firebaseio.com",
@@ -136,17 +122,16 @@
         messagingSenderId: "971682337583",
         appId: "1:971682337583:web:bcf8fd779acccfe1de47da",
         measurementId: "G-V8T1QKWG7K"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
 
-    const db = firebase.firestore();
+      const db = firebase.firestore();
+
     </script>
-
-    <!-- Compiled and minified JavaScript -->
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
     <script src="js/index.js"></script>
 
 </body>
