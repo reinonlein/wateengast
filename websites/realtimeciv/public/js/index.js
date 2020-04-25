@@ -3,6 +3,28 @@ const buildingList = document.querySelector('#buildings-list');
 const buildingTable = document.querySelector('#buildings-table-body');
 const cardholder = document.querySelector('.cardholder');
 
+
+
+
+// const getPosts = async () => {
+//   const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+//   const data = await response.json();
+  
+//   return data;
+  
+// };
+
+// getPosts().then(data => console.log('resolved:', data));
+
+
+//  alternative:
+fetch('https://www.wateengast.nl/wp-json/wp/v2/posts?page=2&per_page=10')
+  .then(response => response.json())
+  .then(json => console.log(json[2].content.rendered))
+
+
+
+
 // add building to list
 buildingForm.addEventListener('submit', (e) => {
     e.preventDefault();
