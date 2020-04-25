@@ -1,0 +1,115 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+
+    <title>ReinOnlein's JS Playground</title>
+
+    <style>
+        .ct-series-a .ct-line,
+        .ct-series-a .ct-point,
+        .ct-chart .ct-bar {
+            stroke: blue;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="jumbotron bg-primary text-white">
+        <div class="container">
+            <p class="display-4">ReinOnlein's JavaScript Playground</p>
+            <h3>Lekker experimenteren met Firebase en .fetch()</h3>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <h3 class="mt-5 mb-5 text-primary">Deze output komt uit JavaScript:</h3>
+        <div class="lijstjes1 shadow-sm p-5 mb-5 border bg-light rounded"></div>
+        <div class="lijstjes2 shadow-sm p-5 mb-5 border bg-light rounded"></div>
+        <div class="lijstjes3 shadow-sm p-5 mb-5 border bg-light rounded"></div>
+        <div class="shadow p-5 mb-5 border bg-light rounded"><ul class="lijstjes4"></ul></div>
+        <h3 class="mt-5 mb-5 text-primary">En door naar Firebase!</h3>
+        <div class="lijstjes5 shadow-sm p-5 mb-5 border bg-light rounded"></div>
+        <div class="lijstjes6 shadow-sm p-5 mb-5 border bg-light rounded"></div>
+        <div class="lijstjes7 shadow p-5 mb-5 border bg-light rounded"></div>
+        <div class="lijstjes8 shadow p-5 mb-5 border bg-light rounded"></div>
+    </div>
+
+    
+    <!-- Even experimenteren met Chartist.js  -->
+
+    <div class="container">
+        <h3 class="mt-5 mb-5 text-primary">Een klein experimentje met Chartist.js:</h3>
+        <div class="row">
+            <div class="col-sm mt-4">
+                <div class="ct-chart" id="chart1"></div>
+            </div>
+            <div class="col-sm mt-4">
+                <div class="ct-chart" id="chart2"></div>
+            </div>
+            
+            <div class="col-sm mt-4">
+                <div class="ct-chart" id="chart3"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Initialize a Line chart in the container with the ID chart1
+    new Chartist.Line('#chart1', data = {
+        labels: [1, 2, 3, 4],
+        series: [[100, 120, 180, 200]]
+    }, options={height: 300});
+
+    // Initialize a Line chart in the container with the ID chart2
+    new Chartist.Bar('#chart2', {
+        labels: [1, 2, 3, 4],
+        series: [[5, 2, 8, 3]]
+    }, options={ height: 300});
+
+    // en zelf nummer 3 toegevoegd:
+    var data = { series: [5, 3, 4] };
+    var sum = function(a, b) { return a + b };
+
+    new Chartist.Pie('#chart3', data, {
+    labelInterpolationFnc: function(value) {
+        return Math.round(value / data.series.reduce(sum) * 100) + '%';
+    } 
+    });
+    </script>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyBFsvsJiKEVM83Jgpz7CVfE75sFZAcyTlg",
+        authDomain: "websites-c32f5.firebaseapp.com",
+        databaseURL: "https://websites-c32f5.firebaseio.com",
+        projectId: "websites-c32f5",
+        storageBucket: "websites-c32f5.appspot.com",
+        messagingSenderId: "449985351058",
+        appId: "1:449985351058:web:f07de6c9170cd85a51854b",
+        measurementId: "G-F6XVCT3BLW"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+    const db = firebase.firestore();
+
+    </script>
+
+    <script src="wateengast.js"></script>
+    
+</body>
+</html>
