@@ -7,10 +7,14 @@ const cardholder = document.querySelector('.cardholder');
 const addBuilding = (building, id) => {
   let html = `
     <li data-id="${id}">
-      <div>${building.name}</div>
-      <div>${building.price}</div>
-      <div><small>Created at: ${building.created_at.toDate().toISOString().split('T')[0]}</small></div>
-      <button class="btn grey">delete</button>
+    <button class="btn">delete</button>
+      <div class="row valign-wrapper center z-depth-1" style="padding: 10px">
+        <div class="col s2">${building.name}</div>
+        <div class="col s2">${building.price}</div>
+        <div class="col s3">${building.description}</div>
+        <div class="col s3"><small>Created at: ${dateFns.distanceInWordsToNow(building.created_at.toDate(),{ addSuffix:true })}</small></div>
+        <button class="btn btn-danger btn-sm my-2">delete</button>
+      </div>    
     </li>
   `;
   buildingList.innerHTML += html;
@@ -20,10 +24,9 @@ const addBuilding = (building, id) => {
               <td>${building.name}</td>
               <td>${building.description}</td>
               <td>${building.price}</td>
-              <td>${building.created_at.toDate().toISOString().split('T')[0]}</td>
-              <tb><a class="btn-floating btn-small waves-effect waves-light grey"><i class="material-icons">add</i></a></td>
+              <td>${dateFns.format(building.created_at.toDate(), 'DD-M-YYYY')}</td>
+              <td>${dateFns.differenceInMinutes(Date(), building.created_at.toDate())}</td>
             </tr>`
-
   buildingTable.innerHTML += tablehtml;
 };
 
