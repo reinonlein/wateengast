@@ -15,8 +15,11 @@
     <nav class="nav-wrapper grey lighten-4">
         <div class="container">
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li>
-                <a href="#" class="grey-text text-darken-2 modal-trigger" data-target="signup-modal">Register</a>
+            <li><a href="#" class="grey-text text-darken-2 modal-trigger logged-out" data-target="modal-login">Login</a></li>
+            <li class="grey-text text-darken-2 logged-in" id="balance"></li>
+            <li><a href="#" class="grey-text text-darken-2 modal-trigger logged-in" data-target="modal-account">Account</a></li>
+            <li><a href="#" class="grey-text text-darken-2 modal-trigger logged-in" id="logout">Logout</a></li>
+            <li><a href="#" class="grey-text text-darken-2 modal-trigger logged-out" data-target="modal-signup">Register</a></li>
           </ul>
         </div>
       </nav>
@@ -26,6 +29,8 @@
         <h3>Welcome to Realtime Civ</h3>
         <h6>The most epic Javascript/Materialize/Firebase excercise in the history of time</h6>
       </div>
+
+      <div class="welcome center-align"></div>
 
       <!-- building list -->
       <div class="container" style="padding: 5em;">
@@ -39,8 +44,10 @@
             <thead>
               <tr>
                   <th>Name</th>
-                  <th>Cost</th>
                   <th>Description</th>
+                  <th>Price</th>
+                  <th>Created</th>
+                  <th>Minutes ago</th>
               </tr>
             </thead>
     
@@ -76,10 +83,14 @@
 
 
       <!-- Sign up form -->
-      <div id="signup-modal" class="modal">
+      <div id="modal-signup" class="modal">
         <div class="modal-content">
           <h4>Sign up to join the game!</h4><br />
           <form id="signup-form">
+            <div class="input-field">
+              <input type="text" id="signup-username" required />
+              <label for="signup-username">Pick your player name</label>
+            </div>
             <div class="input-field">
               <input type="email" id="signup-email" required />
               <label for="signup-email">Email address</label>
@@ -93,6 +104,34 @@
           </form>
         </div>
       </div>
+
+      <!-- LOGIN MODAL -->
+      <div id="modal-login" class="modal">
+        <div class="modal-content">
+          <h4>Login</h4><br />
+          <form id="login-form">
+            <div class="input-field">
+              <input type="email" id="login-email" required />
+              <label for="login-email">Email address</label>
+            </div>
+            <div class="input-field">
+              <input type="password" id="login-password" required />
+              <label for="login-password">Your password</label>
+            </div>
+            <button class="btn yellow darken-2 z-depth-0">Login</button>
+            <p class="error pink-text center-align"></p>
+          </form>
+        </div>
+      </div>
+
+      <!-- ACCOUNT MODAL -->
+      <div id="modal-account" class="modal">
+        <div class="modal-content center-align">
+          <h4>Account details</h4><br />
+          <div class="account-details"></div>
+        </div>
+      </div>
+
 
       <div class="container row cardholder">
 
@@ -112,6 +151,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
 
     <script>
       // Your web app's Firebase configuration
@@ -130,11 +170,13 @@
       firebase.analytics();
 
       const db = firebase.firestore();
+      const auth = firebase.auth();
 
     </script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/auth.js"></script>
 
 </body>
 </html>
