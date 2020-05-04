@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <title>D3 Barchart Firestore</title>
+
+  <style>
+    .node {
+    cursor: pointer;
+    }
+
+    .node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 3px;
+    }
+
+    .node text {
+    font: 12px sans-serif;
+    }
+
+    .link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 2px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="blue darken-3 section">
+    <h2 class="center white-text">ReinOnlein's D3 playground</h2>
+  </header>
+  <div class="center grey lighten-3 section"><p class="flow-text">Eens kijken of het lukt om mijn eigen hierarchie binnen te halen</p>
+  </div>
+
+  <div class="container center tree">
+  </div>
+  
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBFsvsJiKEVM83Jgpz7CVfE75sFZAcyTlg",
+      authDomain: "websites-c32f5.firebaseapp.com",
+      databaseURL: "https://websites-c32f5.firebaseio.com",
+      projectId: "websites-c32f5",
+      storageBucket: "websites-c32f5.appspot.com",
+      messagingSenderId: "449985351058",
+      appId: "1:449985351058:web:56a7389fd2761de951854b",
+      measurementId: "G-CM1B1B1HC3"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+    const db = firebase.firestore();
+    
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- load the d3.js library -->	
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+  <script src="hierarchie.js"></script>
+
+
+</body>
+</html>

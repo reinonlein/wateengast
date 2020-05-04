@@ -4,6 +4,7 @@ const lijstjes3 = document.querySelector('.lijstjes3');
 const lijstjes4 = document.querySelector('.lijstjes4');
 const lijstjes5 = document.querySelector('.lijstjes5');
 const lijstjes6 = document.querySelector('.lijstjes6');
+const lijstjes7 = document.querySelector('.lijstjes7');
 
 
 // Beetje stoeien met data van mijn blog ophalen
@@ -30,7 +31,9 @@ const getCategoryNames2 = async () => {
 };
 getCategoryNames2().then(data => data.forEach(item => lijstjes4.innerHTML += `<li>${item.name} heeft ${item.count} posts</li>`));
 
-
+fetch('https://www.wateengast.nl/wp-json/wp/v2/categories?per_page=10')
+  .then(response => response.json())
+  .then(json => lijstjes7.innerHTML += `<p>Het totaal aantal posts uit deze selectie is: ${json.map(item => item.count).reduce((a, b) => a + b, 0)}</p>`);
 
 ///////////// FIREBASE /////////////
 

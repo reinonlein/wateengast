@@ -7,19 +7,23 @@
     <!--Materialize CSS & icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
 </head>
 
 <body>
 
     <!-- navbar -->
     <nav class="nav-wrapper grey lighten-4">
-        <div class="container">
+        <div class="container" style="padding-left: 3em; padding-right: 3em">
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#" class="grey-text text-darken-2 modal-trigger logged-out" data-target="modal-login">Login</a></li>
-            <li class="grey-text text-darken-2 logged-in" id="balance"></li>
-            <li><a href="#" class="grey-text text-darken-2 modal-trigger logged-in" data-target="modal-account">Account</a></li>
-            <li><a href="#" class="grey-text text-darken-2 modal-trigger logged-in" id="logout">Logout</a></li>
-            <li><a href="#" class="grey-text text-darken-2 modal-trigger logged-out" data-target="modal-signup">Register</a></li>
+            <li><a href="#" class="grey-text text-darken-2 modal-trigger logged-out" style="display: none" data-target="modal-login">Login</a></li>
+            <!-- <li class="grey-text text-darken-2 logged-in" style="display: none" id="balance"></li> -->
+            <li><a href="#" class="grey-text text-darken-2 modal-trigger logged-in" style="display: none" data-target="modal-account">Account</a></li>
+            <li><a href="#" class="grey-text text-darken-2 modal-trigger logged-in" style="display: none" id="logout">Logout</a></li>
+            <li><a href="#" class="grey-text text-darken-2 modal-trigger logged-out" style="display: none" data-target="modal-signup">Register</a></li>
+          </ul>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li class="grey-text text-darken-2 logged-in" style="display: none" id="balance"></li>
           </ul>
         </div>
       </nav>
@@ -145,8 +149,11 @@
         </div>
       </footer>
      
+
     <!-- Date formatting   -->
     <script src="http://cdn.date-fns.org/v1.9.0/date_fns.min.js"></script>
+    
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>

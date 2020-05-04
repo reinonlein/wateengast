@@ -4,17 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
 
     <title>ReinOnlein's JS Playground</title>
-
-    <style>
-        .ct-series-a .ct-line,
-        .ct-series-a .ct-point,
-        .ct-chart .ct-bar {
-            stroke: blue;
-        }
-    </style>
 
 </head>
 <body>
@@ -28,16 +21,18 @@
 
 
     <div class="container">
+        <h3 class="mt-5 mb-5 text-primary">Even oefenen met D3:</h3>
+        <div class="canvas shadow-sm p-5 mb-5 border bg-light rounded"></div>
         <h3 class="mt-5 mb-5 text-primary">Deze output komt uit JavaScript:</h3>
         <div class="lijstjes1 shadow-sm p-5 mb-5 border bg-light rounded"></div>
         <div class="lijstjes2 shadow-sm p-5 mb-5 border bg-light rounded"></div>
         <div class="lijstjes3 shadow-sm p-5 mb-5 border bg-light rounded"></div>
+        <div class="lijstjes7 shadow p-5 mb-5 border bg-light rounded"></div>
         <div class="shadow p-5 mb-5 border bg-light rounded"><ul class="lijstjes4"></ul></div>
         <h3 class="mt-5 mb-5 text-primary">En door naar Firebase!</h3>
         <div class="lijstjes5 shadow-sm p-5 mb-5 border bg-light rounded"></div>
         <div class="lijstjes6 shadow-sm p-5 mb-5 border bg-light rounded"></div>
-        <div class="lijstjes7 shadow p-5 mb-5 border bg-light rounded"></div>
-        <div class="lijstjes8 shadow p-5 mb-5 border bg-light rounded"></div>
+        <div class="lijstjes8 shadow p-5 mb-5 border bg-light rounded" style="display: none"></div>
     </div>
 
     
@@ -59,6 +54,14 @@
         
 
     </div>
+
+    <div class="container tree">
+        <h3 class="mt-5 mb-5 text-primary">En een eerste toevoeging van D3.js:</h3>
+    </div>
+
+    
+
+
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
@@ -85,8 +88,19 @@
 
     </script>
 
+    <!-- Import D3. This is where the magic happens...  -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Import Chartist, a really easy to use charting library: -->
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    
+    <!-- load the d3.js library -->	
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <script src="tree.js"></script>
+
     <script src="wateengast.js"></script>
     <script src="chartist.js"></script>
+    <script src="barchart-json.js"></script>
     
 </body>
 </html>
