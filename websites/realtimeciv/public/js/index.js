@@ -75,6 +75,7 @@ const addBuilding = (building, id) => {
               <td>${dateFns.differenceInMinutes(Date(), building.created_at.toDate())}</td>
             </tr>`;
   buildingTable.innerHTML += tablehtml;
+  
 };
 
 const deleteBuilding = (id) => {
@@ -86,12 +87,20 @@ const deleteBuilding = (id) => {
   });
 };
 
+// sum of the costs
+const sumCost = (doc) => {
+  let sumCost = [];
+  sumCost.push(doc.price);
+  console.log(sumCost); 
+};
+
 // real-time listener
 const unsub = db.collection('buildings').onSnapshot(snapshot => {
   snapshot.docChanges().forEach(change => {
     const doc = change.doc;
     if(change.type === 'added'){
-      addBuilding(doc.data(), doc.id)
+      addBuilding(doc.data(), doc.id);
+      sumCost(doc.data());
     } else if (change.type === 'removed'){
       deleteBuilding(doc.id);
     }

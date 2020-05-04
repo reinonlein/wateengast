@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <style>
+    h2, p{
+      margin: 10px 0;
+    }
+    header{
+      margin-bottom: 40px;
+    }
+  </style>
+  <title>D3 Barchart Firestore</title>
+</head>
+
+<body>
+
+  <header class="blue darken-1 section">
+    <h2 class="center white-text">ReinOnlein's D3 playground</h2>
+    <p class="flow-text center white-text">Check out this awesome barchart in D3.js on Firestore... using onSnapshot</p>
+  </header>
+
+  <div class="container section center">
+    <div class="canvas"></div>
+  </div>
+  
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBFsvsJiKEVM83Jgpz7CVfE75sFZAcyTlg",
+      authDomain: "websites-c32f5.firebaseapp.com",
+      databaseURL: "https://websites-c32f5.firebaseio.com",
+      projectId: "websites-c32f5",
+      storageBucket: "websites-c32f5.appspot.com",
+      messagingSenderId: "449985351058",
+      appId: "1:449985351058:web:56a7389fd2761de951854b",
+      measurementId: "G-CM1B1B1HC3"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+    const db = firebase.firestore();
+    
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.js"></script>
+  
+  <script src="index.js"></script>
+
+</body>
+</html>
