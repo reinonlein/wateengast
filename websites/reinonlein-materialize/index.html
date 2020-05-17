@@ -18,6 +18,7 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"  media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
     <title>Rein Onlein</title>
 
@@ -25,28 +26,118 @@
 
 <body>
 
+    <nav>
+       <div class="nav-wrapper white z-depth-1">
+          <div class="container">
+          <a href="#" class="brand-logo grey-text text-darken-3">Rein Onlein</a>
+          <a href="#" class="sidenav-trigger" data-target="mobile-links">
+            <i class="material-icons grey-text text-darken-3">menu</i>
+          </a>
+          
+          <ul class="right hide-on-med-and-down">
+            <li><a href="#" class="grey-text text-darken-3">Login</a></li>
+          </ul>
 
-    <header class="section green" style="height: 10em">
-    </header>
+          <ul class="sidenav" id="mobile-links">
+            <br>
+            <li><h4 class="container green-text">Menu</h4></li>
+            <li><a href="#">Login</a></li>
+          </ul>
 
-    <div class="center" style="margin: 12em;">
-        <h3><a href="https://www.wateengast.nl" class="black-text">ReinOnlein is voortaan <br><h1>Wateengast.nl</h1></h3></a>
+        </div>
+      </div>
+    </nav>
+
+    
+
+    <div class="section green white-text center-align valign-wrapper z-depth-1" style="height: 3em">
+      <h6 class="center-align" style="width: 100%; padding-bottom: 0.5em"><span class="flow-text">Semi-nieuw!</span> Check elke dag mijn andere website <a href="https://www.wateengast.nl" target="_blank" class="white-text underline"><u><b>Wateengast.nl</b></u></a> voor de heerlijkste nieuwe teksten.</h6>
     </div>
 
-    <footer class="page-footer grey darken-3">
-        <div class="container" style="height: 10em;"></div>
-        <div class="footer-copyright grey darken-4">
-            <div class="container center-align grey-text text-lighten-3">&copy; 2020 Rein Onlein Websites:  
-            <a href="https://www.wateengast.nl" target="_blank" class="grey-text text-lighten-3">Wateengast.nl</a>, 
-            <a href="https://www.alcoholvrijheid.nl" target="_blank" class="grey-text text-lighten-3">Alcoholvrijheid.nl</a>, 
-            <a href="https://www.intralameconsultancy.nl" target="_blank" class="grey-text text-lighten-3">Intralame Consultancy</a>
-            <a href="https://www.universiteithaarlem.nl" target="_blank" class="grey-text text-lighten-3">Universiteit Haarlem</a>
-            <a href="https://www.reinonlein.nl" target="_blank" class="grey-text text-lighten-3">ReinOnlein.nl</a>
+  
+<div class="parallax-container" style="height: 10em">
+  <div class="parallax">
+      <img src="img/lucht.jpg" alt="" class="responsive-jpg">
+  </div>
+</div>
+
+<div>
+
+
+  <section class="container section scrollspy" id="diensten">
+    <div class="row">
+        <div class="col s12 l4">
+            <p class="flow-text">Gefeliciteerd! Je hebt zojuist een van de gaafste websites van het internet bezocht!</p>
+            <p>Althans, in potentie. Vooralsnog is het hier nog redelijk leeg, maar ik ben van plan om hier de komende tijd stapsgewijs steeds meer wonderlijke content te gaan toevoegen. </p>
+            <p>Dat worden niet zozeer leuke teksten (die vind je elke dag op <a href="https://www.wateengast.nl" target="_blank">Wateengast.nl</a>), maar vooral creatieve uitspattingen van mijn andere hobby's: coderen, programmeren, data science, analyse en visualisatie!</p>
         </div>
-    
-    </footer>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <div class="col s12 l6 offset-l1">
+            <ul class="tabs">
+                <li class="tab col s4">
+                    <a href="#data-science" class="grey-text text-darken-4">Data Science</a>
+                </li>
+                <li class="tab col s4">
+                    <a href="#data-visualisation" class="grey-text text-darken-4">Data Visualisatie</a>
+                </li>
+                <li class="tab col s4">
+                  <a href="#web-development" class="grey-text text-darken-4">Web Development</a>
+              </li>
+            </ul>
+            <div class="col s12" id="data-science">
+                <p class="flow-text grey-text text-darken-4">DATA SCIENCE</p>
+                <p>Wat je hier allemaal voor moois kunt verwachten? Nou, bijvoorbeeld de leukste data science-resultaten. Data Science is het mooiste vak dat er is, zeker als je het toepast op de meest alledaagse dingen. Ik ben van plan om de wonderlijkste technieken te gaan toepassen op de droogste onderzoeksvragen die je maar kunt verzinnen.</p>
+            </div>
+            <div class="col s12" id="data-visualisation">
+                <p class="flow-text grey-text text-darken-4">DATA VISUALISAITE</p>
+                <p>Ik heb een zwak voor gave data visualisaties en ik ben erachter gekomen dat er wel zó ontzettend veel mogelijk is op dit gebied met de technologieën van vandaag. Hier ben ik van plan om een mooie showcase bij te gaan houden. Onder meer van mijn experimentjes in D3.js, de mooiste visualisatie library die ik ken!</p>
+            </div>
+            <div class="col s12" id="web-development">
+              <p class="flow-text grey-text text-darken-4">WEB DEVELOPMENT</p>
+              <p>Mijn nieuwste hobby is het handmatig in elkaar programmeren voor websites. Voor op internet. Normaal gesproken deed ik dit alijd in Wordpress, maar door zelf in de code te duiken gaat plotseling de hele wereld voor je open. Alles wat je kunt verzinnen, kun je bouwen in Javascript, HTML en een fraai CSS framework zoals bijvoorbeeld Bootstrap of Materialize. Hier lees je straks mijn ervaringen en resultaten.</p>
+          </div>
+        </div>
+    </div>
+</section>
+
+
+</div>
+
+<div class="parallax-container" style="height: 15em">
+  <div class="parallax">
+      <img src="img/lucht.jpg" alt="" class="responsive-jpg">
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <footer class="page-footer white">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 l6 black-text">
+                <h5 class="green-text text-darken-2">Stay tuned!</h5>
+                <p>Zoals je kunt zien is deze website momenteel nog even aardig "under construction". Ik heb allemaal wilde plannen, maar elke reis begint met een paar kleine stapjes. Daar kijk je nu naar. </p>
+                <p>Kom snel nog eens terug om te zien welke nieuwe dingen deze nerd-coding-schrijver straks weer voor jullie in petto heeft! In de tussentijd kan je natuurlijk ook altijd terecht op een van mijn andere websites hiernaast.</p>
+                
+            </div>
+            <div class="col s12 l4 offset-l2 black-text">
+                <h5>Andere websites</h5>
+                <ul>
+                    <li><a href="https://www.wateengast.nl" class="black-text" target="_blank">Wateengast.nl</a></li>
+                    <li><a href="#" class="black-text">Alcoholvrijheid.nl</a></li>
+                    <li><a href="#" class="black-text">Intralame Consultancy</a></li>
+                    <li><a href="#" class="black-text">Universiteit Haarlem</a></li>
+                    <li><a href="#" class="black-text">ReinOnlein.nl</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright grey darken-3">
+        <div class="container center-align">&copy; 2020 Rein Onlein</div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="js/init.js"></script>
 
 </body>
 </html>
