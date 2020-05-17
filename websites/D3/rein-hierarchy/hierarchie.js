@@ -4,7 +4,9 @@ db.collection('rein2').get().then(snapshot => {
     tree2.push(snapshot.docs[0].data());
      
      console.log('tree2:', tree2);
+     console.log('data:', data)
 
+     
 
       
       // ************** Generate the tree diagram	 *****************
