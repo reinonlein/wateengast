@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147362943-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-147362943-1');
+    </script>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+
+    <title>Rein Onlein</title>
+
+    <!-- Custom CSS Styling of the blockqotes -->
+    <style>
+
+        .tabs .indicator {
+            background-color: #1a237e;
+        }
+
+        .tabs .tab a:focus, .tabs .tab a:focus.active{
+            background: transparent;
+        }
+
+        .tip{
+          padding: 10px;
+          background: #333;
+          color: #fff;
+        }
+        .tip .delete{
+          color: hotpink;
+          font-size: 0.8em;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+    
+  <nav class="nav-extended white z-depth-0">
+    <div class="nav-wrapper">
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <header class="blue darken-1 section">
+    <h2 class="center white-text">Welcome to ReinOnlein's Playground</h2>
+    <p class="flow-text center white-text">My temporary sandbox for frontend coding practice</p>
+  </header>
+
+
+  <div class="nav-content">
+    <ul class="tabs container center-align">
+      <li class="tab"><a href="#test1" class="indigo-text text-darken-4">Who is</a></li>
+      <li class="tab"><a class="indigo-text text-darken-4" href="#test2">About</a></li>
+      <li class="tab"><a href="#budgetplanner" class="indigo-text text-darken-4">Budget</a></li>
+      <li class="tab"><a href="#test4" class="indigo-text text-darken-4">Websites</a></li>
+      <li class="tab"><a href="#test4" class="indigo-text text-darken-4">Projects</a></li>
+      <li class="tab"><a href="#test4" class="indigo-text text-darken-4">Learning</a></li>
+      <li class="tab"><a href="#test4" class="indigo-text text-darken-4">Skills</a></li>
+      <li class="tab"><a href="#test4" class="indigo-text text-darken-4">Visualisation</a></li>
+      <li class="tab"><a href="#test4" class="indigo-text text-darken-4">Data is art</a></li>
+      <li class="tab"><a href="#test4" class="indigo-text text-darken-4">Hire me</a></li>
+      <li class="tab"><a href="#test4" class="indigo-text text-darken-4">Contact</a></li>
+    </ul>
+  </div>
+
+  
+  <div class="container section" style="padding: 5em; width: 60%">
+  <div id="test1" class="col s12">
+    <h6 class="indigo-text text-darken-4">How It's Made</h6>
+                <p>This site is made by me, myself, in pure joy and entertainment. This site is my little happy place online, where I can bring my frontend coding skills to practice and create an engaging portfolio-site on the go. The tools I used to make this site are ofcourse my favourite coding text editor: VS Code. Using the Live Server extension, it's really easy to type HTML, CSS & JavaScript and check the results in real time.</p>
+                <p>This site also makes use of the amazing webframework Materialize by Google. It had been a close call between Bootstrap 4 (also amazing!) and Materialize, but in the end some nice visual features of Materialize flipped the coin in their direction. Nonetheless: Bootstrap has won my heart as well, mainly for the broad range of features and the super-usefull margin and padding style classes.</p>
+                <div>Finally, for the backend of this site I use Firebase, also by Google. This is another amazing (free) product which makes your geeky life much more fun. The main features I use are the realtime NoSQL database Firestore (for my visualisations) and their Authorisation features. But Firebase has so much more to offer! Finally, I really believe I can create anything online now. The sky is not the limit! Only spare time is... </div>
+  </div>
+  <div id="test2" class="col s12">
+    <h6 class="indigo-text text-darken-4">A small excercise in shapes in D3:</h6>
+  </div>
+
+  <div class="col s12">
+    <div class="container section">
+      <div class="row">
+        <div class="col s12 m5">
+          <form class="card z-depth-0">
+            <div class="card-content">
+              <span class="card-title indigo-text">Add Item:</span>
+              <div class="input-field">
+                <input type="text" id="name">
+                <label for="name">Item Name</label>
+              </div>
+              <div class="input-field">
+                <input type="text" id="cost">
+                <label for="cost">Item Cost</label>
+              </div>
+              <div class="input-field center">
+                <button class="btn pink white-text">Add Item</button>
+              </div>
+              <div class="input-field center">
+                <p id="error" class="red-text"></p>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col s12 m7">
+          <div class="canvas"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+  <div id="test4" class="col s12">Test 4</div>
+  </div>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBFsvsJiKEVM83Jgpz7CVfE75sFZAcyTlg",
+      authDomain: "websites-c32f5.firebaseapp.com",
+      databaseURL: "https://websites-c32f5.firebaseio.com",
+      projectId: "websites-c32f5",
+      storageBucket: "websites-c32f5.appspot.com",
+      messagingSenderId: "449985351058",
+      appId: "1:449985351058:web:56a7389fd2761de951854b",
+      measurementId: "G-CM1B1B1HC3"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+    const db = firebase.firestore();
+    
+  </script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="budgetindex.js"></script>
+  <script src="budget.js"></script>
+
+  <script>
+      var tabs = document.querySelectorAll('.tabs')
+    for (var i = 0; i < tabs.length; i++){
+      M.Tabs.init(tabs[i]);
+    }
+  </script>
+ 
+<!-- <script src="shapes.js"></script> -->
+        
+
+    
+    
+    </body>
+</html>
