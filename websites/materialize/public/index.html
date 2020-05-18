@@ -1,0 +1,464 @@
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header voorbeeldje</title>
+
+    
+      
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <!-- Custom CSS Styling of the blockqotes -->
+    <style>
+
+        header{
+            background: url(lucht.jpg);
+            background-size: cover;
+            background-position: center;
+            min-height: 200px;
+        }
+        
+        @media screen and (max-width: 670px){
+        header{
+            min-height: 500px;
+        }}
+
+        blockquote {
+            margin: 20px 0;
+            padding-left: 1.5rem;
+            border-left: 5px solid #3f51b5;
+        }
+
+        .section {
+            padding-top: 4vw;
+            padding-bottom: 4vw;
+        }
+
+        nav .badge{
+            position: relative;
+            top: 20px;
+            right: 20px;
+        }
+
+        .tabs .indicator {
+            background-color: #1a237e;
+        }
+
+        .tabs .tab a:focus, .tabs .tab a:focus.active{
+            background: transparent;
+        }
+
+        .parallax-container {
+            height: 350px;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<!--<header>
+    <nav class="nav-wrapper transparent">
+        <div class="container">
+            <a href="#" class="brand-logo">Rein Kloos</a>
+            <a href="#" class="sidenav-trigger" data-target="mobile-links">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#">Question</a></li>
+                <li><a href="#diensten">Develop</a></li>
+                <li><a href="#">Enjoy</a></li>
+                <li><a href="" class="tooltipped btn-floating btn-small indigo darken-3" data-tooltip="Instagram nonsens">
+                    <i class="fab fa-instagram"></i>
+                </a></li>
+                <li><a href="" class="tooltipped btn-floating btn-small indigo darken-3" data-tooltip="Facebook linkje">
+                    <i class="fab fa-facebook"></i>
+                </a></li>
+                <li><a href="" class="tooltipped btn-floating btn-small indigo darken-3" data-tooltip="Dit is Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a></li>
+                <li><a href="#" class="btn-floating indigo darken-3 z-depth-0">
+                    <i class="material-icons">notifications</i>
+                </a></li>
+                <li><span class="badge white-text pink new">5</span></li>
+            </ul>
+        </div>
+    </nav>
+  </header>
+  -->
+    
+<div class="navbar-fixed">
+  <nav class="nav-wrapper indigo darken-1 z-depth-0">
+    <div class="container">
+        <a href="#" class="brand-logo">Willem is de beste!</a>
+        <a href="#" class="sidenav-trigger" data-target="mobile-links">
+            <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#cards">Question</a></li>
+            <li><a href="#diensten">Develop</a></li>
+            <li><a href="#contact">Enjoy</a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a href="" class="tooltipped btn-floating btn-small indigo darken-3" data-tooltip="Instagram nonsens">
+                <i class="fab fa-instagram"></i>
+            </a></li>
+            <li><a href="" class="tooltipped btn-floating btn-small indigo darken-3" data-tooltip="Facebook linkje">
+                <i class="fab fa-facebook"></i>
+            </a></li>
+            <li><a href="" class="tooltipped btn-floating btn-small indigo darken-3" data-tooltip="Dit is Twitter">
+                <i class="fab fa-twitter"></i>
+            </a></li>
+            <li><a href="#" class="btn-floating indigo darken-3 z-depth-0">
+                <i class="material-icons">notifications</i>
+            </a></li>
+            <li><span class="badge white-text pink new">5</span></li>
+        </ul>
+    </div>
+</nav>
+</div>
+
+<ul class="sidenav" id="mobile-links">
+    <br>
+    <li><h4 class="container indigo-text">Menu</h4></li>
+    <li><a href="#">Question</a></li>
+    <li><a href="#">Develop</a></li>
+    <li><a href="#">Enjoy</a></li>
+    <li><a href="#">Responsibly</a></li>
+</ul>
+
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+    <li><a href="#!">one</a></li>
+    <li><a href="#!">two</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">three</a></li>
+</ul>
+
+<section class="container section scrollspy" id="diensten">
+    <div class="row">
+        <div class="col s12 l4">
+            <h4 class='indigo-text text-darken-4'>Wat kan ik voor je doen?</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum assumenda voluptate itaque atque ad iusto eveniet perferendis totam facere recusandae? Vel voluptas dolorem tempora illo quas molestiae minima. Totam, obcaecati?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla suscipit excepturi amet eveniet, ex alias modi porro enim tempora voluptatem veritatis, earum ratione quaerat consectetur neque illo harum molestiae. Voluptas!</p>
+            <br> 
+            <a class="waves-effect indigo lighten-1 hoverable waves-light btn right"><i class="material-icons right">arrow_forward</i>supervet</a>
+        </div>
+        <div class="col s12 l6 offset-l2">
+            <ul class="tabs">
+                <li class="tab col s6">
+                    <a href="#data-science" class="indigo-text text-darken-4">Data Science</a>
+                </li>
+                <li class="tab col s6">
+                    <a href="#analytics" class="indigo-text text-darken-4">Analytics</a>
+                </li>
+            </ul>
+            <div class="col s12" id="data-science">
+                <p class="flow-text indigo-text text-darken-4">DATA SCIENCE</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum assumenda voluptate itaque atque ad iusto eveniet perferendis totam facere recusandae? 
+                    Vel voluptas dolorem tempora illo quas molestiae minima. Totam, obcaecati?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Porro minus fugiat corporis repellendus omnis ab temporibus sit rerum vitae doloribus. Eos alias magni maiores earum id eligendi cumque rem libero.</p>
+            </div>
+            <div class="col s12" id="analytics">
+                <p class="flow-text indigo-text text-darken-4">ANALYTICS</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum assumenda voluptate itaque atque ad iusto eveniet perferendis totam facere recusandae? 
+                    Vel voluptas dolorem tempora illo quas molestiae minima. Totam, obcaecati?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In unde, doloremque 
+                    provident totam mollitia dolor voluptate repellendus placeat nam quaerat fugit distinctio sapiente fuga officiis? Velit dolore qui recusandae deserunt.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="parallax-container">
+    <div class="parallax">
+        <img src="lucht.jpg" alt="" class="responsive-jpg">
+    </div>
+</div>
+
+
+<div class="container section">
+
+    <p class="flow-text">Hier een stukje inleidende flow-text.</p>
+    
+    <div class="row section">
+        
+        <div class="col s12 l4">
+            <p>Met een hoop geouwehoer in een paragraaf. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur ut dignissimos veritatis dolorum recusandae nam quis ullam aspernatur corporis obcaecati maiores, omnis, porro delectus libero fugit, id deserunt alias necessitatibus!</p>
+            <blockquote class="hide-on-med-and-down">Met een blockquote die je alleen op een groot scherm kunt zien</blockquote>
+        </div>
+
+
+        <div class="col s12 l7 offset-l1">
+            <table class="z-depth-2 highlight">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Item Name</th>
+                    <th>Item Price</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr>
+                <tr>
+                    <td>Alan</td>
+                    <td>Jellybean</td>
+                    <td>$3.76</td>
+                </tr>
+                <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                </tr>
+                </tbody>
+                </table>
+        </div>
+    </div>
+
+</div>
+
+<div class="container center section">
+    
+    <h5>Hier even een klein button feestje</h5>    
+    <a href="#awesome-popup-text" class="btn-floating btn-large blue pulse modal-trigger"><i class="material-icons">info</i></a>
+
+    <div class="modal" id="awesome-popup-text">
+        <div class="modal-content">
+            <h4>Wat een gast...</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, omnis ipsa quisquam reprehenderit magni impedit sed sit, 
+                mollitia aliquam maiores voluptas illum asperiores, natus quas? Illo sapiente ipsa optio architecto.</p>
+        </div>
+        <div class="modal-footer">
+            <a href="" class="modal-close btn green">Awesomeheid!</a>
+            <a href="" class="modal-close btn red">Cancel</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="container scrollspy" id="cards">
+    <h4 class="center">Cards in Materialize</h4>
+
+    <div class="row">
+        <div class="col s12 l4">
+            <div class="card">
+                <div class="card-image">
+                    <img src="the_boek.jpg" alt="">
+                    <a href="#" class="halfway-fab btn-floating pink pulse">
+                        <i class="material-icons">favorite</i>
+                    </a>
+                </div>
+                <div class="card-content">
+                    <span class="card-title">Wat een gast - The Boek</span>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem totam sequi praesentium nobis delectus iure tenetur beatae nesciunt expedita natus quis ipsam assumenda iste cum ipsa, numquam similique et a. Aliquam, impedit tempore molestiae assumenda possimus veniam!</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">Details</a>
+                    <a href="#">Koop online</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s12 l4">
+            <div class="card">
+                <div class="card-image">
+                    <img src="wateengast-boek2-mockup.jpg" alt="">
+                    <a href="#" class="halfway-fab btn-floating pink pulse">
+                        <i class="material-icons">favorite</i>
+                    </a>
+                </div>
+                <div class="card-content">
+                    <span class="card-title">Wat een gast - Twee stuks</span>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem totam sequi praesentium nobis delectus iure tenetur beatae nesciunt expedita natus quis ipsam assumenda iste cum ipsa, numquam similique et a. Aliquam, impedit tempore molestiae assumenda possimus veniam!</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">Details</a>
+                    <a href="#">Koop online</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s12 l4">
+            <div class="card">
+                <div class="card-image">
+                    <img src="wateengast-app-lanceringsfeestje.jpg" alt="">
+                    <a href="#" class="halfway-fab btn-floating pink pulse">
+                        <i class="material-icons">favorite</i>
+                    </a>
+                </div>
+                <div class="card-content">
+                    <span class="card-title">Nu ook als app!</span>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem totam sequi praesentium nobis delectus iure tenetur beatae nesciunt expedita natus quis ipsam assumenda iste cum ipsa, numquam similique et a. Aliquam, impedit tempore molestiae assumenda possimus veniam!</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">Details</a>
+                    <a href="#">Download</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="parallax-container">
+    <div class="parallax">
+        <img src="lucht.jpg" alt="" class="responsive-jpg">
+    </div>
+</div>
+
+
+<div class="container section">
+    <h4>Collections</h4>
+    <ul class="collection with-header">
+        <li class="collection-header"><h5>Vette header gast!</h5></li>
+        <li class="collection-item avatar">
+            <i class="material-icons circle blue">person</i>
+            <span class="title">Rein</span>
+            <p class="grey-text">Supergast</p>
+            <a href="" class="secondary-content">
+                <i class="material-icons blue-text">email</i>
+            </a>
+        </li>
+        <li class="collection-item avatar">
+            <i class="material-icons circle blue">person</i>
+            <span class="title">Willem</span>
+            <p class="grey-text">Topgast</p>
+            <a href="" class="secondary-content">
+                <i class="material-icons blue-text">email</i>
+            </a>
+        </li>
+        <li class="collection-item avatar">
+            <i class="material-icons circle blue">person</i>
+            <span class="title">Bas</span>
+            <p class="grey-text">Minigast</p>
+            <a href="" class="secondary-content">
+                <i class="material-icons blue-text">email</i>
+            </a>
+        </li>
+        <li class="collection-item avatar">
+            <i class="material-icons circle blue">person</i>
+            <span class="title">Floor</span>
+            <p class="grey-text">Gastvrouw</p>
+            <a href="" class="secondary-content">
+                <i class="material-icons blue-text">email</i>
+            </a>
+        </li>
+    </ul>
+    
+</div>
+
+<div class="parallax-container">
+    <div class="parallax">
+        <img src="lucht.jpg" alt="" class="responsive-jpg">
+    </div>
+</div>
+
+<section class="container section scrollspy" id="contact">
+    <div class="row">
+        <div class="col s12 l5">
+            <h3 class="indigo-text text-darken-4">Contactformulier</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem minus ipsam consequatur! Dicta corrupti minus aperiam vel provident blanditiis mollitia, possimus illum dolores porro consectetur deleniti voluptates esse ratione hic.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam illo, ullam veniam aliquid quaerat amet unde, accusamus asperiores, deleniti eligendi in magnam tempora hic assumenda ab dicta consectetur eveniet rem.</p>
+        </div>
+        <div class="col s12 l5 offset-l2">
+            <form action="">
+                <div class="input-field">
+                    <i class="material-icons prefix">email</i>
+                    <input type="email" id="email">
+                    <label for="email">E-mailadres</label>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">message</i>
+                    <textarea class="materialize-textarea" id="bericht"></textarea>
+                    <label for="bericht">Je bericht</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="datum" class="datepicker">
+                    <label for="datum">Geboortedatum</label>
+                </div>
+                <div class="input-field">
+                    <p>Geslacht</p>
+                    <p>
+                        <label>
+                            <input type="checkbox">
+                            <span>Gast</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="checkbox">
+                            <span>Vrouw</span>
+                        </label>
+                    </p>
+                </div>
+                <div class="input-field center">
+                    <button class="btn indigo">Verzenden</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="page-footer grey darken-3">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 l6">
+                <h5>Over mij</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur placeat non, laborum nostrum voluptas quidem! Iste quam natus cum tempore quod? Fuga impedit ut rem aliquid sed ipsum ab molestiae?</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel quia laboriosam dicta repudiandae distinctio id, laudantium earum quis facilis quibusdam voluptas ad nulla accusantium. Repellat blanditiis repudiandae et est officiis.</p>
+            </div>
+            <div class="col s12 l4 offset-l2">
+                <h5>Andere websites</h5>
+                <ul>
+                    <li><a href="https://www.wateengast.nl" class="grey-text text-lighten-3" target="_blank">Wateengast.nl</a></li>
+                    <li><a href="#" class="grey-text text-lighten-3">Alcoholvrijheid.nl</a></li>
+                    <li><a href="#" class="grey-text text-lighten-3">Intralame Consultancy</a></li>
+                    <li><a href="#" class="grey-text text-lighten-3">Universiteit Haarlem</a></li>
+                    <li><a href="#" class="grey-text text-lighten-3">ReinOnlein.nl</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright grey darken-4">
+        <div class="container center-align">&copy; 2020 Rein Onlein</div>
+    </div>
+</footer>
+
+
+<!-- jQuery sidebar magic -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>     
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+        $('.dropdown-trigger').dropdown();
+        $('.modal').modal();
+        $('.parallax').parallax();
+        $('.tabs').tabs();
+        $('.datepicker').datepicker({
+            disableWeekends: true
+        });
+        $('.tooltipped').tooltip();
+        $('.scrollspy').scrollSpy();
+    });
+</script>
+
+</body>
+</html>
