@@ -1,12 +1,25 @@
 const voornaam = document.querySelector("#voornaam");
 const achternaam = document.querySelector("#achternaam");
+const email = document.querySelector("#email");
 
 
 function switchVoornaam() {switch (voornaam.innerText) {
     case "REIN":
-        voornaam.innerText = "GAST";
+        voornaam.innerText = "DATA";
       break;
-    case "GAST":
+    case "DATA":
+        voornaam.innerText = "CREATIVE";
+      break;
+    case "CREATIVE":
+        voornaam.innerText = "WEB";
+      break;
+    case "WEB":
+      voornaam.innerText = "BEAUTIFUL";
+      break;
+    case "BEAUTIFUL":
+        voornaam.innerText = "CONTACT";
+      break;
+    case "CONTACT":
         voornaam.innerText = "REIN";
       break;
   }
@@ -14,13 +27,22 @@ function switchVoornaam() {switch (voornaam.innerText) {
 
 function switchAchternaam() {switch (achternaam.innerText) {
     case "KLOOS":
-        achternaam.innerText = "ONLEIN";
+        achternaam.innerText = "SCIENCE";
       break;
-    case "ONLEIN":
-        achternaam.innerText = "GAST";
+    case "SCIENCE":
+      achternaam.innerText = "WRITING";
       break;
-    case "GAST":
+    case "WRITING":
+        achternaam.innerText = "ANALYTICS";
+      break;
+    case "ANALYTICS":
+        achternaam.innerText = "VISUALISATION";
+      break;
+    case "VISUALISATION":
+        achternaam.innerText = "ME";
+    break;
+    case "ME":
         achternaam.innerText = "KLOOS";
-      break;
+    break;
   }
 };

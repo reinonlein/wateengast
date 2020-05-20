@@ -1,23 +1,38 @@
 <html lang="en">
 
 <head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142588642-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-142588642-1');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>REIN KLOOS</title>
+
 </head>
 
-<body>
 
+
+<body>
+    
     <div class="w-100 h-100">
         <div class="row h-100">
-            <div class="col px-0 text-right text-dark">
-                <h1 style="font-size:5vw; margin-top:15vw; margin-right:3vw" id="voornaam" onclick="switchVoornaam()">REIN</h1>
+            <div class="col px-0 py-0 text-right text-dark">
+                <h1 style="font-size:5vw; margin-top:15vw; margin-right:3vw" id="voornaam">REIN</h1>
             </div>
-            <div class="col px-0 text-left text-success">
-                <h1 style="font-size:5vw; margin-top:15vw; margin-left:-2.8vw" id="achternaam" onclick="switchAchternaam()">KLOOS</h1>
+            <div class="col px-0 py-0 text-left text-success">
+                <h1 style="font-size:5vw; margin-top:15vw; margin-left:-2.8vw" id="achternaam">KLOOS</h1>
+                <h5 class="text-dark" style="margin-left:4vw" id="email"></h5>
             </div>
         </div>
     </div>
@@ -28,6 +43,29 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <script src="reinkloos.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $("#achternaam").click(function(){
+            $("#achternaam").fadeOut("fast", function(){
+            switchAchternaam();
+            $("#achternaam").fadeIn();
+        });
+        
+    });
+
+    $("#voornaam").click(function(){
+            $("#voornaam").fadeOut("fast", function(){
+            switchVoornaam();
+            $("#voornaam").fadeIn();
+        });
+    }); 
+
+    });
+
+</script>
+    
 
 </body>
 
