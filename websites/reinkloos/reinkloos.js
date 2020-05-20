@@ -14,10 +14,7 @@ function switchVoornaam() {switch (voornaam.innerText) {
         voornaam.innerText = "WEB";
       break;
     case "WEB":
-      voornaam.innerText = "DEEP";
-    break;
-    case "DEEP":
-        voornaam.innerText = "BEAUTIFUL";
+      voornaam.innerText = "BEAUTIFUL";
       break;
     case "BEAUTIFUL":
         voornaam.innerText = "CONTACT";
@@ -33,18 +30,15 @@ function switchAchternaam() {switch (achternaam.innerText) {
         achternaam.innerText = "SCIENCE";
       break;
     case "SCIENCE":
+      achternaam.innerText = "WRITING";
+      break;
+    case "WRITING":
         achternaam.innerText = "ANALYTICS";
       break;
     case "ANALYTICS":
         achternaam.innerText = "VISUALISATION";
       break;
     case "VISUALISATION":
-        achternaam.innerText = "WRITING";
-      break;
-    case "WRITING":
-        achternaam.innerText = "LEARNING";
-      break;
-    case "LEARNING":
         achternaam.innerText = "ME";
     break;
     case "ME":
