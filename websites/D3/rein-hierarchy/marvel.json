@@ -6,6 +6,7 @@
      {
       "name": "Heroes",
       "size": 40000,
+      "img": "https://www.wateengast.nl/wp-content/uploads/2018/06/rein-e1529171668840.jpg",
       "children": [
        {
          "hero": "Spider-Man",
@@ -26,7 +27,7 @@
               "hero": "Spider-Man",
               "name": "Peter Benjamin Parker", 
               "link": "http://marvel.com/characters/54/spider-man",
-              "img":  "http://marvel-force-chart.surge.sh/marvel_force_chart_img/top_spiderman.png",
+              "img": "https://www.wateengast.nl/wp-content/uploads/2018/06/rein-e1529171668840.jpg",
               "size": 40000
             },
             {
