@@ -7,3 +7,4 @@ Thumbs.db
 .vscode
 .cpython-37.pyc
 websites/django/reinonlein/reinonlein/__pycache__
+PostgreSQL12 Session.sql
