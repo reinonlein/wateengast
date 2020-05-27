@@ -6,3 +6,8 @@
 .tabs .tab a:focus, .tabs .tab a:focus.active{
     background: transparent;
 }
+
+
+.responsive-img{
+    margin-top: 2.5vw;
+}
