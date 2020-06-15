@@ -36,6 +36,9 @@ function switchAchternaam() {switch (achternaam.innerText) {
         achternaam.innerText = "ANALYTICS";
       break;
     case "ANALYTICS":
+      achternaam.innerText = "GAST";
+      break;
+    case "GAST":
         achternaam.innerText = "VISUALISATION";
       break;
     case "VISUALISATION":
