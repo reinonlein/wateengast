@@ -1,0 +1,199 @@
+@import "materialize";
+@import "gallery-base";
+
+// Sass Variables.
+$link-height: 36px;
+
+
+body {
+  background-color: #1E1F33;
+}
+
+.section {
+  padding: 0 0 1.5rem 0;
+}
+
+ul:not(.indicators) .dropdown-content > li {
+  margin-right: 0;
+}
+
+
+/******************
+ *     NAVBAR     *
+ ******************/
+nav {
+  ul:not(.indicators) li {
+    &.active > a,
+    &:hover > a {
+      color: #fff;
+      background-color: transparent;
+    }
+    position: relative;
+    background-color: transparent;
+    box-sizing: border-box;
+    height: $link-height;
+    line-height: $link-height;
+    margin-right: 20px;
+
+    & > a {
+      position: relative;
+      font-size: 13px;
+      color: rgba(255,255,255,.4);
+      padding: 0 15px;
+      z-index: 1;
+      transition: color .3s;
+
+      & > i {
+        height: $link-height;
+        line-height: $link-height;
+      }
+    }
+  }
+
+  .nav-background {
+    opacity: .2;
+  }
+
+  .nav-wrapper {
+    & > ul {
+      height: $navbar-height;
+      line-height: $navbar-height;
+
+      & > li {
+        margin: ($navbar-height - $link-height) / 2;
+      }
+    }
+  }
+
+  .nav-header {
+    h1 {
+      font-weight: 300;
+    }
+  }
+
+  .categories-wrapper {
+    background-color: transparent;
+
+    .categories-container {
+      &.pinned {
+        background-color: #fff;
+
+        li.active > a,
+        li:hover > a {
+          color: #fff;
+        }
+
+        li > a {
+          color: #444;
+        }
+      }
+
+      transition: background .2s;
+
+      .categories > li {
+        & > a {
+          transition: color .2s;
+        }
+      }
+    }
+  }
+}
+
+
+/* GALLERY */
+.gallery {
+  .col {
+    padding: 0;
+  }
+}
+
+#placeholder-navbar {
+  transition: background-color .3s;
+
+  .back-btn {
+    color: #fff;
+  }
+}
+
+
+/*********************************
+ *    COMPONENT COMPATIBILITY    *
+ *********************************/
+
+
+
+/***************************
+ *    COMPONENT STYLING    *
+ ***************************/
+ul.categories li {
+  &:hover,
+  &.active {
+    &::before {
+      opacity: 1;
+    }
+
+    a {
+      color: #fff;
+      background-color: transparent;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #3a8ed5;
+    background: linear-gradient(to bottom right, #3acfd5, #3a8ed5); /* Standard syntax (must be last) */
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity .3s;
+  }
+
+  position: relative;
+  background-color: transparent;
+  box-sizing: border-box;
+  height: $link-height;
+  min-width: 64px;
+  margin-right: 20px;
+  text-align: center;
+  line-height: $link-height;
+  border-radius: $link-height;
+
+  & > a {
+    position: relative;
+    font-size: 13px;
+    color: #999;
+    padding: 0 15px;
+    z-index: 1;
+    transition: color .3s;
+  }
+}
+
+nav ul.dropdown-content,
+.dropdown-content {
+
+  li > a {
+    &:hover {
+      color: #444;
+    }
+    height: 50px;
+    line-height: 50px;
+    color: #444;
+  }
+}
+
+.collapsible {
+  background-color: #fff;
+}
+
+
+@media #{$large-and-up} {
+  #placeholder-navbar {
+    width: 100px;
+    background-color: transparent !important;
+    box-shadow: none;
+  }
+}

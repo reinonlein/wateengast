@@ -1,0 +1,13 @@
+v1.0.3 (October 22nd, 2018)
+- Migrated to Materialize v1.0.0
+- Back button handling for dynamic routing
+- Fixed fillscreen dynamic routing image load bug
+- Added standalone Gallery sass support
+
+v1.0.2 (May 29th, 2017)
+- Added support for data attributes that can override options
+- Added stop propagation data attribute
+
+v1.0.1 (March 23rd, 2017)
+- Added Dark theme page with separate CSS
+- You can now have a galleryExpand without a gallery header

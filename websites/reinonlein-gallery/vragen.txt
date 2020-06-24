@@ -1,0 +1,2 @@
+- hoe kan ik de back button per post overschrijven
+- CSS werkt niet bij upload via FTP. Hoe lanceer ik deze site?
