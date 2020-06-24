@@ -1,0 +1,80 @@
+@import "materialize";
+@import "gallery-base";
+
+
+body {
+  background-color: #f4f4f4;
+}
+
+.section {
+  padding: 1.5rem 0;
+}
+
+/******************
+ *     NAVBAR     *
+ ******************/
+nav {
+  ul:not(.indicators) li.active {
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background-color: #fff;
+    }
+
+    position: relative;
+    background-color: transparent;
+  }
+
+  .nav-background {
+    opacity: .1;
+
+    img,
+    .pattern {
+      filter: grayscale(100%);
+    }
+  }
+
+  .nav-header {
+    h1 {
+      font-weight: 600;
+    }
+  }
+
+  .categories-wrapper {
+    background-color: inherit;
+
+    .categories-container {
+      background-color: inherit;
+    }
+  }
+}
+
+
+/* GALLERY */
+.gallery {
+  .gallery-item {
+    margin-bottom: 1.5rem;
+  }
+}
+
+#placeholder-navbar {
+  transition: background-color .3s;
+
+  .back-btn {
+    span {
+      float: left;
+      line-height: $navbar-height;
+    }
+  }
+}
+
+
+/*********************************
+ *    COMPONENT COMPATIBILITY    *
+ *********************************/
+
+
