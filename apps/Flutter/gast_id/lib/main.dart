@@ -6,7 +6,14 @@ void main() {
   ));
 }
 
-class GastCard extends StatelessWidget {
+class GastCard extends StatefulWidget {
+  @override
+  _GastCardState createState() => _GastCardState();
+}
+
+class _GastCardState extends State<GastCard> {
+  int gastLevel = 3;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,6 +24,39 @@ class GastCard extends StatelessWidget {
         backgroundColor: Colors.grey[850],
         centerTitle: true,
       ),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                FloatingActionButton(
+                  onPressed: () {
+                    setState(() {
+                      gastLevel -= 1;
+                    });
+                  },
+                  child:
+                      Icon(Icons.remove, color: Colors.grey[800], size: 25.0),
+                  backgroundColor: Colors.amberAccent[200],
+                ),
+                SizedBox(width: 10.0),
+                FloatingActionButton(
+                  onPressed: () {
+                    setState(() {
+                      gastLevel += 1;
+                    });
+                  },
+                  child: Icon(Icons.add, color: Colors.grey[800], size: 25.0),
+                  backgroundColor: Colors.amberAccent[200],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
         child: Column(
@@ -25,7 +65,7 @@ class GastCard extends StatelessWidget {
             Center(
               child: CircleAvatar(
                 backgroundImage: AssetImage('assets/reingast.jpg'),
-                radius: 40.0,
+                radius: 50.0,
               ),
             ),
             Divider(
@@ -59,7 +99,7 @@ class GastCard extends StatelessWidget {
             ),
             SizedBox(height: 10.0),
             Text(
-              '8',
+              '$gastLevel',
               style: TextStyle(
                 color: Colors.amberAccent[200],
                 letterSpacing: 2.0,
