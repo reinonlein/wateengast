@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:wateengast/models/singlepost.dart';
@@ -23,10 +24,6 @@ class _HomeState extends State<Home> {
   List currentPostList = [];
 
   Future<List<SinglePost>> _getPosts() async {
-    setState(() {
-      loading = true;
-    });
-
     var queryParameters = {
       '_embed': '',
       'per_page': '30',
@@ -36,16 +33,13 @@ class _HomeState extends State<Home> {
     var uri = Uri.https('www.wateengast.nl', '/wp-json/wp/v2/posts', queryParameters);
 
     final response = await http.get(uri);
-    setState(() {
-      loading = false;
-    });
     return compute(parsePosts, response.body);
   }
 
   @override
   void initState() {
     super.initState();
-    //futurePostList = _getPosts();
+    futurePostList = _getPosts();
     _getPosts().then((response) {
       currentPostList = response;
       setState(() {});
@@ -64,10 +58,6 @@ class _HomeState extends State<Home> {
     });
   }
 
-  _scrollToTop() {
-    _scrollController.jumpTo(_scrollController.position.minScrollExtent);
-  }
-
   @override
   void dispose() {
     _scrollController.dispose();
@@ -79,7 +69,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Wat een gast...'),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.green, //#4CAF50 RGB 76 175 80
         centerTitle: true,
       ),
       body: Center(
@@ -93,22 +83,19 @@ class _HomeState extends State<Home> {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(height: 200),
-                      Text('Welkom bij',
+                      SizedBox(height: 180),
+                      Text('Wat een gast!',
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 24,
                           )),
                       Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: CircularProgressIndicator(),
+                        child: SpinKitThreeBounce(
+                          color: Colors.green,
+                        ),
                       ),
-                      Text('Wat een gast 2.0!',
-                          style: TextStyle(
-                            fontSize: 20,
-                          )),
                     ],
                   );
-                  ;
                 } else if (index == currentPostList.length) {
                   return new ListTile(
                     leading: Padding(
@@ -141,122 +128,7 @@ class _HomeState extends State<Home> {
                         );
                       });
                 }
-              })
-
-          // child: FutureBuilder<List>(
-          //   future: futurePostList,
-          //   builder: (context, snapshot) {
-          //     if (snapshot.hasData) {
-          //       return ListView.separated(
-          //         controller: _scrollController,
-          //         itemCount: snapshot.data.length + 1,
-          //         itemBuilder: (BuildContext ctxt, int index) {
-          //           if (index == snapshot.data.length) {
-          //             return Row(
-          //               mainAxisAlignment: MainAxisAlignment.center,
-          //               children: [
-          //                 IconButton(
-          //                     icon: Icon(Icons.arrow_back),
-          //                     onPressed: () {
-          //                       setState(() {
-          //                         if (page > 1) {
-          //                           page -= 1;
-          //                           futurePostList = _getPosts();
-          //                           _getPosts().then((_) {
-          //                             _scrollToTop();
-          //                           });
-          //                         }
-          //                       });
-          //                       print(page);
-          //                     }),
-          //                 loading
-          //                     ? CircularProgressIndicator(
-          //                         strokeWidth: 2.0,
-          //                       )
-          //                     : SizedBox(width: 35.0),
-          //                 IconButton(
-          //                     icon: Icon(Icons.arrow_forward),
-          //                     onPressed: () {
-          //                       setState(() {
-          //                         page += 1;
-          //                         futurePostList = _getPosts();
-          //                         _getPosts().then((response) {
-          //                           currentPostList.addAll(response);
-          //                           print(currentPostList.length);
-          //                           _scrollToTop();
-          //                         });
-          //                       });
-          //                       print(page);
-          //                     }),
-          //               ],
-          //             );
-          //           } else {
-          //             return new ListTile(
-          //                 title: Text(snapshot.data[index].title),
-          //                 leading: ClipRRect(
-          //                   borderRadius: BorderRadius.circular(6.0),
-          //                   child: FadeInImage.assetNetwork(
-          //                     placeholder: 'images/loadingbox.gif',
-          //                     image: snapshot.data[index].thumbnail,
-          //                   ),
-          //                 ),
-          //                 contentPadding: EdgeInsets.fromLTRB(15, 4, 5, 7),
-          //                 onTap: () {
-          //                   Navigator.pushNamed(
-          //                     context,
-          //                     '/postdetail',
-          //                     arguments: {
-          //                       'title': snapshot.data[index].title,
-          //                       'image': snapshot.data[index].image,
-          //                       'content': snapshot.data[index].content,
-          //                     },
-          //                   );
-          //                 });
-          //           }
-          //         },
-          //         separatorBuilder: (BuildContext context, int index) => Divider(),
-          //         padding: EdgeInsets.all(10),
-          //       );
-          //     } else if (snapshot.hasError) {
-          //       return Text("${snapshot.error}");
-          //     }
-          //     // By default, show a loading spinner.
-          //     return Column(
-          //       mainAxisAlignment: MainAxisAlignment.center,
-          //       children: [
-          //         Text('Welkom bij',
-          //             style: TextStyle(
-          //               fontSize: 20,
-          //             )),
-          //         Padding(
-          //           padding: const EdgeInsets.all(15),
-          //           child: CircularProgressIndicator(),
-          //         ),
-          //         Text(
-          //           'Wat een gast!',
-          //           style: TextStyle(
-          //             fontSize: 20,
-          //             color: Colors.black,
-          //           ),
-          //         ),
-          //       ],
-          //     );
-          //   },
-          // ),
-          ),
+              })),
     );
   }
 }
-
-/* SNIPPETS - controller voor in initState(): 
- _scrollController.addListener(() {
-      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
-        // if we are at the bottom of the page
-        print('Tijd voor nieuwe posts!');
-        setState(() {
-          page += 1;
-          futurePostList = _getPosts();
-        });
-      }
-    });
-*/
