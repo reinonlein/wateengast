@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:wateengast/models/singlepost.dart';
+
+FirebaseAnalytics analytics = FirebaseAnalytics();
 
 class Home extends StatefulWidget {
   @override
@@ -19,7 +23,6 @@ List<SinglePost> parsePosts(response) {
 class _HomeState extends State<Home> {
   Future<List> futurePostList;
   ScrollController _scrollController = new ScrollController();
-  bool loading = false;
   int page = 1;
   List currentPostList = [];
 
@@ -50,6 +53,10 @@ class _HomeState extends State<Home> {
       if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
         // if we are at the bottom of the page
         page += 1;
+        FirebaseAnalytics().logEvent(
+          name: 'infinite_scrolled',
+          parameters: {'target_page': page},
+        );
         _getPosts().then((response) {
           currentPostList.addAll(response);
           setState(() {});
@@ -83,7 +90,7 @@ class _HomeState extends State<Home> {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(height: 180),
+                      SizedBox(height: 200),
                       Text('Wat een gast!',
                           style: TextStyle(
                             fontSize: 24,
@@ -117,6 +124,10 @@ class _HomeState extends State<Home> {
                       ),
                       contentPadding: EdgeInsets.fromLTRB(15, 4, 5, 7),
                       onTap: () {
+                        FirebaseAnalytics().logEvent(
+                          name: 'read_post',
+                          parameters: {'Title': currentPostList[index].title},
+                        );
                         Navigator.pushNamed(
                           context,
                           '/postdetail',
