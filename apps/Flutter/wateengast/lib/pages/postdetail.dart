@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PostDetail extends StatefulWidget {
   @override
@@ -48,10 +49,12 @@ class _PostDetailState extends State<PostDetail> {
               defaultTextStyle: TextStyle(fontSize: 15),
               data: post['content'],
               padding: EdgeInsets.all(10.0),
-              onLinkTap: (url) {
-                String site = url.substring(0, 26);
-                print("Opening $url...");
-                print("site is $site");
+              onLinkTap: (url) async {
+                if (await canLaunch(url)) {
+                  await launch(url, forceWebView: false);
+                } else {
+                  throw 'Could not launch $url';
+                }
               },
             ),
           ),
