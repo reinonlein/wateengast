@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_analytics/observer.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:wateengast/models/singlepost.dart';
@@ -80,66 +79,111 @@ class _HomeState extends State<Home> {
         centerTitle: true,
       ),
       body: Center(
-          child: ListView.separated(
-              controller: _scrollController,
-              itemCount: currentPostList.length + 1,
-              separatorBuilder: (BuildContext context, int index) => Divider(),
-              padding: EdgeInsets.all(10),
-              itemBuilder: (context, index) {
-                if (currentPostList.length == 0) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(height: 200),
-                      Text('Wat een gast!',
-                          style: TextStyle(
-                            fontSize: 24,
-                          )),
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: SpinKitThreeBounce(
-                          color: Colors.green,
-                        ),
+        child: ListView.separated(
+            controller: _scrollController,
+            itemCount: currentPostList.length + 1,
+            separatorBuilder: (BuildContext context, int index) => Divider(),
+            padding: EdgeInsets.all(10),
+            itemBuilder: (context, index) {
+              if (currentPostList.length == 0) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 200),
+                    Text(' ',
+                        style: TextStyle(
+                          fontSize: 24,
+                        )),
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: SpinKitThreeBounce(
+                        color: Colors.green,
                       ),
-                    ],
-                  );
-                } else if (index == currentPostList.length) {
-                  return new ListTile(
-                    leading: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CircularProgressIndicator(),
                     ),
-                    title: Text('Een momentje!'),
-                    subtitle: Text('Er worden meer posts opgehaald...'),
-                  );
-                } else {
-                  return new ListTile(
-                      title: Text(currentPostList[index].title),
-                      leading: ClipRRect(
-                        borderRadius: BorderRadius.circular(6.0),
-                        child: FadeInImage.assetNetwork(
-                          placeholder: 'images/loadingbox.gif',
-                          image: currentPostList[index].thumbnail,
-                        ),
+                  ],
+                );
+              } else if (index == currentPostList.length) {
+                return new ListTile(
+                  leading: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CircularProgressIndicator(),
+                  ),
+                  title: Text('Een momentje!'),
+                  subtitle: Text('Er worden meer posts opgehaald...'),
+                );
+              } else {
+                return new ListTile(
+                    title: Text(currentPostList[index].title),
+                    leading: ClipRRect(
+                      borderRadius: BorderRadius.circular(6.0),
+                      child: FadeInImage.assetNetwork(
+                        placeholder: 'images/loadingbox.gif',
+                        image: currentPostList[index].thumbnail,
                       ),
-                      contentPadding: EdgeInsets.fromLTRB(15, 4, 5, 7),
-                      onTap: () {
-                        FirebaseAnalytics().logEvent(
-                          name: 'read_post',
-                          parameters: {'Title': currentPostList[index].title},
-                        );
-                        Navigator.pushNamed(
-                          context,
-                          '/postdetail',
-                          arguments: {
-                            'title': currentPostList[index].title,
-                            'image': currentPostList[index].image,
-                            'content': currentPostList[index].content,
-                          },
-                        );
-                      });
-                }
-              })),
+                    ),
+                    contentPadding: EdgeInsets.fromLTRB(15, 4, 5, 7),
+                    onTap: () {
+                      FirebaseAnalytics().logEvent(
+                        name: 'read_post',
+                        parameters: {'Title': currentPostList[index].title},
+                      );
+                      Navigator.pushNamed(
+                        context,
+                        '/postdetail',
+                        arguments: {
+                          'title': currentPostList[index].title,
+                          'image': currentPostList[index].image,
+                          'content': currentPostList[index].content,
+                        },
+                      );
+                    });
+              }
+            }),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Alle categoriën'),
+              decoration: BoxDecoration(
+                color: Colors.green,
+              ),
+            ),
+            ListTile(
+              title: Text('Auto en verkeer'),
+              trailing: FloatingActionButton(
+                onPressed: null,
+                mini: true,
+                elevation: 0,
+                child: Text('42'),
+              ),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Hobby en vrije tijd'),
+              trailing: FloatingActionButton(
+                onPressed: null,
+                mini: true,
+                elevation: 0,
+                child: Text('14'),
+              ),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
