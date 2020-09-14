@@ -3,9 +3,11 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:badges/badges.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:wateengast/models/singlepost.dart';
+import 'package:wateengast/models/singlecategory.dart';
 
 FirebaseAnalytics analytics = FirebaseAnalytics();
 
@@ -19,17 +21,23 @@ List<SinglePost> parsePosts(response) {
   return parsed.map<SinglePost>((json) => SinglePost.fromJson(json)).toList();
 }
 
+List<SingleCategory> parseCategories(responseCat) {
+  final parsedCat = jsonDecode(responseCat).cast<Map<String, dynamic>>();
+  return parsedCat.map<SingleCategory>((json) => SingleCategory.fromJson(json)).toList();
+}
+
 class _HomeState extends State<Home> {
-  Future<List> futurePostList;
   ScrollController _scrollController = new ScrollController();
   int page = 1;
   List currentPostList = [];
+  List currentCategoryList = [];
 
   Future<List<SinglePost>> _getPosts() async {
     var queryParameters = {
       '_embed': '',
       'per_page': '30',
       'page': page.toString(),
+      'categories': '',
     };
 
     var uri = Uri.https('www.wateengast.nl', '/wp-json/wp/v2/posts', queryParameters);
@@ -38,15 +46,24 @@ class _HomeState extends State<Home> {
     return compute(parsePosts, response.body);
   }
 
+  Future<List<SingleCategory>> _getCategories() async {
+    final responseCat =
+        await http.get('https://www.wateengast.nl/wp-json/wp/v2/categories?per_page=50');
+    return compute(parseCategories, responseCat.body);
+  }
+
   @override
   void initState() {
     super.initState();
-    futurePostList = _getPosts();
+    analytics.setCurrentScreen(screenName: '/home');
     _getPosts().then((response) {
       currentPostList = response;
       setState(() {});
     });
-    //loading = false;
+    _getCategories().then((responseCat) {
+      currentCategoryList = responseCat;
+      setState(() {});
+    });
 
     _scrollController.addListener(() {
       if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
@@ -141,49 +158,113 @@ class _HomeState extends State<Home> {
             }),
       ),
       drawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Alle categoriën'),
-              decoration: BoxDecoration(
-                color: Colors.green,
+        child: ListView.builder(
+          itemCount: currentCategoryList.length + 1,
+          itemBuilder: (context, index) {
+            if (index == 0) {
+              return DrawerHeader(
+                child: Center(
+                  child: Text(
+                    'Alle categorieën op \n Wat een gast!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 21,
+                    ),
+                  ),
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                ),
+              );
+            }
+            return ListTile(
+              title: Text(currentCategoryList[index - 1].name),
+              trailing: SizedBox(
+                width: 28.0,
+                height: 28.0,
+                child: FloatingActionButton(
+                  onPressed: () {},
+                  child: Text(
+                    currentCategoryList[index - 1].count,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  elevation: 1.5,
+                ),
               ),
-            ),
-            ListTile(
-              title: Text('Auto en verkeer'),
-              trailing: FloatingActionButton(
-                onPressed: null,
-                mini: true,
-                elevation: 0,
-                child: Text('42'),
-              ),
+              // trailing: CircleAvatar(
+              //   radius: 14,
+              //   backgroundColor: Colors.green,
+              //   child: Text(
+              //     currentCategoryList[index - 1].count,
+              //     style: TextStyle(
+              //       color: Colors.white,
+              //       fontSize: 12,
+              //       fontWeight: FontWeight.bold,
+              //     ),
+              //   ),
+              // ),
               onTap: () {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
+                print(currentCategoryList[index].id);
                 Navigator.pop(context);
               },
-            ),
-            ListTile(
-              title: Text('Hobby en vrije tijd'),
-              trailing: FloatingActionButton(
-                onPressed: null,
-                mini: true,
-                elevation: 0,
-                child: Text('14'),
-              ),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-          ],
+            );
+          },
         ),
       ),
     );
   }
 }
+
+// drawer: Drawer(
+//   child: ListView(
+//     // Important: Remove any padding from the ListView.
+//     padding: EdgeInsets.zero,
+//     children: <Widget>[
+//       DrawerHeader(
+//         child: Text('Alle categoriën'),
+//         decoration: BoxDecoration(
+//           color: Colors.green,
+//         ),
+//       ),
+//       ListTile(
+//         title: Text('Auto en verkeer'),
+//         trailing: FloatingActionButton(
+//           onPressed: null,
+//           mini: true,
+//           elevation: 0,
+//           child: Text('42'),
+//         ),
+//         onTap: () {
+//           // Update the state of the app
+//           // ...
+//           // Then close the drawer
+//           Navigator.pop(context);
+//         },
+//       ),
+//       ListTile(
+//         title: Text('Hobby en vrije tijd'),
+//         trailing: FloatingActionButton(
+//           onPressed: null,
+//           mini: true,
+//           elevation: 0,
+//           child: Text('14'),
+//         ),
+//         onTap: () {
+//           // Update the state of the app
+//           // ...
+//           // Then close the drawer
+//           Navigator.pop(context);
+//         },
+//       ),
+//     ],
+//   ),
+// ),
