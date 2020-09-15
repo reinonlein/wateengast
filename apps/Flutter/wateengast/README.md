@@ -15,7 +15,7 @@ Stay tuned & enjoy!
 
 # Upcoming: 2.1.0
 Nieuwe features:
-- Een drawer-menu toegevoegd waarmee je op categorieën kunt filteren
+- Een drawer-menu toegevoegd waarmee je op categorie kunt filteren
 
 # First brandnew release: 2.0.0
 Nieuwe features 
@@ -26,4 +26,3 @@ Nieuwe features
 - Logo's klaargemaakt voor nieuwe release
 - En uiteraard een strakke [GitHub-repo](https://github.com/reinonlein/wateengast/tree/master/apps/Flutter/wateengast) voor de geïnteresseerden
 
-Even testen..
