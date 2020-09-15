@@ -25,3 +25,5 @@ Nieuwe features
 - Posts in detailscreen kunnen lezen vanuit ListView
 - Logo's klaargemaakt voor nieuwe release
 - En uiteraard een strakke [GitHub-repo](https://github.com/reinonlein/wateengast/tree/master/apps/Flutter/wateengast) voor de geïnteresseerden
+
+Even testen..
