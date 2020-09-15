@@ -31,18 +31,20 @@ class _HomeState extends State<Home> {
   int page = 1;
   List currentPostList = [];
   List currentCategoryList = [];
+  String category = '';
 
   Future<List<SinglePost>> _getPosts() async {
     var queryParameters = {
       '_embed': '',
       'per_page': '30',
       'page': page.toString(),
-      'categories': '',
+      'categories': category,
     };
 
     var uri = Uri.https('www.wateengast.nl', '/wp-json/wp/v2/posts', queryParameters);
 
     final response = await http.get(uri);
+    print(uri);
     return compute(parsePosts, response.body);
   }
 
@@ -211,7 +213,13 @@ class _HomeState extends State<Home> {
               // ),
               onTap: () {
                 // Update the state of the app
-                // ...
+                category = currentCategoryList[index - 1].id;
+                currentPostList = [];
+                page = 1;
+                _getPosts().then((response) {
+                  currentPostList.addAll(response);
+                  setState(() {});
+                });
                 // Then close the drawer
                 print(currentCategoryList[index].id);
                 Navigator.pop(context);
@@ -223,48 +231,3 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
-// drawer: Drawer(
-//   child: ListView(
-//     // Important: Remove any padding from the ListView.
-//     padding: EdgeInsets.zero,
-//     children: <Widget>[
-//       DrawerHeader(
-//         child: Text('Alle categoriën'),
-//         decoration: BoxDecoration(
-//           color: Colors.green,
-//         ),
-//       ),
-//       ListTile(
-//         title: Text('Auto en verkeer'),
-//         trailing: FloatingActionButton(
-//           onPressed: null,
-//           mini: true,
-//           elevation: 0,
-//           child: Text('42'),
-//         ),
-//         onTap: () {
-//           // Update the state of the app
-//           // ...
-//           // Then close the drawer
-//           Navigator.pop(context);
-//         },
-//       ),
-//       ListTile(
-//         title: Text('Hobby en vrije tijd'),
-//         trailing: FloatingActionButton(
-//           onPressed: null,
-//           mini: true,
-//           elevation: 0,
-//           child: Text('14'),
-//         ),
-//         onTap: () {
-//           // Update the state of the app
-//           // ...
-//           // Then close the drawer
-//           Navigator.pop(context);
-//         },
-//       ),
-//     ],
-//   ),
-// ),

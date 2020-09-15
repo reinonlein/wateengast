@@ -98,3 +98,50 @@
 //     );
 //   },
 // ),
+
+// DRAWER VOORBEELD /////////////
+
+// drawer: Drawer(
+//   child: ListView(
+//     // Important: Remove any padding from the ListView.
+//     padding: EdgeInsets.zero,
+//     children: <Widget>[
+//       DrawerHeader(
+//         child: Text('Alle categoriën'),
+//         decoration: BoxDecoration(
+//           color: Colors.green,
+//         ),
+//       ),
+//       ListTile(
+//         title: Text('Auto en verkeer'),
+//         trailing: FloatingActionButton(
+//           onPressed: null,
+//           mini: true,
+//           elevation: 0,
+//           child: Text('42'),
+//         ),
+//         onTap: () {
+//           // Update the state of the app
+//           // ...
+//           // Then close the drawer
+//           Navigator.pop(context);
+//         },
+//       ),
+//       ListTile(
+//         title: Text('Hobby en vrije tijd'),
+//         trailing: FloatingActionButton(
+//           onPressed: null,
+//           mini: true,
+//           elevation: 0,
+//           child: Text('14'),
+//         ),
+//         onTap: () {
+//           // Update the state of the app
+//           // ...
+//           // Then close the drawer
+//           Navigator.pop(context);
+//         },
+//       ),
+//     ],
+//   ),
+// ),
