@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
   List currentPostList = [];
   List currentCategoryList = [];
   String category = '';
-  String categoryName = '';
+  String categoryName = 'Wat een gast...';
 
   Future<List<SinglePost>> _getPosts() async {
     var queryParameters = {
@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
 
   Future<List<SingleCategory>> _getCategories() async {
     final responseCat =
-        await http.get('https://www.wateengast.nl/wp-json/wp/v2/categories?per_page=50');
+        await http.get('https://www.wateengast.nl/wp-json/wp/v2/categories?per_page=50&exclude=1');
     return compute(parseCategories, responseCat.body);
   }
 
@@ -104,7 +104,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Wat een gast...'),
+        title: Text(categoryName),
         backgroundColor: Colors.green, //#4CAF50 RGB 76 175 80
         centerTitle: true,
       ),
@@ -120,7 +120,7 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(height: 200),
-                    if (categoryName != '')
+                    if (categoryName != 'Wat een gast...')
                       Text(categoryName,
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -179,7 +179,7 @@ class _HomeState extends State<Home> {
       ),
       drawer: Drawer(
         child: ListView.builder(
-          itemCount: currentCategoryList.length + 1,
+          itemCount: currentCategoryList.length + 2,
           itemBuilder: (context, index) {
             if (index == 0) {
               return DrawerHeader(
@@ -198,58 +198,63 @@ class _HomeState extends State<Home> {
                   color: Colors.green,
                 ),
               );
-            }
-            return ListTile(
-              title: Text(currentCategoryList[index - 1].name),
-              trailing: SizedBox(
-                width: 28.0,
-                height: 28.0,
-                child: FloatingActionButton(
-                  onPressed: () {},
-                  child: Text(
-                    currentCategoryList[index - 1].count,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  elevation: 1.5,
-                ),
-              ),
-              // trailing: CircleAvatar(
-              //   radius: 14,
-              //   backgroundColor: Colors.green,
-              //   child: Text(
-              //     currentCategoryList[index - 1].count,
-              //     style: TextStyle(
-              //       color: Colors.white,
-              //       fontSize: 12,
-              //       fontWeight: FontWeight.bold,
-              //     ),
-              //   ),
-              // ),
-              onTap: () {
-                // Update the state of the app
-                category = currentCategoryList[index - 1].id;
-                setState(() {
+            } else if (index == 1) {
+              return ListTile(
+                title: Text('Alle categorieën'),
+                onTap: () {
                   currentPostList = [];
-                  categoryName = currentCategoryList[index - 1].name;
-                  postCount = int.parse(currentCategoryList[index - 1].count);
-                  availablePages =
-                      (int.parse(currentCategoryList[index - 1].count) / perPage).ceil();
-                  print(availablePages);
-                });
-                page = 1;
-                _getPosts().then((response) {
-                  currentPostList.addAll(response);
                   setState(() {});
-                });
-                // Then close the drawer
-                print(currentCategoryList[index].id);
-                Navigator.pop(context);
-              },
-            );
+                  page = 1;
+                  category = '';
+                  categoryName = 'Alle vragen';
+                  _getPosts().then((response) {
+                    currentPostList = response;
+                    page = 1;
+                    setState(() {});
+                  });
+                  Navigator.pop(context);
+                },
+              );
+            } else {
+              return ListTile(
+                title: Text(currentCategoryList[index - 2].name),
+                trailing: SizedBox(
+                  width: 28.0,
+                  height: 28.0,
+                  child: FloatingActionButton(
+                    onPressed: () {},
+                    child: Text(
+                      currentCategoryList[index - 2].count,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    elevation: 1.5,
+                  ),
+                ),
+                onTap: () {
+                  // Update the state of the app
+                  category = currentCategoryList[index - 2].id;
+                  setState(() {
+                    currentPostList = [];
+                    categoryName = currentCategoryList[index - 2].name;
+                    postCount = int.parse(currentCategoryList[index - 2].count);
+                    availablePages =
+                        (int.parse(currentCategoryList[index - 2].count) / perPage).ceil();
+                    print(availablePages);
+                  });
+                  page = 1;
+                  _getPosts().then((response) {
+                    currentPostList.addAll(response);
+                    setState(() {});
+                  });
+                  // Then close the drawer
+                  Navigator.pop(context);
+                },
+              );
+            }
           },
         ),
       ),

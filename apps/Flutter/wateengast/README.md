@@ -16,8 +16,11 @@ Stay tuned & enjoy!
 # Upcoming: 2.1.0
 Nieuwe features:
 - Een drawer-menu toegevoegd waarmee je op categorie kunt filteren
+- De inifinite scroll list is niet meer oneindig, maar eindigt na de laatste post
+- Een basic filter op de categorielijst toegepast
+- De naam van de categorie wordt weergegeven in de appbar
 
-# First brandnew release: 2.0.0
+# First epic release: 2.0.0
 Nieuwe features 
 - compleet zelfgemaakt in FLutter
 - posts van [Wateengast.nl](https://www.wateengast.nl) binnenhalen via Wordpress REST API
