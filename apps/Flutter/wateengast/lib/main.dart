@@ -3,6 +3,7 @@ import 'package:wateengast/pages/postdetail.dart';
 import 'package:wateengast/pages/home.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 FirebaseAnalytics analytics = FirebaseAnalytics();
 
@@ -14,6 +15,8 @@ void main() {
         accentColor: Colors.green,
         appBarTheme: AppBarTheme(color: Colors.green),
         primarySwatch: Colors.green,
+        fontFamily: 'OpenSans',
+        //textTheme: GoogleFonts.openSansTextTheme(),
       ),
       navigatorObservers: [
         FirebaseAnalyticsObserver(analytics: analytics),
@@ -26,3 +29,12 @@ void main() {
     ),
   );
 }
+
+///lato
+///none
+///roboto
+///raleway
+///open sans
+///
+///
+///

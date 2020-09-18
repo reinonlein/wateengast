@@ -13,7 +13,13 @@ Stay tuned & enjoy!
 
 ## Version changelog:
 
-# Upcoming: 2.1.0
+# Upcoming: 2.2.0
+Nieuwe features:
+- Ontvang een pushnotificatie zodra er een nieuwe post live gaat!
+- Implementatie van Firebase Cloud Messaging en een Wordpress plugin op [Wateengast.nl](https://www.wateengast.nl)
+- Toepassen nieuw lettertype: OpenSans (net zoals op de website) 
+
+# Current: 2.1.0
 Nieuwe features:
 - Een drawer-menu toegevoegd waarmee je op categorie kunt filteren
 - De inifinite scroll list is niet meer oneindig, maar eindigt na de laatste post

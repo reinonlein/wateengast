@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'package:wateengast/models/singlepost.dart';
 import 'package:wateengast/models/singlecategory.dart';
@@ -61,9 +62,86 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
+
+    final fbm = FirebaseMessaging();
+
+    fbm.subscribeToTopic('WordpressTopic');
+
     analytics.setCurrentScreen(screenName: '/home');
+
     _getPosts().then((response) {
       currentPostList = response;
+      fbm.configure(
+        onMessage: (message) {
+          print(message);
+          return showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              // return object of type Dialog
+              return AlertDialog(
+                title: new Text(
+                  "Goed nieuws!",
+                  style: TextStyle(
+                    color: Colors.green,
+                  ),
+                ),
+                content: new Text("Er staat een nieuwe vraag live. Wil je die nu gelijk lezen?"),
+                actions: <Widget>[
+                  // usually buttons at the bottom of the dialog
+                  Row(
+                    children: [
+                      new FlatButton(
+                        child: new Text("Jazekers!"),
+                        onPressed: () {
+                          Navigator.popAndPushNamed(
+                            context,
+                            '/postdetail',
+                            arguments: {
+                              'title': currentPostList[0].title,
+                              'image': currentPostList[0].image,
+                              'content': currentPostList[0].content,
+                            },
+                          );
+                        },
+                      ),
+                      new FlatButton(
+                        child: new Text("Nee dank je"),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              );
+            },
+          );
+        },
+        onLaunch: (message) {
+          print(message);
+          return Navigator.pushNamed(
+            context,
+            '/postdetail',
+            arguments: {
+              'title': currentPostList[0].title,
+              'image': currentPostList[0].image,
+              'content': currentPostList[0].content,
+            },
+          );
+        },
+        onResume: (message) {
+          print(message);
+          return Navigator.pushNamed(
+            context,
+            '/postdetail',
+            arguments: {
+              'title': currentPostList[0].title,
+              'image': currentPostList[0].image,
+              'content': currentPostList[0].content,
+            },
+          );
+        },
+      );
       setState(() {});
     });
     _getCategories().then((responseCat) {
@@ -104,7 +182,12 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(categoryName),
+        title: Text(
+          categoryName,
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         backgroundColor: Colors.green, //#4CAF50 RGB 76 175 80
         centerTitle: true,
       ),
@@ -150,7 +233,12 @@ class _HomeState extends State<Home> {
                 );
               } else {
                 return new ListTile(
-                    title: Text(currentPostList[index].title),
+                    title: Text(
+                      currentPostList[index].title,
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
                     leading: ClipRRect(
                       borderRadius: BorderRadius.circular(6.0),
                       child: FadeInImage.assetNetwork(
@@ -179,23 +267,27 @@ class _HomeState extends State<Home> {
       ),
       drawer: Drawer(
         child: ListView.builder(
+          padding: const EdgeInsets.all(0.0),
           itemCount: currentCategoryList.length + 2,
           itemBuilder: (context, index) {
             if (index == 0) {
-              return DrawerHeader(
-                child: Center(
-                  child: Text(
-                    'Alle categorieën op \n Wat een gast!',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 21,
+              return Container(
+                height: 160,
+                child: DrawerHeader(
+                  child: Center(
+                    child: Text(
+                      'Alle categorieën op \n Wat een gast!',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 21,
+                      ),
                     ),
                   ),
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.green,
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                  ),
                 ),
               );
             } else if (index == 1) {
@@ -235,6 +327,10 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 onTap: () {
+                  FirebaseAnalytics().logEvent(
+                    name: 'category_selected',
+                    parameters: {'category': categoryName},
+                  );
                   // Update the state of the app
                   category = currentCategoryList[index - 2].id;
                   setState(() {

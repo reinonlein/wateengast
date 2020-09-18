@@ -8,3 +8,14 @@ Thumbs.db
 .cpython-37.pyc
 websites/django/reinonlein/reinonlein/__pycache__
 apps/Flutter/wateengast/pubspec.lock
+apps/Flutter/wateengast/fonts/LICENSE.txt
+apps/Flutter/wateengast/fonts/OpenSans-Bold.ttf
+apps/Flutter/wateengast/fonts/OpenSans-BoldItalic.ttf
+apps/Flutter/wateengast/fonts/OpenSans-ExtraBold.ttf
+apps/Flutter/wateengast/fonts/OpenSans-ExtraBoldItalic.ttf
+apps/Flutter/wateengast/fonts/OpenSans-Italic.ttf
+apps/Flutter/wateengast/fonts/OpenSans-Light.ttf
+apps/Flutter/wateengast/fonts/OpenSans-LightItalic.ttf
+apps/Flutter/wateengast/fonts/OpenSans-Regular.ttf
+apps/Flutter/wateengast/fonts/OpenSans-SemiBold.ttf
+apps/Flutter/wateengast/fonts/OpenSans-SemiBoldItalic.ttf
