@@ -18,7 +18,12 @@ class _PostDetailState extends State<PostDetail> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Wat een gast...'),
+        title: Text(
+          'Wat een gast...',
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.green,
       ),
@@ -46,7 +51,7 @@ class _PostDetailState extends State<PostDetail> {
           Container(
             padding: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 15.0),
             child: Html(
-              defaultTextStyle: TextStyle(fontSize: 15),
+              defaultTextStyle: TextStyle(fontSize: 14.5),
               data: post['content'],
               padding: EdgeInsets.all(10.0),
               onLinkTap: (url) async {
