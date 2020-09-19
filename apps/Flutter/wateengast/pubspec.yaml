@@ -106,7 +106,7 @@ flutter:
         - asset: fonts/OpenSans/OpenSans-ExtraBoldItalic.ttf
           style: italic
           weight: 800
-    - family: OpenSans
+    - family: Montserrat
       fonts:
         - asset: fonts/Montserrat/Montserrat-Thin.ttf
           weight: 100

@@ -45,15 +45,24 @@ class _PostDetailState extends State<PostDetail> {
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.green[600],
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w700,
+                  shadows: <Shadow>[
+                    Shadow(
+                      offset: Offset(0.0, 0.0),
+                      blurRadius: 0.0,
+                      color: Color.fromARGB(150, 0, 0, 0),
+                    ),
+                  ],
                 )),
           ),
           Container(
-            padding: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 15.0),
+            padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 15.0),
             child: Html(
               defaultTextStyle: TextStyle(
                 fontSize: 15,
-                height: 1.5,
+                height: 1.8,
+                letterSpacing: -0.1,
+                fontWeight: FontWeight.w500,
               ),
               data: post['content'],
               padding: EdgeInsets.all(10.0),
