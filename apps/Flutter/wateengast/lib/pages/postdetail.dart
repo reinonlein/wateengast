@@ -29,31 +29,40 @@ class _PostDetailState extends State<PostDetail> {
       ),
       body: ListView(
         children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 220,
-            child: FadeInImage.assetNetwork(
-              placeholder: 'images/loading.gif',
-              fit: BoxFit.cover,
-              image: post['image'],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(15.0, 23.0, 15.0, 5.0),
-            child: Text(post['title'],
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.green[600],
-                  fontWeight: FontWeight.w700,
-                  shadows: <Shadow>[
-                    Shadow(
-                      offset: Offset(0.0, 0.0),
-                      blurRadius: 0.0,
-                      color: Color.fromARGB(150, 0, 0, 0),
-                    ),
-                  ],
-                )),
+          Stack(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 220,
+                child: FadeInImage.assetNetwork(
+                  placeholder: 'images/loading.gif',
+                  fit: BoxFit.cover,
+                  image: post['image'],
+                ),
+              ),
+              Positioned(
+                bottom: 17,
+                left: 20,
+                right: 20,
+                child: Container(
+                  //padding: const EdgeInsets.fromLTRB(17.0, 23.0, 17.0, 5.0),
+                  child: Text(post['title'],
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 23.5,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(0.0, 0.0),
+                            blurRadius: 8.0,
+                            color: Color.fromARGB(200, 0, 0, 0),
+                          ),
+                        ],
+                      )),
+                ),
+              ),
+            ],
           ),
           Container(
             padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 15.0),
