@@ -145,3 +145,31 @@
 //     ],
 //   ),
 // ),
+
+// OUDE POST DETAIL PAGE
+// Container(
+//   width: MediaQuery.of(context).size.width,
+//   height: 220,
+//   child: FadeInImage.assetNetwork(
+//     placeholder: 'images/loading.gif',
+//     fit: BoxFit.cover,
+//     image: post['image'],
+//   ),
+// ),
+// Padding(
+//   padding: const EdgeInsets.fromLTRB(15.0, 23.0, 15.0, 5.0),
+//   child: Text(post['title'],
+//       textAlign: TextAlign.center,
+//       style: TextStyle(
+//         fontSize: 20,
+//         color: Colors.green[600],
+//         fontWeight: FontWeight.w700,
+//         shadows: <Shadow>[
+//           Shadow(
+//             offset: Offset(0.0, 0.0),
+//             blurRadius: 0.0,
+//             color: Color.fromARGB(150, 0, 0, 0),
+//           ),
+//         ],
+//       )),
+// ),
