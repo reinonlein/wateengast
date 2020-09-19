@@ -208,6 +208,7 @@ class _HomeState extends State<Home> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 24,
+                            fontWeight: FontWeight.w400,
                           )),
                     Padding(
                       padding: const EdgeInsets.all(15.0),
@@ -237,6 +238,9 @@ class _HomeState extends State<Home> {
                       currentPostList[index].title,
                       style: TextStyle(
                         fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 0,
+                        height: 1.3,
                       ),
                     ),
                     leading: ClipRRect(
@@ -280,7 +284,7 @@ class _HomeState extends State<Home> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w500,
                         fontSize: 21,
                       ),
                     ),
@@ -292,7 +296,13 @@ class _HomeState extends State<Home> {
               );
             } else if (index == 1) {
               return ListTile(
-                title: Text('Alle categorieën'),
+                title: Text(
+                  'Alle categorieën',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
                 onTap: () {
                   currentPostList = [];
                   setState(() {});
@@ -309,7 +319,11 @@ class _HomeState extends State<Home> {
               );
             } else {
               return ListTile(
-                title: Text(currentCategoryList[index - 2].name),
+                title: Text(currentCategoryList[index - 2].name,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                    )),
                 trailing: SizedBox(
                   width: 28.0,
                   height: 28.0,
