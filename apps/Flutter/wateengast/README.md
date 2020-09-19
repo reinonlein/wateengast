@@ -18,7 +18,8 @@ Nieuwe features:
 - Ontvang een pushnotificatie zodra er een nieuwe post live gaat!
 - Implementatie van Firebase Cloud Messaging en een Wordpress plugin op [Wateengast.nl](https://www.wateengast.nl)
 - Topic gemaakt zodat je je later ook kunt afmelden voor messging
-- Toepassen nieuw lettertype: Montserrat (heel fijn te finetunen)
+- De layout van het post detail screen is verbeterd (letters in stack boven afbeelding)
+- Toepassen nieuw lettertype: Montserrat (heel fijn te finetunen in lijnafstand, letterafstand, etc.)
 
 # Current: 2.1.0
 Nieuwe features:
