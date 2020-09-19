@@ -15,8 +15,9 @@ void main() {
         accentColor: Colors.green,
         appBarTheme: AppBarTheme(color: Colors.green),
         primarySwatch: Colors.green,
-        fontFamily: 'OpenSans',
+        //fontFamily: 'OpenSans',
         //textTheme: GoogleFonts.openSansTextTheme(),
+        textTheme: GoogleFonts.montserratTextTheme(),
       ),
       navigatorObservers: [
         FirebaseAnalyticsObserver(analytics: analytics),

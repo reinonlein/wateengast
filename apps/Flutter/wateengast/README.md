@@ -17,6 +17,7 @@ Stay tuned & enjoy!
 Nieuwe features:
 - Ontvang een pushnotificatie zodra er een nieuwe post live gaat!
 - Implementatie van Firebase Cloud Messaging en een Wordpress plugin op [Wateengast.nl](https://www.wateengast.nl)
+- Topic gemaakt zodat je je later ook kunt afmelden voor messging
 - Toepassen nieuw lettertype: OpenSans (net zoals op de website) 
 
 # Current: 2.1.0
