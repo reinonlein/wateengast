@@ -13,7 +13,7 @@ void main() {
       title: 'Wat een gast!',
       theme: ThemeData(
         accentColor: Colors.green,
-        appBarTheme: AppBarTheme(color: Colors.green),
+        appBarTheme: AppBarTheme(color: Colors.green), //#4CAF50 RGB 76 175 80
         primarySwatch: Colors.green,
         fontFamily: 'Montserrat',
         //textTheme: GoogleFonts.notoSansTextTheme(),
