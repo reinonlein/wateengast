@@ -188,7 +188,7 @@ class _HomeState extends State<Home> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        backgroundColor: Colors.green, //#4CAF50 RGB 76 175 80
+        backgroundColor: Colors.green,
         centerTitle: true,
       ),
       body: Center(
