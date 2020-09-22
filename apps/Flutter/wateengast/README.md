@@ -37,3 +37,17 @@ Nieuwe features
 - Logo's klaargemaakt voor nieuwe release
 - En uiteraard een strakke [GitHub-repo](https://github.com/reinonlein/wateengast/tree/master/apps/Flutter/wateengast) voor de geïnteresseerden
 
+
+En tenslotte, hier een wenslijst van features en issues die ik in de toekomst nog op wil lossen:
+- Een mogelijkheid om via de app vragen in te dienen
+- Ik wil nog een zoekfunctie toevoegen
+- Het ophalen van alle posts duurt mij iets te lang, met andere manier van opslaan moet dat sneller kunnen
+- Het lettertype en de huisstijl bevallen me nog niet perfect
+- De tekst van de posts verspringt nu nog bij links in de tekst
+- Links binnen Wateengast.nl wil ik binnen de app houden ipv dat een externe browser wordt geopend
+- Op een aantal oude posts wil ik nog nieuwe copyightvrije afbeeldingen toevoegen
+- Ik moet mijn cetegorieën opruimen
+- Toevoegen van een soort like button
+- Code refactoring (widgets apart zetten, const variabelen optimaliseren, etcetera)
+
+Verder nog tips of suggesties? Ik hoor ze graag!

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_html/style.dart';
+//import 'package:flutter_html/style.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class PostDetail extends StatefulWidget {
@@ -68,16 +68,14 @@ class _PostDetailState extends State<PostDetail> {
           Container(
             padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 15.0),
             child: Html(
+              defaultTextStyle: TextStyle(
+                fontSize: 15,
+                height: 1.8,
+                letterSpacing: -0.1,
+                fontWeight: FontWeight.w500,
+              ),
               data: post['content'],
-              style: {
-                "html": Style(
-                  padding: EdgeInsets.all(10),
-                  fontSize: FontSize(15),
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: 0.2,
-                  //textAlign: TextAlign.justify,
-                ),
-              },
+              padding: EdgeInsets.all(10.0),
               onLinkTap: (url) async {
                 if (await canLaunch(url)) {
                   await launch(url, forceWebView: false);
@@ -122,3 +120,24 @@ class _PostDetailState extends State<PostDetail> {
 //                 }
 //               },
 //             ),
+
+//Nieuw:
+// child: Html(
+//   data: post['content'],
+//   style: {
+//     "html": Style(
+//       padding: EdgeInsets.all(10),
+//       fontSize: FontSize(15),
+//       fontWeight: FontWeight.w500,
+//       letterSpacing: 0.2,
+//       //textAlign: TextAlign.justify,
+//     ),
+//   },
+//   onLinkTap: (url) async {
+//     if (await canLaunch(url)) {
+//       await launch(url, forceWebView: false);
+//     } else {
+//       throw 'Could not launch $url';
+//     }
+//   },
+// ),
