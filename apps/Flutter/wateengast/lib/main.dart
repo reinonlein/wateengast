@@ -16,7 +16,7 @@ void main() {
         appBarTheme: AppBarTheme(color: Colors.green), //#4CAF50 RGB 76 175 80
         primarySwatch: Colors.green,
         fontFamily: 'Montserrat',
-        //textTheme: GoogleFonts.notoSansTextTheme(),
+        //textTheme: GoogleFonts.notoSansTextTheme(), //nunitoSans, workSans montserrat,
       ),
       navigatorObservers: [
         FirebaseAnalyticsObserver(analytics: analytics),

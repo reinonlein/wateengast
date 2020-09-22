@@ -131,6 +131,17 @@ class _HomeState extends State<Home> {
         },
         onResume: (message) {
           print(message);
+          setState(() {
+            category = '';
+            currentPostList = [];
+            postCount = 1000;
+            availablePages = 40;
+            page = 1;
+          });
+          _getPosts().then((response) {
+            currentPostList.addAll(response);
+            setState(() {});
+          });
           return Navigator.pushNamed(
             context,
             '/postdetail',
