@@ -257,9 +257,12 @@ class _HomeState extends State<Home> {
                     ),
                     leading: ClipRRect(
                       borderRadius: BorderRadius.circular(6.0),
-                      child: FadeInImage.assetNetwork(
-                        placeholder: 'images/loadingbox.gif',
-                        image: currentPostList[index].thumbnail,
+                      child: Hero(
+                        tag: 'hero-${currentPostList[index].title}',
+                        child: FadeInImage.assetNetwork(
+                          placeholder: 'images/loadingbox.gif',
+                          image: currentPostList[index].thumbnail,
+                        ),
                       ),
                     ),
                     contentPadding: EdgeInsets.fromLTRB(15, 4, 5, 7),

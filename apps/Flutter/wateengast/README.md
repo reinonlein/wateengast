@@ -53,5 +53,6 @@ En tenslotte, hier een wenslijst van features en issues die ik in de toekomst no
 - Ik moet mijn cetegorieën opruimen
 - Toevoegen van een soort like button
 - Code refactoring (widgets apart zetten, const variabelen optimaliseren, etcetera)
+- Hero animations tussen de postlist en detail screen zouden ook wel gaaf zijn...
 
 Verder nog tips of suggesties? Ik hoor ze graag!

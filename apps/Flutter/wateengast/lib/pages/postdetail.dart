@@ -35,10 +35,13 @@ class _PostDetailState extends State<PostDetail> {
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: 220,
-                child: FadeInImage.assetNetwork(
-                  placeholder: 'images/loading.gif',
-                  fit: BoxFit.cover,
-                  image: post['image'],
+                child: Hero(
+                  tag: 'hero-${post['title']}',
+                  child: FadeInImage.assetNetwork(
+                    placeholder: 'images/loading.gif',
+                    fit: BoxFit.cover,
+                    image: post['image'],
+                  ),
                 ),
               ),
               Positioned(
