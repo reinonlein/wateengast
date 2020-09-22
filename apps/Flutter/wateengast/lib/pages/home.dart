@@ -66,6 +66,7 @@ class _HomeState extends State<Home> {
     final fbm = FirebaseMessaging();
 
     fbm.subscribeToTopic('WordpressTopic');
+    //fbm.subscribeToTopic('TestingTopic');
 
     analytics.setCurrentScreen(screenName: '/home');
 
