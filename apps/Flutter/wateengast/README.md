@@ -13,11 +13,15 @@ Stay tuned & enjoy!
 
 ## Version changelog:
 
-# Current: 2.2.1
+# Current: 2.2.2
+Upgrade:
+- Superstrakke overgangsanimatie toegevoegd!(hero-animation)
+
+# 2.2.1
 Minor fixes:
 - Pushnotificaties worden beter afgehandeld als de app in slaapstand staat
 
-# Current: 2.2.0
+# 2.2.0
 Nieuwe features:
 - Ontvang een pushnotificatie zodra er een nieuwe post live gaat!
 - Implementatie van Firebase Cloud Messaging en een Wordpress plugin op [Wateengast.nl](https://www.wateengast.nl)
@@ -53,6 +57,5 @@ En tenslotte, hier een wenslijst van features en issues die ik in de toekomst no
 - Ik moet mijn cetegorieën opruimen
 - Toevoegen van een soort like button
 - Code refactoring (widgets apart zetten, const variabelen optimaliseren, etcetera)
-- Hero animations tussen de postlist en detail screen zouden ook wel gaaf zijn...
 
 Verder nog tips of suggesties? Ik hoor ze graag!
