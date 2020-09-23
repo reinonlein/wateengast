@@ -72,6 +72,7 @@ class _HomeState extends State<Home> {
 
     _getPosts().then((response) {
       currentPostList = response;
+
       fbm.configure(
         onMessage: (message) {
           print(message);
@@ -241,7 +242,15 @@ class _HomeState extends State<Home> {
                     padding: const EdgeInsets.all(8.0),
                     child: CircularProgressIndicator(),
                   ),
-                  title: Text('Een momentje!'),
+                  title: Text(
+                    'Een momentje!',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 0,
+                      height: 1.3,
+                    ),
+                  ),
                   subtitle: Text('Er worden meer posts opgehaald...'),
                 );
               } else {
