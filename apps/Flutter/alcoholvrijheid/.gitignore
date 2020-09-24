@@ -20,6 +20,9 @@
 # is commented out by default.
 #.vscode/
 
+# Fonts
+**/fonts/
+
 # Android related
 **/android/
 **/android/key.properties
