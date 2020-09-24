@@ -3,7 +3,7 @@ import 'package:alcoholvrijheid/pages/postdetail.dart';
 import 'package:alcoholvrijheid/pages/home.dart';
 //import 'package:firebase_analytics/firebase_analytics.dart';
 //import 'package:firebase_analytics/observer.dart';
-import 'package:google_fonts/google_fonts.dart';
+//import 'package:google_fonts/google_fonts.dart';
 
 //FirebaseAnalytics analytics = FirebaseAnalytics();
 
@@ -15,9 +15,9 @@ void main() {
         accentColor: Colors.amber,
         appBarTheme: AppBarTheme(color: Colors.amber),
         primarySwatch: Colors.amber,
-        //fontFamily: 'Montserrat',
-        textTheme:
-            GoogleFonts.nunitoSansTextTheme(), //nunitoSans, notoSansTextTheme workSans montserrat,
+        fontFamily: 'Nunito',
+        // textTheme:
+        //     GoogleFonts.nunitoTextTheme(), //nunitoSans, notoSansTextTheme workSans montserrat,
       ),
       // navigatorObservers: [
       //   FirebaseAnalyticsObserver(analytics: analytics),
