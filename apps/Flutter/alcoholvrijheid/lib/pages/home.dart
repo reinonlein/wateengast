@@ -217,6 +217,7 @@ class _HomeState extends State<Home> {
                       Text(categoryName,
                           textAlign: TextAlign.center,
                           style: TextStyle(
+                            color: Colors.white,
                             fontSize: 24,
                             fontWeight: FontWeight.w400,
                           )),
@@ -291,102 +292,106 @@ class _HomeState extends State<Home> {
             }),
       ),
       drawer: Drawer(
-        child: ListView.builder(
+        child: ListView(
           padding: const EdgeInsets.all(0.0),
-          itemCount: currentCategoryList.length + 2,
-          itemBuilder: (context, index) {
-            if (index == 0) {
-              return Container(
-                height: 160,
-                child: DrawerHeader(
-                  child: Center(
-                    child: Text(
-                      'Welkom bij de app van Alcoholvrijheid.nl',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 21,
-                      ),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.amber,
-                  ),
-                ),
-              );
-            } else if (index == 1) {
-              return ListTile(
-                title: Text(
-                  'Alle categorieën',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                onTap: () {
-                  currentPostList = [];
-                  setState(() {});
-                  page = 1;
-                  category = '';
-                  categoryName = 'Alle verhalen';
-                  _getPosts().then((response) {
-                    currentPostList = response;
-                    page = 1;
-                    setState(() {});
-                  });
-                  Navigator.pop(context);
-                },
-              );
-            } else {
-              return ListTile(
-                title: Text(currentCategoryList[index - 2].name,
+          children: [
+            Container(
+              height: 160,
+              child: DrawerHeader(
+                child: Center(
+                  child: Text(
+                    'Welkom in de Alcoholvrijheid-app!',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 15,
+                      color: Colors.white,
                       fontWeight: FontWeight.w500,
-                    )),
-                trailing: SizedBox(
-                  width: 28.0,
-                  height: 28.0,
-                  child: FloatingActionButton(
-                    onPressed: () {},
-                    child: Text(
-                      currentCategoryList[index - 2].count,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      fontSize: 21,
                     ),
-                    elevation: 1.5,
                   ),
                 ),
-                onTap: () {
-                  // FirebaseAnalytics().logEvent(
-                  //   name: 'category_selected',
-                  //   parameters: {'category': categoryName},
-                  // );
-                  // Update the state of the app
-                  category = currentCategoryList[index - 2].id;
-                  setState(() {
-                    currentPostList = [];
-                    categoryName = currentCategoryList[index - 2].name;
-                    postCount = int.parse(currentCategoryList[index - 2].count);
-                    availablePages =
-                        (int.parse(currentCategoryList[index - 2].count) / perPage).ceil();
-                    print(availablePages);
-                  });
+                decoration: BoxDecoration(
+                  color: Colors.amber,
+                ),
+              ),
+            ),
+            ListTile(
+              title: Text(
+                'Alle categorieën',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              onTap: () {
+                currentPostList = [];
+                setState(() {});
+                page = 1;
+                category = '';
+                categoryName = 'Alle verhalen';
+                _getPosts().then((response) {
+                  currentPostList = response;
                   page = 1;
-                  _getPosts().then((response) {
-                    currentPostList.addAll(response);
-                    setState(() {});
-                  });
-                  // Then close the drawer
-                  Navigator.pop(context);
+                  setState(() {});
+                });
+                Navigator.pop(context);
+              },
+            ),
+            Container(
+              height: double.maxFinite,
+              child: ListView.builder(
+                padding: const EdgeInsets.all(0.0),
+                itemCount: currentCategoryList.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(currentCategoryList[index].name,
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                        )),
+                    trailing: SizedBox(
+                      width: 28.0,
+                      height: 28.0,
+                      child: FloatingActionButton(
+                        onPressed: () {},
+                        child: Text(
+                          currentCategoryList[index].count,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        elevation: 1.5,
+                      ),
+                    ),
+                    onTap: () {
+                      // FirebaseAnalytics().logEvent(
+                      //   name: 'category_selected',
+                      //   parameters: {'category': categoryName},
+                      // );
+                      // Update the state of the app
+                      category = currentCategoryList[index].id;
+                      setState(() {
+                        currentPostList = [];
+                        categoryName = currentCategoryList[index].name;
+                        postCount = int.parse(currentCategoryList[index].count);
+                        availablePages =
+                            (int.parse(currentCategoryList[index].count) / perPage).ceil();
+                        print(availablePages);
+                      });
+                      page = 1;
+                      _getPosts().then((response) {
+                        currentPostList.addAll(response);
+                        setState(() {});
+                      });
+                      // Then close the drawer
+                      Navigator.pop(context);
+                    },
+                  );
                 },
-              );
-            }
-          },
+              ),
+            )
+          ],
         ),
       ),
     );
