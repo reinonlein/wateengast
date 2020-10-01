@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:alcoholvrijheid/models/brew.dart';
+import 'package:alcoholvrijheid/models/alcoholvrijerd.dart';
 
-class BrewTile extends StatelessWidget {
-  final Brew brew;
-  BrewTile({this.brew});
+class AlcoholvrijerdTile extends StatelessWidget {
+  final Alcoholvrijerd alcoholvrijerd;
+  AlcoholvrijerdTile({this.alcoholvrijerd});
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +14,11 @@ class BrewTile extends StatelessWidget {
         child: ListTile(
           leading: CircleAvatar(
             radius: 25.0,
-            backgroundColor: Colors.brown[brew.strength],
+            backgroundColor: Colors.brown[alcoholvrijerd.strength],
             backgroundImage: AssetImage('assets/coffee_icon.png'),
           ),
-          title: Text(brew.name),
-          subtitle: Text('Takes ${brew.sugars} sugars'),
+          title: Text(alcoholvrijerd.name),
+          subtitle: Text('${alcoholvrijerd.sugars} dagen alcoholvrij'),
         ),
       ),
     );
