@@ -1,0 +1,32 @@
+# Referenced at C:\Users\Rein\Documents\GitHub\wateengast\apps\Flutter\wateengast\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:23
+-keep class androidx.core.app.CoreComponentFactory { <init>(); }
+# Referenced at C:\Users\Rein\Documents\GitHub\wateengast\apps\Flutter\wateengast\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:166
+-keep class com.google.android.datatransport.runtime.backends.TransportBackendDiscovery { <init>(); }
+# Referenced at C:\Users\Rein\Documents\GitHub\wateengast\apps\Flutter\wateengast\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:179
+-keep class com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver { <init>(); }
+# Referenced at C:\Users\Rein\Documents\GitHub\wateengast\apps\Flutter\wateengast\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:173
+-keep class com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService { <init>(); }
+# Referenced at C:\Users\Rein\Documents\GitHub\wateengast\apps\Flutter\wateengast\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:157
+-keep class com.google.android.gms.common.api.GoogleApiActivity { <init>(); }
+# Referenced at C:\Users\Rein\Documents\GitHub\wateengast\apps\Flutter\wateengast\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:125
+-keep class com.google.android.gms.measurement.AppMeasurementJobService { <init>(); }
+# Referenced at C:\Users\Rein\Documents\GitHub\wateengast\apps\Flutter\wateengast\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:115
+-keep class com.google.android.gms.measurement.AppMeasurementReceiver { <init>(); }
+# Referenced at C:\Users\Rein\Documents\GitHub\wateengast\apps\Flutter\wateengast\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:121
+-keep class com.google.android.gms.measurement.AppMeasurementService { <init>(); }
+# Referenced at C:\Users\Rein\Documents\GitHub\wateengast\apps\Flutter\wateengast\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:75
+-keep class com.google.firebase.components.ComponentDiscoveryService { <init>(); }
+# Referenced at C:\Users\Rein\Documents\GitHub\wateengast\apps\Flutter\wateengast\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:142
+-keep class com.google.firebase.iid.FirebaseInstanceIdReceiver { <init>(); }
+# Referenced at C:\Users\Rein\Documents\GitHub\wateengast\apps\Flutter\wateengast\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:134
+-keep class com.google.firebase.messaging.FirebaseMessagingService { <init>(); }
+# Referenced at C:\Users\Rein\Documents\GitHub\wateengast\apps\Flutter\wateengast\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:151
+-keep class com.google.firebase.provider.FirebaseInitProvider { <init>(); }
+# Referenced at C:\Users\Rein\Documents\GitHub\wateengast\apps\Flutter\wateengast\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:23
+-keep class io.flutter.app.FlutterApplication { <init>(); }
+# Referenced at C:\Users\Rein\Documents\GitHub\wateengast\apps\Flutter\wateengast\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:104
+-keep class io.flutter.plugins.firebasemessaging.FlutterFirebaseMessagingService { <init>(); }
+# Referenced at C:\Users\Rein\Documents\GitHub\wateengast\apps\Flutter\wateengast\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:110
+-keep class io.flutter.plugins.urllauncher.WebViewActivity { <init>(); }
+# Referenced at C:\Users\Rein\Documents\GitHub\wateengast\apps\Flutter\wateengast\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:28
+-keep class nl.wateengast.app.MainActivity { <init>(); }

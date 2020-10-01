@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1094833676524",
+    "firebase_url": "https://wateengast-app.firebaseio.com",
+    "project_id": "wateengast-app",
+    "storage_bucket": "wateengast-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094833676524:android:c38b50487c2a93b294c5c9",
+        "android_client_info": {
+          "package_name": "nl.wateengast.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1094833676524-of6k4pdbb85an4iv9j0elb2g3ufn2jah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvlt6mwkPnj_h5SXgqY68OqPVgFN988H8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1094833676524-of6k4pdbb85an4iv9j0elb2g3ufn2jah.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
