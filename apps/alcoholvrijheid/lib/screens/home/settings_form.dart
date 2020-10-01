@@ -34,7 +34,7 @@ class _SettingsFormState extends State<SettingsForm> {
               child: Column(
                 children: <Widget>[
                   Text(
-                    'Udate your brew settings.',
+                    'Udate your AV settings.',
                     style: TextStyle(fontSize: 18.0),
                   ),
                   SizedBox(height: 20.0),

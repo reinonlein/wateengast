@@ -18,6 +18,12 @@ class MyApp extends StatelessWidget {
     return StreamProvider<User>.value(
       value: AuthService().user,
       child: MaterialApp(
+        theme: ThemeData(
+          accentColor: Colors.amber,
+          appBarTheme: AppBarTheme(color: Colors.amber),
+          primarySwatch: Colors.amber,
+          fontFamily: 'Nunito',
+        ),
         home: Wrapper(),
       ),
     );
