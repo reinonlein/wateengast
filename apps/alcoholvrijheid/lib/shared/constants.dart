@@ -16,3 +16,8 @@ const textInputDecoration = InputDecoration(
     ),
   ),
 );
+
+const drawerItemStyle = TextStyle(
+  fontSize: 15,
+  fontWeight: FontWeight.w500,
+);
