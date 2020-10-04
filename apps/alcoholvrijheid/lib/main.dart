@@ -1,9 +1,14 @@
+import 'package:alcoholvrijheid/screens/home/settings_page.dart';
 import 'package:alcoholvrijheid/screens/wrapper.dart';
 import 'package:alcoholvrijheid/services/auth.dart';
 import 'package:alcoholvrijheid/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
+
+FirebaseAnalytics analytics = FirebaseAnalytics();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +29,14 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.amber,
           fontFamily: 'Nunito',
         ),
-        home: Wrapper(),
+        navigatorObservers: [
+          FirebaseAnalyticsObserver(analytics: analytics),
+        ],
+        initialRoute: '/',
+        routes: {
+          '/': (context) => Wrapper(),
+          '/settings': (context) => SettingsPage(),
+        },
       ),
     );
   }

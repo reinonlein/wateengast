@@ -2,7 +2,6 @@ import 'package:alcoholvrijheid/models/user.dart';
 import 'package:alcoholvrijheid/services/database.dart';
 import 'package:alcoholvrijheid/shared/loading.dart';
 import 'package:flutter/material.dart';
-import 'package:alcoholvrijheid/models/alcoholvrijerd.dart';
 import 'package:provider/provider.dart';
 
 class AlcoholvrijerdCards extends StatelessWidget {
@@ -26,6 +25,7 @@ class AlcoholvrijerdCards extends StatelessWidget {
                       child: Column(
                         children: [
                           Text('Welkom terug ${userData.name}!',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 22,
                               )),
