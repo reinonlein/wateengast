@@ -6,20 +6,28 @@ class DatabaseService {
   final String uid;
   DatabaseService({this.uid});
 
-  // collection reference
-  // final CollectionReference brewCollection = FirebaseFirestore.instance.collection('brews');
-
   // collection reference AV
   final CollectionReference alcoholvrijheidCollection =
       FirebaseFirestore.instance.collection('alcoholvrijheid');
 
   // update alcoholvrij users
-  Future updateUserData(String name, DateTime stopdate, String sugars, int strength) async {
+  Future updateUserData(
+    String name,
+    DateTime stopdate,
+    double geld,
+    int bier,
+    int wijn,
+    int sterk,
+    int katers,
+  ) async {
     return await alcoholvrijheidCollection.doc(uid).set({
       'name': name,
       'stopdate': Timestamp.fromDate(stopdate),
-      'sugars': sugars,
-      'strength': strength,
+      'geld': geld,
+      'bier': bier,
+      'wijn': wijn,
+      'sterk': sterk,
+      'katers': katers,
     });
   }
 
@@ -29,8 +37,11 @@ class DatabaseService {
       return Alcoholvrijerd(
         name: doc.data()['name'] ?? '',
         stopdate: doc.data()['stopdate'].toDate() ?? DateTime.now(),
-        sugars: doc.data()['sugars'] ?? '0',
-        strength: doc.data()['strength'] ?? 0,
+        geld: doc.data()['geld'] ?? 0.0,
+        bier: doc.data()['bier'] ?? 0,
+        wijn: doc.data()['wijn'] ?? 0,
+        sterk: doc.data()['sterk'] ?? 0,
+        katers: doc.data()['katers'] ?? 0,
       );
     }).toList();
   }
@@ -41,8 +52,11 @@ class DatabaseService {
       uid: uid,
       name: snapshot.data()['name'],
       stopdate: snapshot.data()['stopdate'].toDate(),
-      sugars: snapshot.data()['sugars'],
-      strength: snapshot.data()['strength'],
+      geld: snapshot.data()['geld'],
+      bier: snapshot.data()['bier'],
+      wijn: snapshot.data()['wijn'],
+      sterk: snapshot.data()['sterk'],
+      katers: snapshot.data()['katers'],
     );
   }
 

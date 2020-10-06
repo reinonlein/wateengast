@@ -20,7 +20,7 @@ class HomeDrawer extends StatelessWidget {
             child: DrawerHeader(
               child: Center(
                 child: Text(
-                  'Welkom bij\n Alcoholvrijheid!',
+                  'Welkom bij de app van\nAlcoholvrijheid.nl',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,

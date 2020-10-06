@@ -15,13 +15,15 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   final _formKey = GlobalKey<FormState>();
-  final List<String> sugars = ['0', '1', '2', '3', '4'];
 
   // form values
   String _currentName;
   DateTime _currentStopdate;
-  String _currentSugars;
-  int _currentStrength;
+  double _currentGeld;
+  int _currentBier;
+  int _currentWijn;
+  int _currentSterk;
+  int _currentKaters;
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +44,16 @@ class _SettingsPageState extends State<SettingsPage> {
                       children: <Widget>[
                         Text(
                           'Wijzig hier je stopgegevens',
-                          style: TextStyle(fontSize: 18.0),
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                        SizedBox(height: 20.0),
+                        SizedBox(height: 25),
+                        Text(
+                          'Wat is je naam?',
+                          style: formTextStyle,
+                        ),
                         TextFormField(
                           initialValue: userData.name,
                           decoration: textInputDecoration,
@@ -52,55 +61,98 @@ class _SettingsPageState extends State<SettingsPage> {
                           onChanged: (val) => setState(() => _currentName = val),
                         ),
                         SizedBox(height: 20.0),
-                        Column(children: <Widget>[
-                          Text('Wanneer heb je voor het laatst gedronken?'),
-                          DateTimeField(
-                            resetIcon: null,
-                            format: DateFormat("d MMMM yyyy, HH:mm"),
-                            initialValue: userData.stopdate,
-                            decoration: textInputDecoration,
-                            onShowPicker: (context, currentValue) async {
-                              final date = await showDatePicker(
-                                  context: context,
-                                  helpText: "KIES JE STOPDATUM",
-                                  firstDate: DateTime(2000),
-                                  initialDate: currentValue ?? DateTime.now(),
-                                  lastDate: DateTime.now());
-                              if (date != null) {
-                                final time = await showTimePicker(
-                                  context: context,
-                                  initialTime: TimeOfDay.fromDateTime(currentValue),
-                                );
-                                return _currentStopdate = DateTimeField.combine(date, time);
-                              } else {
-                                return currentValue;
-                              }
-                            },
-                          ),
-                        ]),
+                        Column(
+                          children: <Widget>[
+                            Text(
+                              'Wanneer heb je voor het laatst gedronken?',
+                              style: formTextStyle,
+                            ),
+                            DateTimeField(
+                              resetIcon: null,
+                              format: DateFormat("d MMMM yyyy, HH:mm"),
+                              initialValue: userData.stopdate,
+                              decoration: textInputDecoration,
+                              onShowPicker: (context, currentValue) async {
+                                final date = await showDatePicker(
+                                    context: context,
+                                    helpText: "KIES JE STOPDATUM",
+                                    firstDate: DateTime(2000),
+                                    initialDate: currentValue ?? DateTime.now(),
+                                    lastDate: DateTime.now());
+                                if (date != null) {
+                                  final time = await showTimePicker(
+                                    context: context,
+                                    initialTime: TimeOfDay.fromDateTime(currentValue),
+                                  );
+                                  return _currentStopdate = DateTimeField.combine(date, time);
+                                } else {
+                                  return currentValue;
+                                }
+                              },
+                            ),
+                            SizedBox(height: 20.0),
+                            Text(
+                              'Hoeveel euro gaf je gemiddeld per week uit aan alcohol?',
+                              style: formTextStyle,
+                            ),
+                            TextFormField(
+                              initialValue: userData.geld.toString(),
+                              decoration: textInputDecoration,
+                              validator: (val) => val.isEmpty ? 'Vul aub een bedrag in' : null,
+                              onChanged: (val) => setState(() => _currentGeld = double.parse(val)),
+                            ),
+                            SizedBox(height: 20.0),
+                            Text(
+                              'Hoeveel biertjes dronk je gemiddeld per week?',
+                              style: formTextStyle,
+                            ),
+                            TextFormField(
+                              initialValue: userData.bier.toString(),
+                              decoration: textInputDecoration,
+                              validator: (val) => val.isEmpty
+                                  ? 'Vul aub een aantal biertjes in'
+                                  : null, // TODO: validator voor negatieve getallen of tekst
+                              onChanged: (val) => setState(() => _currentBier = int.parse(val)),
+                            ),
+                            SizedBox(height: 20.0),
+                            Text(
+                              'Hoeveel wijntjes dronk je gemiddeld per week?',
+                              style: formTextStyle,
+                            ),
+                            TextFormField(
+                              initialValue: userData.wijn.toString(),
+                              decoration: textInputDecoration,
+                              validator: (val) =>
+                                  val.isEmpty ? 'Vul aub een aantal wijntjes in' : null,
+                              onChanged: (val) => setState(() => _currentWijn = int.parse(val)),
+                            ),
+                            SizedBox(height: 20.0),
+                            Text(
+                              'Hoeveel glazen sterke drank dronk je gemiddeld per week?',
+                              style: formTextStyle,
+                            ),
+                            TextFormField(
+                              initialValue: userData.sterk.toString(),
+                              decoration: textInputDecoration,
+                              validator: (val) =>
+                                  val.isEmpty ? 'Vul aub een aantal sterke drankjes in' : null,
+                              onChanged: (val) => setState(() => _currentSterk = int.parse(val)),
+                            ),
+                            SizedBox(height: 20.0),
+                            Text(
+                              'Hoe vaak had je gemiddeld per maand een kater?',
+                              style: formTextStyle,
+                            ),
+                            TextFormField(
+                              initialValue: userData.katers.toString(),
+                              decoration: textInputDecoration,
+                              validator: (val) =>
+                                  val.isEmpty ? 'Vul aub een aantal katers in' : null,
+                              onChanged: (val) => setState(() => _currentKaters = int.parse(val)),
+                            ),
+                          ],
+                        ),
                         SizedBox(height: 20.0),
-                        // dropdown
-                        DropdownButtonFormField(
-                          decoration: textInputDecoration,
-                          value: _currentSugars ?? userData.sugars,
-                          items: sugars.map((sugar) {
-                            return DropdownMenuItem(
-                              value: sugar,
-                              child: Text('$sugar sugars'),
-                            );
-                          }).toList(),
-                          onChanged: (val) => setState(() => _currentSugars = val),
-                        ),
-                        // slider
-                        Slider(
-                          value: (_currentStrength ?? userData.strength).toDouble(),
-                          activeColor: Colors.brown[_currentStrength ?? userData.strength],
-                          inactiveColor: Colors.brown[_currentStrength ?? userData.strength],
-                          min: 100,
-                          max: 900,
-                          divisions: 8,
-                          onChanged: (val) => setState(() => _currentStrength = val.round()),
-                        ),
                         // button
                         RaisedButton(
                           color: Colors.pink[400],
@@ -112,18 +164,27 @@ class _SettingsPageState extends State<SettingsPage> {
                           ),
                           onPressed: () async {
                             if (_formKey.currentState.validate()) {
-                              print(_currentStopdate);
-                              print(userData.stopdate);
                               await DatabaseService(uid: user.uid).updateUserData(
                                 _currentName ?? userData.name,
                                 _currentStopdate ?? userData.stopdate,
-                                _currentSugars ?? userData.sugars,
-                                _currentStrength ?? userData.strength,
+                                _currentGeld ?? userData.geld,
+                                _currentBier ?? userData.bier,
+                                _currentWijn ?? userData.wijn,
+                                _currentSterk ?? userData.sterk,
+                                _currentKaters ?? userData.katers,
                               );
                               Scaffold.of(context).showSnackBar(SnackBar(
                                 backgroundColor: Colors.green,
                                 content: Text(
                                   'Je wijzigingen zijn opgeslagen!',
+                                  textAlign: TextAlign.center,
+                                ),
+                              ));
+                            } else {
+                              Scaffold.of(context).showSnackBar(SnackBar(
+                                backgroundColor: Colors.red,
+                                content: Text(
+                                  'Oeps, je hebt een veld niet goed ingevuld',
                                   textAlign: TextAlign.center,
                                 ),
                               ));

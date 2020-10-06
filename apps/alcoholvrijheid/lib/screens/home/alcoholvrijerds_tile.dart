@@ -14,11 +14,13 @@ class AlcoholvrijerdTile extends StatelessWidget {
         child: ListTile(
           leading: CircleAvatar(
             radius: 25.0,
-            backgroundColor: Colors.brown[alcoholvrijerd.strength],
+            //backgroundColor: Colors.brown[alcoholvrijerd.strength],
+            backgroundColor: Colors.amber,
             backgroundImage: AssetImage('assets/coffee_icon.png'),
           ),
           title: Text(alcoholvrijerd.name),
-          subtitle: Text('${alcoholvrijerd.sugars} dagen alcoholvrij'),
+          subtitle: Text(
+              '${DateTime.now().difference(alcoholvrijerd.stopdate).inDays} dagen alcoholvrij'),
         ),
       ),
     );

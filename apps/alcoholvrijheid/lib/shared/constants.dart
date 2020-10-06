@@ -21,3 +21,8 @@ const drawerItemStyle = TextStyle(
   fontSize: 15,
   fontWeight: FontWeight.w500,
 );
+
+const formTextStyle = TextStyle(
+  color: Colors.black,
+  fontSize: 18,
+);
