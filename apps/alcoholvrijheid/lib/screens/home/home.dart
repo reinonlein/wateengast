@@ -1,12 +1,12 @@
-import 'package:alcoholvrijheid/screens/home/alcoholvrijerds_card.dart';
+import 'package:alcoholvrijheid/screens/home/alcoholvrijheid_card.dart';
 import 'package:alcoholvrijheid/screens/home/home_drawer.dart';
 import 'package:alcoholvrijheid/screens/home/postlist_temp.dart';
 import 'package:alcoholvrijheid/screens/home/settings_page.dart';
+import 'package:alcoholvrijheid/screens/home/settings_form.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:alcoholvrijheid/models/alcoholvrijerd.dart';
-import 'package:alcoholvrijheid/screens/home/settings_form.dart';
 import 'package:alcoholvrijheid/services/database.dart';
 
 class Home extends StatefulWidget {
@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
   var _pages = <Widget>[
-    AlcoholvrijerdCards(), //this is a stateful widget on a separate file
+    AlcoholvrijheidCards(), //this is a stateful widget on a separate file
     Blog(), //this is a stateful widget on a separate file
     SettingsPage(), //this is a stateful widget on a separate file
   ];
@@ -52,20 +52,30 @@ class _HomeState extends State<Home> {
           items: [
             BottomNavigationBarItem(
               icon: new Icon(Icons.alarm),
-              title: new Text('Alcoholvrijheid'),
+              label: 'Alcoholvrijheid',
             ),
             BottomNavigationBarItem(
               icon: new Icon(Icons.web),
-              title: new Text('Alle verhalen'),
+              label: 'Alle verhalen',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              title: Text('Mijn stopgegevens'),
+              label: 'Mijn stopgegevens',
             )
           ],
         ),
         backgroundColor: Colors.grey[50],
         appBar: AppBar(
+          actions: <Widget>[
+            FlatButton.icon(
+              onPressed: (() => _showSettingsPanel()),
+              icon: Icon(
+                Icons.settings,
+                color: Colors.white,
+              ),
+              label: Text(''),
+            )
+          ],
           title: Text(
             'Mijn Alcoholvrijheid!',
             style: TextStyle(
@@ -85,16 +95,6 @@ class _HomeState extends State<Home> {
           iconTheme: new IconThemeData(color: Colors.white),
           backgroundColor: Colors.amber,
           elevation: 2.0,
-          actions: <Widget>[
-            FlatButton.icon(
-              onPressed: (() => _showSettingsPanel()),
-              icon: Icon(
-                Icons.settings,
-                color: Colors.white,
-              ),
-              label: Text(''),
-            )
-          ],
         ),
         body: Container(
           width: double.infinity,
