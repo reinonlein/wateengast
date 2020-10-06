@@ -17,6 +17,7 @@ class _SettingsFormState extends State<SettingsForm> {
 
   // form values
   String _currentName;
+  DateTime _currentStopdate;
   String _currentSugars;
   int _currentStrength;
 
@@ -79,8 +80,9 @@ class _SettingsFormState extends State<SettingsForm> {
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         await DatabaseService(uid: user.uid).updateUserData(
-                          _currentSugars ?? userData.sugars,
                           _currentName ?? userData.name,
+                          _currentStopdate ?? userData.stopdate,
+                          _currentSugars ?? userData.sugars,
                           _currentStrength ?? userData.strength,
                         );
                         Navigator.pop(context);

@@ -2,9 +2,10 @@ import 'package:alcoholvrijheid/models/user.dart';
 import 'package:alcoholvrijheid/services/database.dart';
 import 'package:alcoholvrijheid/shared/loading.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-class AlcoholvrijerdCards extends StatelessWidget {
+class AlcoholvrijheidCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
@@ -14,6 +15,8 @@ class AlcoholvrijerdCards extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             UserData userData = snapshot.data;
+            NumberFormat format = NumberFormat("####.0#", "nl_NL");
+            int stopdagen = DateTime.now().difference(userData.stopdate).inDays;
             return Container(
               margin: EdgeInsets.fromLTRB(25.0, 35.0, 25.0, 25.0),
               child: ListView(
@@ -34,7 +37,7 @@ class AlcoholvrijerdCards extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(5.0),
                             child: Text(
-                              '${userData.sugars} dagen',
+                              '$stopdagen dagen',
                               style: TextStyle(
                                 fontSize: 33,
                                 fontWeight: FontWeight.w600,
@@ -63,9 +66,9 @@ class AlcoholvrijerdCards extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
-                                    '€ ${userData.strength.toString()},-',
+                                    '€ ${format.format(stopdagen * (30 / 7))}',
                                     style: TextStyle(
-                                      fontSize: 25,
+                                      fontSize: 22,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -92,9 +95,9 @@ class AlcoholvrijerdCards extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
-                                    '${(userData.strength * 0.42).round().toString()}',
+                                    '${(stopdagen * (15 / 7)).round()}',
                                     style: TextStyle(
-                                      fontSize: 25,
+                                      fontSize: 22,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -124,9 +127,9 @@ class AlcoholvrijerdCards extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
-                                    '17',
+                                    '${(stopdagen / 7).round()}',
                                     style: TextStyle(
-                                      fontSize: 25,
+                                      fontSize: 22,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -149,18 +152,18 @@ class AlcoholvrijerdCards extends StatelessWidget {
                             padding: const EdgeInsets.fromLTRB(7, 20, 7, 20),
                             child: Column(
                               children: [
-                                Text('En hebt vast'),
+                                Text('Oftewel'),
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
-                                    '42000',
+                                    '${(stopdagen * 1.41 * 0.33).round()}',
                                     style: TextStyle(
-                                      fontSize: 25,
+                                      fontSize: 22,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                 ),
-                                Text('calorieën laten staan'),
+                                Text('liter bier'),
                               ],
                             ),
                           ),

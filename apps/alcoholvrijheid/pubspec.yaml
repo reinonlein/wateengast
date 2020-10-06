@@ -27,6 +27,8 @@ dependencies:
   cloud_firestore: ^0.14.0
   provider: ^4.3.2+2
   flutter_spinkit: "^4.1.2"
+  datetime_picker_formfield: ^1.0.0
+  intl: ^0.16.1
   flutter:
     sdk: flutter
 

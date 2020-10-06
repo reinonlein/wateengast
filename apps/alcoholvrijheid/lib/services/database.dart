@@ -14,10 +14,11 @@ class DatabaseService {
       FirebaseFirestore.instance.collection('alcoholvrijheid');
 
   // update alcoholvrij users
-  Future updateUserData(String sugars, String name, int strength) async {
+  Future updateUserData(String name, DateTime stopdate, String sugars, int strength) async {
     return await alcoholvrijheidCollection.doc(uid).set({
-      'sugars': sugars,
       'name': name,
+      'stopdate': Timestamp.fromDate(stopdate),
+      'sugars': sugars,
       'strength': strength,
     });
   }
@@ -27,8 +28,9 @@ class DatabaseService {
     return snapshot.docs.map((doc) {
       return Alcoholvrijerd(
         name: doc.data()['name'] ?? '',
-        strength: doc.data()['strength'] ?? 0,
+        stopdate: doc.data()['stopdate'].toDate() ?? DateTime.now(),
         sugars: doc.data()['sugars'] ?? '0',
+        strength: doc.data()['strength'] ?? 0,
       );
     }).toList();
   }
@@ -38,8 +40,9 @@ class DatabaseService {
     return UserData(
       uid: uid,
       name: snapshot.data()['name'],
-      strength: snapshot.data()['strength'],
+      stopdate: snapshot.data()['stopdate'].toDate(),
       sugars: snapshot.data()['sugars'],
+      strength: snapshot.data()['strength'],
     );
   }
 
