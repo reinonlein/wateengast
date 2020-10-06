@@ -15,14 +15,14 @@ class AlcoholvrijheidCards extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             UserData userData = snapshot.data;
-            NumberFormat format = NumberFormat("####.0#", "nl_NL");
+            NumberFormat format = NumberFormat("####0.00", "nl_NL");
             int stopdagen = DateTime.now().difference(userData.stopdate).inDays;
             return Container(
               margin: EdgeInsets.fromLTRB(25.0, 35.0, 25.0, 25.0),
               child: ListView(
                 children: [
                   Card(
-                    elevation: 5.0,
+                    elevation: 7.0,
                     child: Container(
                       padding: const EdgeInsets.fromLTRB(7, 20, 7, 20),
                       child: Column(
@@ -37,7 +37,7 @@ class AlcoholvrijheidCards extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(5.0),
                             child: Text(
-                              '$stopdagen dagen',
+                              '$stopdagen dagen', //TODO: conditional voor 1 dag
                               style: TextStyle(
                                 fontSize: 33,
                                 fontWeight: FontWeight.w600,
@@ -57,7 +57,7 @@ class AlcoholvrijheidCards extends StatelessWidget {
                       Expanded(
                         flex: 20,
                         child: Card(
-                          elevation: 5.0,
+                          elevation: 7.0,
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(7, 20, 7, 20),
                             child: Column(
@@ -66,14 +66,14 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
-                                    '€ ${format.format(stopdagen * (30 / 7))}',
+                                    '€ ${format.format(stopdagen * (userData.geld / 7))}',
                                     style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                 ),
-                                Text('euro bespaard!'),
+                                Text('bespaard!'),
                               ],
                             ),
                           ),
@@ -86,7 +86,7 @@ class AlcoholvrijheidCards extends StatelessWidget {
                       Expanded(
                         flex: 20,
                         child: Card(
-                          elevation: 5.0,
+                          elevation: 7.0,
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(7, 20, 7, 20),
                             child: Column(
@@ -95,7 +95,7 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
-                                    '${(stopdagen * (15 / 7)).round()}',
+                                    '${(stopdagen * ((userData.bier + userData.wijn + userData.sterk) / 7)).round()}',
                                     style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.w600,
@@ -118,7 +118,7 @@ class AlcoholvrijheidCards extends StatelessWidget {
                       Expanded(
                         flex: 20,
                         child: Card(
-                          elevation: 5.0,
+                          elevation: 7.0,
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(7, 20, 7, 20),
                             child: Column(
@@ -127,7 +127,7 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
-                                    '${(stopdagen / 7).round()}',
+                                    '${(stopdagen * (userData.katers / 30)).round()}',
                                     style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.w600,
@@ -147,7 +147,7 @@ class AlcoholvrijheidCards extends StatelessWidget {
                       Expanded(
                         flex: 20,
                         child: Card(
-                          elevation: 5.0,
+                          elevation: 7.0,
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(7, 20, 7, 20),
                             child: Column(
@@ -156,14 +156,14 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
-                                    '${(stopdagen * 1.41 * 0.33).round()}',
+                                    '${(stopdagen * (((userData.bier * 0.33) + (userData.wijn * 0.25) + (userData.sterk * 0.1)) / 7)).round()}',
                                     style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                 ),
-                                Text('liter bier'),
+                                Text('liter drank'),
                               ],
                             ),
                           ),

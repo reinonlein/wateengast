@@ -2,7 +2,6 @@ import 'package:alcoholvrijheid/screens/home/alcoholvrijheid_card.dart';
 import 'package:alcoholvrijheid/screens/home/home_drawer.dart';
 import 'package:alcoholvrijheid/screens/home/postlist_temp.dart';
 import 'package:alcoholvrijheid/screens/home/settings_page.dart';
-import 'package:alcoholvrijheid/screens/home/settings_form.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,17 +30,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    void _showSettingsPanel() {
-      showModalBottomSheet(
-          context: context,
-          builder: (context) {
-            return Container(
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
-              child: SettingsForm(),
-            );
-          });
-    }
-
     return StreamProvider<List<Alcoholvrijerd>>.value(
       value: DatabaseService().alcoholvrijerds,
       child: Scaffold(
@@ -66,16 +54,6 @@ class _HomeState extends State<Home> {
         ),
         backgroundColor: Colors.grey[50],
         appBar: AppBar(
-          actions: <Widget>[
-            FlatButton.icon(
-              onPressed: (() => _showSettingsPanel()),
-              icon: Icon(
-                Icons.settings,
-                color: Colors.white,
-              ),
-              label: Text(''),
-            )
-          ],
           title: Text(
             'Mijn Alcoholvrijheid!',
             style: TextStyle(
@@ -100,6 +78,7 @@ class _HomeState extends State<Home> {
           width: double.infinity,
           decoration: BoxDecoration(
             image: DecorationImage(
+              colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.8), BlendMode.dstATop),
               image: AssetImage('assets/rainbow-bg.png'),
               fit: BoxFit.cover,
             ),
