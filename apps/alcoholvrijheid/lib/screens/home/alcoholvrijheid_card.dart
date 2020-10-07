@@ -36,13 +36,21 @@ class AlcoholvrijheidCards extends StatelessWidget {
                           Text('Je hebt op dit moment al'),
                           Padding(
                             padding: const EdgeInsets.all(5.0),
-                            child: Text(
-                              '$stopdagen dagen', //TODO: conditional voor 1 dag
-                              style: TextStyle(
-                                fontSize: 33,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
+                            child: stopdagen == 1
+                                ? Text(
+                                    '$stopdagen dag',
+                                    style: TextStyle(
+                                      fontSize: 31,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  )
+                                : Text(
+                                    '$stopdagen dagen',
+                                    style: TextStyle(
+                                      fontSize: 31,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
                           ),
                           Text('geen alcohol gedronken. Goed bezig!'),
                         ],
@@ -102,7 +110,7 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Text('drankjes laten staan')
+                                Text('drankjes laten staan'),
                               ],
                             ),
                           ),
@@ -134,7 +142,9 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Text('katers niet gehad'),
+                                (stopdagen * (userData.katers / 30)).round() == 1
+                                    ? Text('kater niet gehad')
+                                    : Text('katers niet gehad'),
                               ],
                             ),
                           ),

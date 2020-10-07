@@ -8,7 +8,7 @@ class UserData {
   final String uid;
   final String name;
   final DateTime stopdate;
-  final double geld;
+  final int geld;
   final int bier;
   final int wijn;
   final int sterk;
