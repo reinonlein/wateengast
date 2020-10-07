@@ -41,3 +41,5 @@ apps/Flutter/wateengast/fonts/OpenSans/OpenSans-LightItalic.ttf
 apps/Flutter/wateengast/fonts/OpenSans/OpenSans-Regular.ttf
 apps/Flutter/wateengast/fonts/OpenSans/OpenSans-SemiBold.ttf
 apps/Flutter/wateengast/fonts/OpenSans/OpenSans-SemiBoldItalic.ttf
+*.png
+*.jpg
