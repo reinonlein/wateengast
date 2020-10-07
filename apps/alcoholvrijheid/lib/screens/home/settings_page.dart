@@ -19,7 +19,7 @@ class _SettingsPageState extends State<SettingsPage> {
   // form values
   String _currentName;
   DateTime _currentStopdate;
-  double _currentGeld;
+  int _currentGeld;
   int _currentBier;
   int _currentWijn;
   int _currentSterk;
@@ -82,7 +82,8 @@ class _SettingsPageState extends State<SettingsPage> {
                                 if (date != null) {
                                   final time = await showTimePicker(
                                     context: context,
-                                    initialTime: TimeOfDay.fromDateTime(currentValue),
+                                    initialTime: TimeOfDay(hour: 0, minute: 0),
+                                    //initialTime: TimeOfDay.fromDateTime(currentValue),
                                   );
                                   return _currentStopdate = DateTimeField.combine(date, time);
                                 } else {
@@ -99,7 +100,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               initialValue: userData.geld.toString(),
                               decoration: textInputDecoration,
                               validator: (val) => val.isEmpty ? 'Vul aub een bedrag in' : null,
-                              onChanged: (val) => setState(() => _currentGeld = double.parse(val)),
+                              onChanged: (val) => setState(() => _currentGeld = int.parse(val)),
                             ),
                             SizedBox(height: 20.0),
                             Text(

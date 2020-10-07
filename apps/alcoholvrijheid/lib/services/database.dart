@@ -14,7 +14,7 @@ class DatabaseService {
   Future updateUserData(
     String name,
     DateTime stopdate,
-    double geld,
+    int geld,
     int bier,
     int wijn,
     int sterk,
@@ -37,7 +37,7 @@ class DatabaseService {
       return Alcoholvrijerd(
         name: doc.data()['name'] ?? '',
         stopdate: doc.data()['stopdate'].toDate() ?? DateTime.now(),
-        geld: doc.data()['geld'] ?? 0.0,
+        geld: doc.data()['geld'] ?? 0,
         bier: doc.data()['bier'] ?? 0,
         wijn: doc.data()['wijn'] ?? 0,
         sterk: doc.data()['sterk'] ?? 0,
