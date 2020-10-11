@@ -99,38 +99,6 @@ class AlcoholvrijheidCards extends StatelessWidget {
                             padding: const EdgeInsets.fromLTRB(7, 20, 7, 20),
                             child: Column(
                               children: [
-                                Text('En je hebt zeker'),
-                                Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Text(
-                                    '${(stopdagen * ((userData.bier + userData.wijn + userData.sterk) / 7)).round()}',
-                                    style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                                Text('drankjes laten staan'),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 20,
-                        child: Card(
-                          elevation: 7.0,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(7, 20, 7, 20),
-                            child: Column(
-                              children: [
                                 Text('Nog beter, je hebt'),
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),
@@ -150,6 +118,42 @@ class AlcoholvrijheidCards extends StatelessWidget {
                           ),
                         ),
                       ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 20,
+                        child: Card(
+                          elevation: 10.0,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(7, 20, 7, 20),
+                            child: Column(
+                              children: [
+                                Text('En je hebt zeker'),
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Text(
+                                    '${(stopdagen * ((userData.bier + userData.wijn + userData.sterk) / 7)).round()}',
+                                    style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                                (stopdagen * ((userData.bier + userData.wijn + userData.sterk) / 7))
+                                            .round() ==
+                                        1
+                                    ? Text('drankje laten staan')
+                                    : Text('drankjes laten staan')
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                       Expanded(
                         flex: 1,
                         child: SizedBox(),
@@ -157,12 +161,12 @@ class AlcoholvrijheidCards extends StatelessWidget {
                       Expanded(
                         flex: 20,
                         child: Card(
-                          elevation: 7.0,
+                          elevation: 10.0,
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(7, 20, 7, 20),
                             child: Column(
                               children: [
-                                Text('Oftewel'),
+                                Text('Bij elkaar is dat'),
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
@@ -173,7 +177,7 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Text('liter drank'),
+                                Text('liter drank!'),
                               ],
                             ),
                           ),

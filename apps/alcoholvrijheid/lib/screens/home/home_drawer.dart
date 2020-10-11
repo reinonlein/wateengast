@@ -19,14 +19,26 @@ class HomeDrawer extends StatelessWidget {
             height: 160,
             child: DrawerHeader(
               child: Center(
-                child: Text(
-                  'Welkom bij de app van\nAlcoholvrijheid.nl',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 21,
-                  ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Alcoholvrijheid.nl',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 22,
+                      ),
+                    ),
+                    Text(
+                      'Haal de rem van je leven.',
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.white,
+                      ),
+                    )
+                  ],
                 ),
               ),
               decoration: BoxDecoration(
@@ -94,7 +106,8 @@ class HomeDrawer extends StatelessWidget {
               style: drawerItemStyle,
             ),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.popAndPushNamed(context, '/over_deze_app');
+              //Navigator.pop(context);
             },
           ),
           ListTile(

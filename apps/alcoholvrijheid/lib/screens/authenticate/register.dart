@@ -1,7 +1,11 @@
 import 'package:alcoholvrijheid/services/auth.dart';
+import 'package:alcoholvrijheid/services/database.dart';
 import 'package:alcoholvrijheid/shared/constants.dart';
 import 'package:alcoholvrijheid/shared/loading.dart';
+import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
@@ -21,6 +25,13 @@ class _RegisterState extends State<Register> {
   String email = '';
   String password = '';
   String error = '';
+  String name = '';
+  DateTime stopdate = DateTime.now();
+  int geld = 0;
+  int bier = 0;
+  int wijn = 0;
+  int sterk = 0;
+  int katers = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +42,10 @@ class _RegisterState extends State<Register> {
             appBar: AppBar(
               backgroundColor: Colors.amber[500],
               //elevation: 0.0,
-              title: Text('Meld je aan'),
+              title: Text(
+                'Je alcoholvrijheid begint hier',
+                style: TextStyle(fontSize: 15),
+              ),
               actions: [
                 FlatButton.icon(
                   icon: Icon(Icons.person),
@@ -43,24 +57,160 @@ class _RegisterState extends State<Register> {
               ],
             ),
             body: Container(
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 25.0),
               child: Form(
                 key: _formKey,
-                child: Column(
+                child: ListView(
                   children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 20.0),
+                      child: Text(
+                        'Welkom in de Alcoholvrijheid-app!',
+                        style: TextStyle(fontSize: 24),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Text(
+                      'Deze app gaat je helpen om eindelijk eens écht alcoholvrij door het leven te gaan. Niet omdat het moet, maar juist omdat je dat wilt!\n\nVul hieronder je stopgegevens in om de voortgang jouw unieke reis naar alcoholvrijheid bij te houden, of klik hierboven op inloggen als je dit al een keer eerder hebt gedaan',
+                      //Deze app is jouw steuntje in de rug naar een heerlijk alcoholvrij leven. Met ervaringsverhalen, tips, voordelen, alternatieve drankjes en leuke statistiekjes over jouw alcoholvrijheid, zorgen we er samen voor dat je straks niets anders meer wilt Deze app gaat je helpen om eindelijk eens écht alcoholvrij door het leven te gaan. Niet omdat het moet, maar juist omdat je dat wilt!
+                      textAlign: TextAlign.justify,
+                    ),
                     SizedBox(height: 20.0),
                     TextFormField(
-                      decoration: textInputDecoration.copyWith(hintText: 'Email'),
-                      validator: (val) => val.isEmpty ? 'Enter an email' : null,
+                      decoration: textInputDecoration.copyWith(
+                          labelText: 'Wat is je naam?', alignLabelWithHint: true),
+                      validator: (val) => val.isEmpty ? 'Vul hier een naam in' : null,
+                      initialValue: name,
+                      onChanged: (val) {
+                        setState(() => name = val);
+                      },
+                    ),
+                    SizedBox(height: 20.0),
+                    DateTimeField(
+                      resetIcon: null,
+                      format: DateFormat("d MMMM yyyy, HH:mm"),
+                      initialValue: stopdate,
+                      decoration: textInputDecoration.copyWith(
+                        labelText: 'Wanneer heb je voor het laatst gedronken?',
+                        alignLabelWithHint: true,
+                        hintMaxLines: 2,
+                      ),
+                      onShowPicker: (context, currentValue) async {
+                        final date = await showDatePicker(
+                            context: context,
+                            helpText: "KIES JE STOPDATUM",
+                            firstDate: DateTime(2000),
+                            initialDate: currentValue ?? DateTime.now(),
+                            lastDate: DateTime.now());
+                        if (date != null) {
+                          final time = await showTimePicker(
+                            context: context,
+                            initialTime: TimeOfDay(hour: 0, minute: 0),
+                            //initialTime: TimeOfDay.fromDateTime(currentValue),
+                          );
+                          return stopdate = DateTimeField.combine(date, time);
+                        } else {
+                          return currentValue;
+                        }
+                      },
+                    ),
+                    SizedBox(height: 20.0),
+                    TextFormField(
+                      decoration: textInputDecoration.copyWith(
+                        labelText: 'Hoeveel geld gaf je per week uit aan alcohol?',
+                        alignLabelWithHint: true,
+                        hintMaxLines: 2,
+                        prefixText: '€ ',
+                      ),
+                      initialValue: geld.toString(),
+                      keyboardType: TextInputType.number,
+                      //validator: (val) => val.isEmpty ? 'Enter an email' : null,
+                      onChanged: (val) {
+                        setState(() => geld = int.parse(val));
+                      },
+                    ),
+                    SizedBox(height: 20.0),
+                    TextFormField(
+                      decoration: textInputDecoration.copyWith(
+                          labelText: 'Hoeveel bier dronk je gemiddeld per week?',
+                          alignLabelWithHint: true,
+                          hintMaxLines: 2,
+                          suffixText: ' biertjes'),
+                      keyboardType: TextInputType.number,
+                      validator: (val) => val.isEmpty ? 'Vul een aantal biertjes in' : null,
+                      initialValue: bier.toString(),
+                      onChanged: (val) {
+                        setState(() => bier = int.parse(val));
+                      },
+                    ),
+                    SizedBox(height: 20.0),
+                    TextFormField(
+                      decoration: textInputDecoration.copyWith(
+                          labelText: 'Hoeveel wijn dronk je gemiddeld per week?',
+                          alignLabelWithHint: true,
+                          hintMaxLines: 2,
+                          suffixText: ' wijntjes'),
+                      keyboardType: TextInputType.number,
+                      validator: (val) => val.isEmpty ? 'Vul een aantal wijntjes in' : null,
+                      initialValue: wijn.toString(),
+                      onChanged: (val) {
+                        setState(() => wijn = int.parse(val));
+                      },
+                    ),
+                    SizedBox(height: 20.0),
+                    TextFormField(
+                      decoration: textInputDecoration.copyWith(
+                          labelText: 'Hoeveel sterke drank dronk je gemiddeld per week?',
+                          alignLabelWithHint: true,
+                          hintMaxLines: 2,
+                          suffixText: ' glazen'),
+                      keyboardType: TextInputType.number,
+                      validator: (val) =>
+                          val.isEmpty ? 'Vul een aantal glazen sterke drank in' : null,
+                      initialValue: wijn.toString(),
+                      onChanged: (val) {
+                        setState(() => sterk = int.parse(val));
+                      },
+                    ),
+                    SizedBox(height: 20.0),
+                    TextFormField(
+                      decoration: textInputDecoration.copyWith(
+                          labelText: 'Hoeveel katers had je gemiddeld per MAAND?',
+                          alignLabelWithHint: true,
+                          hintMaxLines: 2,
+                          suffixText: ' katers'),
+                      keyboardType: TextInputType.number,
+                      validator: (val) => val.isEmpty ? 'Vul een aantal katers in' : null,
+                      initialValue: katers.toString(),
+                      onChanged: (val) {
+                        setState(() => katers = int.parse(val));
+                      },
+                    ),
+                    SizedBox(height: 20.0),
+                    TextFormField(
+                      decoration: textInputDecoration.copyWith(
+                        labelText: 'E-mailadres voor je account (verplicht)',
+                        alignLabelWithHint: true,
+                        hintMaxLines: 2,
+                      ),
+                      autocorrect: false,
+                      validator: (val) => val.isEmpty ? 'Vul een e-mailadres in' : null,
+                      initialValue: email,
                       onChanged: (val) {
                         setState(() => email = val);
                       },
                     ),
                     SizedBox(height: 20.0),
                     TextFormField(
-                      decoration: textInputDecoration.copyWith(hintText: 'Password'),
-                      validator: (val) => val.length < 6 ? 'Enter a password 6+ chars long' : null,
+                      decoration: textInputDecoration.copyWith(
+                        labelText: 'Kies een wachtwoord (verplicht)',
+                        alignLabelWithHint: true,
+                        hintMaxLines: 2,
+                      ),
+                      validator: (val) =>
+                          val.length < 8 ? 'Kies een wachtwoord van minstens 8 karakters' : null,
                       obscureText: true,
+                      initialValue: password,
                       onChanged: (val) {
                         setState(() => password = val);
                       },
@@ -77,11 +227,25 @@ class _RegisterState extends State<Register> {
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
                           setState(() => loading = true);
-                          dynamic result =
-                              await _auth.registerWithEmailAndPassword(email, password);
+                          dynamic result = await _auth
+                              .registerWithEmailAndPassword(email, password)
+                              .then((user) async {
+                            await DatabaseService(uid: user.uid).updateUserData(
+                              name,
+                              stopdate,
+                              geld,
+                              bier,
+                              wijn,
+                              sterk,
+                              katers,
+                            );
+                            print(user);
+                            return user;
+                            //await user.reload(); //reload  user data
+                          });
                           if (result == null) {
                             setState(() {
-                              error = 'please supply a valid email';
+                              error = 'Controleer het formulier nog eens';
                               loading = false;
                             });
                           }
