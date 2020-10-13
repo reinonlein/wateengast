@@ -23,10 +23,10 @@ class HomeDrawer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Alcoholvrijheid.nl',
+                      'Alcoholvrijheid',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Colors.white,
+                        //color: Colors.white,
                         fontWeight: FontWeight.w600,
                         fontSize: 22,
                       ),
@@ -35,7 +35,7 @@ class HomeDrawer extends StatelessWidget {
                       'Haal de rem van je leven.',
                       style: TextStyle(
                         fontSize: 17,
-                        color: Colors.white,
+                        //color: Colors.white,
                       ),
                     )
                   ],
@@ -46,79 +46,77 @@ class HomeDrawer extends StatelessWidget {
               ),
             ),
           ),
-          ListTile(
-            title: Text(
-              'Alle verhalen',
-              style: drawerItemStyle,
+          Container(
+            padding: EdgeInsets.fromLTRB(8.0, 8.0, 0, 0),
+            child: Column(
+              children: [
+                ListTile(
+                  title: Text(
+                    'Alle verhalen',
+                    style: drawerItemStyle,
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  title: Text(
+                    'Voordelen van stoppen',
+                    style: drawerItemStyle,
+                  ),
+                  onTap: () {
+                    Navigator.pop(context, 'Voordelen');
+                  },
+                ),
+                ListTile(
+                  title: Text(
+                    'Ervaringsverhalen',
+                    style: drawerItemStyle,
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  title: Text(
+                    'Alternatieven',
+                    style: drawerItemStyle,
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  title: Text(
+                    'Over Alcoholvrijheid',
+                    style: drawerItemStyle,
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  title: Text(
+                    'Over deze app',
+                    style: drawerItemStyle,
+                  ),
+                  onTap: () {
+                    Navigator.popAndPushNamed(context, '/over_deze_app');
+                    //Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.exit_to_app),
+                  title: Text(
+                    'Logout',
+                    style: drawerItemStyle,
+                  ),
+                  onTap: (() async {
+                    await _auth.signOut();
+                  }),
+                ),
+              ],
             ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text(
-              'Voordelen van stoppen',
-              style: drawerItemStyle,
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text(
-              'Ervaringsverhalen',
-              style: drawerItemStyle,
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text(
-              'Alternatieven',
-              style: drawerItemStyle,
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text(
-              'Voordelen van stoppen',
-              style: drawerItemStyle,
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text(
-              'Over Alcoholvrijheid',
-              style: drawerItemStyle,
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text(
-              'Over deze app',
-              style: drawerItemStyle,
-            ),
-            onTap: () {
-              Navigator.popAndPushNamed(context, '/over_deze_app');
-              //Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.exit_to_app),
-            title: Text(
-              'Logout',
-              style: drawerItemStyle,
-            ),
-            onTap: (() async {
-              await _auth.signOut();
-            }),
           ),
         ],
       ),

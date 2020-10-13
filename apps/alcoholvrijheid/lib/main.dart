@@ -1,4 +1,5 @@
 import 'package:alcoholvrijheid/screens/blog/postdetail.dart';
+import 'package:alcoholvrijheid/screens/home/home.dart';
 import 'package:alcoholvrijheid/screens/home/settings_page.dart';
 import 'package:alcoholvrijheid/screens/info/over_deze_app.dart';
 import 'package:alcoholvrijheid/screens/wrapper.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => Wrapper(),
+          '/home': (context) => Home(),
           '/settings': (context) => SettingsPage(),
           '/over_deze_app': (context) => OverDezeApp(),
           '/postdetail': (context) => PostDetail(),

@@ -40,6 +40,7 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                 ? Text(
                                     '$stopdagen dag',
                                     style: TextStyle(
+                                      fontFamily: 'Heebo',
                                       fontSize: 31,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -47,8 +48,9 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                 : Text(
                                     '$stopdagen dagen',
                                     style: TextStyle(
-                                      fontSize: 31,
-                                      fontWeight: FontWeight.w600,
+                                      fontFamily: 'Heebo',
+                                      fontSize: 27,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                   ),
                           ),
@@ -76,8 +78,9 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                   child: Text(
                                     '€ ${format.format(stopdagen * (userData.geld / 7))}',
                                     style: TextStyle(
+                                      fontFamily: 'Heebo',
                                       fontSize: 22,
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                 ),
@@ -105,8 +108,9 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                   child: Text(
                                     '${(stopdagen * (userData.katers / 30)).round()}',
                                     style: TextStyle(
+                                      fontFamily: 'Heebo',
                                       fontSize: 22,
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                 ),
@@ -139,8 +143,9 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                   child: Text(
                                     '${(stopdagen * ((userData.bier + userData.wijn + userData.sterk) / 7)).round()}',
                                     style: TextStyle(
+                                      fontFamily: 'Heebo',
                                       fontSize: 22,
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                 ),
@@ -172,8 +177,9 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                   child: Text(
                                     '${(stopdagen * (((userData.bier * 0.33) + (userData.wijn * 0.25) + (userData.sterk * 0.1)) / 7)).round()}',
                                     style: TextStyle(
+                                      fontFamily: 'Heebo',
                                       fontSize: 22,
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                 ),
