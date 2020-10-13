@@ -19,13 +19,9 @@ class _PostDetailState extends State<PostDetail> {
 
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white),
+        //iconTheme: IconThemeData(color: Colors.white),
         title: Text(
-          'Alcoholvrijheid',
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
-          ),
+          post['category'],
         ),
         centerTitle: true,
         backgroundColor: Colors.amber,

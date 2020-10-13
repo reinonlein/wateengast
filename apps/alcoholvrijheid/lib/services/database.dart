@@ -1,5 +1,4 @@
 import 'package:alcoholvrijheid/models/alcoholvrijerd.dart';
-import 'package:alcoholvrijheid/models/singlepost.dart';
 import 'package:alcoholvrijheid/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 

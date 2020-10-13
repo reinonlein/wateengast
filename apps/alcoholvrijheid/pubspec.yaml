@@ -42,6 +42,7 @@ dependencies:
   cupertino_icons: ^0.1.3
 
 dev_dependencies:
+  google_fonts: ^1.1.0
   flutter_test:
     sdk: flutter
 
@@ -90,6 +91,26 @@ flutter:
         - asset: fonts/Nunito/Nunito-ExtraBold.ttf
           weight: 800
         - asset: fonts/Nunito/Nunito-Black.ttf
+          weight: 900
+    - family: Heebo
+      fonts:
+        - asset: fonts/Heebo/Heebo-Thin.ttf
+          weight: 100
+        - asset: fonts/Heebo/Heebo-ExtraLight.ttf
+          weight: 200
+        - asset: fonts/Heebo/Heebo-Light.ttf
+          weight: 300
+        - asset: fonts/Heebo/Heebo-Regular.ttf
+          weight: 400
+        - asset: fonts/Heebo/Heebo-Medium.ttf
+          weight: 500
+        - asset: fonts/Heebo/Heebo-SemiBold.ttf
+          weight: 600
+        - asset: fonts/Heebo/Heebo-Bold.ttf
+          weight: 700
+        - asset: fonts/Heebo/Heebo-ExtraBold.ttf
+          weight: 800
+        - asset: fonts/Heebo/Heebo-Black.ttf
           weight: 900
   #
   # For details regarding fonts from package dependencies,
