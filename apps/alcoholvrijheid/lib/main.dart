@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         ],
         initialRoute: '/',
         routes: {
-          '/': (context) => Wrapper(),
+          '/': (context) => Home(),
           '/home': (context) => Home(),
           '/settings': (context) => SettingsPage(),
           '/over_deze_app': (context) => OverDezeApp(),

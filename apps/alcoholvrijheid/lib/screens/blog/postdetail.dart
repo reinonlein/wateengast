@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_html/style.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:share/share.dart';
 
 class PostDetail extends StatefulWidget {
   @override
@@ -14,6 +15,9 @@ class _PostDetailState extends State<PostDetail> {
   @override
   Widget build(BuildContext context) {
     post = ModalRoute.of(context).settings.arguments;
+
+    String shareText = 'Dit artikel leek me wel interessant voor je: ${post['link']}';
+    String shareSubject = 'Alcoholvrije tip!';
 
     print(post);
 
@@ -91,11 +95,22 @@ class _PostDetailState extends State<PostDetail> {
           SizedBox(
             height: 20,
           ),
+          FlatButton.icon(
+            onPressed: () {
+              final RenderBox box = context.findRenderObject();
+              Share.share(shareText,
+                  subject: shareSubject,
+                  sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+            },
+            icon: Icon(Icons.share),
+            label: Text('Verhaal delen'),
+            splashColor: Colors.amber,
+          ),
           RaisedButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            child: Text('Terug naar alle posts'),
+            child: Text('Terug naar alle verhalen'),
           ),
           SizedBox(
             height: 30,

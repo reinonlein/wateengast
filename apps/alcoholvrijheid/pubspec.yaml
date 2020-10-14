@@ -33,6 +33,7 @@ dependencies:
   flutter_html: ^1.0.0
   url_launcher: ^5.7.2
   html_unescape: ^1.0.2
+  share: ^0.6.5+2
   flutter:
     sdk: flutter
 
