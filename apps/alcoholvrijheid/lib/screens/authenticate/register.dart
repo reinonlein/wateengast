@@ -43,8 +43,8 @@ class _RegisterState extends State<Register> {
               backgroundColor: Colors.amber[500],
               //elevation: 0.0,
               title: Text(
-                'Je alcoholvrijheid begint hier',
-                style: TextStyle(fontSize: 15),
+                'Om te beginnen...',
+                style: TextStyle(fontSize: 17),
               ),
               actions: [
                 FlatButton.icon(
@@ -71,8 +71,7 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                     Text(
-                      'Deze app gaat je helpen om eindelijk eens écht alcoholvrij door het leven te gaan. Niet omdat het moet, maar juist omdat je dat wilt!\n\nVul hieronder je stopgegevens in om de voortgang jouw unieke reis naar alcoholvrijheid bij te houden, of klik hierboven op inloggen als je dit al een keer eerder hebt gedaan',
-                      //Deze app is jouw steuntje in de rug naar een heerlijk alcoholvrij leven. Met ervaringsverhalen, tips, voordelen, alternatieve drankjes en leuke statistiekjes over jouw alcoholvrijheid, zorgen we er samen voor dat je straks niets anders meer wilt Deze app gaat je helpen om eindelijk eens écht alcoholvrij door het leven te gaan. Niet omdat het moet, maar juist omdat je dat wilt!
+                      'En gefeliciteerd! Deze app gaat je namelijk helpen om eindelijk eens écht alcoholvrij door het leven te gaan. Niet omdat het moet, maar juist omdat je dat wilt! De mooie ervaringsverhalen, tips en statistiekjes geven je net dat duwtje in de rug naar een heerlijk alcoholvrij leven. Geniet ervan!\n\nVul hieronder je stopgegevens in om je voortgang bij te houden, of klik hierboven op inloggen als je dit al een keer eerder hebt gedaan.',
                       textAlign: TextAlign.justify,
                     ),
                     SizedBox(height: 20.0),
@@ -189,12 +188,13 @@ class _RegisterState extends State<Register> {
                     SizedBox(height: 20.0),
                     TextFormField(
                       decoration: textInputDecoration.copyWith(
-                        labelText: 'E-mailadres voor je account (verplicht)',
+                        labelText: 'E-mailadres voor je account',
                         alignLabelWithHint: true,
                         hintMaxLines: 2,
                       ),
                       autocorrect: false,
-                      validator: (val) => val.isEmpty ? 'Vul een e-mailadres in' : null,
+                      validator: (val) =>
+                          val.isEmpty ? 'Vul alsjeblieft een e-mailadres in voor je account' : null,
                       initialValue: email,
                       onChanged: (val) {
                         setState(() => email = val);
@@ -203,7 +203,7 @@ class _RegisterState extends State<Register> {
                     SizedBox(height: 20.0),
                     TextFormField(
                       decoration: textInputDecoration.copyWith(
-                        labelText: 'Kies een wachtwoord (verplicht)',
+                        labelText: 'Kies een wachtwoord',
                         alignLabelWithHint: true,
                         hintMaxLines: 2,
                       ),

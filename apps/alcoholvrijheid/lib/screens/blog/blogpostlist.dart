@@ -27,7 +27,7 @@ class BlogPostlist extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'De verhalen worden opgehaald van Alcoholvrijheid.nl',
+                  'De nieuwste verhalen worden\nopgehaald van Alcoholvrijheid.nl',
                   style: TextStyle(fontSize: 16),
                   textAlign: TextAlign.center,
                 ),
@@ -72,6 +72,7 @@ class BlogPostlist extends StatelessWidget {
                               'title': blogPostlist[index].title,
                               'image': blogPostlist[index].image,
                               'category': blogPostlist[index].category,
+                              'link': blogPostlist[index].link,
                               'content': blogPostlist[index].content,
                             },
                           );

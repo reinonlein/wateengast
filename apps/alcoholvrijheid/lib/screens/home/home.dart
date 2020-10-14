@@ -1,7 +1,12 @@
 import 'dart:convert';
 
+import 'package:alcoholvrijheid/backup/av_members_tile.dart';
 import 'package:alcoholvrijheid/models/singlecategory.dart';
 import 'package:alcoholvrijheid/models/singlepost.dart';
+import 'package:alcoholvrijheid/models/user.dart';
+import 'package:alcoholvrijheid/screens/authenticate/authenticate.dart';
+import 'package:alcoholvrijheid/screens/authenticate/register.dart';
+import 'package:alcoholvrijheid/screens/authenticate/stopgegevens_message.dart';
 import 'package:alcoholvrijheid/screens/blog/blogpostlist.dart';
 import 'package:alcoholvrijheid/screens/home/av_cards.dart';
 import 'package:alcoholvrijheid/screens/home/home_drawer.dart';
@@ -11,6 +16,7 @@ import 'package:alcoholvrijheid/services/auth.dart';
 import 'package:alcoholvrijheid/services/database.dart';
 import 'package:alcoholvrijheid/backup/postlist_provider.dart';
 import 'package:alcoholvrijheid/shared/constants.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
@@ -137,14 +143,17 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final AuthService _auth = AuthService();
+    final user = Provider.of<User>(context);
 
     var _pages = <Widget>[
-      AlcoholvrijheidCards(), //this is a stateful widget on a separate file
+      user == null
+          ? Authenticate()
+          : AlcoholvrijheidCards(), //this is a stateful widget on a separate file
       BlogPostlist(
           blogPostlist: filterCategory == 'Alcoholvrijheid'
               ? currentPostList
               : currentPostList.where((i) => i.category == filterCategory).toList()),
-      SettingsPage(),
+      user == null ? StopgegevensMessage() : SettingsPage(),
     ];
 
     // code snippet om een lijst van alle leden te krijgen
@@ -164,39 +173,42 @@ class _HomeState extends State<Home> {
               label: 'Alcoholvrijheid',
             ),
             BottomNavigationBarItem(
-                icon: new Icon(Icons.web),
-                label:
-                    'Alle verhalen' //filterCategory == 'Alcoholvrijheid' ? 'Alle verhalen' : filterCategory,
-                ),
+              icon: new Icon(Icons.web),
+              label: filterCategory == 'Alcoholvrijheid'
+                  ? 'Alle verhalen'
+                  : filterCategory, //'Alle verhalen' //
+            ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'Mijn stopgegevens',
             )
           ],
         ),
-        appBar: AppBar(
-          title: _selectedIndex == 1
-              ? Text(filterCategory)
-              : Text(
-                  'Alcoholvrijheid',
-                  // style: TextStyle(
-                  //   color: Colors.white,
-                  //   fontWeight: FontWeight.w600,
-                  //   fontSize: 20,
-                  //   shadows: <Shadow>[
-                  //     Shadow(
-                  //       offset: Offset(0.0, 0.0),
-                  //       blurRadius: 1.0,
-                  //       color: Color.fromARGB(150, 0, 0, 0),
-                  //     ),
-                  //   ],
-                  // ),
-                ),
-          centerTitle: true,
-          //iconTheme: new IconThemeData(color: Colors.white),
-          backgroundColor: Colors.amber,
-          elevation: 2.0,
-        ),
+        appBar: user == null && _selectedIndex == 0
+            ? null
+            : AppBar(
+                title: _selectedIndex == 1
+                    ? Text(filterCategory)
+                    : Text(
+                        'Alcoholvrijheid',
+                        // style: TextStyle(
+                        //   color: Colors.white,
+                        //   fontWeight: FontWeight.w600,
+                        //   fontSize: 20,
+                        //   shadows: <Shadow>[
+                        //     Shadow(
+                        //       offset: Offset(0.0, 0.0),
+                        //       blurRadius: 1.0,
+                        //       color: Color.fromARGB(150, 0, 0, 0),
+                        //     ),
+                        //   ],
+                        // ),
+                      ),
+                centerTitle: true,
+                //iconTheme: new IconThemeData(color: Colors.white),
+                backgroundColor: Colors.amber,
+                elevation: 2.0,
+              ),
         body: Container(
           width: double.infinity,
           decoration: BoxDecoration(
@@ -208,145 +220,197 @@ class _HomeState extends State<Home> {
           ),
           child: _pages.elementAt(_selectedIndex),
         ),
-        drawer: Drawer(
-          child: ListView(
-            padding: const EdgeInsets.all(0.0),
-            children: [
-              Container(
-                height: 160,
-                child: DrawerHeader(
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Alcoholvrijheid',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            //color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 22,
+        drawer: user == null
+            ? null
+            : Drawer(
+                child: ListView(
+                  padding: const EdgeInsets.all(0.0),
+                  children: [
+                    Container(
+                      height: 160,
+                      child: DrawerHeader(
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Alcoholvrijheid',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  //color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 22,
+                                ),
+                              ),
+                              Text(
+                                'Haal de rem van je leven.',
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  //color: Colors.white,
+                                ),
+                              )
+                            ],
                           ),
                         ),
-                        Text(
-                          'Haal de rem van je leven.',
-                          style: TextStyle(
-                            fontSize: 17,
-                            //color: Colors.white,
+                        decoration: BoxDecoration(
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(8.0, 8.0, 0, 0),
+                      child: Column(
+                        children: [
+                          ListTile(
+                            title: Text(
+                              'Alle verhalen',
+                              style: drawerItemStyle,
+                            ),
+                            onTap: () {
+                              FirebaseAnalytics().logEvent(
+                                name: 'drawer_navigation',
+                                parameters: {'target': 'Alle verhalen'},
+                              );
+                              setState(() {
+                                filterCategory = 'Alcoholvrijheid';
+                                _selectedIndex = 1;
+                              });
+                              Navigator.pop(context);
+                            },
                           ),
-                        )
-                      ],
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.amber,
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.fromLTRB(8.0, 8.0, 0, 0),
-                child: Column(
-                  children: [
-                    ListTile(
-                      title: Text(
-                        'Alle verhalen',
-                        style: drawerItemStyle,
+                          ListTile(
+                            title: Text(
+                              'Ervaringsverhalen',
+                              style: drawerItemStyle,
+                            ),
+                            onTap: () {
+                              FirebaseAnalytics().logEvent(
+                                name: 'drawer_navigation',
+                                parameters: {'target': 'Ervaringsverhalen'},
+                              );
+                              setState(() {
+                                filterCategory = 'Ervaringsverhalen';
+                                _selectedIndex = 1;
+                              });
+                              Navigator.pop(context);
+                            },
+                          ),
+                          ListTile(
+                            title: Text(
+                              'Voordelen van stoppen',
+                              style: drawerItemStyle,
+                            ),
+                            onTap: () {
+                              FirebaseAnalytics().logEvent(
+                                name: 'drawer_navigation',
+                                parameters: {'target': 'Voordelen van stoppen'},
+                              );
+                              setState(() {
+                                filterCategory = 'Voordelen';
+                                _selectedIndex = 1;
+                              });
+                              Navigator.pop(context);
+                            },
+                          ),
+                          ListTile(
+                            title: Text(
+                              'Alternatieve drankjes',
+                              style: drawerItemStyle,
+                            ),
+                            onTap: () {
+                              FirebaseAnalytics().logEvent(
+                                name: 'drawer_navigation',
+                                parameters: {'target': 'Alternatieve drankjes'},
+                              );
+                              setState(() {
+                                filterCategory = 'Alternatieven';
+                                _selectedIndex = 1;
+                              });
+                              Navigator.pop(context);
+                            },
+                          ),
+                          ListTile(
+                            title: Text(
+                              'Vragen en stellingen',
+                              style: drawerItemStyle,
+                            ),
+                            onTap: () {
+                              FirebaseAnalytics().logEvent(
+                                name: 'drawer_navigation',
+                                parameters: {'target': 'Vragen en stellingen'},
+                              );
+                              setState(() {
+                                filterCategory = 'Vragen';
+                                _selectedIndex = 1;
+                              });
+                              Navigator.pop(context);
+                            },
+                          ),
+                          ListTile(
+                            title: Text(
+                              'Tips en advies',
+                              style: drawerItemStyle,
+                            ),
+                            onTap: () {
+                              FirebaseAnalytics().logEvent(
+                                name: 'drawer_navigation',
+                                parameters: {'target': 'Tips en advies'},
+                              );
+                              setState(() {
+                                filterCategory = 'Tips';
+                                _selectedIndex = 1;
+                              });
+                              Navigator.pop(context);
+                            },
+                          ),
+                          ListTile(
+                            title: Text(
+                              'Over Alcoholvrijheid',
+                              style: drawerItemStyle,
+                            ),
+                            onTap: () {
+                              FirebaseAnalytics().logEvent(
+                                name: 'drawer_navigation',
+                                parameters: {'target': 'Over alcoholvrijheid'},
+                              );
+                              Navigator.pop(context);
+                            },
+                          ),
+                          ListTile(
+                            title: Text(
+                              'Over deze app',
+                              style: drawerItemStyle,
+                            ),
+                            onTap: () {
+                              FirebaseAnalytics().logEvent(
+                                name: 'drawer_navigation',
+                                parameters: {'target': 'Over deze app'},
+                              );
+                              Navigator.popAndPushNamed(context, '/over_deze_app');
+                              //Navigator.pop(context);
+                            },
+                          ),
+                          ListTile(
+                            leading: Icon(Icons.exit_to_app),
+                            title: Text(
+                              'Logout',
+                              style: drawerItemStyle,
+                            ),
+                            onTap: (() async {
+                              FirebaseAnalytics().logEvent(
+                                name: 'drawer_navigation',
+                                parameters: {'target': 'Logout'},
+                              );
+                              await _auth.signOut();
+                              Navigator.pop(context);
+                            }),
+                          ),
+                        ],
                       ),
-                      onTap: () {
-                        setState(() {
-                          filterCategory = 'Alcoholvrijheid';
-                          _selectedIndex = 1;
-                        });
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text(
-                        'Ervaringsverhalen',
-                        style: drawerItemStyle,
-                      ),
-                      onTap: () {
-                        setState(() {
-                          filterCategory = 'Ervaringsverhalen';
-                          _selectedIndex = 1;
-                        });
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text(
-                        'Voordelen van stoppen',
-                        style: drawerItemStyle,
-                      ),
-                      onTap: () {
-                        setState(() {
-                          filterCategory = 'Voordelen';
-                          _selectedIndex = 1;
-                        });
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text(
-                        'Alternatieven',
-                        style: drawerItemStyle,
-                      ),
-                      onTap: () {
-                        setState(() {
-                          filterCategory = 'Alternatieven';
-                          _selectedIndex = 1;
-                        });
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text(
-                        'Tips',
-                        style: drawerItemStyle,
-                      ),
-                      onTap: () {
-                        setState(() {
-                          filterCategory = 'Tips';
-                          _selectedIndex = 1;
-                        });
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text(
-                        'Over Alcoholvrijheid',
-                        style: drawerItemStyle,
-                      ),
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: Text(
-                        'Over deze app',
-                        style: drawerItemStyle,
-                      ),
-                      onTap: () {
-                        Navigator.popAndPushNamed(context, '/over_deze_app');
-                        //Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      leading: Icon(Icons.exit_to_app),
-                      title: Text(
-                        'Logout',
-                        style: drawerItemStyle,
-                      ),
-                      onTap: (() async {
-                        await _auth.signOut();
-                      }),
                     ),
                   ],
                 ),
               ),
-            ],
-          ),
-        ),
       ),
     );
   }
