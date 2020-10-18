@@ -100,28 +100,25 @@ class _HomeState extends State<Home> {
     fbm.configure(
       onMessage: (message) {
         print(message);
-        return;
-      },
-      onLaunch: (message) {
-        print(message);
+        _selectedIndex = 1;
         return Navigator.pushNamed(
           context,
           '/postdetail',
           arguments: {
             'title': currentPostList[0].title,
             'image': currentPostList[0].image,
+            'link': currentPostList[0].link,
+            'category': currentPostList[0].category,
             'content': currentPostList[0].content,
           },
         );
       },
-      onResume: (message) {
+      onLaunch: (message) {
         print(message);
+        _selectedIndex = 1;
         setState(() {
-          category = '';
+          category = 'Alcoholvrijheid';
           currentPostList = [];
-          postCount = 1000;
-          availablePages = 40;
-          page = 1;
         });
         _getPosts().then((response) {
           currentPostList.addAll(response);
@@ -133,6 +130,31 @@ class _HomeState extends State<Home> {
           arguments: {
             'title': currentPostList[0].title,
             'image': currentPostList[0].image,
+            'link': currentPostList[0].link,
+            'category': currentPostList[0].category,
+            'content': currentPostList[0].content,
+          },
+        );
+      },
+      onResume: (message) {
+        print(message);
+        _selectedIndex = 1;
+        setState(() {
+          category = 'Alcoholvrijheid';
+          currentPostList = [];
+        });
+        _getPosts().then((response) {
+          currentPostList.addAll(response);
+          setState(() {});
+        });
+        return Navigator.pushNamed(
+          context,
+          '/postdetail',
+          arguments: {
+            'title': currentPostList[0].title,
+            'image': currentPostList[0].image,
+            'link': currentPostList[0].link,
+            'category': currentPostList[0].category,
             'content': currentPostList[0].content,
           },
         );
@@ -373,7 +395,7 @@ class _HomeState extends State<Home> {
                                 name: 'drawer_navigation',
                                 parameters: {'target': 'Over alcoholvrijheid'},
                               );
-                              Navigator.pop(context);
+                              Navigator.popAndPushNamed(context, '/over_alcoholvrijheid');
                             },
                           ),
                           ListTile(

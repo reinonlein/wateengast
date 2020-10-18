@@ -42,7 +42,7 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                     style: TextStyle(
                                       fontFamily: 'Heebo',
                                       fontSize: 31,
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                   )
                                 : Text(
