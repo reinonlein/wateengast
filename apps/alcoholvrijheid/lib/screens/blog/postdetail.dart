@@ -16,7 +16,7 @@ class _PostDetailState extends State<PostDetail> {
   Widget build(BuildContext context) {
     post = ModalRoute.of(context).settings.arguments;
 
-    String shareText = 'Dit artikel leek me wel interessant voor je: ${post['link']}';
+    String shareText = 'Dit artikel is misschien wel wat voor jou: ${post['link']}';
     String shareSubject = 'Alcoholvrije tip!';
 
     print(post);

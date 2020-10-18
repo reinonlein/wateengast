@@ -65,21 +65,29 @@ class _RegisterState extends State<Register> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 20.0),
                       child: Text(
-                        'Welkom in de Alcoholvrijheid-app!',
+                        'Welkom bij Alcoholvrijheid!',
                         style: TextStyle(fontSize: 24),
                         textAlign: TextAlign.center,
                       ),
                     ),
                     Text(
-                      'En gefeliciteerd! Deze app gaat je namelijk helpen om eindelijk eens écht alcoholvrij door het leven te gaan. Niet omdat het moet, maar juist omdat je dat wilt! De mooie ervaringsverhalen, tips en statistiekjes geven je net dat duwtje in de rug naar een heerlijk alcoholvrij leven. Geniet ervan!\n\nVul hieronder je stopgegevens in om je voortgang bij te houden, of klik hierboven op inloggen als je dit al een keer eerder hebt gedaan.',
+                      'En gefeliciteerd! Deze app gaat je namelijk helpen om eindelijk eens écht alcoholvrij door het leven te gaan. Niet omdat het moet, maar juist omdat je dat wilt! De mooie ervaringsverhalen, tips en statistiekjes geven je net dat duwtje in de rug naar een heerlijk alcoholvrij leven.\n\nAls je gestopt bent met drinken, kan je hieronder je stopgegevens invullen om je voortgang bij te houden. Klik hierboven op inloggen als je dit al een keer eerder hebt gedaan.\n\nVeel plezier en inspiratie toegewenst!',
                       textAlign: TextAlign.justify,
                     ),
                     SizedBox(height: 20.0),
                     TextFormField(
                       decoration: textInputDecoration.copyWith(
-                          labelText: 'Wat is je naam?', alignLabelWithHint: true),
+                        labelText: 'Wat is je naam?',
+                        alignLabelWithHint: true,
+                        hintText: 'Naam',
+                        suffixText: '*',
+                        suffixStyle: TextStyle(
+                          color: Colors.red,
+                        ),
+                      ),
                       validator: (val) => val.isEmpty ? 'Vul hier een naam in' : null,
                       initialValue: name,
+                      autocorrect: false,
                       onChanged: (val) {
                         setState(() => name = val);
                       },
@@ -123,9 +131,11 @@ class _RegisterState extends State<Register> {
                       ),
                       initialValue: geld.toString(),
                       keyboardType: TextInputType.number,
-                      //validator: (val) => val.isEmpty ? 'Enter an email' : null,
+                      textInputAction: TextInputAction.next,
                       onChanged: (val) {
-                        setState(() => geld = int.parse(val));
+                        setState(() {
+                          geld = int.parse(val);
+                        });
                       },
                     ),
                     SizedBox(height: 20.0),
@@ -136,6 +146,7 @@ class _RegisterState extends State<Register> {
                           hintMaxLines: 2,
                           suffixText: ' biertjes'),
                       keyboardType: TextInputType.number,
+                      textInputAction: TextInputAction.next,
                       validator: (val) => val.isEmpty ? 'Vul een aantal biertjes in' : null,
                       initialValue: bier.toString(),
                       onChanged: (val) {
@@ -150,6 +161,7 @@ class _RegisterState extends State<Register> {
                           hintMaxLines: 2,
                           suffixText: ' wijntjes'),
                       keyboardType: TextInputType.number,
+                      textInputAction: TextInputAction.next,
                       validator: (val) => val.isEmpty ? 'Vul een aantal wijntjes in' : null,
                       initialValue: wijn.toString(),
                       onChanged: (val) {
@@ -164,6 +176,7 @@ class _RegisterState extends State<Register> {
                           hintMaxLines: 2,
                           suffixText: ' glazen'),
                       keyboardType: TextInputType.number,
+                      textInputAction: TextInputAction.next,
                       validator: (val) =>
                           val.isEmpty ? 'Vul een aantal glazen sterke drank in' : null,
                       initialValue: wijn.toString(),
@@ -179,6 +192,7 @@ class _RegisterState extends State<Register> {
                           hintMaxLines: 2,
                           suffixText: ' katers'),
                       keyboardType: TextInputType.number,
+                      textInputAction: TextInputAction.next,
                       validator: (val) => val.isEmpty ? 'Vul een aantal katers in' : null,
                       initialValue: katers.toString(),
                       onChanged: (val) {
@@ -189,10 +203,17 @@ class _RegisterState extends State<Register> {
                     TextFormField(
                       decoration: textInputDecoration.copyWith(
                         labelText: 'E-mailadres voor je account',
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        hintText: 'E-mail',
+                        suffixText: '*',
+                        suffixStyle: TextStyle(
+                          color: Colors.red,
+                        ),
                         alignLabelWithHint: true,
                         hintMaxLines: 2,
                       ),
                       autocorrect: false,
+                      textInputAction: TextInputAction.next,
                       validator: (val) =>
                           val.isEmpty ? 'Vul alsjeblieft een e-mailadres in voor je account' : null,
                       initialValue: email,
@@ -204,6 +225,12 @@ class _RegisterState extends State<Register> {
                     TextFormField(
                       decoration: textInputDecoration.copyWith(
                         labelText: 'Kies een wachtwoord',
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        hintText: 'wachtwoord',
+                        suffixText: '*',
+                        suffixStyle: TextStyle(
+                          color: Colors.red,
+                        ),
                         alignLabelWithHint: true,
                         hintMaxLines: 2,
                       ),
