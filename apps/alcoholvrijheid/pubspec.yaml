@@ -34,6 +34,8 @@ dependencies:
   url_launcher: ^5.7.2
   html_unescape: ^1.0.2
   share: ^0.6.5+2
+  about: ^1.2.0
+  flutter_markdown: ^0.4.4
   flutter:
     sdk: flutter
 
@@ -61,6 +63,11 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+    - README.md
+    - CHANGELOG.md
+    - CODE_OF_CONDUCT.md
+    - LICENSE.md
+    - FAQ.md
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
