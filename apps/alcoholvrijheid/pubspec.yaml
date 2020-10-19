@@ -64,9 +64,7 @@ flutter:
   assets:
     - assets/
     - README.md
-    - CHANGELOG.md
-    - CODE_OF_CONDUCT.md
-    - LICENSE.md
+    - changelog.md
     - FAQ.md
 
   # An image asset can refer to one or more resolution-specific "variants", see
