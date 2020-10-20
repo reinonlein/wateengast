@@ -8,10 +8,19 @@ class OverDezeApp extends StatelessWidget {
       title: Text('Over deze app'),
       applicationVersion: 'Version {{ version }}, build #{{ buildNumber }}',
       applicationDescription: Text(
-        'Deze app is met veel liefde in mijn vrije tijd gemaakt door ReinOnlein: datanerd, schrijver en ex-pilsfanaat in hart en nieren. In de gereedschapskoffer voor deze app zitten Flutter, Dart, Firebase en natuurlijk mijn lievelingseditor Visual Studio Code. Aan al deze tools: bedankt! Jullie zijn werkelijk fantastisch :-)',
+        'Deze app is met veel liefde en vrije tijd gemaakt door ReinOnlein: datanerd, schrijver en ex-pilsfanaat in hart en nieren. Deze app is gemaakt met Flutter, Dart, Firebase en natuurlijk mijn lievelingseditor VS Code. Aan al deze tools: bedankt! Jullie zijn werkelijk fantastisch :-)',
         textAlign: TextAlign.justify,
       ),
-      applicationIcon: FlutterLogo(size: 100),
+      applicationIcon: Padding(
+        padding: const EdgeInsets.only(top: 12.0),
+        child: const SizedBox(
+          width: 100,
+          height: 100,
+          child: Image(
+            image: AssetImage('assets/av_icon.png'),
+          ),
+        ),
+      ),
       applicationLegalese: '© ReinOnlein, Alcoholvrijheid {{ year }}',
       children: <Widget>[
         MarkdownPageListTile(
@@ -27,7 +36,7 @@ class OverDezeApp extends StatelessWidget {
         MarkdownPageListTile(
           filename: 'plugins.md',
           title: Text('Gebruikte plugins'),
-          icon: Icon(Icons.description),
+          icon: Icon(Icons.power),
         ),
         // MarkdownPageListTile(
         //   filename: 'LICENSE.md',

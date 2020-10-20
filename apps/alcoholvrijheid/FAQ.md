@@ -10,7 +10,7 @@ Omdat natuurlijk lang niet iedereen bekend is met Alcoholvrijheid, hier een simp
 #  
 #  
 #### **Waar gaat Alcoholvrijheid over?**  
-Alcoholvrijheid gaat over (je raadt het al) de vrijheid van een alcoholvrij leven, en alles wat daarbij komt kijken. De term alcoholvrijheid is verzonnen voor het besef dat je ook los kunt van de gewenning en de enorme vrijheid die je daar dan vervolgens voor terug krijgt. Het staat voor een leven waarin je niet alleen maar denkt te kunnen ontspannen met een drankje erbij, maar andere manieren kunt vinden die minstens net zo effectief en ontspannend blijken te zijn. Alcoholvirjheid is een omslag die je onwijs veel op kan leveren, maar dan moet je wel die spannende sprong in het diepe durven te maken. Deze app is jouw zwembandje in deze spannende tijd! 
+Alcoholvrijheid gaat over (je raadt het al) de vrijheid van een alcoholvrij leven, en alles wat daarbij komt kijken. De term alcoholvrijheid is verzonnen voor het besef dat je ook los kunt van de gewenning en de enorme vrijheid die je daar dan vervolgens voor terug krijgt. Het staat voor een leven waarin je niet alleen maar denkt te kunnen ontspannen met een drankje erbij, maar andere manieren kunt vinden die minstens net zo effectief en ontspannend blijken te zijn. Alcoholvrijheid is een omslag die je onwijs veel op kan leveren, maar dan moet je wel die spannende sprong in het diepe durven te maken. Deze app is jouw zwembandje in deze spannende tijd! 
 #  
 #  
 #  
@@ -102,3 +102,6 @@ Qua content wil ik de komende tijd vooral inzetten op de ervaringsverhalen. Ik m
 #  
 #### **Tot zover voor nu!**
 Mocht je vraag hier niet tussenstaan: [info@alcoholvrijheid.nl](mailto:info@alcoholvrijheid.nl) is je vriend. En in de tussentijd: veel plezier met deze app en succes met je reis naar een heerlijk leven in pure alcoholvrijheid!
+#  
+#  
+#  
