@@ -1,4 +1,4 @@
-![](/av-icon-text-klein.png)
+![](https://raw.githubusercontent.com/reinonlein/wateengast/master/apps/alcoholvrijheid/av-icon-text-klein.png)
 
 # Welkom achter de schermen van de Alcoholvrijheid-app!
 
