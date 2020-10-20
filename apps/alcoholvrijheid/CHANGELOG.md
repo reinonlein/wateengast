@@ -2,7 +2,7 @@ Hier lees je wat er allemaal nieuw is in elke update van de app.
 
 ## **Coming up next:**
 
-- Dit is wat je kunt verwachten in de volgende versie van de app
+- Deze app is nooit klaar! Dit is wat je kunt verwachten in de volgende versie van de app.
 
 ## **1.0.0** (release 25-10-2020)
 
