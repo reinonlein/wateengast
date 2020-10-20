@@ -1,4 +1,4 @@
-![](av-icon-text-klein.png)
+
 
 # Welkom achter de schermen van de Alcoholvrijheid-app!
 
