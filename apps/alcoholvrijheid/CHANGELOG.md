@@ -1,11 +1,10 @@
-# Changelog
 Hier lees je wat er allemaal nieuw is in elke update van de app.
 
-## Unreleased
+## **Coming up next:**
 
 - Dit is wat je kunt verwachten in de volgende versie van de app
 
-## 1.0.0 (release 25-10-2020)
+## **1.0.0** (release 25-10-2020)
 
 - FEESTJE: Publicatie van de eerste versie in de Play Store!
 - Met automatische updates van Alcoholvrijheid.nl (via http calls naar WP-API)
