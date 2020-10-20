@@ -1,7 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:about/about.dart';
+import 'package:http/http.dart' as http;
 
-class OverDezeApp extends StatelessWidget {
+String changelog = '';
+
+Future<String> _getMarkdown() async {
+  final responseMarkdown = await http.get(
+      'https://raw.githubusercontent.com/reinonlein/wateengast/master/apps/alcoholvrijheid/CHANGELOG.md');
+  return responseMarkdown.body;
+}
+
+class OverDezeApp extends StatefulWidget {
+  @override
+  _OverDezeAppState createState() => _OverDezeAppState();
+}
+
+class _OverDezeAppState extends State<OverDezeApp> {
+  @override
+  void initState() {
+    _getMarkdown().then((result) {
+      changelog = result;
+      setState(() {});
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return AboutPage(
@@ -17,7 +40,7 @@ class OverDezeApp extends StatelessWidget {
           width: 100,
           height: 100,
           child: Image(
-            image: AssetImage('assets/av_icon.png'),
+            image: AssetImage('av-icon-text-klein.png'),
           ),
         ),
       ),
@@ -29,7 +52,7 @@ class OverDezeApp extends StatelessWidget {
           icon: Icon(Icons.all_inclusive),
         ),
         MarkdownPageListTile(
-          filename: 'changelog.md',
+          filename: changelog,
           title: Text('View Changelog'),
           icon: Icon(Icons.view_list),
         ),

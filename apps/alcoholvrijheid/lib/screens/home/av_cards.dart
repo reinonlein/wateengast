@@ -175,7 +175,7 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
-                                    '${(stopdagen * (((userData.bier * 0.33) + (userData.wijn * 0.25) + (userData.sterk * 0.1)) / 7)).round()}',
+                                    '${(stopdagen * (((userData.bier * 0.250) + (userData.wijn * 0.125) + (userData.sterk * 0.035)) / 7)).round()}',
                                     style: TextStyle(
                                       fontFamily: 'Heebo',
                                       fontSize: 22,
