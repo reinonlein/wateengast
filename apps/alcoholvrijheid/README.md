@@ -1,3 +1,5 @@
+![](av-icon-text-klein.png)
+
 # Welkom achter de schermen van de Alcoholvrijheid-app!
 
 [Altijd en overal Alcoholvrijheid.nl](https://www.alcoholvrijheid.nl)
