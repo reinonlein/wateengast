@@ -89,7 +89,7 @@ Mocht je iets te vragen hebben over Alcoholvrijheid, heb je een tip, een idee, s
 Qua content wil ik de komende tijd vooral inzetten op de ervaringsverhalen. Ik merk dat die het leukst zijn om te doen en ik denk dat lezers daar ook het meest aan zullen hebben. Voor de app staan er nog heel veel nieuwe features op mijn verlanglijst. Die lijst ga ik nog publiceren, maar bovenaan staan in elk geval deze toepassingen:
 
 - Dat je een dagboek bij kunt houden
-- Stemmingstracker
+- Een stemmingstracker
 - Reminders waarom je ook alweer wilde stoppen
 - Eventueel een chatbox/forum
 - Een sociaal element, waarin je je stopmaatjes kunt ondersteunen

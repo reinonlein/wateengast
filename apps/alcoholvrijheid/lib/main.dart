@@ -3,7 +3,6 @@ import 'package:alcoholvrijheid/screens/home/home.dart';
 import 'package:alcoholvrijheid/screens/home/settings_page.dart';
 import 'package:alcoholvrijheid/screens/info/over_alcoholvrijheid.dart';
 import 'package:alcoholvrijheid/screens/info/over_deze_app.dart';
-import 'package:alcoholvrijheid/screens/wrapper.dart';
 import 'package:alcoholvrijheid/services/auth.dart';
 import 'package:alcoholvrijheid/models/user.dart';
 import 'package:flutter/material.dart';
