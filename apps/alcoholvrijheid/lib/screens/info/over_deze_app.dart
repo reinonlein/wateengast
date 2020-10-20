@@ -2,12 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:about/about.dart';
 import 'package:http/http.dart' as http;
 
-String changelog = '';
+String changelog;
+String readme;
 
-Future<String> _getMarkdown() async {
-  final responseMarkdown = await http.get(
+Future<String> _getChangelog() async {
+  final responseChangelog = await http.get(
       'https://raw.githubusercontent.com/reinonlein/wateengast/master/apps/alcoholvrijheid/CHANGELOG.md');
-  return responseMarkdown.body;
+  return responseChangelog.body;
+}
+
+Future<String> _getReadme() async {
+  final responseReadme = await http.get(
+      'https://raw.githubusercontent.com/reinonlein/wateengast/master/apps/alcoholvrijheid/README.md');
+  return responseReadme.body;
 }
 
 class OverDezeApp extends StatefulWidget {
@@ -18,10 +25,18 @@ class OverDezeApp extends StatefulWidget {
 class _OverDezeAppState extends State<OverDezeApp> {
   @override
   void initState() {
-    _getMarkdown().then((result) {
-      changelog = result;
-      setState(() {});
+    _getChangelog().then((result) {
+      setState(() {
+        changelog = result;
+      });
     });
+
+    _getReadme().then((result) {
+      setState(() {
+        readme = result;
+      });
+    });
+
     super.initState();
   }
 
@@ -46,20 +61,29 @@ class _OverDezeAppState extends State<OverDezeApp> {
       ),
       applicationLegalese: '© ReinOnlein, Alcoholvrijheid {{ year }}',
       children: <Widget>[
-        MarkdownPageListTile(
-          filename: 'README.md',
-          title: Text('View Readme'),
-          icon: Icon(Icons.all_inclusive),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: MarkdownPageListTile(
+            filename: 'README.md',
+            title: Text('View Readme'),
+            icon: Icon(Icons.all_inclusive),
+          ),
         ),
-        MarkdownPageListTile(
-          filename: changelog,
-          title: Text('View Changelog'),
-          icon: Icon(Icons.view_list),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: MarkdownPageListTile(
+            filename: changelog,
+            title: Text('View Changelog'),
+            icon: Icon(Icons.view_list),
+          ),
         ),
-        MarkdownPageListTile(
-          filename: 'plugins.md',
-          title: Text('Gebruikte plugins'),
-          icon: Icon(Icons.power),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: MarkdownPageListTile(
+            filename: 'plugins.md',
+            title: Text('Gebruikte plugins'),
+            icon: Icon(Icons.power),
+          ),
         ),
         // MarkdownPageListTile(
         //   filename: 'LICENSE.md',
@@ -76,9 +100,12 @@ class _OverDezeAppState extends State<OverDezeApp> {
         //   title: Text('Code of conduct'),
         //   icon: Icon(Icons.sentiment_satisfied),
         // ),
-        LicensesPageListTile(
-          title: Text('Open source Licenses'),
-          icon: Icon(Icons.favorite),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: LicensesPageListTile(
+            title: Text('Open source Licenses'),
+            icon: Icon(Icons.favorite),
+          ),
         ),
       ],
     );
