@@ -62,6 +62,7 @@ class _RegisterState extends State<Register> {
                 key: _formKey,
                 child: ListView(
                   children: <Widget>[
+                    Icon(Icons.emoji_events_outlined),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 20.0),
                       child: Text(
@@ -70,9 +71,12 @@ class _RegisterState extends State<Register> {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    Text(
-                      'En gefeliciteerd! Deze app gaat je namelijk helpen om eindelijk eens écht alcoholvrij door het leven te gaan. Niet omdat het moet, maar juist omdat je dat wilt! De mooie ervaringsverhalen, tips en statistiekjes geven je net dat duwtje in de rug naar een heerlijk alcoholvrij leven.\n\nAls je gestopt bent met drinken, kan je hieronder je stopgegevens invullen om je voortgang bij te houden. Klik hierboven op inloggen als je dit al een keer eerder hebt gedaan.\n\nVeel plezier en inspiratie toegewenst!',
-                      textAlign: TextAlign.justify,
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Text(
+                        'En gefeliciteerd! Deze app gaat je namelijk helpen om eindelijk eens écht alcoholvrij door het leven te gaan. Niet omdat het moet, maar juist omdat je dat zelf wilt! De mooie ervaringsverhalen, tips en statistiekjes geven je net dat duwtje in de rug naar een heerlijk alcoholvrij leven.\n\nAls je gestopt bent met drinken, kan je hieronder je stopgegevens invullen om je voortgang bij te houden, of klik hierboven op inloggen als je dit al een keer eerder hebt gedaan.\n\nVeel plezier en inspiratie toegewenst!',
+                        textAlign: TextAlign.justify,
+                      ),
                     ),
                     SizedBox(height: 20.0),
                     TextFormField(
