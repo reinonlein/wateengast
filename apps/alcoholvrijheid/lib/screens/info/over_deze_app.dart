@@ -44,7 +44,7 @@ class _OverDezeAppState extends State<OverDezeApp> {
   Widget build(BuildContext context) {
     return AboutPage(
       title: Text('Over deze app'),
-      applicationVersion: 'Version {{ version }}, build #{{ buildNumber }}',
+      applicationVersion: 'Versie {{ version }}, release #{{ buildNumber }}',
       applicationDescription: Text(
         'Deze app is met veel liefde en vrije tijd gemaakt door ReinOnlein: datanerd, schrijver en ex-pilsfanaat in hart en nieren. Deze app is gemaakt met Flutter, Dart, Firebase en natuurlijk mijn lievelingseditor VS Code. Aan al deze tools: bedankt! Jullie zijn werkelijk fantastisch :-)',
         textAlign: TextAlign.justify,

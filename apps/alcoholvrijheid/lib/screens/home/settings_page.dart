@@ -39,6 +39,8 @@ class _SettingsPageState extends State<SettingsPage> {
               child: ListView(
                 children: [
                   Form(
+                    // TODO: validator voor negatieve getallen of tekst
+                    // TODO: voorloopnullen fixen
                     key: _formKey,
                     child: Column(
                       children: <Widget>[
@@ -110,9 +112,8 @@ class _SettingsPageState extends State<SettingsPage> {
                             TextFormField(
                               initialValue: userData.bier.toString(),
                               decoration: textInputDecoration,
-                              validator: (val) => val.isEmpty
-                                  ? 'Vul aub een aantal biertjes in'
-                                  : null, // TODO: validator voor negatieve getallen of tekst
+                              validator: (val) =>
+                                  val.isEmpty ? 'Vul aub een aantal biertjes in' : null,
                               onChanged: (val) => setState(() => _currentBier = int.parse(val)),
                             ),
                             SizedBox(height: 20.0),
