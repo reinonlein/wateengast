@@ -19,6 +19,8 @@ class DatabaseService {
     int wijn,
     int sterk,
     int katers,
+    DateTime creationTime,
+    DateTime lastSignInTime,
   ) async {
     return await alcoholvrijheidCollection.doc(uid).set({
       'name': name,
@@ -28,6 +30,26 @@ class DatabaseService {
       'wijn': wijn,
       'sterk': sterk,
       'katers': katers,
+      'creationTime': Timestamp.fromDate(creationTime),
+      'lastSignInTime': Timestamp.fromDate(lastSignInTime),
+    });
+  }
+
+  // update alcoholvrij users
+  Future updateUserSigninTime(
+    DateTime lastSignInTime,
+  ) async {
+    return await alcoholvrijheidCollection.doc(uid).update({
+      'lastSignInTime': lastSignInTime,
+    });
+  }
+
+  // update alcoholvrij users
+  Future updateUserLastSeenTime(
+    DateTime userLastSeenTime,
+  ) async {
+    return await alcoholvrijheidCollection.doc(uid).update({
+      'userLastSeenTime': userLastSeenTime,
     });
   }
 

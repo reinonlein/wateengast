@@ -9,6 +9,7 @@ import 'package:alcoholvrijheid/screens/blog/blogpostlist.dart';
 import 'package:alcoholvrijheid/screens/home/av_cards.dart';
 import 'package:alcoholvrijheid/screens/home/settings_page.dart';
 import 'package:alcoholvrijheid/services/auth.dart';
+import 'package:alcoholvrijheid/services/database.dart';
 import 'package:alcoholvrijheid/shared/constants.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
@@ -35,6 +36,7 @@ List<SingleCategory> parseCategories(responseCat) {
 
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
+  bool _newVisit = false;
 
   int page = 1;
   int perPage = 100;
@@ -60,11 +62,11 @@ class _HomeState extends State<Home> {
     return compute(parsePosts, response.body);
   }
 
-  Future<List<SingleCategory>> _getCategories() async {
-    final responseCat =
-        await http.get('https://www.alcoholvrijheid.nl/wp-json/wp/v2/categories?per_page=50');
-    return compute(parseCategories, responseCat.body);
-  }
+  // Future<List<SingleCategory>> _getCategories() async {
+  //   final responseCat =
+  //       await http.get('https://www.alcoholvrijheid.nl/wp-json/wp/v2/categories?per_page=50');
+  //   return compute(parseCategories, responseCat.body);
+  // }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -76,15 +78,17 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
 
+    _newVisit = true;
+
     _getPosts().then((response) {
       currentPostList = response;
       setState(() {});
     });
 
-    _getCategories().then((responseCat) {
-      currentCategoryList = responseCat;
-      setState(() {});
-    });
+    // _getCategories().then((responseCat) {
+    //   currentCategoryList = responseCat;
+    //   setState(() {});
+    // });
 
     final fbm = FirebaseMessaging();
 
@@ -161,6 +165,11 @@ class _HomeState extends State<Home> {
     final AuthService _auth = AuthService();
     final user = Provider.of<User>(context);
 
+    if (user != null && _newVisit == true) {
+      DatabaseService(uid: user.uid).updateUserLastSeenTime(DateTime.now());
+      _newVisit = false;
+    }
+
     var _pages = <Widget>[
       user == null
           ? Authenticate()
@@ -223,16 +232,25 @@ class _HomeState extends State<Home> {
               backgroundColor: Colors.amber,
               elevation: 2.0,
             ),
-      body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.8), BlendMode.dstATop),
-            image: AssetImage('assets/rainbow-bg.png'),
-            fit: BoxFit.cover,
+      body: RefreshIndicator(
+        onRefresh: () => _getPosts().then((response) {
+          if (user != null) {
+            DatabaseService(uid: user.uid).updateUserLastSeenTime(DateTime.now());
+          }
+          currentPostList = response;
+          setState(() {});
+        }),
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.8), BlendMode.dstATop),
+              image: AssetImage('assets/rainbow-bg.png'),
+              fit: BoxFit.cover,
+            ),
           ),
+          child: _pages.elementAt(_selectedIndex),
         ),
-        child: _pages.elementAt(_selectedIndex),
       ),
       drawer: user == null
           ? null

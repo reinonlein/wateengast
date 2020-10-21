@@ -32,6 +32,8 @@ class _RegisterState extends State<Register> {
   int wijn = 0;
   int sterk = 0;
   int katers = 0;
+  DateTime creationTime = DateTime.now();
+  DateTime lastSignInTime = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -269,10 +271,11 @@ class _RegisterState extends State<Register> {
                               wijn,
                               sterk,
                               katers,
+                              creationTime,
+                              lastSignInTime,
                             );
                             print(user);
                             return user;
-                            //await user.reload(); //reload  user data
                           });
                           if (result == null) {
                             setState(() {
