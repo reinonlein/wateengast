@@ -13,14 +13,19 @@ class UserData {
   final int wijn;
   final int sterk;
   final int katers;
+  final DateTime creationTime;
+  final DateTime lastSignInTime;
 
-  UserData(
-      {this.uid,
-      this.name,
-      this.stopdate,
-      this.geld,
-      this.bier,
-      this.wijn,
-      this.sterk,
-      this.katers});
+  UserData({
+    this.uid,
+    this.name,
+    this.stopdate,
+    this.geld,
+    this.bier,
+    this.wijn,
+    this.sterk,
+    this.katers,
+    this.creationTime,
+    this.lastSignInTime,
+  });
 }
