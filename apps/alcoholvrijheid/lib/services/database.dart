@@ -35,6 +35,27 @@ class DatabaseService {
     });
   }
 
+  // update alcoholvrij settings
+  Future updateUserSettings(
+    String name,
+    DateTime stopdate,
+    int geld,
+    int bier,
+    int wijn,
+    int sterk,
+    int katers,
+  ) async {
+    return await alcoholvrijheidCollection.doc(uid).set({
+      'name': name,
+      'stopdate': Timestamp.fromDate(stopdate),
+      'geld': geld,
+      'bier': bier,
+      'wijn': wijn,
+      'sterk': sterk,
+      'katers': katers,
+    });
+  }
+
   // update alcoholvrij users
   Future updateUserSigninTime(
     DateTime lastSignInTime,
