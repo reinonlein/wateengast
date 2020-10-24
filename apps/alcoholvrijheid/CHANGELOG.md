@@ -3,6 +3,7 @@ Hier lees je wat er allemaal nieuw is in elke update van de app.
 ## **Coming up next:**
 Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in de eerstvolgende update van de app:
 - Als je op de tegels op het startscherm klikt krijg je meer informatie over je voortgang te zien!
+- UserLastSeenTime toegevoegd aan database bij registratie
 
 ## **1.1.0** (release 24-10-2020)
 - Het bekende 'pull-to-refresh' heb ik toegevoegd om manueel de posts te verversen

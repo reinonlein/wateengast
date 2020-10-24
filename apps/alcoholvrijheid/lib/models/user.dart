@@ -15,6 +15,7 @@ class UserData {
   final int katers;
   final DateTime creationTime;
   final DateTime lastSignInTime;
+  final DateTime userLastSeenTime;
 
   UserData({
     this.uid,
@@ -27,5 +28,6 @@ class UserData {
     this.katers,
     this.creationTime,
     this.lastSignInTime,
+    this.userLastSeenTime,
   });
 }

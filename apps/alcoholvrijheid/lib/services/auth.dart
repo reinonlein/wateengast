@@ -61,6 +61,7 @@ class AuthService {
         0,
         user.metadata.creationTime,
         user.metadata.lastSignInTime,
+        DateTime.now(),
       );
 
       return _userFromFirebaseUser(user);

@@ -21,6 +21,7 @@ class DatabaseService {
     int katers,
     DateTime creationTime,
     DateTime lastSignInTime,
+    DateTime userLastSeenTime,
   ) async {
     return await alcoholvrijheidCollection.doc(uid).set({
       'name': name,
@@ -32,6 +33,7 @@ class DatabaseService {
       'katers': katers,
       'creationTime': Timestamp.fromDate(creationTime),
       'lastSignInTime': Timestamp.fromDate(lastSignInTime),
+      'userLastSeenTime': Timestamp.fromDate(userLastSeenTime),
     });
   }
 
