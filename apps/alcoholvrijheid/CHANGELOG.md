@@ -3,7 +3,7 @@ Hier lees je wat er allemaal nieuw is in elke update van de app.
 ## **Coming up next:**
 Deze app is nooit klaar! Dit zijn alle verbeteringen die inmiddels klaarstaan voor de eerstvolgende versie van de app:
 - Het bekende 'pull-to-refresh' heb ik toegevoegd om manueel de posts te verversen
-- In de Firestore (cloud database) wordt nu ook de registratiedatum en de 'laatst gezien op'ddatum bijgehouden, zodat ik straks per gebruiker de nieuwe verhalen kan markeren
+- In de Firestore (cloud database) wordt nu ook de registratiedatum en de 'laatst gezien op'-datum bijgehouden, zodat ik straks per gebruiker de nieuwe verhalen kan markeren
 
 ## **1.0.0** (release 25-10-2020)
 

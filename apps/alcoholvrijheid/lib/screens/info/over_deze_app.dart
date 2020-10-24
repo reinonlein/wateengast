@@ -46,7 +46,7 @@ class _OverDezeAppState extends State<OverDezeApp> {
       title: Text('Over deze app'),
       applicationVersion: 'Versie {{ version }}, release #{{ buildNumber }}',
       applicationDescription: Text(
-        'Deze app is met veel liefde en vrije tijd gemaakt door ReinOnlein: datanerd, schrijver en ex-pilsfanaat in hart en nieren. Deze app is gemaakt met Flutter, Dart, Firebase en natuurlijk mijn lievelingseditor VS Code. Aan al deze tools: bedankt! Jullie zijn werkelijk fantastisch :-)',
+        'Deze app is met veel liefde en vrije tijd gemaakt door Rein: datanerd, schrijver en ex-pilsfanaat in hart en nieren. Deze app is gemaakt met Flutter, Dart, Firebase en natuurlijk mijn lievelingseditor VS Code. Aan al deze tools: bedankt! Jullie zijn werkelijk fantastisch :-)',
         textAlign: TextAlign.justify,
       ),
       applicationIcon: Padding(
@@ -64,17 +64,17 @@ class _OverDezeAppState extends State<OverDezeApp> {
         Padding(
           padding: const EdgeInsets.only(left: 8.0),
           child: MarkdownPageListTile(
-            filename: 'README.md',
-            title: Text('View Readme'),
-            icon: Icon(Icons.all_inclusive),
+            filename: changelog,
+            title: Text('Wat is er nieuw?'),
+            icon: Icon(Icons.view_list),
           ),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 8.0),
           child: MarkdownPageListTile(
-            filename: changelog,
-            title: Text('View Changelog'),
-            icon: Icon(Icons.view_list),
+            filename: 'README.md',
+            title: Text('Github Readme'),
+            icon: Icon(Icons.all_inclusive),
           ),
         ),
         Padding(

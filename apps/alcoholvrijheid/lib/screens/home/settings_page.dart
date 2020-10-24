@@ -166,7 +166,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           ),
                           onPressed: () async {
                             if (_formKey.currentState.validate()) {
-                              await DatabaseService(uid: user.uid).updateUserData(
+                              await DatabaseService(uid: user.uid).updateUserSettings(
                                 _currentName ?? userData.name,
                                 _currentStopdate ?? userData.stopdate,
                                 _currentGeld ?? userData.geld,
@@ -174,8 +174,6 @@ class _SettingsPageState extends State<SettingsPage> {
                                 _currentWijn ?? userData.wijn,
                                 _currentSterk ?? userData.sterk,
                                 _currentKaters ?? userData.katers,
-                                userData.creationTime,
-                                userData.lastSignInTime,
                               );
                               Scaffold.of(context).showSnackBar(SnackBar(
                                 backgroundColor: Colors.green,
