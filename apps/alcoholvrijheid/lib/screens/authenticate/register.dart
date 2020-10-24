@@ -34,6 +34,7 @@ class _RegisterState extends State<Register> {
   int katers = 0;
   DateTime creationTime = DateTime.now();
   DateTime lastSignInTime = DateTime.now();
+  DateTime userLastSeenTime = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -273,6 +274,7 @@ class _RegisterState extends State<Register> {
                               katers,
                               creationTime,
                               lastSignInTime,
+                              userLastSeenTime,
                             );
                             print(user);
                             return user;
