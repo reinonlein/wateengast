@@ -77,10 +77,19 @@ class _SignInState extends State<SignIn> {
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
                           setState(() => loading = true);
-                          dynamic result = await _auth.signInWithEmailAndPassword(email, password);
+                          dynamic result = await _auth
+                              .signInWithEmailAndPassword(email, password)
+                              .catchError((e) {
+                            print(e);
+                            setState(() {
+                              error = e;
+                              loading = false;
+                            });
+                          });
                           if (result == null) {
                             setState(() {
-                              error = 'Could not login with those credentials';
+                              error =
+                                  'Oeps! Het e-mailadres en/of wachtwoord klopt niet. Probeer het nog eens. \n\n Wachtwoord vergeten? Stuur dan een mailtje naar info@alcoholvrijheid.nl (tijdelijke oplossing)';
                               loading = false;
                             });
                           }
@@ -90,7 +99,11 @@ class _SignInState extends State<SignIn> {
                     SizedBox(height: 12.0),
                     Text(
                       error,
-                      style: TextStyle(color: Colors.red, fontSize: 14.0),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 14.0,
+                      ),
                     ),
                   ],
                 ),
