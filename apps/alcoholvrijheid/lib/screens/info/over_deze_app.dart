@@ -64,10 +64,12 @@ class _OverDezeAppState extends State<OverDezeApp> {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(left: 8.0),
-          child: MarkdownPageListTile(
-            filename: changelog,
+          child: ListTile(
             title: Text('Wat is er nieuw?'),
-            icon: Icon(Icons.view_list),
+            leading: Icon(Icons.view_list),
+            onTap: () {
+              Navigator.pushNamed(context, '/changelog');
+            },
           ),
         ),
         Padding(
@@ -86,17 +88,6 @@ class _OverDezeAppState extends State<OverDezeApp> {
             icon: Icon(Icons.power),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 8.0),
-          child: ListTile(
-            title: Text('Wat is er nieuw?'),
-            leading: Icon(Icons.view_list_rounded),
-            onTap: () {
-              Navigator.popAndPushNamed(context, '/changelog');
-            },
-          ),
-        ),
-
         // MarkdownPageListTile(
         //   filename: 'LICENSE.md',
         //   title: Text('View License'),
@@ -117,6 +108,14 @@ class _OverDezeAppState extends State<OverDezeApp> {
           child: LicensesPageListTile(
             title: Text('Open source Licenses'),
             icon: Icon(Icons.favorite),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: MarkdownPageListTile(
+            filename: changelog,
+            title: Text('Changelog'),
+            icon: Icon(Icons.view_list),
           ),
         ),
       ],
