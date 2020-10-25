@@ -1,3 +1,4 @@
+import 'package:alcoholvrijheid/screens/info/over_alcoholvrijheid.dart';
 import 'package:flutter/material.dart';
 import 'package:about/about.dart';
 import 'package:http/http.dart' as http;
@@ -25,15 +26,15 @@ class OverDezeApp extends StatefulWidget {
 class _OverDezeAppState extends State<OverDezeApp> {
   @override
   void initState() {
-    _getChangelog().then((result) {
+    _getChangelog().then((changelogResult) {
       setState(() {
-        changelog = result;
+        changelog = changelogResult;
       });
     });
 
-    _getReadme().then((result) {
+    _getReadme().then((readmeResult) {
       setState(() {
-        readme = result;
+        readme = readmeResult;
       });
     });
 
@@ -85,6 +86,17 @@ class _OverDezeAppState extends State<OverDezeApp> {
             icon: Icon(Icons.power),
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: ListTile(
+            title: Text('Wat is er nieuw?'),
+            leading: Icon(Icons.view_list_rounded),
+            onTap: () {
+              Navigator.popAndPushNamed(context, '/changelog');
+            },
+          ),
+        ),
+
         // MarkdownPageListTile(
         //   filename: 'LICENSE.md',
         //   title: Text('View License'),
