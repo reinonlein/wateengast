@@ -46,8 +46,9 @@ class DatabaseService {
     int wijn,
     int sterk,
     int katers,
+    DateTime userLastSeenTime,
   ) async {
-    return await alcoholvrijheidCollection.doc(uid).set({
+    return await alcoholvrijheidCollection.doc(uid).update({
       'name': name,
       'stopdate': Timestamp.fromDate(stopdate),
       'geld': geld,
@@ -55,6 +56,7 @@ class DatabaseService {
       'wijn': wijn,
       'sterk': sterk,
       'katers': katers,
+      'userLastSeenTime': userLastSeenTime,
     });
   }
 

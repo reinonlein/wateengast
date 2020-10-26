@@ -1,4 +1,3 @@
-import 'package:alcoholvrijheid/screens/info/over_alcoholvrijheid.dart';
 import 'package:flutter/material.dart';
 import 'package:about/about.dart';
 import 'package:http/http.dart' as http;
@@ -110,14 +109,14 @@ class _OverDezeAppState extends State<OverDezeApp> {
             icon: Icon(Icons.favorite),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 8.0),
-          child: MarkdownPageListTile(
-            filename: changelog,
-            title: Text('Changelog'),
-            icon: Icon(Icons.view_list),
-          ),
-        ),
+        // Padding(
+        //   padding: const EdgeInsets.only(left: 8.0),
+        //   child: MarkdownPageListTile(
+        //     filename: changelog,
+        //     title: Text('Changelog'),
+        //     icon: Icon(Icons.view_list),
+        //   ),
+        // ),
       ],
     );
 

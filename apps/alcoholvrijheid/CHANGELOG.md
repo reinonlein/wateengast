@@ -1,6 +1,12 @@
 ## **Coming up next:**
 Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in de eerstvolgende update van de app:
-- Als je op de tegels op het startscherm klikt krijg je meer informatie over je voortgang te zien!
+
+#  
+#  
+## **1.2.0** (release 26-10-2020)
+- Supermooi: als je op de tegels op het startscherm klikt krijg je nu meer informatie over je voortgang te zien!
+- Je kunt nu mooier nalezen wat er nieuw is en elke update van deze app (de changelog)
+- Minor Firestore fix achter de schermen: datumvelden werden leeggemaakt bij opslaan van de stopgegevens
 #  
 #  
 ## **1.1.1** (release 25-10-2020)
