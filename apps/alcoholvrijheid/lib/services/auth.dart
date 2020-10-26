@@ -59,8 +59,8 @@ class AuthService {
         0,
         0,
         0,
-        user.metadata.creationTime,
-        user.metadata.lastSignInTime,
+        DateTime.now(),
+        DateTime.now(),
         DateTime.now(),
       );
 

@@ -174,6 +174,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                 _currentWijn ?? userData.wijn,
                                 _currentSterk ?? userData.sterk,
                                 _currentKaters ?? userData.katers,
+                                DateTime.now(),
                               );
                               Scaffold.of(context).showSnackBar(SnackBar(
                                 backgroundColor: Colors.green,

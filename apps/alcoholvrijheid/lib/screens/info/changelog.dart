@@ -37,7 +37,7 @@ class _ChangelogState extends State<Changelog> {
         child: Markdown(
           data: markdown,
           styleSheet:
-              MarkdownStyleSheet.fromTheme(Theme.of(context)).copyWith(textScaleFactor: 1.18),
+              MarkdownStyleSheet.fromTheme(Theme.of(context)).copyWith(textScaleFactor: 1.1),
           onTapLink: (url) {
             launch(url);
           },
