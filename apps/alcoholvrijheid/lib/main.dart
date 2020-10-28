@@ -1,5 +1,6 @@
 import 'package:alcoholvrijheid/screens/blog/postdetail.dart';
 import 'package:alcoholvrijheid/screens/home/home.dart';
+import 'package:alcoholvrijheid/screens/home/prestaties.dart';
 import 'package:alcoholvrijheid/screens/home/settings_page.dart';
 import 'package:alcoholvrijheid/screens/info/changelog.dart';
 import 'package:alcoholvrijheid/screens/info/over_alcoholvrijheid.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
           '/over_alcoholvrijheid': (context) => OverAlcoholvrijheid(),
           '/changelog': (context) => Changelog(),
           '/postdetail': (context) => PostDetail(),
+          '/prestaties': (context) => Prestaties(),
         },
       ),
     );
