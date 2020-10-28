@@ -289,6 +289,21 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
+                  ListTile(
+                    leading: Icon(Icons.emoji_events_outlined),
+                    title: Text(
+                      'Mijn prestaties',
+                      style: drawerItemStyle,
+                    ),
+                    onTap: () {
+                      FirebaseAnalytics().logEvent(
+                        name: 'drawer_navigation',
+                        parameters: {'target': 'Prestaties'},
+                      );
+                      Navigator.popAndPushNamed(context, '/prestaties');
+                      //Navigator.pop(context);
+                    },
+                  ),
                   Container(
                     padding: EdgeInsets.fromLTRB(8.0, 8.0, 0, 0),
                     child: Column(
