@@ -47,6 +47,7 @@ class MyApp extends StatelessWidget {
           '/changelog': (context) => Changelog(),
           '/postdetail': (context) => PostDetail(),
           '/prestaties': (context) => Prestaties(),
+          '/stopgegevens': (context) => SettingsPage(),
         },
       ),
     );
