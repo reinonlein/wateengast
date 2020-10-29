@@ -7,6 +7,7 @@ import 'package:alcoholvrijheid/screens/authenticate/authenticate.dart';
 import 'package:alcoholvrijheid/screens/authenticate/stopgegevens_message.dart';
 import 'package:alcoholvrijheid/screens/blog/blogpostlist.dart';
 import 'package:alcoholvrijheid/screens/home/av_cards.dart';
+import 'package:alcoholvrijheid/screens/home/prestaties.dart';
 import 'package:alcoholvrijheid/screens/home/settings_page.dart';
 import 'package:alcoholvrijheid/services/auth.dart';
 import 'package:alcoholvrijheid/services/database.dart';
@@ -178,7 +179,7 @@ class _HomeState extends State<Home> {
           blogPostlist: filterCategory == 'Alcoholvrijheid'
               ? currentPostList
               : currentPostList.where((i) => i.category == filterCategory).toList()),
-      user == null ? StopgegevensMessage() : SettingsPage(),
+      user == null ? StopgegevensMessage() : Prestaties(),
     ];
 
     // code snippet om een lijst van alle leden te krijgen
@@ -202,8 +203,8 @@ class _HomeState extends State<Home> {
                 : filterCategory, //'Alle verhalen' //
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Mijn stopgegevens',
+            icon: Icon(Icons.emoji_events_outlined),
+            label: 'Mijn prestaties',
           )
         ],
       ),
@@ -288,21 +289,6 @@ class _HomeState extends State<Home> {
                         color: Colors.amber,
                       ),
                     ),
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.emoji_events_outlined),
-                    title: Text(
-                      'Mijn prestaties',
-                      style: drawerItemStyle,
-                    ),
-                    onTap: () {
-                      FirebaseAnalytics().logEvent(
-                        name: 'drawer_navigation',
-                        parameters: {'target': 'Prestaties'},
-                      );
-                      Navigator.popAndPushNamed(context, '/prestaties');
-                      //Navigator.pop(context);
-                    },
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(8.0, 8.0, 0, 0),
@@ -434,6 +420,39 @@ class _HomeState extends State<Home> {
                               parameters: {'target': 'Over deze app'},
                             );
                             Navigator.popAndPushNamed(context, '/over_deze_app');
+                            //Navigator.pop(context);
+                          },
+                        ),
+                        SizedBox(
+                          child: Divider(),
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.emoji_events_outlined),
+                          title: Text(
+                            'Mijn prestaties',
+                            style: drawerItemStyle,
+                          ),
+                          onTap: () {
+                            FirebaseAnalytics().logEvent(
+                              name: 'drawer_navigation',
+                              parameters: {'target': 'Prestaties'},
+                            );
+                            Navigator.popAndPushNamed(context, '/prestaties');
+                            //Navigator.pop(context);
+                          },
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.person_rounded),
+                          title: Text(
+                            'Mijn stopgegevens',
+                            style: drawerItemStyle,
+                          ),
+                          onTap: () {
+                            FirebaseAnalytics().logEvent(
+                              name: 'drawer_navigation',
+                              parameters: {'target': 'Stopgegevens'},
+                            );
+                            Navigator.popAndPushNamed(context, '/stopgegevens');
                             //Navigator.pop(context);
                           },
                         ),
