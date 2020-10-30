@@ -70,6 +70,11 @@ Jazekers! De enige uitzondering zijn de ervaringsverhalen. Daar heb ik de grote 
 #  
 #  
 #  
+#### **Wanneer wordt er nieuwe content geschreven en geplaatst?**
+Op dit moment ben ik druk bezig met het maken van deze app, en daardoor heb ik iets minder tijd om te schrijven. Bovendien schrijf ik ook al elke dag een stukje voor mijn melige website [Wateengast.nl](https://www.wateengast.nl), dus tijd is hier mijn grootste vijand. Maar dat neemt niet weg dat ik met mezelf afgesproken heb om in ieder geval elk weekend een nieuw verhaal te publiceren! Mocht het een beetje aanslaan allemaal, komt daar binnenkort de woensdag bij. Stay tuned en blijf dus vooral vaak kijken!
+#  
+#  
+#  
 #### **Mag ik je teksten gebruiken op mijn website?**
 Geen probleem, leuk zelfs, maar ik wil dan wel graag op de hoogte zijn en er een bronverwijzing naar [https://www.alcoholvrijheid.nl](https://www.alcoholvrijheid.nl) voor terug. Op die manier heb ik er ook nog profijt van in de algoritmes van de grote zoekmachines.
 #  
