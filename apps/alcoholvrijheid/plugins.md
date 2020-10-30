@@ -61,3 +61,11 @@ Voor deze fantastische info-pagina van deze app.
 #  
 ### **flutter_markdown** ^0.4.4
 Om tekstbestanden zoals deze te kunnen tonen in de app.
+
+#  
+### **awesome_dialog** ^1.2.1
+Een geweldige plugin waarmee ik die popup-berichten kon maken
+
+#  
+### **liquid_progress_indicator** ^0.3.2
+Een leuk grafisch effectje om de voortgang van prestaties weer te geven als vloeistof in een bubbel.

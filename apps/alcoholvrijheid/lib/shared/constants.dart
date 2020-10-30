@@ -24,7 +24,7 @@ const drawerItemStyle = TextStyle(
 
 const formTextStyle = TextStyle(
   color: Colors.black,
-  fontSize: 18,
+  fontSize: 14,
 );
 
 const faqSizedbox = SizedBox(

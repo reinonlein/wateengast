@@ -6,6 +6,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:provider/provider.dart';
+import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 
 class Prestaties extends StatelessWidget {
   final List<Map> prestaties = PrestatieTargets().prestatietargets;
@@ -57,10 +58,23 @@ class Prestaties extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(90.0),
                                   child: Image.asset('assets/trophygif.gif'),
                                 )
-                              : null,
+                              : LiquidCircularProgressIndicator(
+                                  value: stopuren / prestaties[index]['target'],
+                                  valueColor: AlwaysStoppedAnimation(Colors.green[100]),
+                                  backgroundColor: Colors.white,
+                                  borderColor: Colors.white,
+                                  borderWidth: 2.0,
+                                  direction: Axis.vertical,
+                                  center: Text(
+                                      '${((stopuren / prestaties[index]['target']) * 100).round()} %',
+                                      style: TextStyle(
+                                          color: Colors.green,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18)),
+                                ),
                           dialogType: gehaald ? DialogType.SUCCES : DialogType.ERROR,
                           animType: AnimType.SCALE,
-                          title: gehaald ? prestaties[index]['title'] : 'Nog heel even geduld...',
+                          title: gehaald ? prestaties[index]['title'] : 'Nog even geduld...',
                           desc: gehaald
                               ? prestaties[index]['content']
                               : 'Je moet nog ${((prestaties[index]['target'] - stopuren) / 24).ceil()} ${((prestaties[index]['target'] - stopuren) / 24).ceil() == 1 ? 'dag' : 'dagen'} volhouden om deze knappe prestatie vrij te spelen.',
@@ -71,7 +85,7 @@ class Prestaties extends StatelessWidget {
                               : Icons.sentiment_very_dissatisfied,
                           headerAnimationLoop: false,
                           isDense: false,
-                          btnOkColor: gehaald ? null : Colors.red,
+                          btnOkColor: gehaald ? null : Colors.redAccent,
                           btnOkOnPress: () {},
                         )..show();
                       },
@@ -105,10 +119,23 @@ class Prestaties extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(90.0),
                                   child: Image.asset('assets/trophygif.gif'),
                                 )
-                              : null,
+                              : LiquidCircularProgressIndicator(
+                                  value: stopmaanden / prestaties[index]['target'],
+                                  valueColor: AlwaysStoppedAnimation(Colors.green[100]),
+                                  backgroundColor: Colors.white,
+                                  borderColor: Colors.white,
+                                  borderWidth: 2.0,
+                                  direction: Axis.vertical,
+                                  center: Text(
+                                      '${((stopmaanden / prestaties[index]['target']) * 100).round()} %',
+                                      style: TextStyle(
+                                          color: Colors.green,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18)),
+                                ),
                           dialogType: gehaald ? DialogType.SUCCES : DialogType.ERROR,
                           animType: AnimType.SCALE,
-                          title: gehaald ? prestaties[index]['title'] : 'Nog heel even geduld...',
+                          title: gehaald ? prestaties[index]['title'] : 'Nog even geduld...',
                           desc: gehaald
                               ? prestaties[index]['content']
                               : 'Je moet nog ${((prestaties[index]['target'] - stopmaanden) * 30.5).ceil()} ${((prestaties[index]['target'] - stopmaanden) * 30.5).ceil() == 1 ? 'dag' : 'dagen'} volhouden om deze knappe prestatie vrij te spelen.',
@@ -119,7 +146,7 @@ class Prestaties extends StatelessWidget {
                               : Icons.sentiment_very_dissatisfied,
                           headerAnimationLoop: false,
                           isDense: false,
-                          btnOkColor: gehaald ? null : Colors.red,
+                          btnOkColor: gehaald ? null : Colors.redAccent,
                           btnOkOnPress: () {},
                         )..show();
                       },
@@ -157,13 +184,28 @@ class Prestaties extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(90.0),
                                   child: Image.asset('assets/trophygif.gif'),
                                 )
-                              : null,
+                              : LiquidCircularProgressIndicator(
+                                  value: stopuren *
+                                      (userData.geld / (7 * 24)) /
+                                      prestaties[index]['target'],
+                                  valueColor: AlwaysStoppedAnimation(Colors.green[100]),
+                                  backgroundColor: Colors.white,
+                                  borderColor: Colors.white,
+                                  borderWidth: 2.0,
+                                  direction: Axis.vertical,
+                                  center: Text(
+                                      '${((stopuren * (userData.geld / (7 * 24)) / prestaties[index]['target']) * 100).round()} %',
+                                      style: TextStyle(
+                                          color: Colors.green,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18)),
+                                ),
                           dialogType: gehaald ? DialogType.SUCCES : DialogType.ERROR,
                           animType: AnimType.SCALE,
-                          title: gehaald ? prestaties[index]['title'] : 'Nog heel even geduld...',
+                          title: gehaald ? prestaties[index]['title'] : 'Nog even geduld...',
                           desc: gehaald
                               ? prestaties[index]['content']
-                              : 'Je moet nog ${((prestaties[index]['target'] - (stopuren * (userData.geld / (7 * 24)))))} besparen om deze knappe prestatie vrij te spelen.',
+                              : 'Je moet nog € ${((prestaties[index]['target'] - (stopuren * (userData.geld / (7 * 24))))).toStringAsFixed(2)} besparen om deze knappe prestatie vrij te spelen.',
                           padding: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 5.0),
                           btnOkText: gehaald ? 'Wat een feest!' : 'Ah balen...',
                           btnOkIcon: gehaald
@@ -171,7 +213,7 @@ class Prestaties extends StatelessWidget {
                               : Icons.sentiment_very_dissatisfied,
                           headerAnimationLoop: false,
                           isDense: false,
-                          btnOkColor: gehaald ? null : Colors.red,
+                          btnOkColor: gehaald ? null : Colors.redAccent,
                           btnOkOnPress: () {},
                         )..show();
                       },
