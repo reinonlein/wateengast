@@ -3,6 +3,13 @@ Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in 
 
 #  
 #  
+## **1.3.0**
+#### Unreleased (planning eerste week van november)
+- Wederom een briljante update: vanaf nu kun je prestaties vrijspelen door te stoppen! Wat je daarvoor moet doen? Simpel: gewoon blijven volhouden!
+- Aanpassingen in de structuur van het zijmenu
+- In het ondermenu is de snelkoppeling naar de stopgegevens vervangen door de prestaties
+#  
+#  
 ## **1.2.0**
 #### Release: 26-10-2020
 - Supermooi: als je op de tegels op het startscherm klikt krijg je nu meer informatie over je voortgang te zien!

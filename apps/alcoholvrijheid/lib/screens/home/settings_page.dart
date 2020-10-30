@@ -50,6 +50,8 @@ class _SettingsPageState extends State<SettingsPage> {
                       child: Column(
                         children: <Widget>[
                           Text(
+                              'Op deze pagina kun je jouw stopgegevens aanpassen. Vergeet niet om onderaan op \'Opslaan\' te drukken om je wijzigingen op te slaan als je klaar bent.\n'),
+                          Text(
                             'Wat is je naam?',
                             style: formTextStyle,
                           ),
@@ -156,7 +158,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           RaisedButton(
                             color: Colors.pink[400],
                             child: Text(
-                              'Update',
+                              'Opslaan',
                               style: TextStyle(
                                 color: Colors.white,
                               ),

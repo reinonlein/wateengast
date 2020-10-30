@@ -38,6 +38,7 @@ dependencies:
   about: ^1.2.0
   flutter_markdown: ^0.4.4
   awesome_dialog: ^1.2.1
+  liquid_progress_indicator: ^0.3.2
   flutter:
     sdk: flutter
 
