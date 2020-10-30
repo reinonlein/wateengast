@@ -295,6 +295,20 @@ class _HomeState extends State<Home> {
                     child: Column(
                       children: [
                         ListTile(
+                          //leading: Icon(Icons.info_outline_rounded),
+                          title: Text(
+                            'Wat is Alcoholvrijheid?',
+                            style: drawerItemStyle,
+                          ),
+                          onTap: () {
+                            FirebaseAnalytics().logEvent(
+                              name: 'drawer_navigation',
+                              parameters: {'target': 'Over alcoholvrijheid'},
+                            );
+                            Navigator.popAndPushNamed(context, '/over_alcoholvrijheid');
+                          },
+                        ),
+                        ListTile(
                           title: Text(
                             'Alle verhalen',
                             style: drawerItemStyle,
@@ -396,33 +410,6 @@ class _HomeState extends State<Home> {
                             Navigator.pop(context);
                           },
                         ),
-                        ListTile(
-                          title: Text(
-                            'Over Alcoholvrijheid',
-                            style: drawerItemStyle,
-                          ),
-                          onTap: () {
-                            FirebaseAnalytics().logEvent(
-                              name: 'drawer_navigation',
-                              parameters: {'target': 'Over alcoholvrijheid'},
-                            );
-                            Navigator.popAndPushNamed(context, '/over_alcoholvrijheid');
-                          },
-                        ),
-                        ListTile(
-                          title: Text(
-                            'Over deze app',
-                            style: drawerItemStyle,
-                          ),
-                          onTap: () {
-                            FirebaseAnalytics().logEvent(
-                              name: 'drawer_navigation',
-                              parameters: {'target': 'Over deze app'},
-                            );
-                            Navigator.popAndPushNamed(context, '/over_deze_app');
-                            //Navigator.pop(context);
-                          },
-                        ),
                         SizedBox(
                           child: Divider(),
                         ),
@@ -437,8 +424,10 @@ class _HomeState extends State<Home> {
                               name: 'drawer_navigation',
                               parameters: {'target': 'Prestaties'},
                             );
-                            Navigator.popAndPushNamed(context, '/prestaties');
-                            //Navigator.pop(context);
+                            setState(() {
+                              _selectedIndex = 2;
+                            });
+                            Navigator.pop(context);
                           },
                         ),
                         ListTile(
@@ -453,6 +442,20 @@ class _HomeState extends State<Home> {
                               parameters: {'target': 'Stopgegevens'},
                             );
                             Navigator.popAndPushNamed(context, '/stopgegevens');
+                          },
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.smartphone),
+                          title: Text(
+                            'Over deze app',
+                            style: drawerItemStyle,
+                          ),
+                          onTap: () {
+                            FirebaseAnalytics().logEvent(
+                              name: 'drawer_navigation',
+                              parameters: {'target': 'Over deze app'},
+                            );
+                            Navigator.popAndPushNamed(context, '/over_deze_app');
                             //Navigator.pop(context);
                           },
                         ),
