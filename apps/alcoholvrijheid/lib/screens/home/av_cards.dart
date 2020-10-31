@@ -4,6 +4,7 @@ import 'package:alcoholvrijheid/shared/loading.dart';
 import 'package:alcoholvrijheid/models/cardstrings.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:provider/provider.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 
@@ -20,7 +21,7 @@ class AlcoholvrijheidCards extends StatelessWidget {
             NumberFormat format = NumberFormat("####0.00", "nl_NL");
             int stopdagen = DateTime.now().difference(userData.stopdate).inDays;
             int stopuren = DateTime.now().difference(userData.stopdate).inHours;
-            int stopminuten = DateTime.now().difference(userData.stopdate).inMinutes;
+            double stopmaanden = Jiffy().diff(userData.stopdate, Units.MONTH, true);
 
             return Container(
               margin: EdgeInsets.fromLTRB(25.0, 35.0, 25.0, 25.0),
@@ -161,7 +162,7 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.all(10.0),
                                     child: Text(
-                                      '${(stopdagen * (userData.katers / 30)).round()}',
+                                      '${(stopmaanden * userData.katers).floor()}',
                                       style: TextStyle(
                                         fontFamily: 'Heebo',
                                         fontSize: 22,
@@ -169,7 +170,7 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  (stopdagen * (userData.katers / 30)).round() == 1
+                                  (stopmaanden * userData.katers).floor() == 1
                                       ? Text('kater niet gehad')
                                       : Text('katers niet gehad'),
                                 ],
@@ -224,11 +225,8 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  (stopdagen *
-                                                  ((userData.bier +
-                                                          userData.wijn +
-                                                          userData.sterk) /
-                                                      7))
+                                  ((stopuren / (7 * 24)) *
+                                                  (userData.bier + userData.wijn + userData.sterk))
                                               .round() ==
                                           1
                                       ? Text('drankje laten staan')
@@ -275,7 +273,7 @@ class AlcoholvrijheidCards extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.all(10.0),
                                     child: Text(
-                                      '${((stopuren / (7 * 24)) * userData.bier * 0.250).round() + ((stopuren / (7 * 24)) * userData.wijn * 0.125).round() + ((stopuren / (7 * 24)) * userData.sterk * 0.035).round()}',
+                                      '${((stopuren / (7 * 24)) * userData.bier * 0.3).round() + ((stopuren / (7 * 24)) * userData.wijn * 0.125).round() + ((stopuren / (7 * 24)) * userData.sterk * 0.035).round()}',
                                       style: TextStyle(
                                         fontFamily: 'Heebo',
                                         fontSize: 22,
