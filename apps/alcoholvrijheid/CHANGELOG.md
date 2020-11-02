@@ -4,7 +4,7 @@ Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in 
 #  
 #  
 ## **1.3.0**
-#### Unreleased (planning eerste week van november)
+#### Release: 2-11-2020
 - Wederom een briljante update: vanaf nu kun je prestaties vrijspelen door te stoppen! Wat je daarvoor moet doen? Simpel: gewoon blijven volhouden!
 - Veel tijd besteeds aan het invullen en bedenken van melige prestaties
 - Aanpassingen in de structuur van het zijmenu

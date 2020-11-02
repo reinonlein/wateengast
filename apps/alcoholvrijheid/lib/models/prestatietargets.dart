@@ -2,7 +2,7 @@ class PrestatieTargets {
   List<Map> get prestatietargets {
     return [
       {
-        'title': '1 etmaal alcoholvrijheid',
+        'title': 'Een goed begin...',
         'content':
             'Hoera! De kop is eraf: je hebt officieel een heel etmaal geen alcohol gedronken. Misschien heb je er een gedeelte van geslapen, maar dat mag de pret niet drukken. Dit is het begin van je volgende leven!\n\nHeel veel succes, en vergeet er niet zo nu en dan van te genieten. Deze reis wordt moeilijk, maar wel zó de moeite waard! Geloof me, je gaat er geen spijt van krijgen.\n\nJij kan dit!',
         'target': 12,
@@ -16,21 +16,28 @@ class PrestatieTargets {
         'eenheid': 'uren',
       },
       {
-        'title': '2 dagen droog',
+        'title': '2 dagen briljant bezig',
         'content':
             'Hoppa: en ook vandaag drinken we niet! Het kunstje dat je nu al twee dagen op rij hebt geflikt hoef je alleen nog maar te oefenen en perfectioneren. Geloof me, het gaat écht makkelijker worden! Dat duurt even, maar op een gegeven moment draai je er je hand niet meer voor om. Ga zo door!',
         'target': 48,
         'eenheid': 'uren',
       },
       {
-        'title': '1 week zonder drank',
+        'title': '100 uur zonder drank',
+        'content':
+            'Elk uur dat je geen alcohol drinkt is er eentje meer richting100% pure alcoholvrijheid! En jij hebt nu al gewoon 100 keer laten zien dat jij dit kan. Elk uur dat je de verleiding kan weerstaan is een uur dat je vrijer maakt op lange termijn. En is dat niet wat je wilt? Laat deze 100 uur het begin zijn van iets moois, en voor je het weet draai je je hand er niet meer voor om. Echt!',
+        'target': 100,
+        'eenheid': 'uren',
+      },
+      {
+        'title': '1 volle week alcoholvrijheid!',
         'content':
             'Gefeliciteerd! Je hebt al 1 week niet gedronken. Dat betekent dat je ook je eerste weekend niet hebt gedronken! Hoe zwaar was dat? Troost je met de gedachte dat het na verloop allemaal écht steeds makkelijker gaat. Hou vol, je bent supergoed bezig!',
         'target': 7 * 24,
         'eenheid': 'uren',
       },
       {
-        'title': '10 dagen',
+        'title': 'De 10 dagen mijlpaal',
         'content':
             'Jawel hoor: 10 dagen in alcoholvrijheid. De eerste dubbele cijfers zijn er al! Ik hoop van harte dat het je enigszins mee is gevallen, en zo niet: laat dat dan een signaal zijn om je te laten beseffen dat je goed bezig bent. Als het zo zwaar is, dan wil je er toch vanaf? De enige manier is door vooral vol te blijven houden. De kop is eraf: laat deze 10 dagen afzien niet voor niets zijn!',
         'target': 10 * 24,
@@ -38,21 +45,23 @@ class PrestatieTargets {
       },
       {
         'title': '2 weken',
-        'content': 'Hoera, ook die tweede week zonder alcohol is je gelukt. Dit gaat briljant zo!',
+        'content':
+            'Hoera, ook die tweede week zonder alcohol is je gelukt. Dit gaat briljant zo! Uur voor uur, dag voor dag, week voor week en jaar voor jaar. Het enige wat je hoeft te doen is vandaag niet meer te beginnen! En voor je het weet vliegen de weken voorbij.',
         'target': 14 * 24,
         'eenheid': 'uren',
       },
       {
         'title': '1 maand',
         'content':
-            'BAM! Dat is de eerste maand in alcoholvrijheid. Dat er nog maar veel mogen volgen!',
+            'BAM! Dat is de eerste maand in alcoholvrijheid. Dat er nog maar veel mogen volgen! Want nu moet je natuurlijk doorpakken. Je hebt laten zien dat je het kunt, dit is het moment om te laten zien dat je ook echt kunt veranderen! Want vond je het niet fijn om zo fit, scherp, helder, productief, gezond, leuk en over het algemeen gewoon stukken beter te zijn? Een heel leven in alcoholvrijheid ligt voor het oprapen. Just do it!',
         'target': 1,
         'eenheid': 'maanden',
       },
       {
-        'title': '40 dagen zonder drank',
-        'content': '40 dagen: weer een mooie mijlpaal! Hou dat vol...',
-        'target': 40 * 24,
+        'title': '1000 uur alcoholvrij!',
+        'content':
+            'Hoera! Je hebt het gewoon voor elkaar gekregen om 1000 uren geen alcohol te drinken. Daar zullen ongetwijfeld best wat pittige uurtjes tussen hebben gezeten, maar je hebt dat toch maar mooi geflikt! Ga zo door, je bent de grens van 40 dagen alweer ruim voorbij. "Lekker bezig" is een understatement!',
+        'target': 1000,
         'eenheid': 'uren',
       },
       {
@@ -113,20 +122,21 @@ class PrestatieTargets {
       {
         'title': '10 euro bespaard',
         'content':
-            'Hoppa! Dit zijn 10 euro die je makkelijk hebt verdiend. Het begin van een mooi kapitaaltje! Weet je al waar je voor gaat sparen?',
+            'Hoppa! Dit zijn 10 euro die je makkelijk hebt verdiend. Deze knaken zijn het begin van een mooi kapitaaltje! Weet je al waar je voor gaat sparen? Mijn advies: open een spaarrekening en stort dit geld hier elke week automatisch op. Op termijn kan je dan een mooi kado kopen voor jezelf. Dat heb je dan zeker ook verdiend!',
         'target': 10,
         'eenheid': 'euro',
       },
       {
         'title': '50 euro bespaard',
-        'content': 'Sjonge, 50 euro alweer! Daar kan je toch werkelijk iets leuks van kopen hoor.',
+        'content':
+            'Sjonge, 50 euro alweer! Daar kan je toch werkelijk iets leuks van kopen hoor. Hoe fijn is het dat je dit geld nu in jezelf kunt steken in plaats van het over de bar te gooien? Koop er wat leuks voor zou ik zeggen!',
         'target': 50,
         'eenheid': 'euro',
       },
       {
         'title': '100 euro bespaard',
         'content':
-            'Je hebt alweer 100 euro bespaard! Nu gaat het langzaam serieus geld worden hoor.',
+            'Je hebt alweer 100 euro bespaard! Nu gaat het langzaam serieus geld worden hoor. Ga maar vast plannen maken voor al dat geld dat je straks over gaat houden! Tuurlijk, alcoholvrije drank kost ook wat, maar zeker lang niet zoveel als dat je vroeger aan dat spul uitgaf. Geniet ervan!',
         'target': 100,
         'eenheid': 'euro',
       },
