@@ -1,12 +1,18 @@
 ## **Coming up next:**
 Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in de eerstvolgende update van de app:
 
+
+#  
+#  
+## **1.3.1**
+#### Release: 4-11-2020
+- Kleine fix: er zat een rekenfoutje op de 'behaald op'-datum van een prestatie
 #  
 #  
 ## **1.3.0**
 #### Release: 2-11-2020
 - Wederom een briljante update: vanaf nu kun je prestaties vrijspelen door te stoppen! Wat je daarvoor moet doen? Simpel: gewoon blijven volhouden!
-- Veel tijd besteeds aan het invullen en bedenken van melige prestaties
+- Veel tijd besteedt aan het invullen en bedenken van melige prestaties
 - Aanpassingen in de structuur van het zijmenu
 - In het ondermenu is de snelkoppeling naar de stopgegevens vervangen door de prestaties
 #  
