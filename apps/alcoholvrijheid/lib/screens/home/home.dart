@@ -8,7 +8,6 @@ import 'package:alcoholvrijheid/screens/authenticate/stopgegevens_message.dart';
 import 'package:alcoholvrijheid/screens/blog/blogpostlist.dart';
 import 'package:alcoholvrijheid/screens/home/av_cards.dart';
 import 'package:alcoholvrijheid/screens/home/prestaties.dart';
-import 'package:alcoholvrijheid/screens/home/settings_page.dart';
 import 'package:alcoholvrijheid/services/auth.dart';
 import 'package:alcoholvrijheid/services/database.dart';
 import 'package:alcoholvrijheid/shared/constants.dart';
@@ -428,6 +427,20 @@ class _HomeState extends State<Home> {
                               _selectedIndex = 2;
                             });
                             Navigator.pop(context);
+                          },
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.bubble_chart_outlined),
+                          title: Text(
+                            'Mijn alcoholreminders',
+                            style: drawerItemStyle,
+                          ),
+                          onTap: () {
+                            FirebaseAnalytics().logEvent(
+                              name: 'drawer_navigation',
+                              parameters: {'target': 'Reminders'},
+                            );
+                            Navigator.popAndPushNamed(context, '/reminders');
                           },
                         ),
                         ListTile(

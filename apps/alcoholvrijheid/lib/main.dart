@@ -1,6 +1,7 @@
 import 'package:alcoholvrijheid/screens/blog/postdetail.dart';
 import 'package:alcoholvrijheid/screens/home/home.dart';
 import 'package:alcoholvrijheid/screens/home/prestaties.dart';
+import 'package:alcoholvrijheid/screens/home/reminders.dart';
 import 'package:alcoholvrijheid/screens/home/settings_page.dart';
 import 'package:alcoholvrijheid/screens/info/changelog.dart';
 import 'package:alcoholvrijheid/screens/info/over_alcoholvrijheid.dart';
@@ -22,7 +23,6 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return StreamProvider<User>.value(
@@ -40,13 +40,13 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => Home(),
-          '/home': (context) => Home(),
           '/settings': (context) => SettingsPage(),
           '/over_deze_app': (context) => OverDezeApp(),
           '/over_alcoholvrijheid': (context) => OverAlcoholvrijheid(),
           '/changelog': (context) => Changelog(),
           '/postdetail': (context) => PostDetail(),
           '/prestaties': (context) => Prestaties(),
+          '/reminders': (context) => Reminders(),
           '/stopgegevens': (context) => SettingsPage(),
         },
       ),
