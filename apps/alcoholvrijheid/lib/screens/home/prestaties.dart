@@ -330,7 +330,7 @@ class Prestaties extends StatelessWidget {
                           title: gehaald ? prestaties[index]['title'] : 'Nog even geduld...',
                           desc: gehaald
                               ? prestaties[index]['content']
-                              : 'Je moet nog € ${((prestaties[index]['target'] - (stopuren * (userData.geld / (7 * 24))))).toStringAsFixed(2)} besparen om deze prestatie vrij te spelen.\n\nAls je zo doorgaat is dat over ${((((prestaties[index]['target'] - (stopuren * (userData.geld / (7 * 24)))) / (userData.geld / (7 * 24))).round()) / 24).round()} dagen op ${Jiffy(Jiffy(userData.stopdate).add(hours: (((prestaties[index]['target'] - (stopuren * (userData.geld / (7 * 24)))) / (userData.geld / (7 * 24))).round()))).yMMMMd}.',
+                              : 'Je moet nog € ${((prestaties[index]['target'] - (stopuren * (userData.geld / (7 * 24))))).toStringAsFixed(2)} besparen om deze prestatie vrij te spelen.',
                           padding: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 5.0),
                           btnOkText: gehaald ? 'Wat een feest!' : 'Ah balen...',
                           btnOkIcon: gehaald
