@@ -4,6 +4,11 @@ Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in 
 
 #  
 #  
+## **1.4.0**
+#### Release: 5-11-2020
+- Wederom een nieuwe feature! Nu kun je een handig lijstje bijhouden waarom je ook alweer gestopt bent met drinken. Speciaal voor die momentjes dat je het even moeilijk hebt. Hoe leuk!
+#  
+#  
 ## **1.3.1**
 #### Release: 4-11-2020
 - Kleine fix: er zat een rekenfoutje op de 'behaald op'-datum van een prestatie

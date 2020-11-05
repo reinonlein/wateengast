@@ -69,12 +69,21 @@ class DatabaseService {
     });
   }
 
-  // update alcoholvrij users
+  // update userLastSeenTime
   Future updateUserLastSeenTime(
     DateTime userLastSeenTime,
   ) async {
     return await alcoholvrijheidCollection.doc(uid).update({
       'userLastSeenTime': userLastSeenTime,
+    });
+  }
+
+  // update alcoholvrij users
+  Future updateReminders(
+    List reminders,
+  ) async {
+    return await alcoholvrijheidCollection.doc(uid).update({
+      'reminders': reminders,
     });
   }
 
@@ -104,6 +113,7 @@ class DatabaseService {
       wijn: snapshot.data()['wijn'],
       sterk: snapshot.data()['sterk'],
       katers: snapshot.data()['katers'],
+      reminders: snapshot.data()['reminders'],
     );
   }
 
