@@ -4,7 +4,12 @@ import 'package:alcoholvrijheid/shared/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-List reminders = ['het is duur', 'het is kut', 'het is naar'];
+List reminders = [
+  'bijvoorbeeld:',
+  'het is duur, etcetera...',
+  'vul hier al je reminders in,',
+  'voor als je het even moeilijk hebt!'
+];
 
 class Reminders extends StatefulWidget {
   @override
@@ -14,15 +19,18 @@ class Reminders extends StatefulWidget {
 class _RemindersState extends State<Reminders> {
   FocusNode myFocusNode = FocusNode();
   TextEditingController _controller = TextEditingController();
+  List firebaseReminders;
 
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
+
     return StreamBuilder<UserData>(
       stream: DatabaseService(uid: user.uid).userData,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           UserData userData = snapshot.data;
+          List firebaseReminders = userData.reminders ?? [];
 
           return Scaffold(
             appBar: AppBar(
@@ -53,9 +61,10 @@ class _RemindersState extends State<Reminders> {
                     autocorrect: false,
                     focusNode: myFocusNode,
                     onSubmitted: (val) {
-                      setState(() {
+                      setState(() async {
                         if (val != '') {
-                          reminders.add(val.trim());
+                          firebaseReminders.add(val.trim());
+                          await DatabaseService(uid: user.uid).updateReminders(firebaseReminders);
                           _controller.clear();
                         }
                       }); // Close the add todo screen
@@ -65,28 +74,52 @@ class _RemindersState extends State<Reminders> {
                         contentPadding: const EdgeInsets.all(16.0)),
                   ),
                   Expanded(
-                    child: ListView.builder(
-                        itemCount: reminders.length,
-                        itemBuilder: (context, index) {
-                          return ListTile(
-                            title: Text(reminders[index]),
-                            trailing: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                IconButton(
-                                    icon: Icon(
-                                      Icons.clear_rounded,
-                                      size: 19,
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        reminders.removeAt(index);
-                                      });
-                                    }),
-                              ],
-                            ),
-                          );
-                        }),
+                    child: firebaseReminders.length == 0
+                        ? ListView.builder(
+                            itemCount: reminders.length,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                title: Text(reminders[index]),
+                                contentPadding: EdgeInsets.only(left: 15, right: 0.0),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    IconButton(
+                                        icon: Icon(
+                                          Icons.clear_rounded,
+                                          size: 19,
+                                        ),
+                                        onPressed: () {
+                                          setState(() {
+                                            reminders.removeAt(index);
+                                          });
+                                        }),
+                                  ],
+                                ),
+                              );
+                            })
+                        : ListView.builder(
+                            itemCount: firebaseReminders.length,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                title: Text(firebaseReminders[index]),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    IconButton(
+                                        icon: Icon(
+                                          Icons.clear_rounded,
+                                          size: 19,
+                                        ),
+                                        onPressed: () async {
+                                          firebaseReminders.removeAt(index);
+                                          await DatabaseService(uid: user.uid)
+                                              .updateReminders(firebaseReminders);
+                                        }),
+                                  ],
+                                ),
+                              );
+                            }),
                   ),
                 ],
               ),

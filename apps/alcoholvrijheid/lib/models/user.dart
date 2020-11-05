@@ -16,6 +16,7 @@ class UserData {
   final DateTime creationTime;
   final DateTime lastSignInTime;
   final DateTime userLastSeenTime;
+  final List<dynamic> reminders;
 
   UserData({
     this.uid,
@@ -29,5 +30,6 @@ class UserData {
     this.creationTime,
     this.lastSignInTime,
     this.userLastSeenTime,
+    this.reminders,
   });
 }
