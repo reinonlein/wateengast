@@ -54,6 +54,7 @@ class _PostDetailState extends State<PostDetail> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 23.5,
+                        fontFamily: 'Montserrat',
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
                         shadows: <Shadow>[
@@ -69,12 +70,13 @@ class _PostDetailState extends State<PostDetail> {
             ],
           ),
           Container(
-            padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 15.0),
+            padding: EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 15.0),
             child: Html(
               defaultTextStyle: TextStyle(
-                fontSize: 15,
+                fontFamily: 'Nunito',
+                fontSize: 16,
                 height: 1.8,
-                letterSpacing: -0.1,
+                //letterSpacing: -0.1,
                 fontWeight: FontWeight.w500,
               ),
               data: post['content'],
