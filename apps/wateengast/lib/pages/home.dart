@@ -258,7 +258,8 @@ class _HomeState extends State<Home> {
                     title: Text(
                       currentPostList[index].title,
                       style: TextStyle(
-                        fontSize: 15,
+                        fontFamily: 'Nunito',
+                        fontSize: 15.5,
                         fontWeight: FontWeight.w500,
                         letterSpacing: 0,
                         height: 1.3,

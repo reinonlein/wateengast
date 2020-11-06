@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 2.2.2+11
+version: 2.3.0+12
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -30,6 +30,7 @@ dependencies:
   firebase_messaging: ^7.0.0
   url_launcher: ^5.5.3
   google_fonts: ^1.1.0 
+  provider: ^4.3.2+2
   flutter:
     sdk: flutter
 
@@ -100,6 +101,25 @@ flutter:
         - asset: fonts/Montserrat/Montserrat-ExtraBold.ttf
           weight: 800
         - asset: fonts/Montserrat/Montserrat-Black.ttf
+          weight: 900
+    - family: Nunito
+      fonts:
+        - asset: fonts/Nunito/Nunito-ExtraLight.ttf
+          weight: 200
+        - asset: fonts/Nunito/Nunito-Light.ttf
+          weight: 300
+        - asset: fonts/Nunito/Nunito-Regular.ttf
+          weight: 400
+        - asset: fonts/Nunito/Nunito-Italic.ttf
+          style: italic
+          weight: 400
+        - asset: fonts/Nunito/Nunito-SemiBold.ttf
+          weight: 600
+        - asset: fonts/Nunito/Nunito-Bold.ttf
+          weight: 700
+        - asset: fonts/Nunito/Nunito-ExtraBold.ttf
+          weight: 800
+        - asset: fonts/Nunito/Nunito-Black.ttf
           weight: 900
     # - family: OpenSans
     #   fonts:
