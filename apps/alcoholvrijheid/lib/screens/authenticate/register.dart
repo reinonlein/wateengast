@@ -154,7 +154,7 @@ class _RegisterState extends State<Register> {
                           suffixText: ' biertjes'),
                       keyboardType: TextInputType.number,
                       textInputAction: TextInputAction.next,
-                      validator: (val) => val.isEmpty ? 'Vul een aantal biertjes in' : null,
+                      //validator: (val) => val.isEmpty ? 'Vul een aantal biertjes in' : null,
                       initialValue: bier.toString(),
                       onChanged: (val) {
                         setState(() => bier = int.parse(val));
@@ -169,7 +169,7 @@ class _RegisterState extends State<Register> {
                           suffixText: ' wijntjes'),
                       keyboardType: TextInputType.number,
                       textInputAction: TextInputAction.next,
-                      validator: (val) => val.isEmpty ? 'Vul een aantal wijntjes in' : null,
+                      //validator: (val) => val.isEmpty ? 'Vul een aantal wijntjes in' : null,
                       initialValue: wijn.toString(),
                       onChanged: (val) {
                         setState(() => wijn = int.parse(val));
@@ -184,8 +184,7 @@ class _RegisterState extends State<Register> {
                           suffixText: ' glazen'),
                       keyboardType: TextInputType.number,
                       textInputAction: TextInputAction.next,
-                      validator: (val) =>
-                          val.isEmpty ? 'Vul een aantal glazen sterke drank in' : null,
+                      //validator: (val) => val.isEmpty ? 'Vul een aantal glazen sterke drank in' : null,
                       initialValue: wijn.toString(),
                       onChanged: (val) {
                         setState(() => sterk = int.parse(val));
@@ -200,7 +199,7 @@ class _RegisterState extends State<Register> {
                           suffixText: ' katers'),
                       keyboardType: TextInputType.number,
                       textInputAction: TextInputAction.next,
-                      validator: (val) => val.isEmpty ? 'Vul een aantal katers in' : null,
+                      //validator: (val) => val.isEmpty ? 'Vul een aantal katers in' : null,
                       initialValue: katers.toString(),
                       onChanged: (val) {
                         setState(() => katers = int.parse(val));
@@ -225,7 +224,7 @@ class _RegisterState extends State<Register> {
                           val.isEmpty ? 'Vul alsjeblieft een e-mailadres in voor je account' : null,
                       initialValue: email,
                       onChanged: (val) {
-                        setState(() => email = val);
+                        setState(() => email = val.trim());
                       },
                     ),
                     SizedBox(height: 20.0),

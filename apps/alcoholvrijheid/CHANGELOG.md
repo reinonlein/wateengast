@@ -1,7 +1,13 @@
 ## **Coming up next:**
-Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in de eerstvolgende update van de app:
-
-
+Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in de nabije toekomst:
+- notificaties bij vrijspelen prestaties (die je uiteraard ook uit kunt zetten)
+- optie om notificaties bij nieuwe berichten aan en uit te zetten
+#  
+#  
+## **1.5.0**
+#### Release: 8-11-2020
+- Het is nu mogelijk om zelf per mail je wachtwoord te resetten.
+- Belangrijke fix: registratie kon misgaan bij loze spaties of lege velden. Dit is nu (hopelijk) allemaal opgelost!
 #  
 #  
 ## **1.4.0**
