@@ -248,7 +248,7 @@ class PrestatieTargets {
       {
         'title': '25 katers',
         'content':
-            '25 magische dagen zonder ellende, wanhoop en algemene misaire. Hoe onwijs relaxed is dat? Knijp jezelf maar goed in je handjes en geniet van weer een dag in nuchtere frisheid. Wat fijn dat je dit jezelf niet meer aandoet!',
+            '25 magische dagen zonder ellende, wanhoop en algemene misère. Hoe onwijs relaxed is dat? Knijp jezelf maar goed in je handjes en geniet van weer een dag in nuchtere frisheid. Wat fijn dat je dit jezelf niet meer aandoet!',
         'target': 25,
         'eenheid': 'katers',
       },
