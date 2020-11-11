@@ -10,12 +10,14 @@ import 'package:alcoholvrijheid/screens/home/av_cards.dart';
 import 'package:alcoholvrijheid/screens/home/prestaties.dart';
 import 'package:alcoholvrijheid/services/auth.dart';
 import 'package:alcoholvrijheid/services/database.dart';
+import 'package:alcoholvrijheid/services/notifications.dart';
 import 'package:alcoholvrijheid/shared/constants.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
@@ -23,6 +25,8 @@ class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
+
+FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
 List<SinglePost> parsePosts(response) {
   final parsed = jsonDecode(response).cast<Map<String, dynamic>>();
@@ -92,8 +96,8 @@ class _HomeState extends State<Home> {
 
     final fbm = FirebaseMessaging();
 
-    //fbm.subscribeToTopic('WordpressTopic');
-    //fbm.subscribeToTopic('TestingTopic');
+    fbm.subscribeToTopic('FirebaseMessaging');
+    fbm.subscribeToTopic('FirebaseTest');
 
     fbm.configure(
       onMessage: (message) {
@@ -293,6 +297,12 @@ class _HomeState extends State<Home> {
                     padding: EdgeInsets.fromLTRB(8.0, 8.0, 0, 0),
                     child: Column(
                       children: [
+                        RaisedButton(
+                          child: Text('button'),
+                          onPressed: () async {
+                            await Notificaties().showNotification();
+                          },
+                        ),
                         ListTile(
                           //leading: Icon(Icons.info_outline_rounded),
                           title: Text(

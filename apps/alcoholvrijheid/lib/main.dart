@@ -13,13 +13,34 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 FirebaseAnalytics analytics = FirebaseAnalytics();
+
+FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  const AndroidInitializationSettings initializationSettingsAndroid =
+      AndroidInitializationSettings('app_icon');
+  final InitializationSettings initializationSettings =
+      InitializationSettings(android: initializationSettingsAndroid);
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings,
+      onSelectNotification: selectNotification);
+
   runApp(MyApp());
+}
+
+Future selectNotification(String payload) async {
+  if (payload != null) {
+    debugPrint('notification payload: $payload');
+  }
+  // await Navigator.push(
+  //   context,
+  //   MaterialPageRoute<void>(builder: (context) => SecondScreen(payload)),
+  // );
 }
 
 class MyApp extends StatelessWidget {
