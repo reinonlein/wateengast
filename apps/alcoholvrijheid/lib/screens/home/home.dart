@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:alcoholvrijheid/main.dart';
+import 'package:alcoholvrijheid/models/prestatietargets.dart';
 import 'package:alcoholvrijheid/models/singlecategory.dart';
 import 'package:alcoholvrijheid/models/singlepost.dart';
 import 'package:alcoholvrijheid/models/user.dart';
@@ -10,14 +12,18 @@ import 'package:alcoholvrijheid/screens/home/av_cards.dart';
 import 'package:alcoholvrijheid/screens/home/prestaties.dart';
 import 'package:alcoholvrijheid/services/auth.dart';
 import 'package:alcoholvrijheid/services/database.dart';
-import 'package:alcoholvrijheid/services/notifications.dart';
+import 'package:alcoholvrijheid/services/notificationService.dart';
 import 'package:alcoholvrijheid/shared/constants.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:flutter_native_timezone/flutter_native_timezone.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
@@ -25,8 +31,6 @@ class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
-
-FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
 List<SinglePost> parsePosts(response) {
   final parsed = jsonDecode(response).cast<Map<String, dynamic>>();
@@ -78,9 +82,77 @@ class _HomeState extends State<Home> {
     });
   }
 
+  void _configureDidReceiveLocalNotificationSubject() {
+    didReceiveLocalNotificationSubject.stream
+        .listen((ReceivedNotification receivedNotification) async {
+      await showDialog(
+        context: context,
+        builder: (BuildContext context) => CupertinoAlertDialog(
+          title: receivedNotification.title != null ? Text(receivedNotification.title) : null,
+          content: receivedNotification.body != null ? Text(receivedNotification.body) : null,
+          actions: <Widget>[
+            CupertinoDialogAction(
+              isDefaultAction: true,
+              onPressed: () async {
+                Navigator.of(context, rootNavigator: true).pop();
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => Home(),
+                  ),
+                );
+              },
+              child: const Text('Ok'),
+            )
+          ],
+        ),
+      );
+    });
+  }
+
+  void _configureSelectNotificationSubject() {
+    selectNotificationSubject.stream.listen((String payload) {
+      List<Map> prestaties = PrestatieTargets().prestatietargets;
+      int index = int.parse(payload);
+      AwesomeDialog(
+        context: context,
+        customHeader: ClipRRect(
+          borderRadius: BorderRadius.circular(90.0),
+          child: Image.asset('assets/trophygif.gif'),
+        ),
+        dialogType: DialogType.SUCCES,
+        animType: AnimType.SCALE,
+        title: prestaties[index]['title'],
+        desc: prestaties[index]['content'],
+        padding: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 5.0),
+        btnOkText: 'Geweldig!',
+        btnOkIcon: Icons.thumb_up_sharp,
+        headerAnimationLoop: false,
+        isDense: false,
+        btnOkOnPress: () {},
+      )..show();
+    });
+  }
+
+  Future<void> _configureLocalTimeZone() async {
+    tz.initializeTimeZones();
+    final String timeZoneName = await FlutterNativeTimezone.getLocalTimezone();
+    tz.setLocalLocation(tz.getLocation(timeZoneName));
+  }
+
+  @override
+  void dispose() {
+    didReceiveLocalNotificationSubject.close();
+    selectNotificationSubject.close();
+    super.dispose();
+  }
+
   @override
   void initState() {
     super.initState();
+    _configureLocalTimeZone();
+    _configureSelectNotificationSubject();
+    _configureDidReceiveLocalNotificationSubject();
 
     _newVisit = true;
 
@@ -184,6 +256,8 @@ class _HomeState extends State<Home> {
               : currentPostList.where((i) => i.category == filterCategory).toList()),
       user == null ? StopgegevensMessage() : Prestaties(),
     ];
+
+    List<Map> prestaties = PrestatieTargets().prestatietargets;
 
     // code snippet om een lijst van alle leden te krijgen
     // return StreamProvider<List<Alcoholvrijerd>>.value(
@@ -298,9 +372,33 @@ class _HomeState extends State<Home> {
                     child: Column(
                       children: [
                         RaisedButton(
-                          child: Text('button'),
+                          child: Text('test notificatie'),
                           onPressed: () async {
-                            await Notificaties().showNotification();
+                            await showNotification(flutterLocalNotificationsPlugin);
+                          },
+                        ),
+                        RaisedButton(
+                          child: Text('schedule notificatie'),
+                          onPressed: () async {
+                            await scheduleNotification(
+                                flutterLocalNotificationsPlugin,
+                                3,
+                                'Gefeliciteerd: ${prestaties[3]['title']}!',
+                                prestaties[3]['content'].substring(0, 100),
+                                tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)));
+                          },
+                        ),
+                        RaisedButton(
+                          child: Text('overzicht'),
+                          onPressed: () async {
+                            await checkPendingNotificationRequests(
+                                flutterLocalNotificationsPlugin, this.context);
+                          },
+                        ),
+                        RaisedButton(
+                          child: Text('uitzetten'),
+                          onPressed: () async {
+                            await turnOffNotification(flutterLocalNotificationsPlugin);
                           },
                         ),
                         ListTile(
