@@ -8,40 +8,43 @@ import 'package:alcoholvrijheid/screens/info/over_alcoholvrijheid.dart';
 import 'package:alcoholvrijheid/screens/info/over_deze_app.dart';
 import 'package:alcoholvrijheid/services/auth.dart';
 import 'package:alcoholvrijheid/models/user.dart';
+import 'package:alcoholvrijheid/services/notificationService.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+//import 'package:rxdart/rxdart.dart';
 
 FirebaseAnalytics analytics = FirebaseAnalytics();
 
-FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+NotificationAppLaunchDetails notificationAppLaunchDetails;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings('app_icon');
-  final InitializationSettings initializationSettings =
-      InitializationSettings(android: initializationSettingsAndroid);
-  await flutterLocalNotificationsPlugin.initialize(initializationSettings,
-      onSelectNotification: selectNotification);
+  notificationAppLaunchDetails =
+      await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
+  await initNotifications(flutterLocalNotificationsPlugin);
+  requestIOSPermissions(flutterLocalNotificationsPlugin);
 
   runApp(MyApp());
 }
 
-Future selectNotification(String payload) async {
-  if (payload != null) {
-    debugPrint('notification payload: $payload');
-  }
-  // await Navigator.push(
-  //   context,
-  //   MaterialPageRoute<void>(builder: (context) => SecondScreen(payload)),
-  // );
-}
+// Future selectNotification(String payload) async {
+//   if (payload != null) {
+//     debugPrint('notification payload: $payload');
+//   }
+//   // await Navigator.push(
+//   //   context,
+//   //   MaterialPageRoute<void>(builder: (context) => SecondScreen(payload)),
+//   // );
+// }
 
 class MyApp extends StatelessWidget {
   @override
