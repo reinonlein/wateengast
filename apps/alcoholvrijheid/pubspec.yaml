@@ -39,6 +39,9 @@ dependencies:
   flutter_markdown: ^0.4.4
   awesome_dialog: ^1.2.1
   liquid_progress_indicator: ^0.3.2
+  flutter_local_notifications: ^3.0.1+2
+  rxdart: ^0.24.1
+  path_provider: ^1.6.11
   flutter:
     sdk: flutter
 
