@@ -389,6 +389,20 @@ class _HomeState extends State<Home> {
                           },
                         ),
                         RaisedButton(
+                            child: Text('schedule 5 prestaties'),
+                            onPressed: () async {
+                              //for (index in range 0 tot prestaties.length)
+                              for (var i = 0; i < 5; i++) {
+                                await scheduleNotification(
+                                    flutterLocalNotificationsPlugin,
+                                    i,
+                                    'Gefeliciteerd: ${prestaties[i]['title']}!',
+                                    prestaties[i]['content'].substring(0, 100),
+                                    tz.TZDateTime.now(tz.local)
+                                        .add(Duration(seconds: (i * 3) + 1)));
+                              }
+                            }),
+                        RaisedButton(
                           child: Text('overzicht'),
                           onPressed: () async {
                             await checkPendingNotificationRequests(
