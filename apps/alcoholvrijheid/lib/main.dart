@@ -36,16 +36,6 @@ void main() async {
   runApp(MyApp());
 }
 
-// Future selectNotification(String payload) async {
-//   if (payload != null) {
-//     debugPrint('notification payload: $payload');
-//   }
-//   // await Navigator.push(
-//   //   context,
-//   //   MaterialPageRoute<void>(builder: (context) => SecondScreen(payload)),
-//   // );
-// }
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
