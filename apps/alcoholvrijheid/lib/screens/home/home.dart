@@ -19,6 +19,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -45,6 +46,8 @@ List<SingleCategory> parseCategories(responseCat) {
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
   bool _newVisit = false;
+
+  bool notifications = true;
 
   int page = 1;
   int perPage = 100;
@@ -240,6 +243,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final AuthService _auth = AuthService();
     final user = Provider.of<User>(context);
+    Jiffy.locale("nl");
 
     if (user != null && _newVisit == true) {
       DatabaseService(uid: user.uid).updateUserLastSeenTime(DateTime.now());
@@ -388,18 +392,64 @@ class _HomeState extends State<Home> {
                                 tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)));
                           },
                         ),
-                        RaisedButton(
-                            child: Text('schedule 5 prestaties'),
-                            onPressed: () async {
-                              //for (index in range 0 tot prestaties.length)
-                              for (var i = 0; i < 5; i++) {
-                                await scheduleNotification(
-                                    flutterLocalNotificationsPlugin,
-                                    i,
-                                    'Gefeliciteerd: ${prestaties[i]['title']}!',
-                                    prestaties[i]['content'].substring(0, 100),
-                                    tz.TZDateTime.now(tz.local)
-                                        .add(Duration(seconds: (i * 3) + 1)));
+                        StreamBuilder<UserData>(
+                            stream: DatabaseService(uid: user.uid).userData,
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                UserData userData = snapshot.data;
+                                int stopuren = Jiffy().diff(userData.stopdate, Units.HOUR);
+                                double stopmaanden =
+                                    Jiffy().diff(userData.stopdate, Units.MONTH, true);
+                                int liters = ((stopuren / (7 * 24)) * userData.bier * 0.3).round() +
+                                    ((stopuren / (7 * 24)) * userData.wijn * 0.125).round() +
+                                    ((stopuren / (7 * 24)) * userData.sterk * 0.035).round();
+                                int katers = (stopmaanden * userData.katers).floor();
+                                return RaisedButton(
+                                    child: Text('schedule uren prestaties'),
+                                    onPressed: () async {
+                                      //for (index in range 0 tot prestaties.length)
+                                      for (var i = 0; i < prestaties.length; i++) {
+                                        if (prestaties[i]['eenheid'] == 'uren' &&
+                                            tz.TZDateTime.from(userData.stopdate, tz.local)
+                                                .add(Duration(hours: prestaties[i]['target']))
+                                                .isAfter(tz.TZDateTime.now(tz.local))) {
+                                          await scheduleNotification(
+                                              flutterLocalNotificationsPlugin,
+                                              i,
+                                              'Gefeliciteerd: ${prestaties[i]['title']}!',
+                                              prestaties[i]['content'].substring(0, 100),
+                                              tz.TZDateTime.from(userData.stopdate, tz.local)
+                                                  .add(Duration(hours: prestaties[i]['target'])));
+                                        } else if (prestaties[i]['eenheid'] == 'maanden') {
+                                          await scheduleNotification(
+                                              flutterLocalNotificationsPlugin,
+                                              i,
+                                              'Gefeliciteerd: ${prestaties[i]['title']}!',
+                                              prestaties[i]['content'].length < 100
+                                                  ? prestaties[i]['content']
+                                                  : prestaties[i]['content'].substring(0, 100),
+                                              tz.TZDateTime.now(tz.local).add(
+                                                  Duration(days: prestaties[i]['target'] * 31)));
+                                        } else if (prestaties[i]['eenheid'] == 'katers') {
+                                          await scheduleNotification(
+                                              flutterLocalNotificationsPlugin,
+                                              i,
+                                              'een katers notificatie!',
+                                              prestaties[i]['content'].length < 100
+                                                  ? prestaties[i]['content']
+                                                  : prestaties[i]['content'].substring(0, 100),
+                                              tz.TZDateTime.now(tz.local).add(
+                                                  Duration(days: prestaties[i]['target'] * 31)));
+                                        }
+                                      }
+                                    });
+                              } else {
+                                return RaisedButton(
+                                    child: Text('dan maar deze'),
+                                    onPressed: () async {
+                                      await checkPendingNotificationRequests(
+                                          flutterLocalNotificationsPlugin, this.context);
+                                    });
                               }
                             }),
                         RaisedButton(
@@ -592,6 +642,17 @@ class _HomeState extends State<Home> {
                             );
                             Navigator.popAndPushNamed(context, '/over_deze_app');
                             //Navigator.pop(context);
+                          },
+                        ),
+                        SwitchListTile(
+                          secondary: Icon(Icons.notifications_on_outlined),
+                          title: Text('Ontvang felicitaties'),
+                          value: notifications,
+                          onChanged: (bool value) {
+                            setState(() {
+                              notifications = value;
+                              print(notifications);
+                            });
                           },
                         ),
                         ListTile(

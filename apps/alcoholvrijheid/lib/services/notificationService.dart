@@ -90,8 +90,18 @@ Future<void> checkPendingNotificationRequests(
   return showDialog<void>(
     context: context,
     builder: (BuildContext context) => AlertDialog(
-      content: Text(
-          '${pendingNotificationRequests.length} pending notification requests\n\n${pendingNotificationRequests[0].title}'),
+      content: ListView.builder(
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(pendingNotificationRequests[index].title),
+            subtitle: Text(pendingNotificationRequests[index].payload),
+          );
+        },
+        itemCount: pendingNotificationRequests.length,
+      ),
+      // Text(
+      //     '${pendingNotificationRequests.length} pending notification requests\n\n${pendingNotificationRequests[0].title}'),
+
       actions: <Widget>[
         FlatButton(
           onPressed: () {
