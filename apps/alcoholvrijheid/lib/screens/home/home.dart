@@ -375,96 +375,6 @@ class _HomeState extends State<Home> {
                     padding: EdgeInsets.fromLTRB(8.0, 8.0, 0, 0),
                     child: Column(
                       children: [
-                        RaisedButton(
-                          child: Text('test notificatie'),
-                          onPressed: () async {
-                            await showNotification(flutterLocalNotificationsPlugin);
-                          },
-                        ),
-                        RaisedButton(
-                          child: Text('schedule notificatie'),
-                          onPressed: () async {
-                            await scheduleNotification(
-                                flutterLocalNotificationsPlugin,
-                                3,
-                                'Gefeliciteerd: ${prestaties[3]['title']}!',
-                                prestaties[3]['content'].substring(0, 100),
-                                tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)));
-                          },
-                        ),
-                        StreamBuilder<UserData>(
-                            stream: DatabaseService(uid: user.uid).userData,
-                            builder: (context, snapshot) {
-                              if (snapshot.hasData) {
-                                UserData userData = snapshot.data;
-                                int stopuren = Jiffy().diff(userData.stopdate, Units.HOUR);
-                                double stopmaanden =
-                                    Jiffy().diff(userData.stopdate, Units.MONTH, true);
-                                int liters = ((stopuren / (7 * 24)) * userData.bier * 0.3).round() +
-                                    ((stopuren / (7 * 24)) * userData.wijn * 0.125).round() +
-                                    ((stopuren / (7 * 24)) * userData.sterk * 0.035).round();
-                                int katers = (stopmaanden * userData.katers).floor();
-                                return RaisedButton(
-                                    child: Text('schedule uren prestaties'),
-                                    onPressed: () async {
-                                      //for (index in range 0 tot prestaties.length)
-                                      for (var i = 0; i < prestaties.length; i++) {
-                                        if (prestaties[i]['eenheid'] == 'uren' &&
-                                            tz.TZDateTime.from(userData.stopdate, tz.local)
-                                                .add(Duration(hours: prestaties[i]['target']))
-                                                .isAfter(tz.TZDateTime.now(tz.local))) {
-                                          await scheduleNotification(
-                                              flutterLocalNotificationsPlugin,
-                                              i,
-                                              'Gefeliciteerd: ${prestaties[i]['title']}!',
-                                              prestaties[i]['content'].substring(0, 100),
-                                              tz.TZDateTime.from(userData.stopdate, tz.local)
-                                                  .add(Duration(hours: prestaties[i]['target'])));
-                                        } else if (prestaties[i]['eenheid'] == 'maanden') {
-                                          await scheduleNotification(
-                                              flutterLocalNotificationsPlugin,
-                                              i,
-                                              'Gefeliciteerd: ${prestaties[i]['title']}!',
-                                              prestaties[i]['content'].length < 100
-                                                  ? prestaties[i]['content']
-                                                  : prestaties[i]['content'].substring(0, 100),
-                                              tz.TZDateTime.now(tz.local).add(
-                                                  Duration(days: prestaties[i]['target'] * 31)));
-                                        } else if (prestaties[i]['eenheid'] == 'katers') {
-                                          await scheduleNotification(
-                                              flutterLocalNotificationsPlugin,
-                                              i,
-                                              'een katers notificatie!',
-                                              prestaties[i]['content'].length < 100
-                                                  ? prestaties[i]['content']
-                                                  : prestaties[i]['content'].substring(0, 100),
-                                              tz.TZDateTime.now(tz.local).add(
-                                                  Duration(days: prestaties[i]['target'] * 31)));
-                                        }
-                                      }
-                                    });
-                              } else {
-                                return RaisedButton(
-                                    child: Text('dan maar deze'),
-                                    onPressed: () async {
-                                      await checkPendingNotificationRequests(
-                                          flutterLocalNotificationsPlugin, this.context);
-                                    });
-                              }
-                            }),
-                        RaisedButton(
-                          child: Text('overzicht'),
-                          onPressed: () async {
-                            await checkPendingNotificationRequests(
-                                flutterLocalNotificationsPlugin, this.context);
-                          },
-                        ),
-                        RaisedButton(
-                          child: Text('uitzetten'),
-                          onPressed: () async {
-                            await turnOffNotification(flutterLocalNotificationsPlugin);
-                          },
-                        ),
                         ListTile(
                           //leading: Icon(Icons.info_outline_rounded),
                           title: Text(
@@ -644,17 +554,140 @@ class _HomeState extends State<Home> {
                             //Navigator.pop(context);
                           },
                         ),
-                        SwitchListTile(
-                          secondary: Icon(Icons.notifications_on_outlined),
-                          title: Text('Ontvang felicitaties'),
-                          value: notifications,
-                          onChanged: (bool value) {
-                            setState(() {
-                              notifications = value;
-                              print(notifications);
-                            });
-                          },
-                        ),
+                        StreamBuilder<UserData>(
+                            stream: DatabaseService(uid: user.uid).userData,
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                UserData userData = snapshot.data;
+                                return SwitchListTile(
+                                  secondary: Icon(Icons.notifications_on_outlined),
+                                  title: Text('Ontvang felicitaties'),
+                                  value: notifications,
+                                  onChanged: (bool value) async {
+                                    notifications = value;
+                                    if (notifications == true) {
+                                      for (var i = 0; i < prestaties.length; i++) {
+                                        if (prestaties[i]['eenheid'] == 'uren' &&
+                                            tz.TZDateTime.from(userData.stopdate, tz.local)
+                                                .add(Duration(hours: prestaties[i]['target']))
+                                                .isAfter(tz.TZDateTime.now(tz.local))) {
+                                          await scheduleNotification(
+                                              flutterLocalNotificationsPlugin,
+                                              i,
+                                              'Gefeliciteerd: ${prestaties[i]['title']}!',
+                                              prestaties[i]['content'].substring(0, 100),
+                                              tz.TZDateTime.from(userData.stopdate, tz.local)
+                                                  .add(Duration(hours: prestaties[i]['target'])));
+                                        } else if (prestaties[i]['eenheid'] == 'maanden' &&
+                                            tz.TZDateTime.from(
+                                                    Jiffy(userData.stopdate)
+                                                        .add(months: prestaties[i]['target']),
+                                                    tz.local)
+                                                .isAfter(tz.TZDateTime.now(tz.local))) {
+                                          await scheduleNotification(
+                                            flutterLocalNotificationsPlugin,
+                                            i,
+                                            'Gefeliciteerd: ${prestaties[i]['title']}!',
+                                            prestaties[i]['content'].length < 100
+                                                ? prestaties[i]['content']
+                                                : prestaties[i]['content'].substring(0, 100),
+                                            tz.TZDateTime.from(
+                                                Jiffy(userData.stopdate)
+                                                    .add(months: prestaties[i]['target']),
+                                                tz.local),
+                                          );
+                                        } else if (prestaties[i]['eenheid'] == 'euro' &&
+                                            tz.TZDateTime.from(
+                                                    Jiffy(userData.stopdate).add(
+                                                        hours: (prestaties[i]['target'] /
+                                                                (userData.geld / (7 * 24)))
+                                                            .round()),
+                                                    tz.local)
+                                                .isAfter(tz.TZDateTime.now(tz.local))) {
+                                          await scheduleNotification(
+                                            flutterLocalNotificationsPlugin,
+                                            i,
+                                            'Gefeliciteerd: ${prestaties[i]['title']}!',
+                                            prestaties[i]['content'].length < 100
+                                                ? prestaties[i]['content']
+                                                : prestaties[i]['content'].substring(0, 100),
+                                            tz.TZDateTime.from(
+                                                Jiffy(userData.stopdate).add(
+                                                    hours: (prestaties[i]['target'] /
+                                                            (userData.geld / (7 * 24)))
+                                                        .round()),
+                                                tz.local),
+                                          );
+                                        } else if (prestaties[i]['eenheid'] == 'liter' &&
+                                            tz.TZDateTime.from(
+                                                    Jiffy(userData.stopdate).add(
+                                                        hours: (prestaties[i]['target'] /
+                                                                ((userData.bier * 0.3).round() +
+                                                                        (userData.wijn * 0.125)
+                                                                            .round() +
+                                                                        (userData.sterk * 0.035)
+                                                                            .round())
+                                                                    .round() *
+                                                                7 *
+                                                                24)
+                                                            .round()),
+                                                    tz.local)
+                                                .isAfter(tz.TZDateTime.now(tz.local))) {
+                                          await scheduleNotification(
+                                            flutterLocalNotificationsPlugin,
+                                            i,
+                                            'Gefeliciteerd: ${prestaties[i]['title']}!',
+                                            prestaties[i]['content'].length < 100
+                                                ? prestaties[i]['content']
+                                                : prestaties[i]['content'].substring(0, 100),
+                                            tz.TZDateTime.from(
+                                                Jiffy(userData.stopdate).add(
+                                                    hours: (prestaties[i]['target'] /
+                                                            ((userData.bier * 0.3).round() +
+                                                                    (userData.wijn * 0.125)
+                                                                        .round() +
+                                                                    (userData.sterk * 0.035)
+                                                                        .round())
+                                                                .round() *
+                                                            7 *
+                                                            24)
+                                                        .round()),
+                                                tz.local),
+                                          );
+                                        } else if (prestaties[i]['eenheid'] == 'katers' &&
+                                            tz.TZDateTime.from(
+                                                    Jiffy(userData.stopdate).add(
+                                                        days: (prestaties[i]['target'] /
+                                                                (userData.katers / 30.5))
+                                                            .floor()),
+                                                    tz.local)
+                                                .isAfter(tz.TZDateTime.now(tz.local))) {
+                                          await scheduleNotification(
+                                            flutterLocalNotificationsPlugin,
+                                            i,
+                                            'Gefeliciteerd: ${prestaties[i]['title']}!',
+                                            prestaties[i]['content'].length < 100
+                                                ? prestaties[i]['content']
+                                                : prestaties[i]['content'].substring(0, 100),
+                                            tz.TZDateTime.from(
+                                                Jiffy(userData.stopdate).add(
+                                                    days: (prestaties[i]['target'] /
+                                                            (userData.katers / 30.5))
+                                                        .floor()),
+                                                tz.local),
+                                          );
+                                        }
+                                      }
+                                    } else {
+                                      await turnOffNotification(flutterLocalNotificationsPlugin);
+                                    }
+                                    setState(() {});
+                                  },
+                                );
+                              } else {
+                                return Container(width: 0.0, height: 0.0);
+                              }
+                            }),
                         ListTile(
                           leading: Icon(Icons.exit_to_app),
                           title: Text(
@@ -679,3 +712,177 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+/////// EXPERIMENT MET NOTIFICATIES //////////
+// SwitchListTile(
+//   secondary: Icon(Icons.notifications_on_outlined),
+//   title: Text('Ontvang felicitaties'),
+//   value: notifications,
+//   onChanged: (bool value) {
+//     setState(() {
+//       notifications = value;
+//     });
+//   },
+// ),
+
+// RaisedButton(
+//                           child: Text('test notificatie'),
+//                           onPressed: () async {
+//                             await showNotification(flutterLocalNotificationsPlugin);
+//                           },
+//                         ),
+//                         RaisedButton(
+//                           child: Text('schedule notificatie'),
+//                           onPressed: () async {
+//                             await scheduleNotification(
+//                                 flutterLocalNotificationsPlugin,
+//                                 3,
+//                                 'Gefeliciteerd: ${prestaties[3]['title']}!',
+//                                 prestaties[3]['content'].substring(0, 100),
+//                                 tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)));
+//                           },
+//                         ),
+//                         StreamBuilder<UserData>(
+//                             stream: DatabaseService(uid: user.uid).userData,
+//                             builder: (context, snapshot) {
+//                               if (snapshot.hasData) {
+//                                 UserData userData = snapshot.data;
+//                                 return RaisedButton(
+//                                     child: Text('schedule uren prestaties'),
+//                                     onPressed: () async {
+//                                       //for (index in range 0 tot prestaties.length)
+//                                       for (var i = 0; i < prestaties.length; i++) {
+//                                         if (prestaties[i]['eenheid'] == 'uren' &&
+//                                             tz.TZDateTime.from(userData.stopdate, tz.local)
+//                                                 .add(Duration(hours: prestaties[i]['target']))
+//                                                 .isAfter(tz.TZDateTime.now(tz.local))) {
+//                                           await scheduleNotification(
+//                                               flutterLocalNotificationsPlugin,
+//                                               i,
+//                                               'Gefeliciteerd: ${prestaties[i]['title']}!',
+//                                               prestaties[i]['content'].substring(0, 100),
+//                                               tz.TZDateTime.from(userData.stopdate, tz.local)
+//                                                   .add(Duration(hours: prestaties[i]['target'])));
+//                                         } else if (prestaties[i]['eenheid'] == 'maanden' &&
+//                                             tz.TZDateTime.from(
+//                                                     Jiffy(userData.stopdate)
+//                                                         .add(months: prestaties[i]['target']),
+//                                                     tz.local)
+//                                                 .isAfter(tz.TZDateTime.now(tz.local))) {
+//                                           await scheduleNotification(
+//                                             flutterLocalNotificationsPlugin,
+//                                             i,
+//                                             'Gefeliciteerd: ${prestaties[i]['title']}!',
+//                                             prestaties[i]['content'].length < 100
+//                                                 ? prestaties[i]['content']
+//                                                 : prestaties[i]['content'].substring(0, 100),
+//                                             tz.TZDateTime.from(
+//                                                 Jiffy(userData.stopdate)
+//                                                     .add(months: prestaties[i]['target']),
+//                                                 tz.local),
+//                                           );
+//                                         } else if (prestaties[i]['eenheid'] == 'euro' &&
+//                                             tz.TZDateTime.from(
+//                                                     Jiffy(userData.stopdate).add(
+//                                                         hours: (prestaties[i]['target'] /
+//                                                                 (userData.geld / (7 * 24)))
+//                                                             .round()),
+//                                                     tz.local)
+//                                                 .isAfter(tz.TZDateTime.now(tz.local))) {
+//                                           await scheduleNotification(
+//                                             flutterLocalNotificationsPlugin,
+//                                             i,
+//                                             'Gefeliciteerd: ${prestaties[i]['title']}!',
+//                                             prestaties[i]['content'].length < 100
+//                                                 ? prestaties[i]['content']
+//                                                 : prestaties[i]['content'].substring(0, 100),
+//                                             tz.TZDateTime.from(
+//                                                 Jiffy(userData.stopdate).add(
+//                                                     hours: (prestaties[i]['target'] /
+//                                                             (userData.geld / (7 * 24)))
+//                                                         .round()),
+//                                                 tz.local),
+//                                           );
+//                                         } else if (prestaties[i]['eenheid'] == 'liter' &&
+//                                             tz.TZDateTime.from(
+//                                                     Jiffy(userData.stopdate).add(
+//                                                         hours: (prestaties[i]['target'] /
+//                                                                 ((userData.bier * 0.3).round() +
+//                                                                         (userData.wijn * 0.125)
+//                                                                             .round() +
+//                                                                         (userData.sterk * 0.035)
+//                                                                             .round())
+//                                                                     .round() *
+//                                                                 7 *
+//                                                                 24)
+//                                                             .round()),
+//                                                     tz.local)
+//                                                 .isAfter(tz.TZDateTime.now(tz.local))) {
+//                                           await scheduleNotification(
+//                                             flutterLocalNotificationsPlugin,
+//                                             i,
+//                                             'Gefeliciteerd: ${prestaties[i]['title']}!',
+//                                             prestaties[i]['content'].length < 100
+//                                                 ? prestaties[i]['content']
+//                                                 : prestaties[i]['content'].substring(0, 100),
+//                                             tz.TZDateTime.from(
+//                                                 Jiffy(userData.stopdate).add(
+//                                                     hours: (prestaties[i]['target'] /
+//                                                             ((userData.bier * 0.3).round() +
+//                                                                     (userData.wijn * 0.125)
+//                                                                         .round() +
+//                                                                     (userData.sterk * 0.035)
+//                                                                         .round())
+//                                                                 .round() *
+//                                                             7 *
+//                                                             24)
+//                                                         .round()),
+//                                                 tz.local),
+//                                           );
+//                                         } else if (prestaties[i]['eenheid'] == 'katers' &&
+//                                             tz.TZDateTime.from(
+//                                                     Jiffy(userData.stopdate).add(
+//                                                         days: (prestaties[i]['target'] /
+//                                                                 (userData.katers / 30.5))
+//                                                             .floor()),
+//                                                     tz.local)
+//                                                 .isAfter(tz.TZDateTime.now(tz.local))) {
+//                                           await scheduleNotification(
+//                                             flutterLocalNotificationsPlugin,
+//                                             i,
+//                                             'Gefeliciteerd: ${prestaties[i]['title']}!',
+//                                             prestaties[i]['content'].length < 100
+//                                                 ? prestaties[i]['content']
+//                                                 : prestaties[i]['content'].substring(0, 100),
+//                                             tz.TZDateTime.from(
+//                                                 Jiffy(userData.stopdate).add(
+//                                                     days: (prestaties[i]['target'] /
+//                                                             (userData.katers / 30.5))
+//                                                         .floor()),
+//                                                 tz.local),
+//                                           );
+//                                         }
+//                                       }
+//                                     });
+//                               } else {
+//                                 return RaisedButton(
+//                                     child: Text('dan maar deze'),
+//                                     onPressed: () async {
+//                                       await checkPendingNotificationRequests(
+//                                           flutterLocalNotificationsPlugin, this.context);
+//                                     });
+//                               }
+//                             }),
+//                         RaisedButton(
+//                           child: Text('overzicht'),
+//                           onPressed: () async {
+//                             await checkPendingNotificationRequests(
+//                                 flutterLocalNotificationsPlugin, this.context);
+//                           },
+//                         ),
+//                         RaisedButton(
+//                           child: Text('uitzetten'),
+//                           onPressed: () async {
+//                             await turnOffNotification(flutterLocalNotificationsPlugin);
+//                           },
+//                         ),
