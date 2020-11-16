@@ -1,5 +1,8 @@
 ## **Coming up next:**
 Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in de nabije toekomst:
+- Een dagboek met stemmingstracker
+- Optie om periodieke herinneringen in te stellen om je dagboek bij te werken
+- Optie om notificaties bij nieuwe verhalen aan en uit te zetten
 #  
 #  
 ## **1.6.0**
