@@ -1,7 +1,12 @@
 ## **Coming up next:**
 Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in de nabije toekomst:
-- notificaties bij vrijspelen prestaties (die je uiteraard ook uit kunt zetten)
-- optie om notificaties bij nieuwe berichten aan en uit te zetten
+#  
+#  
+## **1.6.0**
+#### Release: 16-11-2020
+- Superleuk! Je krijgt nu een felicitatie-melding als je een mijlpaal hebt vrijgespeeld!
+- Mocht het niet vanzelf werken, dan kan je de schakel een keer uit en aan zetten voor een reset
+- Dus ingeplande notificaties bij vrijspelen prestaties kan je ook naar hartenlust uitzetten!
 #  
 #  
 ## **1.5.0**

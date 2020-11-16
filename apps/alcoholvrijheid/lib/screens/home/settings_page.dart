@@ -1,3 +1,4 @@
+import 'package:alcoholvrijheid/services/notificationscheduler.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
@@ -165,7 +166,8 @@ class _SettingsPageState extends State<SettingsPage> {
                             ),
                             onPressed: () async {
                               if (_formKey.currentState.validate()) {
-                                await DatabaseService(uid: user.uid).updateUserSettings(
+                                await DatabaseService(uid: user.uid)
+                                    .updateUserSettings(
                                   _currentName ?? userData.name,
                                   _currentStopdate ?? userData.stopdate,
                                   _currentGeld ?? userData.geld,
@@ -174,7 +176,18 @@ class _SettingsPageState extends State<SettingsPage> {
                                   _currentSterk ?? userData.sterk,
                                   _currentKaters ?? userData.katers,
                                   DateTime.now(),
-                                );
+                                )
+                                    .then((_) {
+                                  notificationScheduler(
+                                    _currentStopdate ?? userData.stopdate,
+                                    _currentBier ?? userData.bier,
+                                    _currentWijn ?? userData.wijn,
+                                    _currentSterk ?? userData.sterk,
+                                    _currentGeld ?? userData.geld,
+                                    _currentKaters ?? userData.katers,
+                                  );
+                                  setState(() {});
+                                });
                                 Scaffold.of(context).showSnackBar(SnackBar(
                                   backgroundColor: Colors.green,
                                   content: Text(
