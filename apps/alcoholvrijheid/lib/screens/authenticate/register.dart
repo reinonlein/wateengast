@@ -1,5 +1,6 @@
 import 'package:alcoholvrijheid/services/auth.dart';
 import 'package:alcoholvrijheid/services/database.dart';
+import 'package:alcoholvrijheid/services/notificationscheduler.dart';
 import 'package:alcoholvrijheid/shared/constants.dart';
 import 'package:alcoholvrijheid/shared/loading.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
@@ -275,6 +276,8 @@ class _RegisterState extends State<Register> {
                               lastSignInTime,
                               userLastSeenTime,
                             );
+                            notificationScheduler(
+                                stopdate, bier ?? 0, wijn ?? 0, sterk ?? 0, geld ?? 0, katers ?? 0);
                             print(user);
                             return user;
                           });
