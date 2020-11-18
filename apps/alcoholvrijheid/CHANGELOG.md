@@ -3,6 +3,11 @@ Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in 
 - Een dagboek met stemmingstracker
 - Optie om periodieke herinneringen in te stellen om je dagboek bij te werken
 - Optie om notificaties bij nieuwe verhalen aan en uit te zetten
+#
+#
+## **1.6.1**
+#### Release: 18-11-2020
+- Fix: de app crashte als je de notificaties aanzette. Paniek! Hopelijk lost deze fix dit op.
 #  
 #  
 ## **1.6.0**
