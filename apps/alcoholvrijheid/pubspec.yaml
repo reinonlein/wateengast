@@ -42,6 +42,8 @@ dependencies:
   flutter_local_notifications: ^3.0.1+2
   rxdart: ^0.23.1
   flutter_native_timezone: ^1.0.4
+  firebase_crashlytics: "^0.2.3"
+  firebase_performance: ^0.4.2
   flutter:
     sdk: flutter
 
