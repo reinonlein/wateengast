@@ -2,7 +2,33 @@
 Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in de nabije toekomst:
 - Een dagboek met stemmingstracker
 - Optie om periodieke herinneringen in te stellen om je dagboek bij te werken
-- Optie om notificaties bij nieuwe verhalen aan en uit te zetten
+- Een link naar een donatiepagina (ik moet die toeslag van Apple toch proberen te neutraliseren zeg..)
+
+## **1.7.1**
+#### Release: 7-12-2020
+Even wat dingen opruimen! Doordat ik voor de iPhone app op een Mac moest gaan werken heb ik wat dingen parralel gecodeerd. Dit moet ik nu weer samenbrengen in deze kleine release. In het kort:
+- Op Android ging iets mis met een SSL licentie van Alcoholvrijheid.nl. Dit is nu in de bron opgelost, maar ik moest wel een spoedrelease uitbrengen om de boel werkend te krijgen
+- In de iPhone versie had ik het platform toegevoegd aan nieuwe registraties. Dit werkt nu ook op Android.
+- En vanaf nu: One Codebase!! Wat is Flutter toch een ongelofelijk mooi framework zeg... ik kan er maar niet over uit.
+
+
+## **1.7.0 iPhone release!** 
+#### Release: 4-12-2020
+Yes! Deze update staat geheel in het teken van de nieuwe iOS versie! Vanaf nu geniet je dus ook van alcoholvrijheid op je iPhone of iPad! Hoe gezellig is dat?! Maar dit ging niet zonder slag of stoot:
+- eerst moest ik een Mac en een iPhone zien te lenen
+- aanmelden voor (en wachten op) het Apple Developer Program om apps te mogen maken (99 euro per jaar! Man...)
+- dan alle bestanden overzetten via Git en draaiend krijgen op die geleende app
+- nieuwe emulators installeren, xCode installeren, noem maar op.
+- uitzoeken waar de rechtermuisknop zit in Mac, je delete knop, een venster sluiten, enzovoort.. wat een gedoe.
+- aan de database (Firestore) toevoegen of een nieuwe gebruiker met Android of iOS registreert 
+- openingsscherm van de iPhone-app instellen
+#
+#
+## **1.6.2**
+#### Release: 19-11-2020
+- Fix: behaalde prestaties hadden een kleine vertraging, dit is nu opgelost zodat ze direct vrijgespeeld worden.
+- Firebase Crashlytics toegevoegd om te kijken wat er gebeurd als het nog een keer mis gaat
+- En tegelijkertijd ook maar Firebase Performance zodat ik bijvoorbeeld de initiële laadtijden van de app kan monitoren
 #
 #
 ## **1.6.1**
