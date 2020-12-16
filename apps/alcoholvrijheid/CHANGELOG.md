@@ -4,6 +4,16 @@ Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in 
 - Optie om periodieke herinneringen in te stellen om je dagboek bij te werken
 - Een link naar een donatiepagina (ik moet die toeslag van Apple toch proberen te neutraliseren zeg..)
 
+
+## **1.8.0**
+#### Release: planning eind december 2020
+- Nieuwe feature: als je op de tegel met het aantal liters klikt, zie je nu ook hoeveel calorieën je hebt laten staan. Dat is goed schrikken hoor!
+- Het aantal katers klopte niet in het detailscherm, dus dat is nu rechtgezet.
+- Op aangeven van een held die al sinds 1983 niet meer drinkt (mijn geboortejaar!), kan je nu een stopdatum invoeren die terug gaat tot maarliefst 1950. Dat moet genoeg zijn denk ik, maar als dat niet zo is hoor ik het graag!
+- Als je ergens een e-mailadres in moet vullen krijg je nu automatisch het toetsenbord voor e-mailadressen op je telefoon te zien.
+- De prestatiepagina is wat mooier als je niet bent ingelogd.
+
+
 ## **1.7.1**
 #### Release: 7-12-2020
 Even wat dingen opruimen! Doordat ik voor de iPhone app op een Mac moest gaan werken heb ik wat dingen parralel gecodeerd. Dit moet ik nu weer samenbrengen in deze kleine release. In het kort:
