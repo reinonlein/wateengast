@@ -2,16 +2,26 @@
 Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in de nabije toekomst:
 - Een dagboek met stemmingstracker
 - Optie om periodieke herinneringen in te stellen om je dagboek bij te werken
-- Een link naar een donatiepagina (ik moet die toeslag van Apple toch proberen te neutraliseren zeg..)
 
+
+## **1.8.1**
+#### Release: 18-12-2020
+- namen van menu-items vrolijker gemaakt
+- suf rekenfoutje in de calorieënteller gecorrigeerd
+- de social media links staan nu netter onder elkaar
+- pagina met andere projectjes iets opgefraaid
 
 ## **1.8.0**
-#### Release: planning eind december 2020
+#### Release: 17-12-2020
 - Nieuwe feature: als je op de tegel met het aantal liters klikt, zie je nu ook hoeveel calorieën je hebt laten staan. Dat is goed schrikken hoor!
 - Het aantal katers klopte niet in het detailscherm, dus dat is nu rechtgezet.
 - Op aangeven van een held die al sinds 1983 niet meer drinkt (mijn geboortejaar!), kan je nu een stopdatum invoeren die terug gaat tot maarliefst 1950. Dat moet genoeg zijn denk ik, maar als dat niet zo is hoor ik het graag!
 - Als je ergens een e-mailadres in moet vullen krijg je nu automatisch het toetsenbord voor e-mailadressen op je telefoon te zien.
 - De prestatiepagina is wat mooier als je niet bent ingelogd.
+- Links naar Facebook en Twitter toegevoegd
+- Links naar Wateengast.nl en ReinOnlein.nl toegevoegd
+- Link naar Donatiepagina en Contactformulier toegevoegd
+- Pagina gemaakt met andere projecten
 
 
 ## **1.7.1**
