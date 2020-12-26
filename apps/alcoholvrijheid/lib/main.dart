@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:alcoholvrijheid/screens/blog/postdetail.dart';
 import 'package:alcoholvrijheid/screens/home/home.dart';
 import 'package:alcoholvrijheid/screens/home/prestaties.dart';
@@ -26,6 +28,15 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 
 NotificationAppLaunchDetails notificationAppLaunchDetails;
 
+// android certificate fix
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+  }
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -38,6 +49,9 @@ void main() async {
   await initNotifications(flutterLocalNotificationsPlugin);
   requestIOSPermissions(flutterLocalNotificationsPlugin);
 
+  // android certificate fix
+  HttpOverrides.global = new MyHttpOverrides();
+
   runApp(MyApp());
 }
 
@@ -47,6 +61,7 @@ class MyApp extends StatelessWidget {
     return StreamProvider<User>.value(
       value: AuthService().user,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           accentColor: Colors.amber,
           appBarTheme: AppBarTheme(color: Colors.amber),
