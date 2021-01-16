@@ -69,3 +69,39 @@ Een geweldige plugin waarmee ik die popup-berichten kon maken
 #  
 ### **liquid_progress_indicator** ^0.3.2
 Een leuk grafisch effectje om de voortgang van prestaties weer te geven als vloeistof in een bubbel.
+
+#  
+### **jiffy** ^3.0.1
+Om makkelijker met datums te kunnen rekenen
+
+#
+### **flutter_local_notifications** ^3.0.1+2
+Hiermee kan je felicitaties ontvangen als je een prestatie ontgrendeld
+
+#
+### **rxdart** ^0.23.1
+Deze is nodig om op de notificaties te kunnen reageren
+
+#
+### **flutter_native_timezone** ^1.0.4
+Om te kijken in welke tijdzone het apparaat zich bevindt, zodat de notificaties goed ingepland kunnen worden
+
+#
+### **firebase_crashlytics** "^0.2.3"
+Als een app crasht, kan ik hierdoor meer inzicht krijgen in de oorsprong van de crash
+
+#
+### **firebase_performance** ^0.4.2
+Hiermee kan ik inzicht krijgen in bijvoorbeeld de laadtijden van de app
+
+#
+### **font_awesome_flutter** ^8.11.0
+Een ontzettend uitgebreide bibliotheek met logo's en icoontjes
+
+#
+### **path_provider** ^1.6.24
+Deze plugin is nodig om een backup van de verhalen op de telefoon op te kunnen slaan.
+
+#
+### **shared_preferences** ^0.5.12+4
+Hiermee kan je gebruikersinstellingen van de app op de telefoon opslaan
