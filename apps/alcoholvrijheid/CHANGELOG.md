@@ -4,12 +4,22 @@ Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in 
 - Optie om periodieke herinneringen in te stellen om je dagboek bij te werken
 
 
+## **1.9.0**
+#### Release: 16-1-2021
+- Flink verbeterde gebruikerservaring door een belangrijke update achter de schermen. De posts worden nu in een bestandje in het geheugen van de telefoon opgeslagen, zodat ze niet iedere keer opnieuw gedownload hoeven worden. 
+- Je ziet nu een melding bij de nieuwe verhalen
+- Als je een notificatie krijgt wordt ook gelijk het nieuwe verhaal geopend
+- De instellingen van de app worden nu opgeslagen tussen gebruikssessies door
+- Zo blijft de schakelaar voor felicitaties nu ook echt uit staan als je hem uitzet, en andersom
+
+
 ## **1.8.1**
 #### Release: 18-12-2020
 - namen van menu-items vrolijker gemaakt
 - suf rekenfoutje in de calorieënteller gecorrigeerd
 - de social media links staan nu netter onder elkaar
 - pagina met andere projectjes iets opgefraaid
+
 
 ## **1.8.0**
 #### Release: 17-12-2020
