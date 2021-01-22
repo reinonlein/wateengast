@@ -7,20 +7,18 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:wateengast/models/singlepost.dart';
 import 'package:wateengast/models/singlecategory.dart';
+import 'package:wateengast/resources/wordpress_api.dart';
 
 FirebaseAnalytics analytics = FirebaseAnalytics();
 
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
-}
-
-List<SinglePost> parsePosts(response) {
-  final parsed = jsonDecode(response).cast<Map<String, dynamic>>();
-  return parsed.map<SinglePost>((json) => SinglePost.fromJson(json)).toList();
 }
 
 List<SingleCategory> parseCategories(responseCat) {
@@ -39,26 +37,6 @@ class _HomeState extends State<Home> {
   String category = '';
   String categoryName = 'Wat een gast...';
 
-  Future<List<SinglePost>> _getPosts() async {
-    var queryParameters = {
-      '_embed': '',
-      'per_page': perPage.toString(),
-      'page': page.toString(),
-      'categories': category,
-    };
-
-    var uri = Uri.https('www.wateengast.nl', '/wp-json/wp/v2/posts', queryParameters);
-    print(uri);
-    final response = await http.get(uri);
-    return compute(parsePosts, response.body);
-  }
-
-  Future<List<SingleCategory>> _getCategories() async {
-    final responseCat =
-        await http.get('https://www.wateengast.nl/wp-json/wp/v2/categories?per_page=50&exclude=1');
-    return compute(parseCategories, responseCat.body);
-  }
-
   @override
   void initState() {
     super.initState();
@@ -70,7 +48,7 @@ class _HomeState extends State<Home> {
 
     analytics.setCurrentScreen(screenName: '/home');
 
-    _getPosts().then((response) {
+    WordpressAPI().getPosts().then((response) {
       currentPostList = response;
 
       fbm.configure(
@@ -140,7 +118,7 @@ class _HomeState extends State<Home> {
             availablePages = 40;
             page = 1;
           });
-          _getPosts().then((response) {
+          WordpressAPI().getPosts().then((response) {
             currentPostList.addAll(response);
             setState(() {});
           });
@@ -157,7 +135,7 @@ class _HomeState extends State<Home> {
       );
       setState(() {});
     });
-    _getCategories().then((responseCat) {
+    WordpressAPI().getCategories().then((responseCat) {
       currentCategoryList = responseCat;
       setState(() {});
     });
@@ -174,7 +152,7 @@ class _HomeState extends State<Home> {
           parameters: {'target_page': page},
         );
         if (currentPostList.length != postCount) {
-          _getPosts().then((response) {
+          WordpressAPI().getPosts().then((response) {
             currentPostList.addAll(response);
             setState(() {});
           });
@@ -258,7 +236,6 @@ class _HomeState extends State<Home> {
                     title: Text(
                       currentPostList[index].title,
                       style: TextStyle(
-                        fontFamily: 'Nunito',
                         fontSize: 15.5,
                         fontWeight: FontWeight.w500,
                         letterSpacing: 0,
@@ -281,6 +258,10 @@ class _HomeState extends State<Home> {
                         name: 'read_post',
                         parameters: {'Title': currentPostList[index].title},
                       );
+                      print(currentPostList[index].category1);
+                      print(json.decode(currentPostList[index].categories));
+                      print(currentPostList[index].id);
+                      //print(json.decode(currentPostList[index].categories).contains(1));
                       Navigator.pushNamed(
                         context,
                         '/postdetail',
@@ -295,102 +276,294 @@ class _HomeState extends State<Home> {
             }),
       ),
       drawer: Drawer(
-        child: ListView.builder(
-          padding: const EdgeInsets.all(0.0),
-          itemCount: currentCategoryList.length + 2,
-          itemBuilder: (context, index) {
-            if (index == 0) {
-              return Container(
-                height: 160,
-                child: DrawerHeader(
-                  child: Center(
-                    child: Text(
-                      'Alle categorieën op \n Wat een gast!',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 21,
-                      ),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                  ),
-                ),
-              );
-            } else if (index == 1) {
-              return ListTile(
-                title: Text(
-                  'Alle categorieën',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                onTap: () {
-                  currentPostList = [];
-                  setState(() {});
-                  page = 1;
-                  category = '';
-                  categoryName = 'Alle vragen';
-                  _getPosts().then((response) {
-                    currentPostList = response;
-                    page = 1;
-                    setState(() {});
-                  });
-                  Navigator.pop(context);
-                },
-              );
-            } else {
-              return ListTile(
-                title: Text(currentCategoryList[index - 2].name,
+        child: Column(
+          children: [
+            Container(
+              height: 160,
+              child: DrawerHeader(
+                child: Center(
+                  child: Text(
+                    'Alle categorieën op \n Wat een gast!',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 15,
+                      fontFamily: 'Montserrat',
+                      color: Colors.white,
                       fontWeight: FontWeight.w500,
-                    )),
-                trailing: SizedBox(
-                  width: 28.0,
-                  height: 28.0,
-                  child: FloatingActionButton(
-                    onPressed: () {},
-                    child: Text(
-                      currentCategoryList[index - 2].count,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      fontSize: 21,
                     ),
-                    elevation: 1.5,
                   ),
                 ),
-                onTap: () {
-                  FirebaseAnalytics().logEvent(
-                    name: 'category_selected',
-                    parameters: {'category': categoryName},
-                  );
-                  // Update the state of the app
-                  category = currentCategoryList[index - 2].id;
-                  setState(() {
-                    currentPostList = [];
-                    categoryName = currentCategoryList[index - 2].name;
-                    postCount = int.parse(currentCategoryList[index - 2].count);
-                    availablePages =
-                        (int.parse(currentCategoryList[index - 2].count) / perPage).ceil();
-                    print(availablePages);
-                  });
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                ),
+              ),
+            ),
+            ListTile(
+              //leading: Icon(Icons.question_answer),
+              trailing: SizedBox(
+                width: 21.0,
+                height: 23.0,
+                child: FaIcon(
+                  FontAwesomeIcons.question,
+                  size: 21.0,
+                  color: Colors.green,
+                ),
+              ),
+              title: Text(
+                'Stel een vraag op Wateengast.nl!',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              onTap: () async {
+                FirebaseAnalytics().logEvent(
+                  name: 'drawer_navigation',
+                  parameters: {'target': 'Stel een vraag'},
+                );
+                if (await canLaunch('https://www.wateengast.nl/stel-een-vraag')) {
+                  await launch('https://www.wateengast.nl/stel-een-vraag');
+                } else {
+                  throw 'Could not launch url';
+                }
+              },
+            ),
+            ListTile(
+              trailing: SizedBox(
+                width: 24.0,
+                height: 24.0,
+                child: FaIcon(
+                  FontAwesomeIcons.listUl,
+                  size: 21.0,
+                  color: Colors.green,
+                ),
+              ),
+              title: Text(
+                'Alle categorieën',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              onTap: () {
+                currentPostList = [];
+                setState(() {});
+                page = 1;
+                category = '';
+                categoryName = 'Alle vragen';
+                WordpressAPI().getPosts().then((response) {
+                  currentPostList = response;
                   page = 1;
-                  _getPosts().then((response) {
-                    currentPostList.addAll(response);
-                    setState(() {});
-                  });
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-              );
-            }
-          },
+                  setState(() {});
+                });
+                Navigator.pop(context);
+              },
+            ),
+            Divider(),
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.all(0),
+                children: [
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: ScrollPhysics(),
+                    padding: EdgeInsets.only(top: 5),
+                    itemCount: currentCategoryList.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(currentCategoryList[index].name,
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            )),
+                        trailing: SizedBox(
+                          width: 28.0,
+                          height: 28.0,
+                          child: FloatingActionButton(
+                            onPressed: () {},
+                            child: Text(
+                              currentCategoryList[index].count,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 11,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            elevation: 1.5,
+                          ),
+                        ),
+                        onTap: () {
+                          FirebaseAnalytics().logEvent(
+                            name: 'category_selected',
+                            parameters: {'category': categoryName},
+                          );
+                          print(currentCategoryList[index].name);
+                          print(currentCategoryList[index].id);
+                          // // Update the state of the app
+                          // category = currentCategoryList[index].id;
+                          // setState(() {
+                          //   currentPostList = [];
+                          //   categoryName = currentCategoryList[index].name;
+                          //   postCount = int.parse(currentCategoryList[index].count);
+                          //   availablePages =
+                          //       (int.parse(currentCategoryList[index].count) / perPage).ceil();
+                          //   print(availablePages);
+                          // });
+                          // page = 1;
+                          // _getPosts().then((response) {
+                          //   currentPostList.addAll(response);
+                          //   setState(() {});
+                          // });
+                          // // Then close the drawer
+                          Navigator.pop(context);
+                        },
+                      );
+                    },
+                  ),
+                ],
+                // ListView.builder(
+                //   padding: const EdgeInsets.all(0.0),
+                //   itemCount: currentCategoryList.length + 2,
+                //   itemBuilder: (context, index) {
+                //     if (index == 0) {
+                //       return Container(
+                //         height: 160,
+                //         child: DrawerHeader(
+                //           child: Center(
+                //             child: Text(
+                //               'Alle categorieën op \n Wat een gast!',
+                //               textAlign: TextAlign.center,
+                //               style: TextStyle(
+                //                 fontFamily: 'Montserrat',
+                //                 color: Colors.white,
+                //                 fontWeight: FontWeight.w500,
+                //                 fontSize: 21,
+                //               ),
+                //             ),
+                //           ),
+                //           decoration: BoxDecoration(
+                //             color: Colors.green,
+                //           ),
+                //         ),
+                //       );
+                //     } else if (index == 1) {
+                //       return ListTile(
+                //         //leading: Icon(Icons.question_answer),
+                //         trailing: SizedBox(
+                //           width: 21.0,
+                //           height: 23.0,
+                //           child: FaIcon(
+                //             FontAwesomeIcons.question,
+                //             size: 21.0,
+                //             color: Colors.green,
+                //           ),
+                //         ),
+                //         title: Text(
+                //           'Stel een vraag op Wateengast.nl!',
+                //           style: TextStyle(
+                //             fontSize: 15,
+                //             fontWeight: FontWeight.w500,
+                //           ),
+                //         ),
+                //         onTap: () async {
+                //           FirebaseAnalytics().logEvent(
+                //             name: 'drawer_navigation',
+                //             parameters: {'target': 'Stel een vraag'},
+                //           );
+                //           if (await canLaunch('https://www.wateengast.nl/stel-een-vraag')) {
+                //             await launch('https://www.wateengast.nl/stel-een-vraag');
+                //           } else {
+                //             throw 'Could not launch url';
+                //           }
+                //         },
+                //       );
+                //     } else if (index == 2) {
+                //       return Divider();
+                //     } else if (index == 3) {
+                //       return ListTile(
+                //         trailing: SizedBox(
+                //           width: 24.0,
+                //           height: 24.0,
+                //           child: FaIcon(
+                //             FontAwesomeIcons.listUl,
+                //             size: 21.0,
+                //             color: Colors.green,
+                //           ),
+                //         ),
+                //         title: Text(
+                //           'Alle categorieën',
+                //           style: TextStyle(
+                //             fontSize: 15,
+                //             fontWeight: FontWeight.w500,
+                //           ),
+                //         ),
+                //         onTap: () {
+                //           currentPostList = [];
+                //           setState(() {});
+                //           page = 1;
+                //           category = '';
+                //           categoryName = 'Alle vragen';
+                //           _getPosts().then((response) {
+                //             currentPostList = response;
+                //             page = 1;
+                //             setState(() {});
+                //           });
+                //           Navigator.pop(context);
+                //         },
+                //       );
+                //     } else {
+                //       return ListTile(
+                //         title: Text(currentCategoryList[index - 4].name,
+                //             style: TextStyle(
+                //               fontSize: 15,
+                //               fontWeight: FontWeight.w500,
+                //             )),
+                //         trailing: SizedBox(
+                //           width: 28.0,
+                //           height: 28.0,
+                //           child: FloatingActionButton(
+                //             onPressed: () {},
+                //             child: Text(
+                //               currentCategoryList[index - 4].count,
+                //               style: TextStyle(
+                //                 color: Colors.white,
+                //                 fontSize: 11,
+                //                 fontWeight: FontWeight.bold,
+                //               ),
+                //             ),
+                //             elevation: 1.5,
+                //           ),
+                //         ),
+                //         onTap: () {
+                //           FirebaseAnalytics().logEvent(
+                //             name: 'category_selected',
+                //             parameters: {'category': categoryName},
+                //           );
+                //           // Update the state of the app
+                //           category = currentCategoryList[index - 4].id;
+                //           setState(() {
+                //             currentPostList = [];
+                //             categoryName = currentCategoryList[index - 4].name;
+                //             postCount = int.parse(currentCategoryList[index - 4].count);
+                //             availablePages =
+                //                 (int.parse(currentCategoryList[index - 4].count) / perPage).ceil();
+                //             print(availablePages);
+                //           });
+                //           page = 1;
+                //           _getPosts().then((response) {
+                //             currentPostList.addAll(response);
+                //             setState(() {});
+                //           });
+                //           // Then close the drawer
+                //           Navigator.pop(context);
+                //         },
+                //       );
+                //     }
+                //   },
+                // ),
+              ),
+            ),
+          ],
         ),
       ),
     );

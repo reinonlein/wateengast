@@ -15,8 +15,6 @@ class _PostDetailState extends State<PostDetail> {
   Widget build(BuildContext context) {
     post = ModalRoute.of(context).settings.arguments;
 
-    print(post);
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
