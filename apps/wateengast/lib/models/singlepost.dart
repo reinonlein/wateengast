@@ -35,4 +35,34 @@ class SinglePost {
       modified: json['modified'],
     );
   }
+
+  factory SinglePost.fromDatabase(Map<String, dynamic> db) {
+    return SinglePost(
+      id: db['id'],
+      title: db['title'],
+      date: db['date'],
+      content: db['content'],
+      slug: db['slug'],
+      image: db['image'],
+      thumbnail: db['thumbnail'],
+      category1: db['category1'],
+      categories: db['categories'],
+      modified: db['modified'],
+    );
+  }
+
+  Map<String, dynamic> toMapForDatabase() {
+    return <String, dynamic>{
+      'id': id,
+      'title': title,
+      'date': date,
+      'content': content,
+      'slug': slug,
+      'image': image,
+      'thumbnail': thumbnail,
+      'category1': category1,
+      'categories': categories,
+      'modified': modified,
+    };
+  }
 }

@@ -5,6 +5,16 @@ import 'dart:io';
 import 'dart:async';
 import '../models/singlepost.dart';
 
+// List<SinglePost> parsePosts(response) {
+//   final parsed = jsonDecode(response).cast<Map<String, dynamic>>();
+//   return parsed.map<SinglePost>((json) => SinglePost.fromJson(json)).toList();
+// }
+
+// Future<List<SinglePost>> getPosts() async {
+//     final response = await http.get('www.wateengast.nl/wp-json/wp/v2/posts');
+//     return compute(parsePosts, response.body);
+//   }
+
 class PostDatabase {
   Database db;
 
@@ -26,6 +36,7 @@ class PostDatabase {
               slug TEXT,
               image TEXT,
               thumbnail TEXT,
+              category1 TEXT,
               categories TEXT,
               modified TEXT
             )
@@ -42,15 +53,14 @@ class PostDatabase {
       whereArgs: [id],
     );
 
-    if (maps.length > 0) {}
+    if (maps.length > 0) {
+      return SinglePost.fromDatabase(maps.first);
+    }
 
     return null;
   }
 
-  fetchAll() async {
-    final maps = await db.query(
-      "Posts",
-      columns: null,
-    );
+  addPost(SinglePost post) {
+    return db.insert("Posts", post.toMapForDatabase());
   }
 }
