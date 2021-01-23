@@ -33,9 +33,16 @@ class _HomeState extends State<Home> {
   String category = '';
   String categoryName = 'Wat een gast...';
 
+  final db = CarDatabase();
+  List<Car> cars = [];
+
   @override
   void initState() {
     super.initState();
+
+    // db.getData().then((value){
+    //   _valueState = value;
+    // });     
 
     final fbm = FirebaseMessaging();
 

@@ -64,3 +64,16 @@ class PostDatabase {
     return db.insert("Posts", post.toMapForDatabase());
   }
 }
+
+// from https://github.com/PharosProduction/tutorial-flutter-sqflite/tree/master/lib/src/database
+
+// Future<List<Car>> fetchAll() async {
+//     var client = await db;
+//     var res = await client.query('car');
+
+//     if (res.isNotEmpty) {
+//       var cars = res.map((carMap) => Car.fromDb(carMap)).toList();
+//       return cars;
+//     }
+//     return [];
+//   }
