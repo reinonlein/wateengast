@@ -61,13 +61,6 @@ Yes! Deze update staat geheel in het teken van de nieuwe iOS versie! Vanaf nu ge
 - En tegelijkertijd ook maar Firebase Performance zodat ik bijvoorbeeld de initiële laadtijden van de app kan monitoren
 #
 #
-## **1.6.2**
-#### Release: 19-11-2020
-- Fix: behaalde prestaties hadden een kleine vertraging, dit is nu opgelost zodat ze direct vrijgespeeld worden.
-- Firebase Crashlytics toegevoegd om te kijken wat er gebeurd als het nog een keer mis gaat
-- En tegelijkertijd ook maar Firebase Performance zodat ik bijvoorbeeld de initiële laadtijden van de app kan monitoren
-#
-#
 ## **1.6.1**
 #### Release: 18-11-2020
 - Fix: de app crashte als je de notificaties aanzette. Paniek! Hopelijk lost deze fix dit op.

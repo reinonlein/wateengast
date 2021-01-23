@@ -118,7 +118,10 @@ class _HomeState extends State<Home> {
     selectNotificationSubject.stream.listen((String payload) {
       List<Map> prestaties = PrestatieTargets().prestatietargets;
       int index = int.parse(payload);
+<<<<<<< HEAD
 
+=======
+>>>>>>> f3f2c78dbe67efe1fd76a3c81cf1885ba4216352
       AwesomeDialog(
         context: context,
         customHeader: ClipRRect(

@@ -37,13 +37,13 @@ class Prestaties extends StatelessWidget {
                     return ListTile(
                       leading: Icon(
                         Icons.emoji_events,
-                        color: stopuren >= prestaties[index]['target']
+                        color: stopuren > prestaties[index]['target']
                             ? Colors.amber
                             : Colors.grey[300],
                         size: 44,
                       ),
                       title: Text(prestaties[index]['title']),
-                      subtitle: stopuren >= prestaties[index]['target']
+                      subtitle: stopuren > prestaties[index]['target']
                           ? Text(
                               'Gehaald op ${Jiffy(Jiffy(userData.stopdate).add(hours: prestaties[index]['target'])).yMMMMd}',
                               style: TextStyle(color: Colors.grey),
@@ -54,7 +54,7 @@ class Prestaties extends StatelessWidget {
                               backgroundColor: Colors.grey[300],
                             ),
                       onTap: () {
-                        bool gehaald = stopuren >= prestaties[index]['target'];
+                        bool gehaald = stopuren > prestaties[index]['target'];
                         AwesomeDialog(
                           context: context,
                           customHeader: gehaald
@@ -98,13 +98,13 @@ class Prestaties extends StatelessWidget {
                     return ListTile(
                       leading: Icon(
                         Icons.emoji_events,
-                        color: stopmaanden >= prestaties[index]['target']
+                        color: stopmaanden > prestaties[index]['target']
                             ? Colors.amber
                             : Colors.grey[300],
                         size: 44,
                       ),
                       title: Text(prestaties[index]['title']),
-                      subtitle: stopmaanden >= prestaties[index]['target']
+                      subtitle: stopmaanden > prestaties[index]['target']
                           ? Text(
                               'Gehaald op ${Jiffy(Jiffy(userData.stopdate).add(months: prestaties[index]['target'])).yMMMMd}',
                               style: TextStyle(color: Colors.grey),
@@ -115,7 +115,7 @@ class Prestaties extends StatelessWidget {
                               backgroundColor: Colors.grey[300],
                             ),
                       onTap: () {
-                        bool gehaald = stopmaanden >= prestaties[index]['target'];
+                        bool gehaald = stopmaanden > prestaties[index]['target'];
                         AwesomeDialog(
                           context: context,
                           customHeader: gehaald
@@ -160,11 +160,11 @@ class Prestaties extends StatelessWidget {
                       leading: Icon(
                         Icons.emoji_events,
                         color:
-                            liters >= prestaties[index]['target'] ? Colors.amber : Colors.grey[300],
+                            liters > prestaties[index]['target'] ? Colors.amber : Colors.grey[300],
                         size: 44,
                       ),
                       title: Text(prestaties[index]['title']),
-                      subtitle: liters >= prestaties[index]['target']
+                      subtitle: liters > prestaties[index]['target']
                           ? Text(
                               'Gehaald op ${Jiffy(Jiffy(userData.stopdate).add(hours: (prestaties[index]['target'] / ((userData.bier * 0.3).round() + (userData.wijn * 0.125).round() + (userData.sterk * 0.035).round()).round() * 7 * 24).round())).yMMMMd}',
                               style: TextStyle(color: Colors.grey),
@@ -175,7 +175,7 @@ class Prestaties extends StatelessWidget {
                               backgroundColor: Colors.grey[300],
                             ),
                       onTap: () {
-                        bool gehaald = liters >= prestaties[index]['target'];
+                        bool gehaald = liters > prestaties[index]['target'];
                         AwesomeDialog(
                           context: context,
                           customHeader: gehaald
@@ -220,11 +220,11 @@ class Prestaties extends StatelessWidget {
                       leading: Icon(
                         Icons.emoji_events,
                         color:
-                            katers >= prestaties[index]['target'] ? Colors.amber : Colors.grey[300],
+                            katers > prestaties[index]['target'] ? Colors.amber : Colors.grey[300],
                         size: 44,
                       ),
                       title: Text(prestaties[index]['title']),
-                      subtitle: katers >= prestaties[index]['target']
+                      subtitle: katers > prestaties[index]['target']
                           ? Text(
                               'Gehaald op ${Jiffy(Jiffy(userData.stopdate).add(days: (prestaties[index]['target'] / (userData.katers / 30.5)).floor())).yMMMMd}',
                               style: TextStyle(color: Colors.grey),
@@ -236,7 +236,7 @@ class Prestaties extends StatelessWidget {
                             ),
                       onTap: () {
                         print(stopmaanden * 30.5);
-                        bool gehaald = katers >= prestaties[index]['target'];
+                        bool gehaald = katers > prestaties[index]['target'];
                         AwesomeDialog(
                           context: context,
                           customHeader: gehaald
@@ -281,13 +281,13 @@ class Prestaties extends StatelessWidget {
                     return ListTile(
                       leading: Icon(
                         Icons.emoji_events,
-                        color: stopuren * (userData.geld / (7 * 24)) >= prestaties[index]['target']
+                        color: stopuren * (userData.geld / (7 * 24)) > prestaties[index]['target']
                             ? Colors.amber
                             : Colors.grey[300],
                         size: 44,
                       ),
                       title: Text(prestaties[index]['title']),
-                      subtitle: stopuren * (userData.geld / (7 * 24)) >= prestaties[index]['target']
+                      subtitle: stopuren * (userData.geld / (7 * 24)) > prestaties[index]['target']
                           ? Text(
                               'Gehaald op ${Jiffy(Jiffy(userData.stopdate).add(hours: (prestaties[index]['target'] / (userData.geld / (7 * 24))).round())).yMMMMd}',
                               style: TextStyle(color: Colors.grey),
@@ -301,7 +301,7 @@ class Prestaties extends StatelessWidget {
                             ),
                       onTap: () {
                         bool gehaald =
-                            stopuren * (userData.geld / (7 * 24)) >= prestaties[index]['target'];
+                            stopuren * (userData.geld / (7 * 24)) > prestaties[index]['target'];
                         AwesomeDialog(
                           context: context,
                           customHeader: gehaald
