@@ -16,15 +16,16 @@ List<SingleCategory> parseCategories(responseCat) {
 
 class WordpressAPI {
   int page = 1;
-  int perPage = 25;
+  int perPage = 100;
   String category = '';
 
-  Future<List<SinglePost>> getPosts() async {
+  Future<List<SinglePost>> getPosts(String afterDate) async {
     var queryParameters = {
       '_embed': '',
       'per_page': perPage.toString(),
       'page': page.toString(),
-      'categories': category,
+      //'categories': category,
+      'after': afterDate.toString(),
     };
 
     var uri = Uri.https('www.wateengast.nl', '/wp-json/wp/v2/posts', queryParameters);

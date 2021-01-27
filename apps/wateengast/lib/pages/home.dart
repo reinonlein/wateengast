@@ -6,9 +6,18 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 
 import 'package:wateengast/models/singlecategory.dart';
+import 'package:wateengast/models/singlepost.dart';
+import 'package:wateengast/resources/post_database.dart';
 import 'package:wateengast/resources/wordpress_api.dart';
+import 'package:wateengast/services/sharedpreferences.dart';
+
+// TODO allereerste keer laden spinner toevoegen
+// TODO json dump van alle posts tot nu toe maken en inladen
+// TODO nieuwe posts markeren
+// TODO wordpress posts ophalen vanaf datum modified
 
 FirebaseAnalytics analytics = FirebaseAnalytics();
 
@@ -23,6 +32,32 @@ List<SingleCategory> parseCategories(responseCat) {
 }
 
 class _HomeState extends State<Home> {
+  final db = PostDatabase();
+  List<SinglePost> postlist = [];
+  String afterDate = sharedPrefs.afterDate;
+
+  Future<void> getWordpressApiPosts() async {
+    WordpressAPI().getPosts(afterDate).then((response) {
+      for (var item in response) {
+        db.addPost(item);
+      }
+      setupPostList();
+      print('Wordpress posts opgehaald');
+
+      sharedPrefs.previousDate = afterDate;
+      sharedPrefs.afterDate = DateFormat("yyyy-MM-ddTHH:mm:ss").format(DateTime.now()).toString();
+      afterDate = DateFormat("yyyy-MM-ddTHH:mm:ss").format(DateTime.now()).toString();
+      return;
+    });
+  }
+
+  void setupPostList() async {
+    var _posts = await db.fetchAll();
+    setState(() {
+      postlist = _posts;
+    });
+  }
+
   ScrollController _scrollController = new ScrollController();
   int page = 1;
   int perPage = 25;
@@ -33,16 +68,19 @@ class _HomeState extends State<Home> {
   String category = '';
   String categoryName = 'Wat een gast...';
 
-  final db = CarDatabase();
-  List<Car> cars = [];
+  final postDatabase = PostDatabase();
+  List<SinglePost> databasePosts = [];
 
   @override
   void initState() {
     super.initState();
+    setupPostList();
+
+    getWordpressApiPosts();
 
     // db.getData().then((value){
     //   _valueState = value;
-    // });     
+    // });
 
     final fbm = FirebaseMessaging();
 
@@ -51,7 +89,7 @@ class _HomeState extends State<Home> {
 
     analytics.setCurrentScreen(screenName: '/home');
 
-    WordpressAPI().getPosts().then((response) {
+    WordpressAPI().getPosts(afterDate).then((response) {
       currentPostList = response;
 
       fbm.configure(
@@ -121,7 +159,7 @@ class _HomeState extends State<Home> {
             availablePages = 40;
             page = 1;
           });
-          WordpressAPI().getPosts().then((response) {
+          WordpressAPI().getPosts(afterDate).then((response) {
             currentPostList.addAll(response);
             setState(() {});
           });
@@ -155,7 +193,7 @@ class _HomeState extends State<Home> {
           parameters: {'target_page': page},
         );
         if (currentPostList.length != postCount) {
-          WordpressAPI().getPosts().then((response) {
+          WordpressAPI().getPosts(afterDate).then((response) {
             currentPostList.addAll(response);
             setState(() {});
           });
@@ -185,99 +223,157 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.green,
         centerTitle: true,
       ),
-      body: Center(
-        child: ListView.separated(
-            controller: _scrollController,
-            itemCount: currentPostList.length + 1,
-            separatorBuilder: (BuildContext context, int index) => Divider(),
-            padding: EdgeInsets.all(10),
-            itemBuilder: (context, index) {
-              if (currentPostList.length == 0) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(height: 200),
-                    if (categoryName != 'Wat een gast...')
-                      Text(categoryName,
-                          textAlign: TextAlign.center,
+      body: RefreshIndicator(
+          onRefresh: getWordpressApiPosts,
+          // child: ListView.separated(
+          //     controller: _scrollController,
+          //     itemCount: postlist.length, //currentPostList.length + 1,
+          //     separatorBuilder: (BuildContext context, int index) => Divider(),
+          //     padding: EdgeInsets.all(10),
+          //     itemBuilder: (context, index) {
+          //       if (postlist.length == 0) {
+          //         return Column(
+          //           mainAxisAlignment: MainAxisAlignment.center,
+          //           children: [
+          //             SizedBox(height: 200),
+          //             if (categoryName != 'Wat een gast...')
+          //               Text(categoryName,
+          //                   textAlign: TextAlign.center,
+          //                   style: TextStyle(
+          //                     fontSize: 24,
+          //                     fontWeight: FontWeight.w400,
+          //                   )),
+          //             Padding(
+          //               padding: const EdgeInsets.all(15.0),
+          //               child: SpinKitThreeBounce(
+          //                 color: Colors.green,
+          //               ),
+          //             ),
+          //           ],
+          //         );
+          //       } else if (index == postCount) {
+          //         return new ListTile();
+          //         // } else if (index == postlist.length) {
+          //         //   print(index);
+          //         //   print(postlist.length);
+          //         //   print(postCount);
+          //         //   return new ListTile(
+          //         //     leading: Padding(
+          //         //       padding: const EdgeInsets.all(8.0),
+          //         //       child: CircularProgressIndicator(),
+          //         //     ),
+          //         //     title: Text(
+          //         //       'Een momentje!',
+          //         //       style: TextStyle(
+          //         //         fontSize: 15,
+          //         //         fontWeight: FontWeight.w500,
+          //         //         letterSpacing: 0,
+          //         //         height: 1.3,
+          //         //       ),
+          //         //     ),
+          //         //     subtitle: Text('Er worden meer posts opgehaald...'),
+          //         //   );
+          //       } else {
+          //         return new ListTile(
+          //             title: Text(
+          //               postlist[index].title,
+          //               style: TextStyle(
+          //                 fontSize: 15.5,
+          //                 fontWeight: FontWeight.w500,
+          //                 letterSpacing: 0,
+          //                 height: 1.3,
+          //               ),
+          //             ),
+          //             leading: ClipRRect(
+          //               borderRadius: BorderRadius.circular(6.0),
+          //               child: Hero(
+          //                 tag: 'hero-${postlist[index].title}',
+          //                 child: FadeInImage.assetNetwork(
+          //                   placeholder: 'images/loadingbox.gif',
+          //                   image: postlist[index].thumbnail,
+          //                 ),
+          //               ),
+          //             ),
+          //             contentPadding: EdgeInsets.fromLTRB(15, 4, 5, 7),
+          //             onTap: () {
+          //               FirebaseAnalytics().logEvent(
+          //                 name: 'read_post',
+          //                 parameters: {'Title': postlist[index].title},
+          //               );
+          //               print(postlist[index].category1);
+          //               print(json.decode(postlist[index].categories));
+          //               print(postlist[index].id);
+          //               //print(json.decode(currentPostList[index].categories).contains(1));
+          //               Navigator.pushNamed(
+          //                 context,
+          //                 '/postdetail',
+          //                 arguments: {
+          //                   'title': postlist[index].title,
+          //                   'image': postlist[index].image,
+          //                   'content': postlist[index].content,
+          //                 },
+          //               );
+          //             });
+          //       }
+          //     }),
+          child: postlist.length == 0
+              ? Center(child: SpinKitThreeBounce(color: Colors.green))
+              : ListView.separated(
+                  padding: EdgeInsets.all(10),
+                  separatorBuilder: (BuildContext context, int index) => Divider(),
+                  itemCount: postlist.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                        title: Text(
+                          postlist[index].title,
                           style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w400,
-                          )),
-                    Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: SpinKitThreeBounce(
-                        color: Colors.green,
-                      ),
-                    ),
-                  ],
-                );
-              } else if (index == postCount) {
-                return new ListTile();
-              } else if (index == currentPostList.length) {
-                print(index);
-                print(currentPostList.length);
-                print(postCount);
-                return new ListTile(
-                  leading: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CircularProgressIndicator(),
-                  ),
-                  title: Text(
-                    'Een momentje!',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: 0,
-                      height: 1.3,
-                    ),
-                  ),
-                  subtitle: Text('Er worden meer posts opgehaald...'),
-                );
-              } else {
-                return new ListTile(
-                    title: Text(
-                      currentPostList[index].title,
-                      style: TextStyle(
-                        fontSize: 15.5,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: 0,
-                        height: 1.3,
-                      ),
-                    ),
-                    leading: ClipRRect(
-                      borderRadius: BorderRadius.circular(6.0),
-                      child: Hero(
-                        tag: 'hero-${currentPostList[index].title}',
-                        child: FadeInImage.assetNetwork(
-                          placeholder: 'images/loadingbox.gif',
-                          image: currentPostList[index].thumbnail,
+                            fontSize: 15.5,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: 0,
+                            height: 1.3,
+                          ),
                         ),
-                      ),
-                    ),
-                    contentPadding: EdgeInsets.fromLTRB(15, 4, 5, 7),
-                    onTap: () {
-                      FirebaseAnalytics().logEvent(
-                        name: 'read_post',
-                        parameters: {'Title': currentPostList[index].title},
-                      );
-                      print(currentPostList[index].category1);
-                      print(json.decode(currentPostList[index].categories));
-                      print(currentPostList[index].id);
-                      //print(json.decode(currentPostList[index].categories).contains(1));
-                      Navigator.pushNamed(
-                        context,
-                        '/postdetail',
-                        arguments: {
-                          'title': currentPostList[index].title,
-                          'image': currentPostList[index].image,
-                          'content': currentPostList[index].content,
-                        },
-                      );
-                    });
-              }
-            }),
-      ),
+                        leading: ClipRRect(
+                          borderRadius: BorderRadius.circular(6.0),
+                          child: Hero(
+                            tag: 'hero-${postlist[index].title}',
+                            child: FadeInImage.assetNetwork(
+                              placeholder: 'images/loadingbox.gif',
+                              image: postlist[index].thumbnail,
+                            ),
+                          ),
+                        ),
+                        trailing: DateTime.parse(postlist[index].date)
+                                .isAfter(DateTime.parse(sharedPrefs.previousDate))
+                            ? Text('Nieuw!',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green,
+                                ))
+                            : null,
+                        contentPadding: EdgeInsets.fromLTRB(15, 4, 5, 7),
+                        onTap: () {
+                          FirebaseAnalytics().logEvent(
+                            name: 'read_post',
+                            parameters: {'Title': postlist[index].title},
+                          );
+                          print(postlist[index].category1);
+                          print(json.decode(postlist[index].categories));
+                          print(postlist[index].id);
+                          //print(json.decode(currentPostList[index].categories).contains(1));
+                          Navigator.pushNamed(
+                            context,
+                            '/postdetail',
+                            arguments: {
+                              'title': postlist[index].title,
+                              'image': postlist[index].image,
+                              'content': postlist[index].content,
+                            },
+                          );
+                        });
+                  },
+                )),
       drawer: Drawer(
         child: Column(
           children: [
@@ -354,7 +450,7 @@ class _HomeState extends State<Home> {
                 page = 1;
                 category = '';
                 categoryName = 'Alle vragen';
-                WordpressAPI().getPosts().then((response) {
+                WordpressAPI().getPosts(afterDate).then((response) {
                   currentPostList = response;
                   page = 1;
                   setState(() {});

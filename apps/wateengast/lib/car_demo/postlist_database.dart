@@ -6,13 +6,13 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:wateengast/models/singlepost.dart';
 
-class PostDatabase {
-  static final PostDatabase _instance = PostDatabase._();
+class PostlistDatabase {
+  static final PostlistDatabase _instance = PostlistDatabase._();
   static Database _database;
 
-  PostDatabase._();
+  PostlistDatabase._();
 
-  factory PostDatabase() {
+  factory PostlistDatabase() {
     return _instance;
   }
 
@@ -81,7 +81,7 @@ class PostDatabase {
 
     if (res.isNotEmpty) {
       var postlist = res.map((postMap) => SinglePost.fromDb(postMap)).toList();
-      return postlist.reversed.toList();
+      return postlist;
     }
     return [];
   }
@@ -102,57 +102,3 @@ class PostDatabase {
     client.close();
   }
 }
-
-// import 'package:sqflite/sqflite.dart';
-// import 'package:path/path.dart';
-// import '../models/singlepost.dart';
-
-// class PostDatabase {
-//   Database db;
-
-//   init() async {
-//     var databasesPath = await getDatabasesPath();
-//     final path = join(databasesPath, "post_database.db");
-//     db = await openDatabase(
-//       path,
-//       version: 1,
-//       onCreate: (Database newDb, int version) {
-//         newDb.execute('''
-//           CREATE TABLE Posts
-//             (
-//               id INTEGER PRIMARY KEY,
-//               title TEXT,
-//               date TEXT,
-//               content TEXT,
-//               slug TEXT,
-//               image TEXT,
-//               thumbnail TEXT,
-//               category1 TEXT,
-//               categories TEXT,
-//               modified TEXT
-//             )
-//         ''');
-//         print("PostDatabase created!");
-//       },
-//     );
-//   }
-
-//   fetchPost(int id) async {
-//     final maps = await db.query(
-//       "Posts",
-//       columns: null,
-//       where: "id = ?",
-//       whereArgs: [id],
-//     );
-
-//     if (maps.length > 0) {
-//       return SinglePost.fromDb(maps.first);
-//     }
-
-//     return null;
-//   }
-
-//   addPost(SinglePost post) {
-//     return db.insert("Posts", post.toMapForDb());
-//   }
-// }

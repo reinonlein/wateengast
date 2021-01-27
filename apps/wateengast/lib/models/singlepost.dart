@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:html_unescape/html_unescape.dart';
 
 var unescape = new HtmlUnescape();
@@ -36,7 +38,7 @@ class SinglePost {
     );
   }
 
-  factory SinglePost.fromDatabase(Map<String, dynamic> db) {
+  factory SinglePost.fromDb(Map<String, dynamic> db) {
     return SinglePost(
       id: db['id'],
       title: db['title'],
@@ -51,7 +53,7 @@ class SinglePost {
     );
   }
 
-  Map<String, dynamic> toMapForDatabase() {
+  Map<String, dynamic> toMapForDb() {
     return <String, dynamic>{
       'id': id,
       'title': title,
@@ -65,4 +67,16 @@ class SinglePost {
       'modified': modified,
     };
   }
+
+  SinglePost.random()
+      : this.id = Random().nextInt(10000),
+        this.title = 'test title',
+        this.date = 'test date',
+        this.content = 'test content',
+        this.slug = 'test slug',
+        this.image = 'test image',
+        this.thumbnail = 'test thumb',
+        this.category1 = 'test cat',
+        this.categories = 'test cats',
+        this.modified = 'test mod';
 }
