@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:html_unescape/html_unescape.dart';
@@ -32,11 +33,16 @@ class SinglePost {
       thumbnail: json['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['thumbnail']
               ['source_url'] ??
           '',
-      category1: json['_embedded']['wp:term'][0][0]['name'] ?? 'leeg',
-      categories: json['categories'].toString(),
+      category1: json['_embedded']['wp:term'][0][0]['name'] ?? '[1]',
+      categories: json['categories'].toString() ?? 'leeg',
       modified: json['modified'],
     );
   }
+
+  // image:
+  //         'https://www.wateengast.nl/wp-content/uploads/2021/01/aardappelboor-150x150.jpg', //json['_embedded']['wp:featuredmedia'][0]['source_url'] ?? '',
+  //     thumbnail:
+  //         'https://www.wateengast.nl/wp-content/uploads/2021/01/aardappelboor-150x150.jpg', //json['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['thumbnail']['source_url'] ?? '',
 
   factory SinglePost.fromDb(Map<String, dynamic> db) {
     return SinglePost(
@@ -68,15 +74,39 @@ class SinglePost {
     };
   }
 
-  SinglePost.random()
-      : this.id = Random().nextInt(10000),
-        this.title = 'test title',
-        this.date = 'test date',
-        this.content = 'test content',
-        this.slug = 'test slug',
-        this.image = 'test image',
-        this.thumbnail = 'test thumb',
-        this.category1 = 'test cat',
-        this.categories = 'test cats',
-        this.modified = 'test mod';
+  factory SinglePost.fromBackupJson(Map<String, dynamic> json) {
+    return SinglePost(
+      id: json['id'],
+      title: json['title'],
+      date: json['date'],
+      content: json['content'],
+      slug: json['slug'],
+      image: json['image'],
+      thumbnail: json['thumbnail'],
+      category1: json['category1'],
+      categories: json['categories'],
+      modified: json['modified'],
+    );
+  }
+
+  static Map<String, dynamic> toMapForBackupJson(SinglePost post) => {
+        'id': post.id,
+        'title': post.title,
+        'date': post.date,
+        'content': post.content,
+        'slug': post.slug,
+        'image': post.image,
+        'thumbnail': post.thumbnail,
+        'category1': post.category1,
+        'categories': post.categories,
+        'modified': post.modified,
+      };
+
+  static String encode(List<SinglePost> posts) => json.encode(
+        posts.map<Map<String, dynamic>>((post) => SinglePost.toMapForBackupJson(post)).toList(),
+      );
+
+  static List<SinglePost> decode(String post) => (json.decode(post) as List<dynamic>)
+      .map<SinglePost>((item) => SinglePost.fromBackupJson(item))
+      .toList();
 }

@@ -36,7 +36,7 @@ class _PostDetailState extends State<PostDetail> {
                 child: Hero(
                   tag: 'hero-${post['title']}',
                   child: FadeInImage.assetNetwork(
-                    placeholder: 'images/loading.gif',
+                    placeholder: 'assets/loading.gif',
                     fit: BoxFit.cover,
                     image: post['image'],
                   ),

@@ -93,7 +93,7 @@ class MainPageState extends State<MainPage> {
     return RaisedButton(
       child: Text('Add Post'),
       onPressed: () {
-        onPostPressed();
+        //onPostPressed();
       },
     );
   }
@@ -113,11 +113,11 @@ class MainPageState extends State<MainPage> {
     setState(() {});
   }
 
-  void onPostPressed() async {
-    var post = new SinglePost.random();
-    await db.addPost(post);
-    setupPostList();
-  }
+  // void onPostPressed() async {
+  //   var post = new SinglePost.random();
+  //   await db.addPost(post);
+  //   setupPostList();
+  // }
 
   void onPostApiPressed() async {
     WordpressAPI().getPosts('2021-01-01T00:00:00').then((response) {
