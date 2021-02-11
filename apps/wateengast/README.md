@@ -15,6 +15,7 @@ Stay tuned & enjoy!
 
 # Onderweg:
 Een flinke performance-update waarin de posts voortaan allemaal opgeslagen worden in een database!
+- En het menu is mooi onder handen genomen.
 
 # Current: 2.2.2
 Upgrade:
