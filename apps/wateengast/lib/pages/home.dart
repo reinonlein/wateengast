@@ -129,7 +129,9 @@ class _HomeState extends State<Home> {
       //setupPostList();
       print('De database is voor het eerst gevuld.');
     }).then((_) {
-      getWordpressApiPosts();
+      getWordpressApiPosts().then((_) {
+        setupPostList();
+      });
     });
   }
 
