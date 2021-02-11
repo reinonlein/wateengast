@@ -13,6 +13,9 @@ Stay tuned & enjoy!
 
 ## Version changelog:
 
+# Onderweg:
+Een flinke performance-update waarin de posts voortaan allemaal opgeslagen worden in een database!
+
 # Current: 2.2.2
 Upgrade:
 - Superstrakke overgangsanimatie toegevoegd!(hero-animation)
