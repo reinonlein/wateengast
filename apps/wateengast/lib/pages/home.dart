@@ -24,6 +24,8 @@ import 'package:downloads_path_provider/downloads_path_provider.dart';
 // TODO nieuwe posts markeren
 // TODO wordpress posts ophalen vanaf datum modified
 
+// TODO dingen
+
 FirebaseAnalytics analytics = FirebaseAnalytics();
 
 class Home extends StatefulWidget {
@@ -33,7 +35,9 @@ class Home extends StatefulWidget {
 
 List<SingleCategory> parseCategories(responseCat) {
   final parsedCat = jsonDecode(responseCat).cast<Map<String, dynamic>>();
-  return parsedCat.map<SingleCategory>((json) => SingleCategory.fromJson(json)).toList();
+  return parsedCat
+      .map<SingleCategory>((json) => SingleCategory.fromJson(json))
+      .toList();
 }
 
 class _HomeState extends State<Home> {
@@ -50,24 +54,29 @@ class _HomeState extends State<Home> {
       print('Wordpress posts opgehaald');
 
       sharedPrefs.previousDate = afterDate;
-      sharedPrefs.afterDate = DateFormat("yyyy-MM-ddTHH:mm:ss").format(DateTime.now()).toString();
-      afterDate = DateFormat("yyyy-MM-ddTHH:mm:ss").format(DateTime.now()).toString();
+      sharedPrefs.afterDate =
+          DateFormat("yyyy-MM-ddTHH:mm:ss").format(DateTime.now()).toString();
+      afterDate =
+          DateFormat("yyyy-MM-ddTHH:mm:ss").format(DateTime.now()).toString();
       return;
     });
   }
 
   Future<List<SinglePost>> getMemory2018() async {
-    final response = await DefaultAssetBundle.of(context).loadString('assets/posthistory2018.json');
+    final response = await DefaultAssetBundle.of(context)
+        .loadString('assets/posthistory2018.json');
     return compute(parsePosts, response);
   }
 
   Future<List<SinglePost>> getMemory2019() async {
-    final response = await DefaultAssetBundle.of(context).loadString('assets/posthistory2019.json');
+    final response = await DefaultAssetBundle.of(context)
+        .loadString('assets/posthistory2019.json');
     return compute(parsePosts, response);
   }
 
   Future<List<SinglePost>> getMemory2020() async {
-    final response = await DefaultAssetBundle.of(context).loadString('assets/posthistory2020.json');
+    final response = await DefaultAssetBundle.of(context)
+        .loadString('assets/posthistory2020.json');
     return compute(parsePosts, response);
   }
 
@@ -86,8 +95,8 @@ class _HomeState extends State<Home> {
       //final directory = await getApplicationDocumentsDirectory();
       //final file = File('assets/posthistory.txt');
       //String encodedData = await file.readAsString();
-      String encodedData =
-          await DefaultAssetBundle.of(context).loadString('assets/posthistory.json');
+      String encodedData = await DefaultAssetBundle.of(context)
+          .loadString('assets/posthistory.json');
       List<SinglePost> newPostlist = SinglePost.decode(encodedData);
       return newPostlist;
     } catch (e) {
@@ -198,7 +207,8 @@ class _HomeState extends State<Home> {
                     color: Colors.green,
                   ),
                 ),
-                content: new Text("Er staat een nieuwe vraag live. Wil je die nu gelijk lezen?"),
+                content: new Text(
+                    "Er staat een nieuwe vraag live. Wil je die nu gelijk lezen?"),
                 actions: <Widget>[
                   // usually buttons at the bottom of the dialog
                   Row(
@@ -274,7 +284,8 @@ class _HomeState extends State<Home> {
     });
 
     _scrollController.addListener(() {
-      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
         // if we are at the bottom of the page
         page + 1 > availablePages ? page = availablePages : page += 1;
         //page + 1 > availablePages ? perPage = postCount % perPage : perPage = perPage;
@@ -412,7 +423,8 @@ class _HomeState extends State<Home> {
               ? Center(child: SpinKitThreeBounce(color: Colors.green))
               : ListView.separated(
                   padding: EdgeInsets.all(10),
-                  separatorBuilder: (BuildContext context, int index) => Divider(),
+                  separatorBuilder: (BuildContext context, int index) =>
+                      Divider(),
                   itemCount: postlist.length,
                   itemBuilder: (context, index) {
                     return ListTile(
@@ -435,8 +447,8 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                         ),
-                        trailing: DateTime.parse(postlist[index].date)
-                                .isAfter(DateTime.parse(sharedPrefs.previousDate))
+                        trailing: DateTime.parse(postlist[index].date).isAfter(
+                                DateTime.parse(sharedPrefs.previousDate))
                             ? Text('Nieuw!',
                                 style: TextStyle(
                                   fontSize: 12,
@@ -512,7 +524,8 @@ class _HomeState extends State<Home> {
                   name: 'drawer_navigation',
                   parameters: {'target': 'Stel een vraag'},
                 );
-                if (await canLaunch('https://www.wateengast.nl/stel-een-vraag')) {
+                if (await canLaunch(
+                    'https://www.wateengast.nl/stel-een-vraag')) {
                   await launch('https://www.wateengast.nl/stel-een-vraag');
                 } else {
                   throw 'Could not launch url';
