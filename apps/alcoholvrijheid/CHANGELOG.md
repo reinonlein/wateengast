@@ -9,6 +9,7 @@ Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in 
 - Op verzoek van een geweldige gebruiker heb ik een donkere leesmodus toegevoegd
 - Compleet met achtergrond van een mooie ondergaande zon!
 - En als ik dan toch bezig ben: een donkere loading-spinner terwijl de afbeeldingen laden
+- Plus een fix van een afrondingsfoutje in de datums van literprestaties
 
 
 ## **1.9.1**
