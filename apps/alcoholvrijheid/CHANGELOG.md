@@ -4,6 +4,17 @@ Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in 
 - Optie om periodieke herinneringen in te stellen om je dagboek bij te werken
 
 
+## **1.10.0**
+#### Release: 6-3-2021
+- Op verzoek van een geweldige gebruiker heb ik een donkere leesmodus toegevoegd
+- Compleet met achtergrond van een mooie ondergaande zon!
+- En als ik dan toch bezig ben: een donkere loading-spinner terwijl de afbeeldingen laden
+
+
+## **1.9.1**
+#### Release: 20-1-2021
+- Subtiele fix in het opslaan van posts die per ongeluk de hele app overhoop kon gooien.
+
 ## **1.9.0**
 #### Release: 16-1-2021
 - Flink verbeterde gebruikerservaring door een belangrijke update achter de schermen. De posts worden nu in een bestandje in het geheugen van de telefoon opgeslagen, zodat ze niet iedere keer opnieuw gedownload hoeven worden. 
