@@ -105,3 +105,7 @@ Deze plugin is nodig om een backup van de verhalen op de telefoon op te kunnen s
 
 ### **shared_preferences** ^0.5.12+4
 Hiermee kan je gebruikersinstellingen van de app op de telefoon opslaan
+
+
+### **sqflite** ^1.3.2+2
+Fantastische plugin om een SQL database mee op te tuigen. Ideaal om je verhalen lokaal mee op te slaan!
