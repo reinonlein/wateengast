@@ -4,6 +4,12 @@ Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in 
 - Optie om periodieke herinneringen in te stellen om je dagboek bij te werken
 
 
+## **1.11.0**
+#### Release: 30-3-2021
+- Dit is een briljante update achter de schermen! Door alle verhalen in een lokale database op te slaan, worden ze nu ontzettend snel geladen. En daarna kan je ze ook nog eens overal offline teruglezen! Hoe leuk is dat?
+- En tegelijkertijd heb ik ook nog even de kleur van een knop in de donkere leesmodus aangepast. Het oog wil immers ook wat.
+
+
 ## **1.10.0**
 #### Release: 6-3-2021
 - Op verzoek van een geweldige gebruiker heb ik een donkere leesmodus toegevoegd
