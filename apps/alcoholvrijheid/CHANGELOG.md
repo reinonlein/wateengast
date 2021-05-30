@@ -4,6 +4,12 @@ Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in 
 - Optie om periodieke herinneringen in te stellen om je dagboek bij te werken
 
 
+## **1.12.0
+#### Release: 30-5-2021
+- Een gebruiker tipte me erop dat de boodschap van prestaties die nog niet behaald zijn nog motiverender kon. Dit heb ik dus gelijk aangepast! "Nog even geduld, je moet nog X dagen volhouden" is nu "Goed bezig! Je hoeft nog maar X dagen vol te houden". Dat klinkt toch weer nét effe wat leuker.
+- En ik heb ook gelijk de alcoholreminders iets positiever ingestoken. Dit is nu niet meer per sé een lijst van nadelen, maar gewoon een algemene lijst met redenen waarom je wil stoppen met drinken.
+
+
 ## **1.11.0**
 #### Release: 30-3-2021
 - Dit is een briljante update achter de schermen! Door alle verhalen in een lokale database op te slaan, worden ze nu ontzettend snel geladen. En daarna kan je ze ook nog eens overal offline teruglezen! Hoe leuk is dat?
