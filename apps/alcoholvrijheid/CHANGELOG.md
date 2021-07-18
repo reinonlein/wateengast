@@ -4,6 +4,16 @@ Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in 
 - Optie om periodieke herinneringen in te stellen om je dagboek bij te werken
 
 
+## **1.14.0**
+#### Release: 18-7-2021
+- Ik heb wat icoontjes toegevoegd aan het registratieformulier om daar iets meer kleur aan te geven. In de toekomst wil ik dit ooit nog mooier maken, maar voor nu voldoet dit wel even zo. En het icoontje voor de katers vind ik stiekem wel lollig eigenlijk!
+
+
+## **1.13.0**
+#### Release: 3-7-2021
+- Van een paar gebruikers kreeg ik vragen over de prestatie 'een hele bevalling'. Die naam was wat ongelukkig gekozen, en om dat op te lossen heb ik de 9 maanden mijlpaal ingeruild voor een supervrolijke 777 gelukkige dagen. Dat mag namelijk best gevierd worden. Ga ervoor!
+
+
 ## **1.12.0**
 #### Release: 30-5-2021
 - Een gebruiker tipte me erop dat de boodschap van prestaties die nog niet behaald zijn nog motiverender kon. Dit heb ik dus gelijk aangepast! "Nog even geduld, je moet nog X dagen volhouden" is nu "Goed bezig! Je hoeft nog maar X dagen vol te houden". Dat klinkt toch weer nét effe wat leuker.
