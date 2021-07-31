@@ -4,6 +4,17 @@ Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in 
 - Optie om periodieke herinneringen in te stellen om je dagboek bij te werken
 
 
+## **1.16.0**
+#### Release: 1-8-2021
+- Pagina toegevoegd met aanbevolen boeken over stoppen met alcohol
+
+
+## **1.15.0**
+#### Release: 25-7-2021
+- Nieuwe prestaties toegevoegd om het gat tussen een half en een heel jaar wat te dichten.
+- En onder artikelen staat nu een link om te reageren op de website. Maak er vooral gebruik van!
+
+
 ## **1.14.0**
 #### Release: 18-7-2021
 - Ik heb wat icoontjes toegevoegd aan het registratieformulier om daar iets meer kleur aan te geven. In de toekomst wil ik dit ooit nog mooier maken, maar voor nu voldoet dit wel even zo. En het icoontje voor de katers vind ik stiekem wel lollig eigenlijk!
