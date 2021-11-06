@@ -10,7 +10,7 @@ Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in 
 - Link naar het forum weggehaald (die werd helaas overspoeld door spambots)
 - Android geüpdatet naar SDK versie 30
 - Inspiratie/affiliate linkje toegevoegd
--
+
 
 ## **1.16.0**
 #### Release: 1-8-2021
