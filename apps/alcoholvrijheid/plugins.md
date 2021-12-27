@@ -109,3 +109,7 @@ Hiermee kan je gebruikersinstellingen van de app op de telefoon opslaan
 
 ### **sqflite** ^1.3.2+2
 Fantastische plugin om een SQL database mee op te tuigen. Ideaal om je verhalen lokaal mee op te slaan!
+
+
+### **open_appstore** ^1.0.2
+Briljant in zijn eenvoud: helpt om links naar mijn andere apps in de appstores te maken
