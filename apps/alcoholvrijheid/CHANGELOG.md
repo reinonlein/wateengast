@@ -1,53 +1,49 @@
 ## **Coming up next:**
-Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in de nabije toekomst:
-- Een dagboek met stemmingstracker
-- Zelf doelen invullen (bijvoorbeeld 1 maand, 1 jaar, etc)
+Deze app is nooit klaar! Om de zoveel tijd breng ik weer een update uit met nieuwe functionaliteit en verbeteringen. Hieronder kan je teruglezen wat er elke keer weer nieuw is:
 
+## **1.18.0**
+#### Release: 27-12-2021
+- Hier weer een persoonlijke mijlpaal! Ik heb nu ook een Rookvrijheid-variant van deze app gepubliceerd voor helden die ook aan het stoppen met roken zijn. In het hoofdmenu vind je nu een linkje naar deze nieuwe app. En natuurlijk is de 'Meer leuks van de maker' pagina ook weer helemaal up to date!
 
-## **1.17**
+## **1.17.0**
 #### Release: 6-11-2021
 - Textfoutjes gefixt in een aantal prestaties
 - Link naar het forum weggehaald (die werd helaas overspoeld door spambots)
 - Android geüpdatet naar SDK versie 30
 - Inspiratie/affiliate linkje toegevoegd
 
-
 ## **1.16.0**
-#### Release: 1-8-2021
+#### Release: 2-8-2021
 - Pagina toegevoegd met aanbevolen boeken over stoppen met alcohol
-
+- 1.16.1: fix in de link naar het boek op bol.com
+- 1.16.2: titel toegevoegd aan de link en mooiere uitlijning van de afbeeldingen
 
 ## **1.15.0**
 #### Release: 25-7-2021
 - Nieuwe prestaties toegevoegd om het gat tussen een half en een heel jaar wat te dichten.
 - En onder artikelen staat nu een link om te reageren op de website. Maak er vooral gebruik van!
 
-
 ## **1.14.0**
 #### Release: 18-7-2021
 - Ik heb wat icoontjes toegevoegd aan het registratieformulier om daar iets meer kleur aan te geven. In de toekomst wil ik dit ooit nog mooier maken, maar voor nu voldoet dit wel even zo. En het icoontje voor de katers vind ik stiekem wel lollig eigenlijk!
 
-
 ## **1.13.0**
 #### Release: 3-7-2021
 - Van een paar gebruikers kreeg ik vragen over de prestatie 'een hele bevalling'. Die naam was wat ongelukkig gekozen, en om dat op te lossen heb ik de 9 maanden mijlpaal ingeruild voor een supervrolijke 777 gelukkige dagen. Dat mag namelijk best gevierd worden. Ga ervoor!
-
 
 ## **1.12.0**
 #### Release: 30-5-2021
 - Een gebruiker tipte me erop dat de boodschap van prestaties die nog niet behaald zijn nog motiverender kon. Dit heb ik dus gelijk aangepast! "Nog even geduld, je moet nog X dagen volhouden" is nu "Goed bezig! Je hoeft nog maar X dagen vol te houden". Dat klinkt toch weer nét effe wat leuker.
 - En ik heb ook gelijk de alcoholreminders iets positiever ingestoken. Dit is nu niet meer per sé een lijst van nadelen, maar gewoon een algemene lijst met redenen waarom je wil stoppen met drinken.
 
-
 ## **1.11.0**
 #### Release: 30-3-2021
 - Dit is een briljante update achter de schermen! Door alle verhalen in een lokale database op te slaan, worden ze nu ontzettend snel geladen. En daarna kan je ze ook nog eens overal offline teruglezen! Hoe leuk is dat?
 - En tegelijkertijd heb ik ook nog even de kleur van een knop in de donkere leesmodus aangepast. Het oog wil immers ook wat.
 
-
 ## **1.10.0**
 #### Release: 6-3-2021
-- Op verzoek van een geweldige gebruiker heb ik een donkere leesmodus toegevoegd
+- Op verzoek van een trouwe gebruiker heb ik een prachtige donkere leesmodus toegevoegd
 - Compleet met achtergrond van een mooie ondergaande zon!
 - En als ik dan toch bezig ben: een donkere loading-spinner terwijl de afbeeldingen laden
 - Plus een fix van een afrondingsfoutje in de datums van literprestaties
@@ -58,13 +54,12 @@ Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in 
 - Subtiele fix in het opslaan van posts die per ongeluk de hele app overhoop kon gooien.
 
 ## **1.9.0**
-#### Release: 16-1-2021
+#### Release: 16-1-2021 (Android only)
 - Flink verbeterde gebruikerservaring door een belangrijke update achter de schermen. De posts worden nu in een bestandje in het geheugen van de telefoon opgeslagen, zodat ze niet iedere keer opnieuw gedownload hoeven worden. 
 - Je ziet nu een melding bij de nieuwe verhalen
 - Als je een notificatie krijgt wordt ook gelijk het nieuwe verhaal geopend
 - De instellingen van de app worden nu opgeslagen tussen gebruikssessies door
 - Zo blijft de schakelaar voor felicitaties nu ook echt uit staan als je hem uitzet, en andersom
-
 
 ## **1.8.1**
 #### Release: 18-12-2020
@@ -72,7 +67,6 @@ Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in 
 - suf rekenfoutje in de calorieënteller gecorrigeerd
 - de social media links staan nu netter onder elkaar
 - pagina met andere projectjes iets opgefraaid
-
 
 ## **1.8.0**
 #### Release: 17-12-2020
@@ -82,9 +76,9 @@ Deze app is nooit klaar! Dit zijn de verbeteringen die eraan zitten te komen in 
 - Als je ergens een e-mailadres in moet vullen krijg je nu automatisch het toetsenbord voor e-mailadressen op je telefoon te zien.
 - De prestatiepagina is wat mooier als je niet bent ingelogd.
 - Links naar Facebook en Twitter toegevoegd
-- Links naar Wateengast.nl en ReinOnlein.nl toegevoegd
+- Links naar Wateengast.nl en ReinOnlein.nl toegevoegc
 - Link naar Donatiepagina en Contactformulier toegevoegd
-- Pagina gemaakt met andere projecten
+- Pagina gemaakt met mijn andere projecten
 
 
 ## **1.7.1**
@@ -95,7 +89,7 @@ Even wat dingen opruimen! Doordat ik voor de iPhone app op een Mac moest gaan we
 - En vanaf nu: One Codebase!! Wat is Flutter toch een ongelofelijk mooi framework zeg... ik kan er maar niet over uit.
 
 
-## **1.7.0 iPhone release!** 
+## **1.7.0**
 #### Release: 4-12-2020
 Yes! Deze update staat geheel in het teken van de nieuwe iOS versie! Vanaf nu geniet je dus ook van alcoholvrijheid op je iPhone of iPad! Hoe gezellig is dat?! Maar dit ging niet zonder slag of stoot:
 - eerst moest ik een Mac en een iPhone zien te lenen
