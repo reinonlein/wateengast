@@ -1,6 +1,11 @@
 ## **Coming up next:**
 Deze app is nooit klaar! Om de zoveel tijd breng ik weer een update uit met nieuwe functionaliteit en verbeteringen. Hieronder kan je teruglezen wat er elke keer weer nieuw is:
 
+## **1.19.0** Linkjes werken weer
+#### Release: 14-1-2022
+- Op de nieuwste telefoons bleken sommige linkjes soms niet meer te werken. Deze update zorgt dat alles weer als een zonnetje draait!
+
+
 ## **1.18.0**
 #### Release: 27-12-2021
 - Hier weer een persoonlijke mijlpaal! Ik heb nu ook een Rookvrijheid-variant van deze app gepubliceerd voor helden die ook aan het stoppen met roken zijn. In het hoofdmenu vind je nu een linkje naar deze nieuwe app. En natuurlijk is de 'Meer leuks van de maker' pagina ook weer helemaal up to date!
