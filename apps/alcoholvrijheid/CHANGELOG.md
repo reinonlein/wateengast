@@ -1,10 +1,17 @@
 ## **Coming up next:**
 Deze app is nooit klaar! Om de zoveel tijd breng ik weer een update uit met nieuwe functionaliteit en verbeteringen. Hieronder kan je teruglezen wat er elke keer weer nieuw is:
 
+## **1.21.0** Het Alcoholvrijheid-dagboek!
+#### Release: 17-4-2022
+- Eindelijk! Deze stond al heel lang op mijn verlanglijst, maar vanaf deze update is het nu eindelijk mogelijk om een dagboek bij te houden in de app. Hoe voelde je je, hoe moeilijk vond je het om niet te drinken, en is dat überhaupt gelukt? Voortaan hou je het bij in het enige echte Alcoholvrijheid-dagboek!
+
+## **1.20.0** Stopgeschiedenis
+#### Release: 28-1-2022
+- Jawel, daar is ie dan: de stopgeschiedenis! Vanaf nu is er ook een pagina waar je ook je eerdere alcoholvrije periodes vast kunt leggen. Heb je dus bijvoorbeeld ooit eerder meegedaan aan Dry January? Dan kan je dat succes hier nu leuk vereeuwigen. En je krijgt er ook nog eens een mooie virtuele medaille voor!
+
 ## **1.19.0** Linkjes werken weer
 #### Release: 14-1-2022
 - Op de nieuwste telefoons bleken sommige linkjes soms niet meer te werken. Deze update zorgt dat alles weer als een zonnetje draait!
-
 
 ## **1.18.0**
 #### Release: 27-12-2021
