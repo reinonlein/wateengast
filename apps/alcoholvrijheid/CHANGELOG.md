@@ -1,6 +1,10 @@
 ## **Coming up next:**
 Deze app is nooit klaar! Om de zoveel tijd breng ik weer een update uit met nieuwe functionaliteit en verbeteringen. Hieronder kan je teruglezen wat er elke keer weer nieuw is:
 
+## **1.22.0** Nieuwe prestaties toegevoegd
+#### Release: 23-5-2022
+- Alsjeblieft! Met deze update zijn er maar liefst 15 nieuwe prestaties toegevoegd om te ontgrendelen. Wat je hiervoor moet doen? Gewoon niet drinken natuurlijk, dat is alles! ;-)
+
 ## **1.21.0** Het Alcoholvrijheid-dagboek!
 #### Release: 17-4-2022
 - Eindelijk! Deze stond al heel lang op mijn verlanglijst, maar vanaf deze update is het nu eindelijk mogelijk om een dagboek bij te houden in de app. Hoe voelde je je, hoe moeilijk vond je het om niet te drinken, en is dat überhaupt gelukt? Voortaan hou je het bij in het enige echte Alcoholvrijheid-dagboek!
