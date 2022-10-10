@@ -1,16 +1,25 @@
 ## **Coming up next:**
 Deze app is nooit klaar! Om de zoveel tijd breng ik weer een update uit met nieuwe functionaliteit en verbeteringen. Hieronder kan je teruglezen wat er elke keer weer nieuw is:
 
+## **1.24** De pauzeknop
+#### Release: 10 oktober 2022
+- Met deze update is er een functie toegevoegd die niemand hopelijk hoeft te gebruiken, maar mocht je toch per ongeluk weer een keer gaan drinken, dan kan je nu alle tellers pauzeren door je stopperiode te onderbreken zodat je niet meer geconfronteerd wordt met ongepaste felicitaties. Als je dit via de tegel in het startscherm doet wordt deze periode automatich toegevoegd aan je stopgeschiedenis. En stop je opnieuw? Dan kan je gelijk weer verder met de app!
+
+## **1.23** Je gloednieuwe bespaarpot
+#### Release: 22 juli 2022
+- Soms mag je jezelf best wel eens belonen voor de fantastische prestatie die je hier aan het leveren bent. En hoe leuk is het om dat te doen van het geld dat je bespaard hebt door niet te roken? De gloednieuwe bespaarpot helpt je hier voortaan bij. Gewoon, omdat dat kan!
+- En tegelijkertijd heb ik ook een mogelijkheid toegevoegd om rechtstreeks vanuit de app je account te verwijderen, mocht je dat willen. Wel zo netjes!
+
 ## **1.22.0** Nieuwe prestaties toegevoegd
-#### Release: 23-5-2022
+#### Release: 23 mei 2022
 - Alsjeblieft! Met deze update zijn er maar liefst 15 nieuwe prestaties toegevoegd om te ontgrendelen. Wat je hiervoor moet doen? Gewoon niet drinken natuurlijk, dat is alles! ;-)
 
 ## **1.21.0** Het Alcoholvrijheid-dagboek!
-#### Release: 17-4-2022
+#### Release: 17 april 2022
 - Eindelijk! Deze stond al heel lang op mijn verlanglijst, maar vanaf deze update is het nu eindelijk mogelijk om een dagboek bij te houden in de app. Hoe voelde je je, hoe moeilijk vond je het om niet te drinken, en is dat überhaupt gelukt? Voortaan hou je het bij in het enige echte Alcoholvrijheid-dagboek!
 
 ## **1.20.0** Stopgeschiedenis
-#### Release: 28-1-2022
+#### Release: 28 januari 2022
 - Jawel, daar is ie dan: de stopgeschiedenis! Vanaf nu is er ook een pagina waar je ook je eerdere alcoholvrije periodes vast kunt leggen. Heb je dus bijvoorbeeld ooit eerder meegedaan aan Dry January? Dan kan je dat succes hier nu leuk vereeuwigen. En je krijgt er ook nog eens een mooie virtuele medaille voor!
 
 ## **1.19.0** Linkjes werken weer
